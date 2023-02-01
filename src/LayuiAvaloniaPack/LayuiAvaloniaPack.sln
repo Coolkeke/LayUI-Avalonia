@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayuiApp", "LayuiApp\LayuiApp.csproj", "{423B07D2-3B3B-41A4-BF7D-7558FD56E120}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayUI.Avalonia", "LayUI.Avalonia\LayUI.Avalonia.csproj", "{0FA0709B-D0E3-45E3-BA0B-11CE67264C39}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{423B07D2-3B3B-41A4-BF7D-7558FD56E120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{423B07D2-3B3B-41A4-BF7D-7558FD56E120}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{423B07D2-3B3B-41A4-BF7D-7558FD56E120}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{423B07D2-3B3B-41A4-BF7D-7558FD56E120}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FA0709B-D0E3-45E3-BA0B-11CE67264C39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FA0709B-D0E3-45E3-BA0B-11CE67264C39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FA0709B-D0E3-45E3-BA0B-11CE67264C39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FA0709B-D0E3-45E3-BA0B-11CE67264C39}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7755A43-FC53-4E0C-9BBF-B50865FBE6CB}
+	EndGlobalSection
+EndGlobal

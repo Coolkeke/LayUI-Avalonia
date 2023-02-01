@@ -1,0 +1,138 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ColorStyle.axaml" />
+    <Design.PreviewWith>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <lay:LayButton
+                    Margin="2"
+                    Content="默认按钮"
+                    Type="Default" />
+                <lay:LayButton
+                    Margin="2"
+                    Content="百搭按钮"
+                    Type="Normal" />
+                <lay:LayButton
+                    Margin="2"
+                    Content="暖色按钮"
+                    Type="Warm" />
+                <lay:LayButton
+                    Margin="2"
+                    Content="警告按钮"
+                    Type="Danger" />
+                <lay:LayButton
+                    Margin="2"
+                    Content="禁用按钮"
+                    IsEnabled="False" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <lay:LayButton Margin="2" Content="原始按钮" />
+                <lay:LayButton
+                    Margin="2"
+                    Classes="Default"
+                    Content="主色按钮" />
+                <lay:LayButton
+                    Margin="2"
+                    Classes="Normal"
+                    Content="百搭按钮" />
+                <lay:LayButton
+                    Margin="2"
+                    Classes="Warm"
+                    Content="暖色按钮" />
+                <lay:LayButton
+                    Margin="2"
+                    Classes="Danger"
+                    Content="警告按钮" />
+            </StackPanel>
+        </StackPanel>
+    </Design.PreviewWith>
+    <Style Selector="lay|LayButton">
+        <Setter Property="Type" Value="Primary" />
+        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Padding" Value="16 8" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border Name="PART_BorderBody" CornerRadius="{TemplateBinding CornerRadius}">
+                        <Grid>
+                            <Border
+                                Name="PART_Border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}" />
+                            <Border ClipToBounds="True" CornerRadius="{TemplateBinding CornerRadius}">
+                                <ContentPresenter
+                                    Name="PART_ContentPresenter"
+                                    Padding="{TemplateBinding Padding}"
+                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}" />
+                            </Border>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayButton[Type=Primary]">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource LightBlack}" />
+        <Setter Property="TextBlock.Foreground" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=BorderBrush}" />
+    </Style>
+    <Style Selector="lay|LayButton:pointerover/template/ Border#PART_Border">
+        <Setter Property="Opacity" Value="0.6" />
+    </Style>
+    <Style Selector="lay|LayButton:pressed/template/ Border#PART_Border">
+        <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="lay|LayButton[Type=Primary].Default">
+        <Setter Property="BorderBrush" Value="{DynamicResource Green}" />
+    </Style>
+    <Style Selector="lay|LayButton[Type=Primary].Normal">
+        <Setter Property="BorderBrush" Value="{DynamicResource Blue}" />
+    </Style>
+    <Style Selector="lay|LayButton[Type=Primary].Warm">
+        <Setter Property="BorderBrush" Value="{DynamicResource Orange}" />
+    </Style>
+    <Style Selector="lay|LayButton[Type=Primary].Danger">
+        <Setter Property="BorderBrush" Value="{DynamicResource Red}" />
+    </Style>
+    <Style Selector="lay|LayButton[Type=Default]">
+        <Setter Property="Background" Value="{DynamicResource Green}" />
+        <Setter Property="TextBlock.Foreground" Value="White" />
+    </Style>
+    <Style Selector="lay|LayButton[Type=Normal]">
+        <Setter Property="Background" Value="{DynamicResource Blue}" />
+        <Setter Property="TextBlock.Foreground" Value="White" />
+    </Style>
+    <Style Selector="lay|LayButton[Type=Warm]">
+        <Setter Property="Background" Value="{DynamicResource Orange}" />
+        <Setter Property="TextBlock.Foreground" Value="White" />
+    </Style>
+    <Style Selector="lay|LayButton[Type=Danger]">
+        <Setter Property="Background" Value="{DynamicResource Red}" />
+        <Setter Property="TextBlock.Foreground" Value="White" />
+    </Style>
+    <Style Selector="lay|LayButton[Type=Customize]">
+        <Setter Property="Background" Value="{DynamicResource Green}" />
+        <Setter Property="TextBlock.Foreground" Value="White" />
+    </Style>
+    <Style Selector="lay|LayButton:disabled /template/ Border#PART_Border">
+        <Setter Property="Background" Value="{DynamicResource LighGray}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+    <Style Selector="lay|LayButton:disabled /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource Gray}" />
+    </Style>
+</Styles>

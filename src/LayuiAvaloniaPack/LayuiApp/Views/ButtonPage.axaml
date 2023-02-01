@@ -1,0 +1,54 @@
+<UserControl
+    x:Class="LayuiApp.Views.ButtonPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <lay:LayButton
+                Margin="2"
+                Content="默认按钮"
+                Type="Default" />
+            <lay:LayButton
+                Margin="2"
+                Content="百搭按钮"
+                Type="Normal" />
+            <lay:LayButton
+                Margin="2"
+                Content="暖色按钮"
+                Type="Warm" />
+            <lay:LayButton
+                Margin="2"
+                Content="警告按钮"
+                Type="Danger" />
+            <lay:LayButton
+                Margin="2"
+                Content="禁用按钮"
+                IsEnabled="False" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <lay:LayButton Margin="2" Content="原始按钮" />
+            <lay:LayButton
+                Margin="2"
+                Classes="Default"
+                Content="主色按钮" />
+            <lay:LayButton
+                Margin="2"
+                Classes="Normal"
+                Content="百搭按钮" />
+            <lay:LayButton
+                Margin="2"
+                Classes="Warm"
+                Content="暖色按钮" />
+            <lay:LayButton
+                Margin="2"
+                Classes="Danger"
+                Content="警告按钮" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>
