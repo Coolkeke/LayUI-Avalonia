@@ -1,4 +1,6 @@
-﻿using Prism.Commands;
+﻿using LayuiApp.Core;
+using Prism.Commands;
+using Prism.Ioc;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -6,12 +8,9 @@ using System.Linq;
 
 namespace LayuiApp.ViewModels
 {
-    public class FormPageViewModel : BindableBase
+    public class FormPageViewModel : ViewModelBase
     {
-        public FormPageViewModel()
-        {
-
-        }
+        public FormPageViewModel(IContainerExtension container) : base(container) { } 
         private int _Value;
         public int Value
         {
