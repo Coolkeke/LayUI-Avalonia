@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "0fa0709b-d0e3-45e3-ba0b-11ce67264c39": {
+      "ProjectGuid": "0fa0709b-d0e3-45e3-ba0b-11ce67264c39",
+      "DisplayName": "LayUI.Avalonia",
+      "ColorIndex": 0
+    },
+    "423b07d2-3b3b-41a4-bf7d-7558fd56e120": {
+      "ProjectGuid": "423b07d2-3b3b-41a4-bf7d-7558fd56e120",
+      "DisplayName": "LayuiApp",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

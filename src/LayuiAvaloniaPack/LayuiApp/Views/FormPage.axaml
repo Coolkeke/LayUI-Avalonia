@@ -3,21 +3,45 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
-    <StackPanel>
-        <TextBox
+    <StackPanel Margin="5">
+        <lay:LayTextBox
             Height="40"
             Margin="5"
-            VerticalContentAlignment="Center"
+            Text="{Binding Value, Mode=TwoWay}"
+            Watermark="只能输入数字" />
+        <lay:LayTextBox
+            Height="40"
+            Margin="5"
+            InputType="Number"
+            Watermark="只能输入数字" />
+        <lay:LayTextBox
+            Height="40"
+            Margin="5"
+            InputType="Phone"
+            Watermark="输入电话" />
+        <lay:LayTextBox
+            Height="40"
+            Margin="5"
             Watermark="这是文本框" />
-        <TextBox
+        <lay:LayTextBox
             Height="40"
             Margin="5"
-            VerticalContentAlignment="Center"
             PasswordChar="*"
             Watermark="这是密码框" />
+        <ComboBox
+            Height="40"
+            Margin="5"
+            HorizontalAlignment="Stretch">
+            <ComboBoxItem Content="123" />
+            <ComboBoxItem Content="asd" />
+            <ComboBoxItem Content="阿萨德" />
+        </ComboBox>
     </StackPanel>
 </UserControl>
