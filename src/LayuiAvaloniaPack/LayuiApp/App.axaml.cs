@@ -1,9 +1,11 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Layui.Main;
 using LayuiApp.Views;
 using Prism.DryIoc;
 using Prism.Ioc;
+using Prism.Modularity;
 
 namespace LayuiApp
 {
@@ -22,8 +24,10 @@ namespace LayuiApp
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<ButtonPage>(nameof(ButtonPage));
-            containerRegistry.RegisterForNavigation<FormPage>(nameof(FormPage));
+        }
+        protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
+        {
+            moduleCatalog.AddModule<MainModule>();
         }
     }
 }

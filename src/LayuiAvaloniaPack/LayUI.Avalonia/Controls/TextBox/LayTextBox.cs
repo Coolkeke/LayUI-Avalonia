@@ -17,6 +17,21 @@ namespace LayUI.Avalonia.Controls
     /// </summary>
     public class LayTextBox : TextBox
     {
+
+        /// <summary>
+        /// 是否聚焦
+        /// </summary>
+        public bool IsFocus
+        {
+            get { return GetValue(IsFocusProperty); }
+            set { SetValue(IsFocusProperty, value); }
+        }
+        /// <summary>
+        /// 定义<see cref="bool"/>属性
+        /// </summary>
+        public static readonly StyledProperty<bool> IsFocusProperty =
+       AvaloniaProperty.Register<LayTextBox, bool>(nameof(IsFocus));
+
         /// <summary>
         /// 输入类型
         /// </summary>
@@ -56,10 +71,20 @@ namespace LayUI.Avalonia.Controls
         /// </summary>
         /// <param name="e"></param>
         /// <returns></returns>
-        private static bool IsPhone(TextInputEventArgs e)
+        private bool IsPhone(TextInputEventArgs e)
         {
             if ((e.Source as TextBox).Text?.ToCharArray().Length > 10) return true;
             return Regex.IsMatch(e.Text, @"[^(1)\d{10}$]");
+        }
+        protected override void OnLostFocus(RoutedEventArgs e)
+        {
+            base.OnLostFocus(e);
+            IsFocus = false;
+        }
+        protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
+        {
+            base.OnAttachedToVisualTree(e);
+            if (IsFocus) Focus();
         }
     }
 }

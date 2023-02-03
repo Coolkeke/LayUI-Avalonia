@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LayuiApp.Core
+namespace Layui.Core.Mvvm
 {
     public abstract class ViewModelBase : BindableBase, INavigationAware, IRegionMemberLifetime, IConfirmNavigationRequest
     {

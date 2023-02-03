@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Prism.Mvvm;
 
-namespace LayuiApp.Models
+namespace Layui.Main.Models
 {
 	/// <summary>
 	/// ²Ëµ¥×ÓÏîModel

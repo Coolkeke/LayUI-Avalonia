@@ -1,4 +1,4 @@
-﻿using LayuiApp.Core;
+﻿using Layui.Core.Mvvm;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LayuiApp.ViewModels
+namespace Layui.Main.ViewModels
 {
     public class FormPageViewModel : ViewModelBase
     {

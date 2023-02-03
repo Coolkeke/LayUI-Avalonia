@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace LayuiApp.Views
+namespace Layui.Main.Views
 {
     public partial class ButtonPage : UserControl
     {

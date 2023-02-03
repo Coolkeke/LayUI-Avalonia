@@ -9,6 +9,17 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove=".gitignore" />
+    <None Remove="Assets\动图.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\动图.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\动图.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <!--This helps with theme dll-s trimming.
@@ -29,5 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LayUI.Avalonia\LayUI.Avalonia.csproj" />
+    <ProjectReference Include="..\Layui.Core\Layui.Core.csproj" />
+    <ProjectReference Include="..\Layui.Main\Layui.Main.csproj" />
   </ItemGroup>
 </Project>
