@@ -17,10 +17,12 @@ namespace Layui.Main
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            
             containerRegistry.RegisterForNavigation<ButtonPage>(SystemResource.ButtonPage);
             containerRegistry.RegisterForNavigation<FormPage>(SystemResource.FormPage);
             containerRegistry.RegisterForNavigation<HomePage>(SystemResource.HomePage);
             containerRegistry.RegisterForNavigation<ImagePage>(SystemResource.ImagePage);
+            containerRegistry.RegisterForNavigation<ProgressBarPage>(SystemResource.ProgressBarPage);
         }
     }
 }

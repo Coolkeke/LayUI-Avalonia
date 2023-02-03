@@ -23,19 +23,44 @@
             <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid Height="60" Background="#23262E">
+        <Grid
+            Height="60"
+            Background="#23262E"
+            ZIndex="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Grid Width="200">
+            <Border
+                Width="200"
+                Background="#393D49"
+                BoxShadow="1 0 1 0 #000">
                 <TextBlock
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     FontSize="20"
                     Foreground="White"
                     Text="LayUI-Avalonia" />
-            </Grid>
+            </Border>
+            <StackPanel
+                Grid.Column="1"
+                Margin="5,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center">
+                <lay:LayButton
+                    Background="{DynamicResource Gradient}"
+                    Command="{Binding GitHubCommand}"
+                    Type="Customize">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="关于项目" />
+                        <Ellipse
+                            Width="6"
+                            Height="6"
+                            Margin="2,0"
+                            Fill="{DynamicResource Red}" />
+                    </StackPanel>
+                </lay:LayButton>
+            </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -44,7 +69,7 @@
             </Grid.ColumnDefinitions>
             <ListBox
                 Width="200"
-                Background="#23262E"
+                Background="#393D49"
                 BorderThickness="0"
                 Items="{Binding Menus}"
                 SelectedItem="{Binding MenuInfo}">

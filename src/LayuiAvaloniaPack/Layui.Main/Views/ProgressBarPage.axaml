@@ -1,0 +1,49 @@
+<UserControl
+    x:Class="Layui.Main.Views.ProgressBarPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <StackPanel>
+        <ProgressBar
+            Margin="5"
+            Classes="Primary"
+            Value="20" />
+        <ProgressBar
+            Margin="5"
+            Classes="Default"
+            Value="30" />
+        <ProgressBar
+            Margin="5"
+            Classes="Normal"
+            Value="40" />
+        <ProgressBar
+            Margin="5"
+            Classes="Danger"
+            Value="50" />
+        <ProgressBar
+            Margin="5"
+            Classes="Steady"
+            Value="60" />
+        <ProgressBar
+            Height="10"
+            Margin="5"
+            BorderBrush="#5FC8ED"
+            BorderThickness="1"
+            Classes="Steady"
+            CornerRadius="5"
+            Value="60">
+            <ProgressBar.Foreground>
+                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Offset="0" Color="#347AB1" />
+                        <GradientStop Offset="1" Color="#5FC8ED" />
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </ProgressBar.Foreground>
+        </ProgressBar>
+    </StackPanel>
+</UserControl>

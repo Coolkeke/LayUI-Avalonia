@@ -1,0 +1,56 @@
+﻿<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <StackPanel>
+            <ProgressBar
+                Margin="5"
+                Classes="Primary"
+                Value="50" />
+            <ProgressBar
+                Margin="5"
+                Classes="Default"
+                Value="50" />
+            <ProgressBar
+                Margin="5"
+                Classes="Normal"
+                Value="50" />
+            <ProgressBar
+                Margin="5"
+                Classes="Danger"
+                Value="50" />
+            <ProgressBar
+                Margin="5"
+                Classes="Steady"
+                Value="50" />
+        </StackPanel>
+    </Design.PreviewWith>
+    <Style Selector="ProgressBar.Primary">
+        <Setter Property="Background" Value="{DynamicResource SilverGray}" />
+        <Setter Property="Foreground" Value="{DynamicResource Blue}" />
+        <Setter Property="Height" Value="6" />
+        <Setter Property="CornerRadius" Value="3" />
+    </Style>
+    <Style Selector="ProgressBar.Default">
+        <Setter Property="Background" Value="{DynamicResource SilverGray}" />
+        <Setter Property="Foreground" Value="{DynamicResource Green}" />
+        <Setter Property="Height" Value="6" />
+        <Setter Property="CornerRadius" Value="3" />
+    </Style>
+    <Style Selector="ProgressBar.Normal">
+        <Setter Property="Background" Value="{DynamicResource SilverGray}" />
+        <Setter Property="Foreground" Value="{DynamicResource Orange}" />
+        <Setter Property="Height" Value="6" />
+        <Setter Property="CornerRadius" Value="3" />
+    </Style>
+    <Style Selector="ProgressBar.Danger">
+        <Setter Property="Background" Value="{DynamicResource SilverGray}" />
+        <Setter Property="Foreground" Value="{DynamicResource Red}" />
+        <Setter Property="Height" Value="6" />
+        <Setter Property="CornerRadius" Value="3" />
+    </Style>
+    <Style Selector="ProgressBar.Steady">
+        <Setter Property="Background" Value="{DynamicResource SilverGray}" />
+        <Setter Property="Foreground" Value="{DynamicResource Cyan}" />
+        <Setter Property="Height" Value="6" />
+        <Setter Property="CornerRadius" Value="3" />
+    </Style>
+</Styles>

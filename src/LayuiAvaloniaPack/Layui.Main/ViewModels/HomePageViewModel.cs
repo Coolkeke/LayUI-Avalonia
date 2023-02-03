@@ -7,7 +7,9 @@ using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Security.Policy;
 
 namespace Layui.Main.ViewModels
 {
@@ -37,6 +39,18 @@ namespace Layui.Main.ViewModels
         {
             Region.RequestNavigate(SystemResource.Nav_HomeContent, info.PageKey);
         }
+        private DelegateCommand _GitHubCommand;
+        public DelegateCommand GitHubCommand =>
+            _GitHubCommand ?? (_GitHubCommand = new DelegateCommand(ExecuteGitHubCommand));
+
+        void ExecuteGitHubCommand()
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = "https://github.com/Coolkeke/LayUI-Avalonia",
+                UseShellExecute = true
+            });
+        }
         private ObservableCollection<MenuInfo> CreateMenus()
         {
             ObservableCollection<MenuInfo> menus = new ObservableCollection<MenuInfo>
@@ -44,6 +58,7 @@ namespace Layui.Main.ViewModels
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.ButtonPage, Title = "按钮" },
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.FormPage, Title = "表单" },
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.ImagePage, Title = "图片" },
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.ProgressBarPage, Title = "进度条" },
             };
             return menus;
         }

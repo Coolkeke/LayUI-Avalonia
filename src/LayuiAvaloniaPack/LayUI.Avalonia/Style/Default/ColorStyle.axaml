@@ -40,6 +40,10 @@
             <Border
                 Margin="2"
                 Padding="20"
+                Background="{DynamicResource Cyan}" />
+            <Border
+                Margin="2"
+                Padding="20"
                 Background="{DynamicResource Black}" />
             <Border
                 Margin="2"
@@ -52,7 +56,15 @@
             <Border
                 Margin="2"
                 Padding="20"
+                Background="{DynamicResource SilverGray}" />
+            <Border
+                Margin="2"
+                Padding="20"
                 Background="{DynamicResource LighGray}" />
+            <Border
+                Margin="2"
+                Padding="20"
+                Background="{DynamicResource Gradient}" />
         </StackPanel>
     </Design.PreviewWith>
     <Styles.Resources>
@@ -89,6 +101,20 @@
         <!--  浅灰色  -->
         <Color x:Key="LightGrayEffect">#FAFAFA</Color>
         <SolidColorBrush x:Key="LighGray" Color="{StaticResource LightGrayEffect}" />
+        <!--  银灰色  -->
+        <Color x:Key="SilverGrayEffect">#eee</Color>
+        <SolidColorBrush x:Key="SilverGray" Color="{StaticResource SilverGrayEffect}" />
+        <!--  青色  -->
+        <Color x:Key="CyanEffect">#2F4056</Color>
+        <SolidColorBrush x:Key="Cyan" Color="{StaticResource CyanEffect}" />
+        <!--  渐变色  -->
+        <LinearGradientBrush x:Key="Gradient" StartPoint="0%,0%" EndPoint="100%,100%">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Offset="0" Color="#359FD4" />
+                <GradientStop Offset="0.5" Color="#36B5C8" />
+                <GradientStop Offset="1" Color="#25D8AB" />
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
     </Styles.Resources>
 
 </Styles>

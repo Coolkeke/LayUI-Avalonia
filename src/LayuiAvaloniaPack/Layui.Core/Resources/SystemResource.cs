@@ -36,5 +36,9 @@ namespace Layui.Core.Resources
         /// 图片
         /// </summary>
         public static string ImagePage = "ImagePage"; 
+        /// <summary>
+        /// 进度条
+        /// </summary>
+        public static string ProgressBarPage = "ProgressBarPage"; 
     }
 }

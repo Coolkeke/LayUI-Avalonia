@@ -28,4 +28,8 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\ProgressBarPage.axaml" />
+  </ItemGroup>
+
 </Project>
