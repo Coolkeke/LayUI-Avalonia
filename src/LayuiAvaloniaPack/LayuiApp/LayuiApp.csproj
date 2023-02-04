@@ -9,12 +9,18 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove=".gitignore" />
+    <None Remove="Assets\1.jpg" />
     <None Remove="Assets\动图.gif" />
   </ItemGroup>
   <ItemGroup>
     <AvaloniaResource Include="Assets\动图.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AvaloniaResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\动图.gif">

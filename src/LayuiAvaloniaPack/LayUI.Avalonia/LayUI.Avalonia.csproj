@@ -6,11 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <AvaloniaXaml Remove="Extends\GIF\**" />
+    <Compile Remove="Extends\GIF\**" />
+    <EmbeddedResource Remove="Extends\GIF\**" />
+    <None Remove="Extends\GIF\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.10.13" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Extends\GIF\" />
     <Folder Include="Tools\" />
   </ItemGroup>
 
