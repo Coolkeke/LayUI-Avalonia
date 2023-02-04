@@ -35,13 +35,10 @@
             Margin="5"
             PasswordChar="*"
             Watermark="这是密码框" />
-        <ComboBox
-            Height="40"
-            Margin="5"
-            HorizontalAlignment="Stretch">
-            <ComboBoxItem Content="123" />
-            <ComboBoxItem Content="asd" />
-            <ComboBoxItem Content="阿萨德" />
-        </ComboBox>
+        <lay:LayComboBox Height="40" Margin="5">
+            <lay:LayComboBoxItem Height="40" Content="123" />
+            <lay:LayComboBoxItem Height="40" Content="asd" />
+            <lay:LayComboBoxItem Height="40" Content="阿萨德" />
+        </lay:LayComboBox>
     </StackPanel>
 </UserControl>
