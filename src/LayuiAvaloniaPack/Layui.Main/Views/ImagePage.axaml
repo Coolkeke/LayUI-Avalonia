@@ -20,14 +20,10 @@
             ext:ImageHelper.IsLoaded="{Binding ImageIsLoaded}"
             ext:ImageHelper.Source="https://lmg.jj20.com/up/allimg/1114/020R1102553/21020Q02553-1-1200.jpg" />
         <!--  这里绑定附加属性没用直接报错  -->
-        <!--<TextBlock
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Text="{Binding ElementName=image, Path=(ext:ImageHelper.IsLoaded)}" />-->
         <TextBlock
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Classes.MessageClose="{Binding !ImageIsLoaded}"
+            IsVisible="{CompiledBinding #image.(ext:ImageHelper.IsLoaded)}"
             Text="正在加载....." />
     </Grid>
 

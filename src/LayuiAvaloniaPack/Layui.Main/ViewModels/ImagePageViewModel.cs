@@ -12,11 +12,5 @@ namespace Layui.Main.ViewModels
         {
 
         }
-        private bool _ImageIsLoaded;
-        public bool ImageIsLoaded
-        {
-            get { return _ImageIsLoaded; }
-            set { SetProperty(ref _ImageIsLoaded, value); }
-        }
     }
 }
