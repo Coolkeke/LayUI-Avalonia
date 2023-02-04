@@ -9,22 +9,64 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Grid>
-        <Grid.Styles>
-            <Style Selector="TextBlock.MessageClose">
-                <Setter Property="IsVisible" Value="False" />
-            </Style>
-        </Grid.Styles>
-        <Image
-            Name="image"
-            ext:ImageHelper.IsLoaded="{Binding ImageIsLoaded}"
-            ext:ImageHelper.Source="https://lmg.jj20.com/up/allimg/1114/020R1102553/21020Q02553-1-1200.jpg" />
-        <!--  这里绑定附加属性没用直接报错  -->
-        <TextBlock
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            IsVisible="{CompiledBinding #image.(ext:ImageHelper.IsLoaded)}"
-            Text="正在加载....." />
-    </Grid>
+    <ScrollViewer>
+        <StackPanel Margin="5">
+            <TextBlock
+                HorizontalAlignment="Center"
+                FontSize="20"
+                Text="附加属性样式绑定，读取网络图片" />
+            <Grid Margin="5">
+                <Grid.Styles>
+                    <Style Selector="TextBlock.MessageClose">
+                        <Setter Property="IsVisible" Value="False" />
+                    </Style>
+                </Grid.Styles>
+                <Image
+                    Name="image"
+                    ext:ImageHelper.Source="https://lmg.jj20.com/up/allimg/1114/020R1102553/21020Q02553-1-1200.jpg"
+                    Stretch="Fill" />
+                <!--  这里绑定附加属性没用直接报错  -->
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    IsVisible="{CompiledBinding #image.(ext:ImageHelper.IsLoaded)}"
+                    Text="正在加载....." />
+            </Grid>
+            <TextBlock
+                HorizontalAlignment="Center"
+                FontSize="20"
+                Text="附加属性样式绑定，读取网络图片，取反" />
+            <Image
+                ext:ImageHelper.Source="https://lmg.jj20.com/up/allimg/1114/020R1102553/21020Q02553-1-1200.jpg"
+                Classes.MessageClose="{CompiledBinding !#image.(ext:ImageHelper.IsLoaded)}"
+                Stretch="Fill" />
+            <TextBlock
+                HorizontalAlignment="Center"
+                FontSize="20"
+                Text="物理盘实际图片位置" />
+            <Image
+                Margin="5"
+                ext:ImageHelper.Source="C:\Users\wenke\Desktop\QQ截图20230204213155.jpg"
+                Stretch="Fill" />
+            <TextBlock
+                HorizontalAlignment="Center"
+                FontSize="20"
+                Text="读取程序内嵌图片" />
+            <Image
+                Margin="5"
+                ext:ImageHelper.Source="avares://LayuiApp/Assets/2.jpg"
+                Stretch="Fill" />
+            <TextBlock
+                HorizontalAlignment="Center"
+                FontSize="20"
+                Text="读取当前程序文件加下面图片" />
+            <Image
+                Margin="5"
+                ext:ImageHelper.Source="assembly://Assets/1.jpg"
+                Stretch="Fill" />
+
+        </StackPanel>
+    </ScrollViewer>
 
 </UserControl>

@@ -35,10 +35,11 @@ namespace LayUI.Avalonia.Extends
                 {
                     if (rawUri.StartsWith("assembly://"))
                     {
+                        SetIsLoaded(image, true);
                         var appDirectory = System.IO.Directory.GetCurrentDirectory();
                         uri = new Uri($"{appDirectory}/{rawUri.Replace("assembly://", "")}");
-
                         image.Source = new Bitmap(uri.LocalPath);
+                        SetIsLoaded(image, false);
                         return;
                     }
                     else if (rawUri.Trim().StartsWith("http://") || rawUri.Trim().StartsWith("https://"))
@@ -57,21 +58,22 @@ namespace LayUI.Avalonia.Extends
                                 });
                             }
                         });
-
-                        return;
                     }
                     else if (rawUri.StartsWith("avares://"))
                     {
+                        SetIsLoaded(image, true);
                         uri = new Uri(rawUri);
+                        var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
+                        var asset = assets.Open(uri);
+                        image.Source = new Bitmap(asset);
+                        SetIsLoaded(image, false);
                     }
                     else
                     {
-                        string assemblyName = Assembly.GetEntryAssembly().GetName().Name;
-                        uri = new Uri($"avares://{assemblyName}/{rawUri}");
+                        SetIsLoaded(image, true);
+                        image.Source = new Bitmap(rawUri);
+                        SetIsLoaded(image, true);
                     }
-                    var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
-                    var asset = assets.Open(uri);
-                    image.Source = new Bitmap(asset);
                 }
                 if (obj.NewValue is IImage)
                 {
