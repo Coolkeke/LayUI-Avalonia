@@ -40,5 +40,9 @@ namespace Layui.Core.Resources
         /// 进度条
         /// </summary>
         public static string ProgressBarPage = "ProgressBarPage"; 
+        /// <summary>
+        /// 键盘
+        /// </summary>
+        public static string KeyboardPage = "KeyboardPage"; 
     }
 }

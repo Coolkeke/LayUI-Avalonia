@@ -32,4 +32,8 @@
     <UpToDateCheckInput Remove="Views\ProgressBarPage.axaml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\KeyboardPage.axaml" />
+  </ItemGroup>
+
 </Project>

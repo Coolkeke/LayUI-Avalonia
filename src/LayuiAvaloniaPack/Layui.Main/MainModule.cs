@@ -23,6 +23,7 @@ namespace Layui.Main
             containerRegistry.RegisterForNavigation<HomePage>(SystemResource.HomePage);
             containerRegistry.RegisterForNavigation<ImagePage>(SystemResource.ImagePage);
             containerRegistry.RegisterForNavigation<ProgressBarPage>(SystemResource.ProgressBarPage);
+            containerRegistry.RegisterForNavigation<KeyboardPage>(SystemResource.KeyboardPage);
         }
     }
 }
