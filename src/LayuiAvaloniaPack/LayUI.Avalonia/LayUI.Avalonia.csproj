@@ -16,8 +16,4 @@
     <PackageReference Include="Avalonia" Version="0.10.13" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Tools\" />
-  </ItemGroup>
-
 </Project>
