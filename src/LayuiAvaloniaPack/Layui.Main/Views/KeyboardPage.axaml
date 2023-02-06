@@ -10,7 +10,7 @@
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
     <StackPanel>
-        <TextBox Height="40" />
+        <TextBox Name="test" Height="40" />
         <Button
             HorizontalAlignment="Stretch"
             HorizontalContentAlignment="Center"

@@ -29,8 +29,11 @@ namespace Layui.Main.ViewModels
             var window = app.Windows.Cast<Window>().ToList().Where((o) => o.IsActive)?.FirstOrDefault();
             if (window != null)
             {
+                var gesture = new KeyGesture(Avalonia.Input.Key.K, KeyModifiers.Control);
+                HotKeyManager.SetHotKey(window, gesture);
+                inputManager.ProcessInput(new RawKeyEventArgs(keyboard, 0, window, RawKeyEventType.KeyDown, Avalonia.Input.Key.K, RawInputModifiers.Control));
                 //Avalonia.Input.Key.Y 目前尚未找到映射的办法
-                inputManager.ProcessInput(new RawTextInputEventArgs(keyboard, (ulong)DateTime.Now.Ticks, window, "123"));
+                //inputManager.ProcessInput(new RawTextInputEventArgs(keyboard, (ulong)DateTime.Now.Ticks, window, "123"));
             }
         }
     }

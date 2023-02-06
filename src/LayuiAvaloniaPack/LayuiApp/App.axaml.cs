@@ -1,4 +1,5 @@
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Layui.Main;
@@ -6,6 +7,7 @@ using LayuiApp.Views;
 using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Modularity;
+using System;
 
 namespace LayuiApp
 {
@@ -15,8 +17,8 @@ namespace LayuiApp
         {
             AvaloniaXamlLoader.Load(this);
             base.Initialize();
-        }
 
+        }
         protected override IAvaloniaObject CreateShell()
         {
             return Container.Resolve<MainWindow>();

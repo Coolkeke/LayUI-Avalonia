@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LayuiApp", "LayuiApp\LayuiA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LayUI.Avalonia", "LayUI.Avalonia\LayUI.Avalonia.csproj", "{0FA0709B-D0E3-45E3-BA0B-11CE67264C39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Layui.Main", "Layui.Main\Layui.Main.csproj", "{7E62B02B-89F5-49B5-A722-2899A98F896E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Layui.Main", "Layui.Main\Layui.Main.csproj", "{7E62B02B-89F5-49B5-A722-2899A98F896E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Layui.Core", "Layui.Core\Layui.Core.csproj", "{494CE103-4E8B-4FD1-AA92-2D9E83EC107B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Layui.Core", "Layui.Core\Layui.Core.csproj", "{494CE103-4E8B-4FD1-AA92-2D9E83EC107B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Layui.Tools", "Layui.Tools\Layui.Tools.csproj", "{55389D2A-4682-4526-B1C4-411FD3A078FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{494CE103-4E8B-4FD1-AA92-2D9E83EC107B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{494CE103-4E8B-4FD1-AA92-2D9E83EC107B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{494CE103-4E8B-4FD1-AA92-2D9E83EC107B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55389D2A-4682-4526-B1C4-411FD3A078FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55389D2A-4682-4526-B1C4-411FD3A078FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55389D2A-4682-4526-B1C4-411FD3A078FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55389D2A-4682-4526-B1C4-411FD3A078FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
