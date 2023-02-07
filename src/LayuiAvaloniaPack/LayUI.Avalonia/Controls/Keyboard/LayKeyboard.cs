@@ -24,21 +24,52 @@ namespace LayUI.Avalonia.Controls
         {
 
         }
+        /// <summary>
+        /// Defines the <see cref="IsCapital"/> property.
+        /// </summary>
+        public static readonly StyledProperty<bool> IsCapitalProperty =
+            AvaloniaProperty.Register<LayKeyboard, bool>(nameof(IsCapital), false);
 
         /// <summary>
-        /// 这是依赖属性名称
+        /// 是否开启键盘大写
         /// </summary>
-        public KeyboardStateType KeyboardState
+        public bool IsCapital
         {
-            get { return GetValue(KeyboardStateProperty); }
-            set { SetValue(KeyboardStateProperty, value); }
+            get { return GetValue(IsCapitalProperty); }
+            set { SetValue(IsCapitalProperty, value); }
         }
-        /// <summary>
-        /// 定义<see cref="KeyboardStateType"/>属性
-        /// </summary>
-        public static readonly StyledProperty<KeyboardStateType> KeyboardStateProperty =
-       AvaloniaProperty.Register<LayKeyboard, KeyboardStateType>(nameof(KeyboardState), KeyboardStateType.Lowercase);
 
+
+        /// <summary>
+        /// Defines the <see cref="IsShift"/> property.
+        /// </summary>
+        public static readonly StyledProperty<bool> IsShiftProperty =
+            AvaloniaProperty.Register<LayKeyboard, bool>(nameof(IsShift), false);
+
+        /// <summary>
+        /// 是否开启键盘Shift
+        /// </summary>
+        public bool IsShift
+        {
+            get { return GetValue(IsShiftProperty); }
+            set { SetValue(IsShiftProperty, value); }
+        }
+
+
+        /// <summary>
+        /// Defines the <see cref="IsCtrl"/> property.
+        /// </summary>
+        public static readonly StyledProperty<bool> IsCtrlProperty =
+            AvaloniaProperty.Register<LayKeyboard, bool>(nameof(IsCtrl), false);
+
+        /// <summary>
+        /// 是否开启键盘Ctrl
+        /// </summary>
+        public bool IsCtrl
+        {
+            get { return GetValue(IsCtrlProperty); }
+            set { SetValue(IsCtrlProperty, value); }
+        }
 
         protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
         {
@@ -86,23 +117,39 @@ namespace LayUI.Avalonia.Controls
         {
             if (sender is Button button)
             {
-                if (button.CommandParameter is Key key)
+                if (button.DataContext is Key key)
                 {
-                    LayKeyboardHelper.SetKey(key);
-                }
-                else
-                {
-                    switch (KeyboardState)
+                    var value = button.CommandParameter?.ToString();
+                    if (IsCapital)
                     {
-                        case KeyboardStateType.Capital:
-                            LayKeyboardHelper.SetText(button.CommandParameter.ToString()?.Trim().ToUpper().Split('|').LastOrDefault());
-                            break;
-                        case KeyboardStateType.Lowercase:
-                            LayKeyboardHelper.SetText(button.CommandParameter.ToString()?.Trim().ToLower().Split('|').LastOrDefault());
-                            break;
-                        default:
-                            break;
+                        if (value != null)
+                        {
+                            if (value.Contains("||"))
+                            {
+                                LayKeyboardHelper.SetText("|");
+                            }
+                            else
+                            {
+                                LayKeyboardHelper.SetText(value?.ToUpper().Split('|').LastOrDefault());
+                            }
+                        }
+
                     }
+                    else
+                    {
+                        if (value != null)
+                        {
+                            if (value.Contains("||"))
+                            {
+                                LayKeyboardHelper.SetText("|");
+                            }
+                            else
+                            {
+                                LayKeyboardHelper.SetText(value?.ToLower().Split('|').LastOrDefault());
+                            }
+                        }
+                    }
+                    LayKeyboardHelper.SetKey(key);
                 }
             }
         }

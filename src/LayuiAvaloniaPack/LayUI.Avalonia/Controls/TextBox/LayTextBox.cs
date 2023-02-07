@@ -48,11 +48,8 @@ namespace LayUI.Avalonia.Controls
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
             base.OnApplyTemplate(e);
-            this.RemoveHandler(TextInputEvent, TxtBox_TextInput);
-            this.AddHandler(TextInputEvent, TxtBox_TextInput, RoutingStrategies.Tunnel);
         }
-
-        private void TxtBox_TextInput(object sender, TextInputEventArgs e)
+        protected override void OnTextInput(TextInputEventArgs e)
         {
             switch (InputType)
             {
@@ -65,8 +62,12 @@ namespace LayUI.Avalonia.Controls
                 default:
                     break;
             }
+            base.OnTextInput(e);
         }
-
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            base.OnKeyDown(e);
+        }
         /// 检验手机号
         /// </summary>
         /// <param name="e"></param>

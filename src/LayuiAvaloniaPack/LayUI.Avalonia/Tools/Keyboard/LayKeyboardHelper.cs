@@ -18,6 +18,7 @@ namespace LayUI.Avalonia.Tools
         /// <param name="value"></param>
         public static void SetText(string value)
         {
+            if (value == null) return;
             InputManager.Instance.ProcessInput(new RawTextInputEventArgs(
                 KeyboardDevice.Instance, (ulong)DateTime.Now.Ticks, null, value));
         }

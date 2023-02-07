@@ -4,7 +4,13 @@
     xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
     <Design.PreviewWith>
         <Border Padding="20">
-            <lay:LayKeyboard />
+            <StackPanel>
+                <lay:LayTextBox
+                    Height="40"
+                    Margin="0,10"
+                    IsFocus="True" />
+                <lay:LayKeyboard IsCapital="True" />
+            </StackPanel>
         </Border>
     </Design.PreviewWith>
     <Style Selector="lay|LayKeyboard">
@@ -62,6 +68,7 @@
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                         </Grid>
                                     </ItemsPanelTemplate>
@@ -69,10 +76,10 @@
                                 <lay:LayButton
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
-                                    CommandParameter="{Binding Source={x:Static Key.Escape}}"
+                                    DataContext="{Binding Source={x:Static Key.Escape}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
@@ -85,9 +92,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="~|`"
+                                    DataContext="{Binding Source={x:Static Key.Escape}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -107,9 +115,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="!|1"
+                                    DataContext="{Binding Source={x:Static Key.D1}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -129,9 +138,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="@|2"
+                                    DataContext="{Binding Source={x:Static Key.D2}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -150,10 +160,11 @@
                                     Grid.Column="8"
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
-                                    CommandParameter="3|3"
+                                    CommandParameter="#|3"
+                                    DataContext="{Binding Source={x:Static Key.D3}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -173,9 +184,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="$|4"
+                                    DataContext="{Binding Source={x:Static Key.D4}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -195,9 +207,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="%|5"
+                                    DataContext="{Binding Source={x:Static Key.D5}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -217,9 +230,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="^|6"
+                                    DataContext="{Binding Source={x:Static Key.D6}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -239,9 +253,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="&amp;|7"
+                                    DataContext="{Binding Source={x:Static Key.D7}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -261,9 +276,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="*|8"
+                                    DataContext="{Binding Source={x:Static Key.D8}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -283,9 +299,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="(|9"
+                                    DataContext="{Binding Source={x:Static Key.D9}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -305,9 +322,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter=")|0"
+                                    DataContext="{Binding Source={x:Static Key.D0}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -327,9 +345,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="-|—"
+                                    DataContext="{Binding Source={x:Static Key.OemMinus}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -350,9 +369,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="+|="
+                                    DataContext="{Binding Source={x:Static Key.OemPlus}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -369,12 +389,12 @@
                                 </lay:LayButton>
                                 <lay:LayButton
                                     Grid.Column="28"
-                                    Grid.ColumnSpan="3"
+                                    Grid.ColumnSpan="4"
                                     BorderThickness="1"
-                                    CommandParameter="{Binding Source={x:Static Key.Back}}"
+                                    DataContext="{Binding Source={x:Static Key.Back}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
@@ -426,10 +446,10 @@
                                 <lay:LayButton
                                     Grid.ColumnSpan="3"
                                     BorderThickness="1"
-                                    CommandParameter="{Binding Source={x:Static Key.Tab}}"
+                                    DataContext="{Binding Source={x:Static Key.Tab}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
@@ -441,16 +461,29 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="Q|q"
+                                    DataContext="{Binding Source={x:Static Key.Q}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
-                                            Tag="letter">
+                                            DataContext="letter"
+                                            IsVisible="{Binding !$parent[Grid].DataContext}">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
                                                     <Setter Property="Text" Value="q" />
+                                                </Style>
+                                            </TextBlock.Styles>
+                                        </TextBlock>
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            DataContext="letter"
+                                            IsVisible="{Binding $parent[Grid].DataContext}">
+                                            <TextBlock.Styles>
+                                                <Style Selector="TextBlock">
+                                                    <Setter Property="Text" Value="Q" />
                                                 </Style>
                                             </TextBlock.Styles>
                                         </TextBlock>
@@ -461,13 +494,27 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="W|w"
+                                    DataContext="{Binding Source={x:Static Key.W}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            IsVisible="{Binding !$parent[Grid].DataContext}">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
                                                     <Setter Property="Text" Value="w" />
+                                                </Style>
+                                            </TextBlock.Styles>
+                                        </TextBlock>
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            IsVisible="{Binding $parent[Grid].DataContext}">
+                                            <TextBlock.Styles>
+                                                <Style Selector="TextBlock">
+                                                    <Setter Property="Text" Value="W" />
                                                 </Style>
                                             </TextBlock.Styles>
                                         </TextBlock>
@@ -478,13 +525,27 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="E|e"
+                                    DataContext="{Binding Source={x:Static Key.E}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            IsVisible="{Binding !$parent[Grid].DataContext}">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
                                                     <Setter Property="Text" Value="e" />
+                                                </Style>
+                                            </TextBlock.Styles>
+                                        </TextBlock>
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            IsVisible="{Binding $parent[Grid].DataContext}">
+                                            <TextBlock.Styles>
+                                                <Style Selector="TextBlock">
+                                                    <Setter Property="Text" Value="E" />
                                                 </Style>
                                             </TextBlock.Styles>
                                         </TextBlock>
@@ -495,13 +556,27 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="R|r"
+                                    DataContext="{Binding Source={x:Static Key.R}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            IsVisible="{Binding !$parent[Grid].DataContext}">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
                                                     <Setter Property="Text" Value="r" />
+                                                </Style>
+                                            </TextBlock.Styles>
+                                        </TextBlock>
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            IsVisible="{Binding $parent[Grid].DataContext}">
+                                            <TextBlock.Styles>
+                                                <Style Selector="TextBlock">
+                                                    <Setter Property="Text" Value="R" />
                                                 </Style>
                                             </TextBlock.Styles>
                                         </TextBlock>
@@ -512,9 +587,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="T|t"
+                                    DataContext="{Binding Source={x:Static Key.T}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -529,9 +605,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="Y|y"
+                                    DataContext="{Binding Source={x:Static Key.Y}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -546,9 +623,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="U|u"
+                                    DataContext="{Binding Source={x:Static Key.U}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -563,9 +641,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="I|i"
+                                    DataContext="{Binding Source={x:Static Key.I}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -580,9 +659,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="O|o"
+                                    DataContext="{Binding Source={x:Static Key.O}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -597,9 +677,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="P|p"
+                                    DataContext="{Binding Source={x:Static Key.P}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -614,9 +695,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="{}{|["
+                                    DataContext="{Binding Source={x:Static Key.OemOpenBrackets}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -636,9 +718,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="{}}|]"
+                                    DataContext="{Binding Source={x:Static Key.OemCloseBrackets}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -658,9 +741,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="||\"
+                                    DataContext="{Binding Source={x:Static Key.OemBackslash}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -679,10 +763,10 @@
                                     Grid.Column="29"
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
-                                    CommandParameter="{Binding Source={x:Static Key.Delete}}"
+                                    DataContext="{Binding Source={x:Static Key.Delete}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
@@ -730,32 +814,54 @@
                                         </Grid>
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
-                                <lay:LayButton
+                                <CheckBox
                                     Grid.ColumnSpan="4"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
                                     BorderThickness="1"
-                                    CommandParameter="{Binding Source={x:Static Key.CapsLock}}"
+                                    CornerRadius="2"
+                                    Cursor="Hand"
+                                    DataContext="{Binding Source={x:Static Key.CapsLock}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Type="Default">
-                                    <Grid Margin="4">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition />
-                                            <RowDefinition />
-                                        </Grid.RowDefinitions>
+                                    Foreground="White"
+                                    IsChecked="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital}">
+                                    <CheckBox.Template>
+                                        <ControlTemplate>
+                                            <Border
+                                                Background="{DynamicResource Green}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="1"
+                                                CornerRadius="{TemplateBinding CornerRadius}">
+                                                <ContentPresenter Content="{TemplateBinding Content}" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </CheckBox.Template>
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Ellipse
+                                            Width="5"
+                                            Height="5"
+                                            Fill="White"
+                                            IsVisible="{Binding $parent[Grid].DataContext}" />
                                         <TextBlock
-                                            Grid.RowSpan="2"
+                                            Grid.ColumnSpan="2"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
                                             Text="Caps" />
                                     </Grid>
-                                </lay:LayButton>
+                                </CheckBox>
                                 <lay:LayButton
                                     Grid.Column="4"
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="A|a"
+                                    DataContext="{Binding Source={x:Static Key.A}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -770,9 +876,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="S|s"
+                                    DataContext="{Binding Source={x:Static Key.S}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -787,9 +894,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="D|d"
+                                    DataContext="{Binding Source={x:Static Key.D}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -804,9 +912,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="F|f"
+                                    DataContext="{Binding Source={x:Static Key.F}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -821,9 +930,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="G|g"
+                                    DataContext="{Binding Source={x:Static Key.G}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -838,9 +948,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="H|h"
+                                    DataContext="{Binding Source={x:Static Key.H}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -855,9 +966,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="J|j"
+                                    DataContext="{Binding Source={x:Static Key.J}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -872,9 +984,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="K|k"
+                                    DataContext="{Binding Source={x:Static Key.K}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -889,9 +1002,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="L|l"
+                                    DataContext="{Binding Source={x:Static Key.L}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -906,9 +1020,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter=":|;"
+                                    DataContext="{Binding Source={x:Static Key.OemSemicolon}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -928,9 +1043,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="&quot;|'"
+                                    DataContext="{Binding Source={x:Static Key.OemQuotes}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -949,10 +1065,10 @@
                                     Grid.Column="26"
                                     Grid.ColumnSpan="5"
                                     BorderThickness="1"
-                                    CommandParameter="{Binding Source={x:Static Key.Enter}}"
+                                    DataContext="{Binding Source={x:Static Key.Enter}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
@@ -1000,27 +1116,48 @@
                                         </Grid>
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
-                                <lay:LayButton
+                                <CheckBox
                                     Grid.ColumnSpan="5"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
                                     BorderThickness="1"
-                                    CommandParameter="{Binding Source={x:Static Key.LeftShift}}"
+                                    DataContext="{Binding Source={x:Static Key.LeftShift}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Type="Default">
-                                    <Grid Margin="4">
+                                    Foreground="White"
+                                    IsChecked="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsShift}">
+                                    <CheckBox.Template>
+                                        <ControlTemplate>
+                                            <Border
+                                                Background="{DynamicResource Green}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="1"
+                                                CornerRadius="{TemplateBinding CornerRadius}">
+                                                <ContentPresenter Content="{TemplateBinding Content}" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </CheckBox.Template>
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsShift, Mode=TwoWay}">
+                                        <Ellipse
+                                            Width="5"
+                                            Height="5"
+                                            HorizontalAlignment="Left"
+                                            Fill="White"
+                                            IsVisible="{Binding $parent[Grid].DataContext}" />
                                         <TextBlock
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
                                             Text="Shift" />
                                     </Grid>
-                                </lay:LayButton>
+                                </CheckBox>
                                 <lay:LayButton
                                     Grid.Column="5"
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="Z|z"
+                                    DataContext="{Binding Source={x:Static Key.Z}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -1035,9 +1172,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="X|x"
+                                    DataContext="{Binding Source={x:Static Key.X}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -1052,9 +1190,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="C|c"
+                                    DataContext="{Binding Source={x:Static Key.C}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -1069,9 +1208,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="V|v"
+                                    DataContext="{Binding Source={x:Static Key.V}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -1086,9 +1226,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="B|b"
+                                    DataContext="{Binding Source={x:Static Key.B}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -1103,9 +1244,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="N|n"
+                                    DataContext="{Binding Source={x:Static Key.N}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -1120,9 +1262,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="M|m"
+                                    DataContext="{Binding Source={x:Static Key.M}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock.Styles>
                                                 <Style Selector="TextBlock">
@@ -1137,9 +1280,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="&lt;|,"
+                                    DataContext="{Binding Source={x:Static Key.OemComma}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -1159,9 +1303,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="&gt;|."
+                                    DataContext="{Binding Source={x:Static Key.OemPeriod}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -1181,9 +1326,10 @@
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
                                     CommandParameter="?|/"
+                                    DataContext="{Binding Source={x:Static Key.OemQuestion}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition />
@@ -1198,20 +1344,40 @@
                                             Text="/" />
                                     </Grid>
                                 </lay:LayButton>
-                                <lay:LayButton
+                                <CheckBox
                                     Grid.Column="25"
                                     Grid.ColumnSpan="6"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
                                     BorderThickness="1"
-                                    CommandParameter="{Binding Source={x:Static Key.RightShift}}"
+                                    DataContext="{Binding Source={x:Static Key.RightShift}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Type="Default">
-                                    <Grid Margin="4">
+                                    Foreground="White"
+                                    IsChecked="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsShift}">
+                                    <CheckBox.Template>
+                                        <ControlTemplate>
+                                            <Border
+                                                Background="{DynamicResource Green}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="1"
+                                                CornerRadius="{TemplateBinding CornerRadius}">
+                                                <ContentPresenter Content="{TemplateBinding Content}" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </CheckBox.Template>
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsShift, Mode=TwoWay}">
+                                        <Ellipse
+                                            Width="5"
+                                            Height="5"
+                                            HorizontalAlignment="Right"
+                                            Fill="White"
+                                            IsVisible="{Binding $parent[Grid].DataContext}" />
                                         <TextBlock
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
                                             Text="Shift" />
                                     </Grid>
-                                </lay:LayButton>
+                                </CheckBox>
                             </ItemsControl>
                             <ItemsControl
                                 Grid.Row="4"
@@ -1259,10 +1425,11 @@
                                 <lay:LayButton
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
-                                    CommandParameter="{Binding Source={x:Static Key.LeftCtrl}}"
+                                    DataContext="{Binding Source={x:Static Key.LeftCtrl}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
+
                                         <TextBlock
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
@@ -1273,10 +1440,10 @@
                                     Grid.Column="2"
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
-                                    CommandParameter="{Binding Source={x:Static Key.LWin}}"
+                                    DataContext="{Binding Source={x:Static Key.LWin}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <Path
                                             Width="20"
                                             Height="15"
@@ -1289,10 +1456,10 @@
                                     Grid.Column="4"
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
-                                    CommandParameter="{Binding Source={x:Static Key.LeftCtrl}}"
+                                    DataContext="{Binding Source={x:Static Key.LeftAlt}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
@@ -1303,7 +1470,8 @@
                                     Grid.Column="6"
                                     Grid.ColumnSpan="17"
                                     BorderThickness="1"
-                                    CommandParameter="{Binding Source={x:Static Key.Space}}"
+                                    CommandParameter=" | "
+                                    DataContext="{Binding Source={x:Static Key.Space}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
                                     <Path
@@ -1318,10 +1486,10 @@
                                     Grid.Column="23"
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
-                                    CommandParameter="{Binding Source={x:Static Key.RightAlt}}"
+                                    DataContext="{Binding Source={x:Static Key.RightAlt}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
@@ -1332,10 +1500,10 @@
                                     Grid.Column="25"
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
-                                    CommandParameter="{Binding Source={x:Static Key.Home}}"
+                                    DataContext="{Binding Source={x:Static Key.Home}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
@@ -1346,10 +1514,10 @@
                                     Grid.Column="27"
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
-                                    CommandParameter="{Binding Source={x:Static Key.End}}"
+                                    DataContext="{Binding Source={x:Static Key.End}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
@@ -1360,10 +1528,10 @@
                                     Grid.Column="29"
                                     Grid.ColumnSpan="2"
                                     BorderThickness="1"
-                                    CommandParameter="{Binding Source={x:Static Key.RightCtrl}}"
+                                    DataContext="{Binding Source={x:Static Key.RightCtrl}}"
                                     Focusable="{TemplateBinding Focusable}"
                                     Type="Default">
-                                    <Grid Margin="4">
+                                    <Grid Margin="4" DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapital, Mode=TwoWay}">
                                         <TextBlock
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
