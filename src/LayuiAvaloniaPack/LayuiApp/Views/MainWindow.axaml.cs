@@ -11,7 +11,7 @@ namespace LayuiApp.Views
         public MainWindow()
         {
             InitializeComponent();
-            Resources.MergedDictionaries.Add(GetData("assembly://Languages/zh-cn.axaml"));
+            //Resources.MergedDictionaries.Add(GetData("assembly://Languages/zh-cn.axaml"));
         }
         private ResourceDictionary GetData(string rawUri)
         {
