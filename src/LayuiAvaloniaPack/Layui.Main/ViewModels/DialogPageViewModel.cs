@@ -17,7 +17,10 @@ namespace Layui.Main.ViewModels
 
         void ExecuteDlalogCommand()
         {
-             layDialog.Show("Message", null, "RootDialog");
+             layDialog.ShowDialog("Message", parameters: null,res => {
+                 var data = res;
+             }, "RootDialog");
+            layDialog.ShowDialog("Message", null, "RootDialog");
         }
     }
 }

@@ -2,10 +2,12 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.LogicalTree;
+using LayUI.Avalonia.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Dialog
 {
@@ -16,6 +18,9 @@ namespace LayUI.Avalonia.Dialog
     /// </summary>
     internal class LayDialogWindow : ContentControl, ILayDialogWindow
     {
+
+        internal EventHandler OpenHander = null;
+        internal TaskCompletionSource<ILayDialogResult> _dialogTaskCompletionSource;
         public ILayDialogResult Result { get; set; }
 
         [Bindable(true)]
@@ -35,19 +40,34 @@ namespace LayUI.Avalonia.Dialog
             set { SetValue(IsOpenProperty, value); }
 
         }
-        public static readonly RoutedEvent<RoutedEventArgs> UnloadedEvent =
+        public static readonly RoutedEvent UnloadedEvent =
         RoutedEvent.Register<LayDialogWindow, RoutedEventArgs>(nameof(Unloaded), RoutingStrategies.Bubble);
 
         // Provide CLR accessors for the event
-        public event EventHandler<RoutedEventArgs> Unloaded
+        public event EventHandler Unloaded
         {
             add => AddHandler(UnloadedEvent, value);
             remove => RemoveHandler(UnloadedEvent, value);
         }
+        public static readonly RoutedEvent LoadedEvent =
+        RoutedEvent.Register<LayDialogWindow, RoutedEventArgs>(nameof(Loaded), RoutingStrategies.Bubble);
+
+        // Provide CLR accessors for the event
+        public event EventHandler Loaded
+        {
+            add => AddHandler(LoadedEvent, value);
+            remove => RemoveHandler(LoadedEvent, value);
+        }
+        
+        //public event EventHandler Unloaded;
         protected override void OnDetachedFromLogicalTree(LogicalTreeAttachmentEventArgs e)
         {
             base.OnDetachedFromLogicalTree(e);
             this.RaiseEvent(new RoutedEventArgs(UnloadedEvent));
+        }
+        protected override void OnAttachedToLogicalTree(LogicalTreeAttachmentEventArgs e)
+        {
+            base.OnAttachedToLogicalTree(e);
         }
     }
 }
