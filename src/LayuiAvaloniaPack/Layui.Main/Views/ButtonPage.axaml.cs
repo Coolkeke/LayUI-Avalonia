@@ -7,6 +7,12 @@ namespace Layui.Main.Views
         public ButtonPage()
         {
             InitializeComponent();
+            DetachedFromLogicalTree += ButtonPage_DetachedFromLogicalTree;
+        }
+
+        private void ButtonPage_DetachedFromLogicalTree(object sender, Avalonia.LogicalTree.LogicalTreeAttachmentEventArgs e)
+        {
+           
         }
     }
 }

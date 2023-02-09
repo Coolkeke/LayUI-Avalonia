@@ -60,6 +60,7 @@ namespace Layui.Main.ViewModels
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.ImagePage, Title = "图片" },
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.ProgressBarPage, Title = "进度条" },
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.KeyboardPage, Title = "键盘" },
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.DialogPage, Title = "对话框" },
             };
             return menus;
         }

@@ -3,8 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LayUI.Avalonia
+namespace LayUI.Avalonia.Dialog
 {
+    /// <summary>
+    /// 返回值
+    /// </summary>
     public interface ILayDialogResult
     {
         /// <summary>

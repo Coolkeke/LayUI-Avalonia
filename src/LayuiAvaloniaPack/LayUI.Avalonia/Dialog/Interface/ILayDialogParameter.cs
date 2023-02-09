@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LayUI.Avalonia
+namespace LayUI.Avalonia.Dialog
 {
     public interface ILayDialogParameter
     {

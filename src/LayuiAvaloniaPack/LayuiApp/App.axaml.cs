@@ -3,6 +3,8 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Layui.Main;
+using LayUI.Avalonia;
+using LayUI.Avalonia.Dialog;
 using LayuiApp.Views;
 using Prism.DryIoc;
 using Prism.Ioc;
@@ -26,6 +28,7 @@ namespace LayuiApp
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterInstance<ILayDialogService>(new LayDialogService());
         }
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {

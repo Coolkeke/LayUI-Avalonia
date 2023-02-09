@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Avalonia.LogicalTree;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace LayUI.Avalonia
+namespace LayUI.Avalonia.Dialog
 {
     public interface ILayDialogWindow
     {
@@ -21,11 +22,11 @@ namespace LayUI.Avalonia
         /// <summary>
         /// 初始化
         /// </summary>
-        event EventHandler Initialized;
+         event EventHandler<LogicalTreeAttachmentEventArgs> AttachedToLogicalTree;
         /// <summary>
-        /// 结束
+        /// 关闭
         /// </summary>
-        //event EventHandler Unloaded;
+        event EventHandler<LogicalTreeAttachmentEventArgs> DetachedFromLogicalTree;
         /// <summary>
         /// 数据上下文
         /// </summary>

@@ -44,5 +44,9 @@ namespace Layui.Core.Resources
         /// 键盘
         /// </summary>
         public static string KeyboardPage = "KeyboardPage"; 
+        /// <summary>
+        /// 对话框
+        /// </summary>
+        public static string DialogPage = "DialogPage"; 
     }
 }
