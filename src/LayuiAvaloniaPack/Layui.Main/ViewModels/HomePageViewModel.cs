@@ -39,18 +39,6 @@ namespace Layui.Main.ViewModels
         {
             Region.RequestNavigate(SystemResource.Nav_HomeContent, info.PageKey);
         }
-        private DelegateCommand _GitHubCommand;
-        public DelegateCommand GitHubCommand =>
-            _GitHubCommand ?? (_GitHubCommand = new DelegateCommand(ExecuteGitHubCommand));
-
-        void ExecuteGitHubCommand()
-        {
-            Process.Start(new ProcessStartInfo
-            {
-                FileName = "https://github.com/Coolkeke/LayUI-Avalonia",
-                UseShellExecute = true
-            });
-        }
         private ObservableCollection<MenuInfo> CreateMenus()
         {
             ObservableCollection<MenuInfo> menus = new ObservableCollection<MenuInfo>

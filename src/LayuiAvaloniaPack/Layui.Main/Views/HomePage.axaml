@@ -49,8 +49,8 @@
                 VerticalAlignment="Center">
                 <lay:LayButton
                     Background="{DynamicResource Gradient}"
-                    Command="{Binding GitHubCommand}"
-                    Type="Customize">
+                    Type="Customize"
+                    Uri="https://space.bilibili.com/48808444">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="关于项目" />
                         <Ellipse

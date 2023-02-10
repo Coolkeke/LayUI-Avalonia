@@ -7,7 +7,7 @@ namespace LayUI.Avalonia.Enums.Button
     /// <summary>
     /// 按钮样式枚举
     /// </summary>
-    public enum ButtonStyle
+    public enum ButtonType
     {
         /// <summary>
         /// 原始
@@ -33,6 +33,9 @@ namespace LayUI.Avalonia.Enums.Button
         /// 自定义
         /// </summary>
         Customize,
-
+        /// <summary>
+        /// 超链接
+        /// </summary>
+        Link
     }
 }

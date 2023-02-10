@@ -20,14 +20,6 @@ namespace LayUI.Avalonia.Dialog
         /// </summary>
         ILayDialogResult Result { get;  set; }
         /// <summary>
-        /// 初始化
-        /// </summary>
-         event EventHandler<LogicalTreeAttachmentEventArgs> AttachedToLogicalTree;
-        /// <summary>
-        /// 关闭
-        /// </summary>
-        event EventHandler<LogicalTreeAttachmentEventArgs> DetachedFromLogicalTree;
-        /// <summary>
         /// 数据上下文
         /// </summary>
         object DataContext { get; set; }

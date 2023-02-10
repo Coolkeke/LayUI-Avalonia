@@ -44,11 +44,20 @@
                     Margin="2"
                     Classes="Danger"
                     Content="警告按钮" />
+                <lay:LayButton
+                    Margin="2"
+                    Classes="Link"
+                    Content="超链接"
+                    Uri="https://space.bilibili.com/48808444" />
             </StackPanel>
+            <lay:LayButtonGroup Orientation="Horizontal" Type="Default">
+                <lay:LayButton Content="这是超链接" />
+                <lay:LayButton Content="这是超链接" />
+                <lay:LayButton Content="这是超链接" />
+            </lay:LayButtonGroup>
         </StackPanel>
     </Design.PreviewWith>
     <Style Selector="lay|LayButton">
-        <Setter Property="Type" Value="Primary" />
         <Setter Property="CornerRadius" Value="2" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -83,16 +92,16 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style Selector="lay|LayButton[Type=Primary]">
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="{DynamicResource LightBlack}" />
-        <Setter Property="TextBlock.Foreground" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=BorderBrush}" />
-    </Style>
     <Style Selector="lay|LayButton:pointerover/template/ Border#PART_Border">
         <Setter Property="Opacity" Value="0.6" />
     </Style>
     <Style Selector="lay|LayButton:pressed/template/ Border#PART_Border">
         <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="lay|LayButton[Type=Primary]">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource LightBlack}" />
+        <Setter Property="TextBlock.Foreground" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=BorderBrush}" />
     </Style>
     <Style Selector="lay|LayButton[Type=Primary].Default">
         <Setter Property="BorderBrush" Value="{DynamicResource Green}" />
@@ -132,6 +141,44 @@
         <Setter Property="BorderThickness" Value="1" />
     </Style>
     <Style Selector="lay|LayButton:disabled /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource Gray}" />
+    </Style>
+    <Style Selector="lay|LayButton[Type=Link]">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="TextBlock.Foreground" Value="#4007a2" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border Name="PART_BorderBody" Background="Transparent">
+                        <StackPanel HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                            <ContentPresenter
+                                Name="PART_ContentPresenter"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}" />
+                            <Grid
+                                Name="PART_Line"
+                                Height="1"
+                                Background="{TemplateBinding Foreground}" />
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayButton[Type=Link]:not(:pointerover) /template/ Grid#PART_Line">
+        <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="lay|LayButton[Type=Link]:pointerover /template/ Grid#PART_Line">
+        <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="lay|LayButton[Type=Link]:pressed /template/ Grid#PART_Line">
+        <Setter Property="Opacity" Value="0.5" />
+    </Style>
+    <Style Selector="lay|LayButton[Type=Link]:disabled /template/ ContentPresenter#PART_ContentPresenter">
         <Setter Property="TextBlock.Foreground" Value="{DynamicResource Gray}" />
     </Style>
 </Styles>

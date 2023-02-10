@@ -31,6 +31,10 @@
                 Content="禁用按钮"
                 IsEnabled="False" />
         </StackPanel>
+        <Grid
+            Height="1"
+            Margin="0,5"
+            Background="{DynamicResource Cyan}" />
         <StackPanel Orientation="Horizontal">
             <lay:LayButton Margin="2" Content="原始按钮" />
             <lay:LayButton
@@ -50,5 +54,25 @@
                 Classes="Danger"
                 Content="警告按钮" />
         </StackPanel>
+        <Grid
+            Height="1"
+            Margin="0,5"
+            Background="{DynamicResource Cyan}" />
+        <StackPanel Orientation="Horizontal">
+            <lay:LayButton
+                Margin="2"
+                Content="这是超链接"
+                Type="Link"
+                Uri="https://space.bilibili.com/48808444" />
+        </StackPanel>
+        <Grid
+            Height="1"
+            Margin="0,5"
+            Background="{DynamicResource Cyan}" />
+        <lay:LayButtonGroup Orientation="Horizontal" Type="Default">
+            <lay:LayButton Content="按钮组" />
+            <lay:LayButton Content="按钮组" />
+            <lay:LayButton Content="按钮组" />
+        </lay:LayButtonGroup>
     </StackPanel>
 </UserControl>

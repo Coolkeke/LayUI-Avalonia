@@ -1,14 +1,13 @@
-﻿using Avalonia.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace LayUI.Avalonia.Controls
 {
     /// <summary>
-    /// 复选框
+    /// 抽屉
     /// </summary>
-    public class LayCheckBox: CheckBox
+    public class LayDrawer
     {
     }
 }

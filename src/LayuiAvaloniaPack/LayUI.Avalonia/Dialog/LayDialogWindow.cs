@@ -59,9 +59,12 @@ namespace LayUI.Avalonia.Dialog
             };
             return requestCloseHandler;
         }
-        private void IsOpenChanged()
+        private async void IsOpenChanged()
         {
-            if (!IsOpen) Host.Items.Children.Remove(this);
+            if (!IsOpen) {
+                await Task.Delay(90);
+                Host.Items.Children.Remove(this);
+            } 
             else Host.Items.Children.Add(this);
         }
         public static readonly DirectProperty<LayDialogWindow, Action<ILayDialogResult>> RequestCloseHandlerProperty =
