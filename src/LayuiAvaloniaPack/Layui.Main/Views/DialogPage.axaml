@@ -3,15 +3,29 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dialog="using:LayUI.Avalonia.Dialog"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     d:DesignHeight="450"
     d:DesignWidth="800"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
-    <Button
-        Width="150"
-        Height="150"
-        HorizontalAlignment="Center"
-        Command="{Binding DlalogCommand}" />
+    <lay:LayDialogHost dialog:LayDialog.Token="DialogPageRoot">
+        <Grid>
+            <StackPanel Margin="2" VerticalAlignment="Center">
+                <lay:LayButton
+                    Margin="5"
+                    Command="{Binding DlalogCommand}"
+                    CommandParameter="RootDialog"
+                    Content="普通对话框" />
+                <lay:LayButton
+                    Margin="5"
+                    Command="{Binding DlalogCommand}"
+                    CommandParameter="DialogPageRoot"
+                    Content="内联对话框"
+                    Type="Default" />
+            </StackPanel>
+        </Grid>
+    </lay:LayDialogHost>
 </UserControl>

@@ -1,8 +1,10 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.LogicalTree;
 using LayUI.Avalonia.Controls;
+using LayUI.Avalonia.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,9 +20,14 @@ namespace LayUI.Avalonia.Dialog
     /// </summary>
     internal class LayDialogWindow : ContentControl, ILayDialogWindow
     {
-
-        internal EventHandler OpenHander = null;
-        internal TaskCompletionSource<ILayDialogResult> _dialogTaskCompletionSource;
+        private LayDialogHost Host;
+        private Action<ILayDialogResult> callback;
+        public LayDialogWindow(Action<ILayDialogResult> action, LayDialogHost host)
+        {
+            Host = host;
+            callback = action;
+            RequestCloseHandler = GetRequestCloseHandler();
+        }
         public ILayDialogResult Result { get; set; }
 
         [Bindable(true)]
@@ -28,46 +35,60 @@ namespace LayUI.Avalonia.Dialog
         /// <summary>
         /// Defines the <see cref="IsOpen"/> property.
         /// </summary>
-        public static readonly StyledProperty<bool> IsOpenProperty =
-            AvaloniaProperty.Register<LayDialogWindow, bool>(nameof(IsOpen), false);
-
+        public static readonly DirectProperty<LayDialogWindow, bool> IsOpenProperty =
+            AvaloniaProperty.RegisterDirect<LayDialogWindow, bool>(nameof(IsOpen),
+                o => o.IsOpen,
+                (o, v) => o.IsOpen = v);
+        private bool _IsOpen;
         /// <summary>
-        /// 开启
+        /// 对话框是否开启
         /// </summary>
         public bool IsOpen
         {
-            get { return GetValue(IsOpenProperty); }
-            set { SetValue(IsOpenProperty, value); }
-
+            get { return _IsOpen; }
+            set { SetAndRaise(IsOpenProperty, ref _IsOpen, value); IsOpenChanged(); }
         }
-        public static readonly RoutedEvent UnloadedEvent =
-        RoutedEvent.Register<LayDialogWindow, RoutedEventArgs>(nameof(Unloaded), RoutingStrategies.Bubble);
+        private Action<ILayDialogResult> GetRequestCloseHandler()
+        {
+            Action<ILayDialogResult> requestCloseHandler = null;
+            //窗体关闭的回调方法
+            requestCloseHandler = (o) =>
+            {
+                Result = o;
+                IsOpen = false;
+            };
+            return requestCloseHandler;
+        }
+        private void IsOpenChanged()
+        {
+            if (!IsOpen) Host.Items.Children.Remove(this);
+            else Host.Items.Children.Add(this);
+        }
+        public static readonly DirectProperty<LayDialogWindow, Action<ILayDialogResult>> RequestCloseHandlerProperty =
+        AvaloniaProperty.RegisterDirect<LayDialogWindow, Action<ILayDialogResult>>(nameof(RequestCloseHandler),
+            o => o.RequestCloseHandler,
+                (o, v) => o.RequestCloseHandler = v);
 
+        private Action<ILayDialogResult> _RequestCloseHandler;
         // Provide CLR accessors for the event
-        public event EventHandler Unloaded
+        public Action<ILayDialogResult> RequestCloseHandler
         {
-            add => AddHandler(UnloadedEvent, value);
-            remove => RemoveHandler(UnloadedEvent, value);
-        }
-        public static readonly RoutedEvent LoadedEvent =
-        RoutedEvent.Register<LayDialogWindow, RoutedEventArgs>(nameof(Loaded), RoutingStrategies.Bubble);
-
-        // Provide CLR accessors for the event
-        public event EventHandler Loaded
-        {
-            add => AddHandler(LoadedEvent, value);
-            remove => RemoveHandler(LoadedEvent, value);
-        }
-        
-        //public event EventHandler Unloaded;
-        protected override void OnDetachedFromLogicalTree(LogicalTreeAttachmentEventArgs e)
-        {
-            base.OnDetachedFromLogicalTree(e);
-            this.RaiseEvent(new RoutedEventArgs(UnloadedEvent));
+            get => _RequestCloseHandler;
+            set => SetAndRaise(RequestCloseHandlerProperty, ref _RequestCloseHandler, value);
         }
         protected override void OnAttachedToLogicalTree(LogicalTreeAttachmentEventArgs e)
         {
             base.OnAttachedToLogicalTree(e);
+            this.GetDialogViewModel().RequestClose += RequestCloseHandler;
+        }
+        protected override void OnDetachedFromLogicalTree(LogicalTreeAttachmentEventArgs e)
+        {
+            base.OnDetachedFromLogicalTree(e);
+            this.GetDialogViewModel().RequestClose -= RequestCloseHandler;
+            //抓取回调后的数据并回传
+            if (Result == null) Result = new LayDialogResult() { Result = ButtonResult.None };
+            callback?.Invoke(Result);
+            Host.TaskCompletion?.TrySetResult(null);
         }
     }
 }

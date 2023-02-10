@@ -3,10 +3,10 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dialog="using:LayUI.Avalonia.Dialog"
     xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
     xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
-    xmlns:lay="using:LayUI.Avalonia.Dialog"
-    xmlns:layControl="using:LayUI.Avalonia.Controls"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:res="using:Layui.Core.Resources"
@@ -15,7 +15,7 @@
     d:DesignWidth="1920"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
-    <layControl:LayDialogHost lay:LayDialog.Token="RootDialog">
+    <lay:LayDialogHost dialog:LayDialog.Token="RootDialog">
         <ContentControl prism:RegionManager.RegionName="{Binding Source={x:Static res:SystemResource.Nav_MainContent}}" />
-    </layControl:LayDialogHost>
+    </lay:LayDialogHost>
 </Window>

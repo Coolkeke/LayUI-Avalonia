@@ -76,23 +76,14 @@ namespace LayUI.Avalonia.Dialog
         public static readonly AttachedProperty<string> TokenProperty = AvaloniaProperty.RegisterAttached<IAvaloniaObject, IAvaloniaObject, string>(
             "Token", null);
 
-        public async void Show(string dialogName, ILayDialogParameter parameters, string token)
+        public Task Show(string dialogName, ILayDialogParameter parameters, string token)
         {
-            await Alert(dialogName, parameters, null, false, token);
+            return Alert(dialogName, parameters, null, token);
         }
 
-        public async void Show(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string token)
+        public Task Show(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string token)
         {
-            await Alert(dialogName, parameters, null, false, token);
-        }
-
-        public async void ShowDialog(string dialogName, ILayDialogParameter parameters, string token)
-        {
-            await Alert(dialogName, parameters, null, true, token);
-        }
-        public async void ShowDialog(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string token)
-        {
-            callback?.Invoke(await Alert(dialogName, parameters, null, true, token));
+            return Alert(dialogName, parameters, callback, token);
         }
         /// <summary>
         /// 弹窗业务
@@ -102,86 +93,48 @@ namespace LayUI.Avalonia.Dialog
         /// <param name="callback">回调</param>
         /// <param name="isModel">是否为模态</param>
         /// <param name="token">需要通知弹窗的唯一健值,如果是对话框窗体该值给Null</param>
-        private async Task<ILayDialogResult> Alert(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, bool isModel, string token)
+        private Task Alert(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string token)
         {
-            try
+            return Dispatcher.UIThread.InvokeAsync(async () =>
             {
-
-                if (string.IsNullOrEmpty(token)) throw new Exception($"{nameof(token)}不能为空");
-                if (string.IsNullOrEmpty(dialogName)) throw new Exception($"{nameof(dialogName)}不能为空");
-                if (!DialogHosts.ContainsKey(token)) throw new Exception($"未找到{nameof(token)}值为{token}的弹窗组件:{nameof(LayDialogHost)}");
-                if (!DialogViews.ContainsKey(dialogName)) throw new Exception($"未找到{nameof(dialogName)}为{dialogName}的视图");
-                //抓取当前展示弹窗容器
-                LayDialogHost host = DialogHosts[token];
-                if (host.Items == null) throw new Exception($"当前{nameof(LayDialogHost)}元素尚未初始化完成");
-                //创建内容视图
-                var view = Activator.CreateInstance(DialogViews[dialogName]) as UserControl;
-                //检查VM初始化被注入情况
-                if (DialogViewModels.ContainsKey(dialogName))
+                try
                 {
-                    //创建VM
-                    view.DataContext = Activator.CreateInstance(DialogViewModels[dialogName]);
-                }
-                //创建弹窗
-                LayDialogWindow dialogView = new LayDialogWindow()
-                {
-                    IsOpen = true,
-                    Content = view,
-                    DataContext = view.DataContext
-                };
-                host.Items.Children.Add(dialogView);
-                Action<ILayDialogResult> requestCloseHandler = null;
-                //窗体关闭的回调方法
-                requestCloseHandler = async (o) =>
-                {
-                    dialogView.Result = o;
-                    //关闭窗体
-                    await Dispatcher.UIThread.InvokeAsync(() =>
-                      {
-                          //窗体关闭后数据置空
-                          dialogView.IsOpen = false;
-                          host.Items.Children.Remove(dialogView);
-                      });
-                };
-                EventHandler UnloadedHander = null;
-                //视图元素销毁后的事件
-                UnloadedHander = (o, e) =>
-                {
-                    dialogView.Unloaded -= UnloadedHander;
-                    dialogView.GetDialogViewModel().RequestClose -= requestCloseHandler;
-                    //抓取回调后的数据并回传
-                    if (dialogView.Result == null) dialogView.Result = new LayDialogResult() { Result = ButtonResult.Default };
-                    callback?.Invoke(dialogView.Result);
-                    dialogView.GetObservable(LayDialogWindow.IsOpenProperty);
-                };
-                dialogView.Unloaded += UnloadedHander;
-                //抓取当前需要传递的参数并且传递给对应视图的ViewModel
-                if (!(view.DataContext is ILayDialogAware viewModel))
-                    throw new NullReferenceException("对话框的 ViewModel 必须实现 IDialogAware 接口 ");
-                //给对应的ViewModel传值
-                ViewAndViewModelAction<ILayDialogAware>(viewModel, d => d.OnDialogOpened(parameters));
-                if (isModel)
-                {
-                    EventHandler LoadedHander = null;
-                    LoadedHander = (o, e) =>
+                    if (string.IsNullOrEmpty(token)) throw new Exception($"{nameof(token)}不能为空");
+                    if (string.IsNullOrEmpty(dialogName)) throw new Exception($"{nameof(dialogName)}不能为空");
+                    if (!DialogHosts.ContainsKey(token)) throw new Exception($"未找到{nameof(token)}值为{token}的弹窗组件:{nameof(LayDialogHost)}");
+                    if (!DialogViews.ContainsKey(dialogName)) throw new Exception($"未找到{nameof(dialogName)}为{dialogName}的视图");
+                    //抓取当前展示弹窗容器
+                    LayDialogHost host = DialogHosts[token];
+                    if (host.Items == null) throw new Exception($"当前{nameof(LayDialogHost)}元素尚未初始化完成");
+                    host.TaskCompletion = new TaskCompletionSource<object>();
+                    //创建内容视图
+                    var view = Activator.CreateInstance(DialogViews[dialogName]) as UserControl;
+                    //检查VM初始化被注入情况
+                    if (DialogViewModels.ContainsKey(dialogName))
                     {
-                        dialogView._dialogTaskCompletionSource = new TaskCompletionSource<ILayDialogResult>();
-                        dialogView.Loaded -= LoadedHander;
-                        dialogView.GetDialogViewModel().RequestClose += requestCloseHandler;
+                        //创建VM
+                        view.DataContext = Activator.CreateInstance(DialogViewModels[dialogName]);
+                    }
+                    //创建弹窗
+                    LayDialogWindow dialogView = new LayDialogWindow(callback, host)
+                    {
+                        Content = view,
+                        DataContext = view.DataContext
                     };
-                    dialogView.Loaded += LoadedHander;
-                    var loaded = new RoutedEventArgs(LayDialogWindow.LoadedEvent);
-                    dialogView.RaiseEvent(loaded);
-                    return await dialogView._dialogTaskCompletionSource.Task;
+                    //抓取当前需要传递的参数并且传递给对应视图的ViewModel
+                    if (!(view.DataContext is ILayDialogAware viewModel))
+                        throw new NullReferenceException("对话框的 ViewModel 必须实现 IDialogAware 接口 ");
+                    //给对应的ViewModel传值
+                    ViewAndViewModelAction<ILayDialogAware>(viewModel, d => d.OnDialogOpened(parameters));
+                    dialogView.IsOpen = true;
+                    await host.TaskCompletion.Task;
                 }
-                else dialogView.GetDialogViewModel().RequestClose += requestCloseHandler; 
-                return null;
-            }
-            catch (Exception ex)
-            {
+                catch (Exception ex)
+                {
 
-                throw ex;
-            }
+                    throw ex;
+                }
+            });
         }
 
 

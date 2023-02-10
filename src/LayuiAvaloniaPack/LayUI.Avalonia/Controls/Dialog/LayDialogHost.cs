@@ -1,9 +1,11 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using LayUI.Avalonia.Dialog;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Controls
 {
@@ -12,6 +14,8 @@ namespace LayUI.Avalonia.Controls
     /// </summary>
     public class LayDialogHost : ContentControl
     {
+
+        internal TaskCompletionSource<object> TaskCompletion ;
         /// <summary>
         /// 存储对话视图容器
         /// </summary>

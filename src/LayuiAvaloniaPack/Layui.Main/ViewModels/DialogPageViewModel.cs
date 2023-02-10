@@ -1,26 +1,28 @@
-﻿using LayUI.Avalonia.Dialog;
+﻿using Layui.Core.Mvvm;
+using LayUI.Avalonia.Dialog;
 using Prism.Commands;
+using Prism.Ioc;
 using Prism.Mvvm;
 
 namespace Layui.Main.ViewModels
 {
-    public class DialogPageViewModel : BindableBase
+    public class DialogPageViewModel : ViewModelBase
     {
         private ILayDialogService layDialog;
-        public DialogPageViewModel(ILayDialogService dialogService)
+        public DialogPageViewModel(IContainerExtension container) : base(container)
         {
-            layDialog = dialogService;
+            layDialog = container.Resolve<ILayDialogService>();
         }
-        private DelegateCommand _DlalogCommand;
-        public DelegateCommand DlalogCommand =>
-            _DlalogCommand ?? (_DlalogCommand = new DelegateCommand(ExecuteDlalogCommand));
+        private DelegateCommand<string> _DlalogCommand;
+        public DelegateCommand<string> DlalogCommand =>
+            _DlalogCommand ?? (_DlalogCommand = new DelegateCommand<string>(ExecuteDlalogCommand));
 
-        void ExecuteDlalogCommand()
+        void ExecuteDlalogCommand(string messageRootName)
         {
-             layDialog.ShowDialog("Message", parameters: null,res => {
-                 var data = res;
-             }, "RootDialog");
-            layDialog.ShowDialog("Message", null, "RootDialog");
+            layDialog.Show("Message", null, res =>
+            {
+                var data = res;
+            }, messageRootName);
         }
     }
 }
