@@ -41,13 +41,31 @@
             <lay:LayComboBoxItem Height="40" Content="阿萨德" />
         </lay:LayComboBox>
         <StackPanel>
-            <StackPanel Margin="0,5" Orientation="Horizontal">
-                <lay:LayCheckBox Content="Null" IsChecked="{x:Null}" />
-                <lay:LayCheckBox Content="选中" IsChecked="true" />
-                <lay:LayCheckBox Content="未选中" />
-                <lay:LayCheckBox Content="禁用" IsEnabled="False" />
+            <StackPanel>
+                <StackPanel Margin="0,5" Orientation="Horizontal">
+                    <lay:LayCheckBox Content="Null" IsChecked="{x:Null}" />
+                    <lay:LayCheckBox Content="选中" IsChecked="true" />
+                    <lay:LayCheckBox Content="未选中" />
+                    <lay:LayCheckBox Content="禁用" IsEnabled="False" />
+                </StackPanel>
+                <StackPanel Margin="0,5" Orientation="Horizontal">
+                    <lay:LayCheckBox
+                        Content="Null"
+                        IsChecked="{x:Null}"
+                        Type="Primary" />
+                    <lay:LayCheckBox
+                        Margin="5,0"
+                        Content="选中"
+                        IsChecked="true"
+                        Type="Primary" />
+                    <lay:LayCheckBox Content="未选中" Type="Primary" />
+                    <lay:LayCheckBox
+                        Margin="5,0"
+                        Content="禁用"
+                        IsEnabled="False"
+                        Type="Primary" />
+                </StackPanel>
             </StackPanel>
-            <lay:LayCheckBox Content="开关" />
             <StackPanel Orientation="Horizontal">
                 <RadioButton Content="男" GroupName="sex" />
                 <RadioButton Content="女" GroupName="sex" />

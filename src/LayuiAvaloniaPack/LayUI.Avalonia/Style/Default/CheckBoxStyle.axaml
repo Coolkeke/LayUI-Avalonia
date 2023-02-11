@@ -4,22 +4,43 @@
     xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
     <Design.PreviewWith>
         <Border Padding="20">
-            <StackPanel Margin="0,5" Orientation="Horizontal">
-                <lay:LayCheckBox Content="Null" IsChecked="{x:Null}" />
-                <lay:LayCheckBox Content="选中" IsChecked="true" />
-                <lay:LayCheckBox Content="未选中" />
-                <lay:LayCheckBox Content="禁用" IsEnabled="False" />
+            <StackPanel>
+                <StackPanel Margin="0,5" Orientation="Horizontal">
+                    <lay:LayCheckBox Content="Null" IsChecked="{x:Null}" />
+                    <lay:LayCheckBox Content="选中" IsChecked="true" />
+                    <lay:LayCheckBox Content="未选中" />
+                    <lay:LayCheckBox Content="禁用" IsEnabled="False" />
+                </StackPanel>
+                <StackPanel Margin="0,5" Orientation="Horizontal">
+                    <lay:LayCheckBox
+                        Content="Null"
+                        IsChecked="{x:Null}"
+                        Type="Primary" />
+                    <lay:LayCheckBox
+                        Margin="5,0"
+                        Content="选中"
+                        IsChecked="true"
+                        Type="Primary" />
+                    <lay:LayCheckBox Content="未选中" Type="Switch" />
+                    <lay:LayCheckBox
+                        Margin="5,0"
+                        Content="禁用"
+                        IsEnabled="False"
+                        Type="Primary" />
+                </StackPanel>
             </StackPanel>
         </Border>
     </Design.PreviewWith>
+
+    <!--  默认效果，顺序不能颠倒 start  -->
     <!--  重点->>多属性选择判断  -->
     <!--  重点->>判断空属性 not(:checked)  -->
     <Style Selector="lay|LayCheckBox[Type=Default]">
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Padding" Value="5 0" />
         <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Type" Value="Default" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -58,17 +79,21 @@
         </Setter>
     </Style>
     <Style Selector="lay|LayCheckBox[Type=Default]:not(:checked) /template/ Border#PART_Border">
-        <Setter Property="BorderBrush" Value="{DynamicResource CyanBlue}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Default]:pointerover /template/ Border#PART_Border">
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
         <Setter Property="Background" Value="Transparent" />
     </Style>
     <Style Selector="lay|LayCheckBox[Type=Default]:checked /template/ Border#PART_Border">
-        <Setter Property="BorderBrush" Value="{DynamicResource CyanBlue}" />
-        <Setter Property="Background" Value="{DynamicResource CyanBlue}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
+        <Setter Property="Background" Value="{DynamicResource CyanGreen}" />
     </Style>
     <!--  重点 “indeterminate” 标记未选中 ischeked 为 null  -->
     <Style Selector="lay|LayCheckBox[Type=Default]:indeterminate /template/ Border#PART_Border">
-        <Setter Property="BorderBrush" Value="{DynamicResource CyanBlue}" />
-        <Setter Property="Background" Value="{DynamicResource CyanBlue}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
+        <Setter Property="Background" Value="{DynamicResource CyanGreen}" />
     </Style>
     <Style Selector="lay|LayCheckBox[Type=Default]:indeterminate /template/ Path#PART_Path">
         <Setter Property="Data" Value="M63.6 489.6h896.7v44.8H63.6z" />
@@ -84,4 +109,95 @@
     <Style Selector="lay|LayCheckBox[Type=Default]:disabled /template/ ContentPresenter#PART_ContentPresenter">
         <Setter Property="TextBlock.Foreground" Value="{DynamicResource Gray}" />
     </Style>
+    <!--  默认效果，顺序不能颠倒 end  -->
+
+    <!--  原始效果，顺序不能颠倒 start  -->
+    <Style Selector="lay|LayCheckBox[Type=Primary]">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="5 0" />
+        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid Background="Transparent">
+                        <Border
+                            Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                            <Grid Name="PART_Grid">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Border
+                                    Width="{TemplateBinding Size}"
+                                    Height="{TemplateBinding Size}"
+                                    MinWidth="25"
+                                    MinHeight="25"
+                                    Background="White"
+                                    CornerRadius="{TemplateBinding CornerRadius}">
+                                    <Path
+                                        Name="PART_Path"
+                                        Margin="2,5"
+                                        Stretch="Fill" />
+                                </Border>
+                                <ContentPresenter
+                                    Name="PART_ContentPresenter"
+                                    Grid.Column="1"
+                                    Padding="{TemplateBinding Padding}"
+                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Primary]:pointerover /template/ Path#PART_Path">
+        <Setter Property="Fill" Value="{DynamicResource Gray}" />
+        <Setter Property="Data" Value="M389.888 838.656a91.136 91.136 0 0 1-64.512-25.6L65.536 552.192a30.72 30.72 0 0 1 43.52-43.52L368.64 768a29.952 29.952 0 0 0 42.24 0l502.784-502.272a30.72 30.72 0 1 1 43.52 43.52L454.4 812.032a91.136 91.136 0 0 1-64.512 26.624z" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Primary]:not(:checked) /template/ Border#PART_Border">
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="Background" Value="{DynamicResource Gray}" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Primary]:not(:checked) /template/ Border#PART_Border">
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="Background" Value="{DynamicResource Gray}" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Primary]:checked /template/ Border#PART_Border">
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
+        <Setter Property="Background" Value="{DynamicResource CyanGreen}" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Primary]:checked /template/ Path#PART_Path">
+        <Setter Property="Fill" Value="{DynamicResource CyanGreen}" />
+        <Setter Property="Data" Value="M389.888 838.656a91.136 91.136 0 0 1-64.512-25.6L65.536 552.192a30.72 30.72 0 0 1 43.52-43.52L368.64 768a29.952 29.952 0 0 0 42.24 0l502.784-502.272a30.72 30.72 0 1 1 43.52 43.52L454.4 812.032a91.136 91.136 0 0 1-64.512 26.624z" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Primary]:checked /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="TextBlock.Foreground" Value="White" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Primary]:indeterminate /template/ Path#PART_Path">
+        <Setter Property="Data" Value="M63.6 489.6h896.7v44.8H63.6z" />
+        <Setter Property="Height" Value="2" />
+        <Setter Property="Fill" Value="{DynamicResource Gray}" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Primary]:disabled /template/ Border#PART_Border">
+        <Setter Property="BorderBrush" Value="{DynamicResource LighGray}" />
+        <Setter Property="Background" Value="{DynamicResource LighGray}" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Primary]:disabled /template/ Border#PART_Border">
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="Background" Value="{DynamicResource LighGray}" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Primary]:disabled /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource Gray}" />
+    </Style>
+    <!--  原始效果，顺序不能颠倒 ent  -->
 </Styles>

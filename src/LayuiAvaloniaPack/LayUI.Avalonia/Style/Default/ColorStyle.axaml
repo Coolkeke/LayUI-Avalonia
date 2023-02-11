@@ -20,7 +20,7 @@
             <Border
                 Margin="2"
                 Padding="20"
-                Background="{DynamicResource CyanBlue}" />
+                Background="{DynamicResource CyanGreen}" />
             <Border
                 Margin="2"
                 Padding="20"
@@ -76,10 +76,10 @@
         <!--  百搭  -->
         <Color x:Key="BlueEffect">#1E9FFF</Color>
         <Color x:Key="LightBlueEffect">#4BB2FF</Color>
-        <Color x:Key="CyanBlueEffect">#5FB878</Color>
+        <Color x:Key="CyanGreenEffect">#5FB878</Color>
         <SolidColorBrush x:Key="Blue" Color="{StaticResource BlueEffect}" />
         <SolidColorBrush x:Key="LightBlue" Color="{StaticResource LightBlueEffect}" />
-        <SolidColorBrush x:Key="CyanBlue" Color="{StaticResource CyanBlueEffect}" />
+        <SolidColorBrush x:Key="CyanGreen" Color="{StaticResource CyanGreenEffect}" />
         <!--  暖色  -->
         <Color x:Key="OrangeEffect">#FFB800</Color>
         <Color x:Key="LightOrangeEffect">#FFC633</Color>

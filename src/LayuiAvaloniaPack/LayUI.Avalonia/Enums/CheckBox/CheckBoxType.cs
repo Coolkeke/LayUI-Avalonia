@@ -10,12 +10,12 @@ namespace LayUI.Avalonia.Enums
     public enum CheckBoxType
     {
         /// <summary>
+        /// 原始
+        /// </summary>
+        Primary,
+        /// <summary>
         /// 默认
         /// </summary>
         Default,
-        /// <summary>
-        /// 开关
-        /// </summary>
-        Switch,
     }
 }

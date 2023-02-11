@@ -39,7 +39,7 @@
         </Setter>
     </Style>
     <Style Selector="lay|LayComboBoxItem[IsSelected=true]">
-        <Setter Property="Background" Value="{DynamicResource CyanBlue}" />
+        <Setter Property="Background" Value="{DynamicResource CyanGreen}" />
         <Setter Property="TextBlock.Foreground" Value="White" />
     </Style>
     <Style Selector="lay|LayComboBoxItem:pointerover /template/ Border#PART_Border">
