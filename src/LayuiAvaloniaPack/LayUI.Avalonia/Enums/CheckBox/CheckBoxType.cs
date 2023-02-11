@@ -5,9 +5,9 @@ using System.Text;
 namespace LayUI.Avalonia.Enums
 {
     /// <summary>
-    /// 开关类型基类类型（选中控件基类枚举）
+    /// 复选框类型
     /// </summary>
-    public enum ToggleButtonType
+    public enum CheckBoxType
     {
         /// <summary>
         /// 默认
