@@ -1,7 +1,7 @@
 ﻿using Layui.Core.Resources;
 using Layui.Main.Views;
 using LayUI.Avalonia;
-using LayUI.Avalonia.Dialog;
+using LayUI.Avalonia.Interface;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;

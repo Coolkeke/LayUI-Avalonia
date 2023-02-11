@@ -5,6 +5,7 @@ using Avalonia.Interactivity;
 using Avalonia.LogicalTree;
 using LayUI.Avalonia.Controls;
 using LayUI.Avalonia.Enums;
+using LayUI.Avalonia.Interface;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

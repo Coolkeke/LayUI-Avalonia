@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LayUI.Avalonia.Dialog
+namespace LayUI.Avalonia.Interface
 {
     /// <summary>
     /// 返回值

@@ -5,6 +5,7 @@ using Avalonia.Markup.Xaml;
 using Layui.Main;
 using LayUI.Avalonia;
 using LayUI.Avalonia.Dialog;
+using LayUI.Avalonia.Interface;
 using LayuiApp.Views;
 using Prism.DryIoc;
 using Prism.Ioc;

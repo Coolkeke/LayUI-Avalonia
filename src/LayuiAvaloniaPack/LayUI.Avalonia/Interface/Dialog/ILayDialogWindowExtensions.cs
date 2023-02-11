@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LayUI.Avalonia.Dialog
+namespace LayUI.Avalonia.Interface
 {
     internal static class ILayDialogWindowExtensions
     {

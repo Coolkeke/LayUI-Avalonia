@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LayUI.Avalonia.Dialog
+namespace LayUI.Avalonia.Interface
 {
     /// <summary>
     ///  ILayDialogService
     /// <para>创建者:YWK</para>
     /// <para>创建时间:2023-02-09 下午 1:42:10</para>
     /// </summary>
-   public interface ILayDialogService: ILayDialog
+    public interface ILayDialogService : ILayDialog
     {
         /// <summary>
         /// 注入弹窗试图

@@ -1,5 +1,5 @@
 ﻿using LayUI.Avalonia;
-using LayUI.Avalonia.Dialog;
+using LayUI.Avalonia.Interface;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;

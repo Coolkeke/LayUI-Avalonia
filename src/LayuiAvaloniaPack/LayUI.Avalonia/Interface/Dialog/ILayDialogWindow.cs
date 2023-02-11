@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace LayUI.Avalonia.Dialog
+namespace LayUI.Avalonia.Interface
 {
     public interface ILayDialogWindow
     {
@@ -18,7 +18,7 @@ namespace LayUI.Avalonia.Dialog
         /// <summary>
         /// 返回结果
         /// </summary>
-        ILayDialogResult Result { get;  set; }
+        ILayDialogResult Result { get; set; }
         /// <summary>
         /// 数据上下文
         /// </summary>

@@ -16,4 +16,9 @@
     <PackageReference Include="Avalonia" Version="0.10.13" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Notification\" />
+    <Folder Include="Message\" />
+  </ItemGroup>
+
 </Project>
