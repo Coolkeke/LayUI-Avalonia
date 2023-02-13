@@ -27,7 +27,7 @@ namespace LayUI.Avalonia.Dialog
         {
             Host = host;
             callback = action;
-            //RequestCloseHandler = GetRequestCloseHandler();
+            RequestCloseHandler = GetRequestCloseHandler();
         }
         public ILayDialogResult Result { get; set; }
 
@@ -47,7 +47,7 @@ namespace LayUI.Avalonia.Dialog
         public bool IsOpen
         {
             get { return _IsOpen; }
-            set { SetAndRaise(IsOpenProperty, ref _IsOpen, value); }//IsOpenChanged(); 
+            set { SetAndRaise(IsOpenProperty, ref _IsOpen, value); IsOpenChanged(); }
         }
         private Action<ILayDialogResult> GetRequestCloseHandler()
         {
@@ -83,7 +83,7 @@ namespace LayUI.Avalonia.Dialog
         protected override void OnAttachedToLogicalTree(LogicalTreeAttachmentEventArgs e)
         {
             base.OnAttachedToLogicalTree(e);
-            //this.GetDialogViewModel().RequestClose += RequestCloseHandler;
+            this.GetDialogViewModel().RequestClose += RequestCloseHandler;
         }
         protected override void OnDetachedFromLogicalTree(LogicalTreeAttachmentEventArgs e)
         {

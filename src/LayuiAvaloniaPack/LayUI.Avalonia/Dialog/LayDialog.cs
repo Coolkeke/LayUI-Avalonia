@@ -9,6 +9,7 @@ using LayUI.Avalonia.Interface;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Dialog
@@ -163,71 +164,22 @@ namespace LayUI.Avalonia.Dialog
                 throw ex;
             }
         }
-
-        public void ShowDialog(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string token)
+        /// <summary>
+        /// 调用信息循环，模拟模态弹窗（该功能属于尝试功能）
+        /// </summary>
+        /// <param name="dialogName"></param>
+        /// <param name="parameters"></param>
+        /// <param name="callback"></param>
+        /// <param name="token"></param>
+        private void ShowDialog(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string token)
         {
-            if (string.IsNullOrEmpty(token)) throw new Exception($"{nameof(token)}不能为空");
-            if (string.IsNullOrEmpty(dialogName)) throw new Exception($"{nameof(dialogName)}不能为空");
-            if (!DialogHosts.ContainsKey(token)) throw new Exception($"未找到{nameof(token)}值为{token}的弹窗组件:{nameof(LayDialogHost)}");
-            if (!DialogViews.ContainsKey(dialogName)) throw new Exception($"未找到{nameof(dialogName)}为{dialogName}的视图");
-            //抓取当前展示弹窗容器
-            LayDialogHost host = DialogHosts[token];
-            if (host.Items == null) throw new Exception($"当前{nameof(LayDialogHost)}元素尚未初始化完成");
-            //host.TaskCompletion = new TaskCompletionSource<object>();
-            //创建内容视图
-            var view = Activator.CreateInstance(DialogViews[dialogName]) as UserControl;
-            //检查VM初始化被注入情况
-            if (DialogViewModels.ContainsKey(dialogName))
+            using (var source = new CancellationTokenSource())
             {
-                //创建VM
-                view.DataContext = Activator.CreateInstance(DialogViewModels[dialogName]);
+                source.Cancel();
+                TaskScheduler.FromCurrentSynchronizationContext();
+                Dispatcher.UIThread.MainLoop(source.Token);
             }
-            //创建弹窗
-            LayDialogWindow dialogView = new LayDialogWindow(callback, host)
-            {
-                Content = view,
-                DataContext = view.DataContext
-            };
-            host.Items.Children.Add(dialogView);
-            Action<ILayDialogResult> requestCloseHandler = null;
-            //窗体关闭的回调方法
-            requestCloseHandler = (o) =>
-            {
-                dialogView.Result = o;
-                //关闭窗体
-                Dispatcher.UIThread.InvokeAsync(async () =>
-                {
-                    //窗体关闭后数据置空
-                    dialogView.IsOpen = false;
-                    await Task.Delay(100);
-                    host.Items.Children.Remove(dialogView);
-                });
-            };
-            EventHandler<LogicalTreeAttachmentEventArgs> LoadedHandler = null;
-            LoadedHandler = (o, e) =>
-            {
-                dialogView.AttachedToLogicalTree -= LoadedHandler;
-                dialogView.GetDialogView().RequestClose += requestCloseHandler;
-            };
-            dialogView.AttachedToLogicalTree += LoadedHandler;
-            EventHandler<LogicalTreeAttachmentEventArgs> UnloadedHandler = null;
-            //窗体销毁后的事件
-            UnloadedHandler = (o, e) =>
-            {
-                dialogView.DetachedFromLogicalTree -= UnloadedHandler;
-                dialogView.GetDialogView().RequestClose -= requestCloseHandler;
-                //抓取回调后的数据并回传
-                if (dialogView.Result == null) dialogView.Result = new LayDialogResult() { Result = Enum.ButtonResult.Default };
-                callback?.Invoke(dialogView.Result);
-                //判断是否为模态弹窗
-                
-            };
-            dialogView.DetachedFromLogicalTree += UnloadedHandler;
-            //抓取当前需要传递的参数并且传递给对应视图的ViewModel
-            if (!(view.DataContext is ILayDialogAware viewModel))
-                throw new NullReferenceException("对话框的 ViewModel 必须实现 IDialogAware 接口 ");
-            //给对应的ViewModel传值
-            ViewAndViewModelAction<ILayDialogAware>(viewModel, d => d.OnDialogOpened(parameters));
+
         }
     }
 }

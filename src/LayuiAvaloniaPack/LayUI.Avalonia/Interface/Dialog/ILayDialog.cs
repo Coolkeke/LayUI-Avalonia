@@ -20,6 +20,7 @@ namespace LayUI.Avalonia.Interface
         /// <param name="parameters">参数</param>
         /// <param name="callback">回调</param>
         Task Show(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string token);
-        void ShowDialog(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string token);
+
+        //void ShowDialog(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string token);
     }
 }

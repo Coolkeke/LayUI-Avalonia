@@ -22,7 +22,7 @@ namespace Layui.Main.ViewModels
             layDialog.Show("Message", null, res =>
             {
                 var data = res;
-            }, messageRootName);
+            }, messageRootName); 
         }
     }
 }
