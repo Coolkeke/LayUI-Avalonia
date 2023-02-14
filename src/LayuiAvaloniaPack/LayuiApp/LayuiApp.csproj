@@ -8,9 +8,6 @@
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Remove="Languages\zh-cn.resx" />
-  </ItemGroup>
-  <ItemGroup>
     <None Remove=".gitignore" />
     <None Remove="Assets\1.jpg" />
     <None Remove="Assets\2.jpg" />
@@ -26,11 +23,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AvaloniaResource>
     <Content Include="Assets\1.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Languages\zh-cn.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>zh-cn.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -62,10 +54,6 @@
     <ProjectReference Include="..\Layui.Main\Layui.Main.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Languages\zh-cn.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>zh-cn.resx</DependentUpon>
-    </Compile>
+    <Folder Include="Languages\" />
   </ItemGroup>
 </Project>

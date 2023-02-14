@@ -30,6 +30,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition />
+                <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <Border
                 Width="200"
@@ -60,6 +61,17 @@
                             Fill="{DynamicResource Red}" />
                     </StackPanel>
                 </lay:LayButton>
+            </StackPanel>
+            <StackPanel
+                Grid.Column="2"
+                Margin="10,0"
+                VerticalAlignment="Center">
+                <ToggleSwitch
+                    BorderBrush="{DynamicResource Gradient}"
+                    Foreground="White"
+                    IsChecked="{Binding IsEn}"
+                    OffContent="中"
+                    OnContent="英" />
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">

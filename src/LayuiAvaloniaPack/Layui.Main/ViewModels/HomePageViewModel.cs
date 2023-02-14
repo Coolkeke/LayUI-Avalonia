@@ -15,6 +15,24 @@ namespace Layui.Main.ViewModels
 {
     public class HomePageViewModel : ViewModelBase
     {
+        private bool _IsEn;
+        /// <summary>
+        /// 是否为英文
+        /// </summary>
+        public bool IsEn
+        {
+            get { return _IsEn; }
+            set { SetProperty(ref _IsEn, value); OnLanugageChanged(value); }
+        }
+        /// <summary>
+        /// 语言切换
+        /// </summary>
+        /// <param name="value"></param>
+        private void OnLanugageChanged(bool value)
+        {
+            
+        }
+
         public HomePageViewModel(IContainerExtension container) : base(container) { }
         private MenuInfo _MenuInfo;
         public MenuInfo MenuInfo
