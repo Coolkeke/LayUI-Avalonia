@@ -10,11 +10,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:res="using:Layui.Core.Resources"
-    Title="{DynamicResource Test}"
+    Title="{DynamicResource AppTitle}"
     d:DesignHeight="1080"
     d:DesignWidth="1920"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
+    <Window.Resources />
     <lay:LayDialogHost dialog:LayDialog.Token="RootDialog">
         <ContentControl prism:RegionManager.RegionName="{Binding Source={x:Static res:SystemResource.Nav_MainContent}}" />
     </lay:LayDialogHost>

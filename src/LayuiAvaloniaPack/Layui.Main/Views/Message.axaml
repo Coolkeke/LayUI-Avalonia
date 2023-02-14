@@ -25,12 +25,12 @@
                 Background="White"
                 CornerRadius=" 0 0 2 2" />
             <StackPanel Margin="50" TextBlock.Foreground="White">
-                <TextBlock Text="你知道吗？亲！" />
+                <TextBlock Text="{DynamicResource Message-Title}}" />
                 <TextBlock
                     Margin="0,10"
-                    Text="这是用Avalonia开发的跨平台框架开发的对话框"
+                    Text="{DynamicResource Message-Content}"
                     TextWrapping="Wrap" />
-                <TextBlock Text="希望了解我更多吗？" TextWrapping="Wrap" />
+                <TextBlock Text="{DynamicResource Message-Problem}" TextWrapping="Wrap" />
             </StackPanel>
             <StackPanel
                 Grid.Row="1"
@@ -42,14 +42,14 @@
                     Height="50"
                     Margin="5,0"
                     Command="{Binding GoCommand}"
-                    Content="火速围观"
+                    Content="{DynamicResource Message-Go}"
                     Type="Normal" />
                 <lay:LayButton
                     Width="150"
                     Height="50"
                     Margin="5,0"
                     Command="{Binding CloseCommand}"
-                    Content="我拒绝" />
+                    Content="{DynamicResource Message-Close}" />
             </StackPanel>
         </Grid>
     </Border>

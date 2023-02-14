@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Layui.Main;
+using Layui.Tools.Languages;
 using LayUI.Avalonia;
 using LayUI.Avalonia.Dialog;
 using LayUI.Avalonia.Interface;
@@ -30,6 +31,7 @@ namespace LayuiApp
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterInstance<ILayDialogService>(new LayDialogService());
+            containerRegistry.RegisterInstance<ILanguageManager>(new LanguageManager());
         }
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {

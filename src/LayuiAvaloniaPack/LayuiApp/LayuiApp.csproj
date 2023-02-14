@@ -8,6 +8,16 @@
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
   </PropertyGroup>
   <ItemGroup>
+    <AvaloniaXaml Remove="bin\**" />
+    <Compile Remove="bin\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <None Remove="bin\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <AvaloniaXaml Remove="Languages\ch-en.axaml" />
+    <AvaloniaXaml Remove="Languages\zh-cn.axaml" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove=".gitignore" />
     <None Remove="Assets\1.jpg" />
     <None Remove="Assets\2.jpg" />
@@ -23,6 +33,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AvaloniaResource>
     <Content Include="Assets\1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Languages\ch-en.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Languages\zh-cn.axaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -43,6 +59,7 @@
     <PackageReference Include="Avalonia.Desktop" Version="0.10.18" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="0.10.18" />
+    <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="0.10.18" />
     <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.18" />
     <PackageReference Include="Prism.Avalonia" Version="8.1.97.2" />
     <PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.2" />
@@ -52,8 +69,5 @@
     <ProjectReference Include="..\LayUI.Avalonia\LayUI.Avalonia.csproj" />
     <ProjectReference Include="..\Layui.Core\Layui.Core.csproj" />
     <ProjectReference Include="..\Layui.Main\Layui.Main.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Languages\" />
   </ItemGroup>
 </Project>

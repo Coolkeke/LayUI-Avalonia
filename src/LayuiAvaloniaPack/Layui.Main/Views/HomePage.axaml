@@ -49,11 +49,12 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center">
                 <lay:LayButton
+                    MinHeight="35"
                     Background="{DynamicResource Gradient}"
                     Type="Customize"
                     Uri="https://space.bilibili.com/48808444">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="关于项目" />
+                        <TextBlock Text="{DynamicResource GitHub}" />
                         <Ellipse
                             Width="6"
                             Height="6"

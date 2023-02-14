@@ -1,0 +1,18 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+    <sys:String x:Key="AppTitle">Welcome to LayUI.Avalonia</sys:String>
+    <sys:String x:Key="GitHub">GitHub</sys:String>
+    <sys:String x:Key="Button">Button</sys:String>
+    <sys:String x:Key="Image">Image</sys:String>
+    <sys:String x:Key="ProgressBar">ProgressBar</sys:String>
+    <sys:String x:Key="Keyboard">Keyboard</sys:String>
+    <sys:String x:Key="Form">Form</sys:String>
+    <sys:String x:Key="Dialog">Dialog</sys:String>
+    <sys:String x:Key="Message-Title">You know what? dear!</sys:String>
+    <sys:String x:Key="Message-Content">This is a dialog box developed with the cross-platform framework developed by Avalonia</sys:String>
+    <sys:String x:Key="Message-Problem">Want to know more about me?</sys:String>
+    <sys:String x:Key="Message-Go">Go</sys:String>
+    <sys:String x:Key="Message-Close">No</sys:String>
+</ResourceDictionary>

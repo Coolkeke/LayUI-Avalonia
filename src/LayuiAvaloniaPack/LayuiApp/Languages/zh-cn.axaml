@@ -1,0 +1,18 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+    <sys:String x:Key="AppTitle">欢迎来到LayUI.Avalonia</sys:String>
+    <sys:String x:Key="Message-Title">你知道吗？亲！</sys:String>
+    <sys:String x:Key="GitHub">关于项目</sys:String>
+    <sys:String x:Key="Button">按钮</sys:String>
+    <sys:String x:Key="Image">图片</sys:String>
+    <sys:String x:Key="Form">表单</sys:String>
+    <sys:String x:Key="ProgressBar">进度条</sys:String>
+    <sys:String x:Key="Keyboard">键盘</sys:String>
+    <sys:String x:Key="Dialog">对话框</sys:String>
+    <sys:String x:Key="Message-Content">这是用Avalonia开发的跨平台框架开发的对话框</sys:String>
+    <sys:String x:Key="Message-Problem">希望了解我更多吗？</sys:String>
+    <sys:String x:Key="Message-Go">火速围观</sys:String>
+    <sys:String x:Key="Message-Close">我拒绝</sys:String>
+</ResourceDictionary>
