@@ -82,6 +82,7 @@ namespace Layui.Main.ViewModels
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.ProgressBarPage, Title =Application.Current.FindResource("ProgressBar").ToString()  },
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.KeyboardPage, Title = Application.Current.FindResource("Keyboard").ToString()},
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.DialogPage, Title = Application.Current.FindResource("Dialog").ToString()},
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.CardPage, Title = "卡片"},
             };
             return menus;
         }

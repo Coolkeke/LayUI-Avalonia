@@ -48,5 +48,9 @@ namespace Layui.Core.Resources
         /// 对话框
         /// </summary>
         public static string DialogPage = "DialogPage"; 
+        /// <summary>
+        /// 卡片
+        /// </summary>
+        public static string CardPage = "CardPage"; 
     }
 }
