@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
     xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
+    xmlns:lang="clr-namespace:Layui.Tools.Languages;assembly=Layui.Tools"
     xmlns:lay="using:LayUI.Avalonia.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
@@ -54,7 +55,7 @@
                     Type="Customize"
                     Uri="https://space.bilibili.com/48808444">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{DynamicResource GitHub}" />
+                        <TextBlock Text="{lang:Localize GitHub}" />
                         <Ellipse
                             Width="6"
                             Height="6"

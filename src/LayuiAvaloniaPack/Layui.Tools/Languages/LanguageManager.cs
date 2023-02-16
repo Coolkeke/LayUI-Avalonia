@@ -1,22 +1,54 @@
-﻿
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using Avalonia.Markup.Xaml.MarkupExtensions;
-using Avalonia.Utilities;
+using Prism.Mvvm;
+using System.ComponentModel;
 using System.Xml;
 
 namespace Layui.Tools.Languages
 {
-    public class LanguageManager : ILanguageManager
+    public class LanguageManager : BindableBase
     {
-        public ResourceDictionary GetResourceDictionary(string uri)
+        private const string IndexerName = "Item";
+        private const string IndexerArrayName = "Item[]";
+        public static LanguageManager Instance { get; set; } = new LanguageManager();
+        public LanguageManager()
+        {
+        }
+        private ResourceDictionary _LanguageDictionary;
+        public ResourceDictionary LanguageDictionary
+        {
+            get { return _LanguageDictionary; }
+            set { SetProperty(ref _LanguageDictionary, value); }
+        }
+
+
+        public bool LoadLanguage(string uri)
         {
             XmlDocument xmlDoc = new XmlDocument();
-            XmlReader reader = XmlReader.Create(uri);
+            XmlReader reader = XmlReader.Create($"{Directory.GetCurrentDirectory()}/{uri}");
             xmlDoc.Load(reader);
             reader.Close();
-            ResourceDictionary res = AvaloniaRuntimeXamlLoader.Load(xmlDoc.InnerXml) as ResourceDictionary??new ResourceDictionary();
-            return res;
+            var languageXaml = AvaloniaRuntimeXamlLoader.Load(xmlDoc.InnerXml);
+            if (languageXaml is ResourceDictionary xaml)
+            {
+                LanguageDictionary = xaml;
+                Invalidate();
+                return true;
+            }
+            return false;
+        }
+        public string this[string key]
+        {
+            get
+            {
+                if (LanguageDictionary == null) return key;
+                return LanguageDictionary[key].ToString();
+            }
+        }
+        public void Invalidate()
+        {
+            OnPropertyChanged(new PropertyChangedEventArgs(IndexerName));
+            OnPropertyChanged(new PropertyChangedEventArgs(IndexerArrayName));
         }
     }
 }

@@ -31,7 +31,6 @@ namespace LayuiApp
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterInstance<ILayDialogService>(new LayDialogService());
-            containerRegistry.RegisterInstance<ILanguageManager>(new LanguageManager());
         }
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {

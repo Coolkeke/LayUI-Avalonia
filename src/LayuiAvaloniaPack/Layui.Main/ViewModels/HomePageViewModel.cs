@@ -24,7 +24,6 @@ namespace Layui.Main.ViewModels
             get { return _Language; }
             set { SetProperty(ref _Language, value); }
         }
-        ILanguageManager language;
         private bool _IsEn;
         /// <summary>
         /// 是否为英文
@@ -40,14 +39,12 @@ namespace Layui.Main.ViewModels
         /// <param name="value"></param>
         private void OnLanugageChanged(bool value)
         {
-            if(value) Language = language.GetResourceDictionary("D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\LayuiApp\\Languages\\ch-en.axaml");
-            else Language = language.GetResourceDictionary("D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\LayuiApp\\Languages\\zh-cn.axaml");
-            Application.Current.Resources = Language;
+            if(value) LanguageManager.Instance.LoadLanguage("Languages/ch-en.axaml");
+            else LanguageManager.Instance.LoadLanguage("Languages/zh-cn.axaml"); 
         }
 
         public HomePageViewModel(IContainerExtension container) : base(container) 
         {
-            language = container.Resolve<ILanguageManager>();
         }
         private MenuInfo _MenuInfo;
         public MenuInfo MenuInfo
@@ -76,12 +73,12 @@ namespace Layui.Main.ViewModels
         {
             ObservableCollection<MenuInfo> menus = new ObservableCollection<MenuInfo>
             {
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.ButtonPage, Title =Application.Current.FindResource("Button").ToString()  },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.FormPage, Title = Application.Current.FindResource("Form").ToString() },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.ImagePage, Title =Application.Current.FindResource("Image").ToString()  },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.ProgressBarPage, Title =Application.Current.FindResource("ProgressBar").ToString()  },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.KeyboardPage, Title = Application.Current.FindResource("Keyboard").ToString()},
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.DialogPage, Title = Application.Current.FindResource("Dialog").ToString()},
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.ButtonPage, Title =LanguageManager.Instance["Button"] },
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.FormPage, Title = LanguageManager.Instance["Form"] },
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.ImagePage, Title =LanguageManager.Instance["Image"] },
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.ProgressBarPage, Title =LanguageManager.Instance["ProgressBar"] },
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.KeyboardPage, Title = LanguageManager.Instance["Keyboard"] },
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.DialogPage, Title = LanguageManager.Instance["Dialog"] },
             };
             return menus;
         }
