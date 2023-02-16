@@ -145,9 +145,11 @@
                                 </Grid.ColumnDefinitions>
                                 <Grid Width="20" Height="40" />
                                 <TextBlock
+                                    Name="test"
                                     Grid.Column="1"
                                     Margin="5,10"
                                     VerticalAlignment="Center"
+                                    lang:LocalizeExtension.Tag="{Binding ElementName=test}"
                                     FontSize="20"
                                     Foreground="White"
                                     Text="{Binding Title}" />

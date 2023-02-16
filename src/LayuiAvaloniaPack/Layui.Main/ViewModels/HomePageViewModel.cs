@@ -73,12 +73,13 @@ namespace Layui.Main.ViewModels
         {
             ObservableCollection<MenuInfo> menus = new ObservableCollection<MenuInfo>
             {
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.ButtonPage, Title =LanguageManager.Instance["Button"] },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.FormPage, Title = LanguageManager.Instance["Form"] },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.ImagePage, Title =LanguageManager.Instance["Image"] },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.ProgressBarPage, Title =LanguageManager.Instance["ProgressBar"] },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.KeyboardPage, Title = LanguageManager.Instance["Keyboard"] },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.DialogPage, Title = LanguageManager.Instance["Dialog"] },
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.ButtonPage, Title ="Button"},
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.FormPage, Title = "Form" },
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.ImagePage, Title ="Image" },
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.ProgressBarPage, Title ="ProgressBar" },
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.KeyboardPage, Title = "Keyboard" },
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.DialogPage, Title = "Dialog" },
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.CardPage, Title = "CardPage" },
             };
             return menus;
         }

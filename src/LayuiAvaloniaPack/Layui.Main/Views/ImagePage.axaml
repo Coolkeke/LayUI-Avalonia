@@ -45,10 +45,7 @@
                 HorizontalAlignment="Center"
                 FontSize="20"
                 Text="物理盘实际图片位置" />
-            <Image
-                Margin="5"
-                ext:ImageHelper.Source="C:\Users\wenke\Desktop\QQ截图20230204213155.jpg"
-                Stretch="Fill" />
+            <Image Margin="5" Stretch="Fill" />
             <TextBlock
                 HorizontalAlignment="Center"
                 FontSize="20"

@@ -13,7 +13,8 @@
         <lay:LayTextBox
             Name="test"
             Height="40"
-            Margin="5,10" />
+            Margin="5,10"
+            IsFocus="True" />
         <lay:LayKeyboard Margin="5,10" />
     </StackPanel>
 </UserControl>
