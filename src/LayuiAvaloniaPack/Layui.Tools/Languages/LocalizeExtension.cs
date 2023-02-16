@@ -15,14 +15,7 @@ namespace Layui.Tools.Languages
 {
     public class LocalizeExtension : MarkupExtension
     {
-        private AvaloniaObject uiElement = null;
         private readonly AvaloniaObject _proxy;
-        static LocalizeExtension() {
-            TagProperty.Changed.Subscribe((e) =>
-            {
-                var data = e.Sender;
-            });
-        }
         public LocalizeExtension()
         {
             _proxy = new AvaloniaObject();
@@ -32,27 +25,6 @@ namespace Layui.Tools.Languages
         {
             this.Key = key;
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        public static void SetTag(AvaloniaObject element, object value)
-        {
-            element.SetValue(TagProperty, value);
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public static object GetTag(AvaloniaObject element)
-        {
-            return element.GetValue(TagProperty);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static readonly AttachedProperty<object> TagProperty = 
-            AvaloniaProperty.RegisterAttached<IAvaloniaObject, IAvaloniaObject, object>(  "Tag");
-
         public object Key
         {
             get { return _proxy.GetValue(KeyProperty); }
@@ -85,7 +57,6 @@ namespace Layui.Tools.Languages
             if (!(serviceProvider.GetService(typeof(IProvideValueTarget)) is IProvideValueTarget provideValueTarget)) return this;
             if (!(provideValueTarget.TargetObject is AvaloniaObject targetObject)) return this;
             if (!(provideValueTarget.TargetProperty is AvaloniaProperty targetProperty)) return this;
-            var ui = GetTag(targetObject);
             switch (Key)
             {
                 case string key:
@@ -124,8 +95,7 @@ namespace Layui.Tools.Languages
                         element.DataContextChanged -= LangExtension_DataContextChanged;
                         if (!(Key is Binding keyBinding)) return;
                         var targetProperty = GetTargetProperty(element);
-                        SetTargetProperty(element, null);
-                        SetLangBinding(element, targetProperty, keyBinding.Path, element.DataContext);
+                        element.Bind(targetProperty, keyBinding);
                         break;
                     }
             }

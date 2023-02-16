@@ -2,7 +2,9 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Avalonia.Platform;
 using Layui.Main;
+using Layui.Tools.Fonts;
 using Layui.Tools.Languages;
 using LayUI.Avalonia;
 using LayUI.Avalonia.Dialog;
@@ -22,6 +24,11 @@ namespace LayuiApp
             AvaloniaXamlLoader.Load(this);
             base.Initialize();
 
+        }
+        public override void RegisterServices()
+        {
+            AvaloniaLocator.CurrentMutable.Bind<IFontManagerImpl>().ToConstant(new CustomFontManagerImpl());
+            base.RegisterServices();
         }
         protected override IAvaloniaObject CreateShell()
         {

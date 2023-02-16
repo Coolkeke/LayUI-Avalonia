@@ -11,7 +11,6 @@
     <Style Selector="lay|LayTextBox">
         <Setter Property="Background" Value="White" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="FontFamily" Value="Microsoft YaHei,Simsun,微软雅黑" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="SelectionForegroundBrush" Value="White" />
         <Setter Property="CornerRadius" Value="2" />

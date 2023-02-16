@@ -152,7 +152,7 @@
                                     lang:LocalizeExtension.Tag="{Binding ElementName=test}"
                                     FontSize="20"
                                     Foreground="White"
-                                    Text="{Binding Title}" />
+                                    Text="{lang:Localize {Binding Title}}" />
                             </Grid>
                         </RadioButton>
                     </DataTemplate>

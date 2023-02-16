@@ -15,6 +15,7 @@
     d:DesignHeight="1080"
     d:DesignWidth="1920"
     prism:ViewModelLocator.AutoWireViewModel="True"
+    FontFamily="avares://LayuiApp/Assets/Fonts/微软雅黑.ttf#Microsoft YaHei"
     mc:Ignorable="d">
     <Window.Resources />
     <lay:LayDialogHost dialog:LayDialog.Token="RootDialog">
