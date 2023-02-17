@@ -149,10 +149,9 @@
                                     Grid.Column="1"
                                     Margin="5,10"
                                     VerticalAlignment="Center"
-                                    lang:LocalizeExtension.Tag="{Binding ElementName=test}"
                                     FontSize="20"
                                     Foreground="White"
-                                    Text="{lang:Localize {Binding Title}}" />
+                                    Text="{Binding Title}" />
                             </Grid>
                         </RadioButton>
                     </DataTemplate>
