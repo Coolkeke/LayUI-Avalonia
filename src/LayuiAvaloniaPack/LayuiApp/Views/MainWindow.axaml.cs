@@ -8,7 +8,7 @@ using System;
 
 namespace LayuiApp.Views
 {
-    public partial class MainWindow : LayWindow
+    public partial class MainWindow : Window
     {
         public MainWindow()
         {

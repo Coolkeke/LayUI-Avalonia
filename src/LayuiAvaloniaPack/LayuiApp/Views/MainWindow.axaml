@@ -1,4 +1,4 @@
-<lay:LayWindow
+<Window
     x:Class="LayuiApp.Views.MainWindow"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -15,12 +15,12 @@
     d:DesignHeight="1080"
     d:DesignWidth="1920"
     prism:ViewModelLocator.AutoWireViewModel="True"
-    Background="{x:Null}"
-    BorderThickness="0"
+    Classes="LayWindow"
     FontFamily="avares://LayuiApp/Assets/Fonts/微软雅黑.ttf#Microsoft YaHei"
     mc:Ignorable="d">
-    <Window.Resources />
-    <lay:LayDialogHost dialog:LayDialog.Token="RootDialog">
-        <ContentControl prism:RegionManager.RegionName="{Binding Source={x:Static res:SystemResource.Nav_MainContent}}" />
-    </lay:LayDialogHost>
-</lay:LayWindow>
+    <lay:LayTitleBar HeaderHeight="40">
+        <lay:LayDialogHost dialog:LayDialog.Token="RootDialog">
+            <ContentControl prism:RegionManager.RegionName="{Binding Source={x:Static res:SystemResource.Nav_MainContent}}" />
+        </lay:LayDialogHost>
+    </lay:LayTitleBar>
+</Window>

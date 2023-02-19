@@ -2,29 +2,35 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
-    <Design.PreviewWith>
-        <lay:LayWindow Width="150" Height="50">
-            <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-        </lay:LayWindow>
-    </Design.PreviewWith>
-    <Style Selector="lay|LayWindow">
-        <Setter Property="Background" Value="Red" />
-        <Setter Property="ExtendClientAreaTitleBarHeightHint" Value="-1" />
+    <Style Selector="Window.LayWindow">
+        <Setter Property="ExtendClientAreaTitleBarHeightHint" Value="7" />
+        <Setter Property="SystemDecorations" Value="Full" />
         <Setter Property="ExtendClientAreaToDecorationsHint" Value="True" />
-        <Setter Property="ExtendClientAreaChromeHints" Value="Default" />
+        <Setter Property="ExtendClientAreaChromeHints" Value="NoChrome" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="TransparencyLevelHint" Value="Transparent" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <lay:LayCard
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{TemplateBinding CornerRadius}">
-                        <ContentPresenter />
-                    </lay:LayCard>
+                    <Grid Name="PART_Grid">
+                        <ContentPresenter
+                            Name="PART_ContentPresenter"
+                            Padding="{TemplateBinding Padding}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            UseLayoutRounding="{TemplateBinding UseLayoutRounding}" />
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    <Style Selector="Window.LayWindow[WindowState=Maximized] /template/ Grid#PART_Grid">
+        <Setter Property="Margin" Value="7" />
+    </Style>
+    <Style Selector="Window.LayWindow[WindowState=FullScreen]/template/ Grid#PART_Grid">
+        <Setter Property="Margin" Value="7" />
     </Style>
     <!--  Add Styles Here  -->
 </Styles>

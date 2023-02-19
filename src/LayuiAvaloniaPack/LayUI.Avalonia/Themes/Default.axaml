@@ -1,6 +1,7 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ColorStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/WindowStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TitleBarStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TransitionsStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/FocusAdornerStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CardStyle.axaml" />
