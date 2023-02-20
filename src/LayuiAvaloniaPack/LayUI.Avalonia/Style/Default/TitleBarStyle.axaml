@@ -11,7 +11,7 @@
     </Design.PreviewWith>
     <Style Selector="lay|LayTitleBar">
         <Setter Property="HeaderHeight" Value="30" />
-        <Setter Property="Foreground" Value="White" />
+        <Setter Property="HeaderForeground" Value="White" />
         <Setter Property="HeaderBackground" Value="#393D49" />
         <Setter Property="Background" Value="White" />
         <Setter Property="ClipToBounds" Value="true" />
@@ -34,7 +34,8 @@
                                     Name="PART_HeaderBody"
                                     Height="{TemplateBinding HeaderHeight}"
                                     Background="{TemplateBinding HeaderBackground}"
-                                    IsVisible="{TemplateBinding HeaderVisible}">
+                                    IsVisible="{TemplateBinding HeaderVisible}"
+                                    TextBlock.Foreground="{TemplateBinding HeaderForeground}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition />
                                         <ColumnDefinition Width="auto" />
@@ -61,7 +62,7 @@
                                                 x:Name="winfullscreenPath"
                                                 Width="15"
                                                 Height="15"
-                                                Fill="{TemplateBinding Foreground}"
+                                                Fill="{TemplateBinding HeaderForeground}"
                                                 IsHitTestVisible="false"
                                                 Stretch="Fill" />
                                         </lay:LayButton>
@@ -80,7 +81,7 @@
                                                 Width="15"
                                                 Height="2"
                                                 Data="M772.963422 533.491105l-528.06716 0c-12.38297 0-22.514491-10.131521-22.514491-22.514491l0 0c0-12.38297 10.131521-22.514491 22.514491-22.514491l528.06716 0c12.38297 0 22.514491 10.131521 22.514491 22.514491l0 0C795.477913 523.359584 785.346392 533.491105 772.963422 533.491105z"
-                                                Fill="{TemplateBinding Foreground}"
+                                                Fill="{TemplateBinding HeaderForeground}"
                                                 IsHitTestVisible="false"
                                                 Stretch="Fill" />
                                         </lay:LayButton>
@@ -100,7 +101,7 @@
                                                 x:Name="winCnangePath"
                                                 Width="15"
                                                 Height="15"
-                                                Fill="{TemplateBinding Foreground}"
+                                                Fill="{TemplateBinding HeaderForeground}"
                                                 IsHitTestVisible="false"
                                                 Stretch="Fill" />
                                         </lay:LayButton>
@@ -120,7 +121,7 @@
                                                 Width="15"
                                                 Height="15"
                                                 Data="M550.848 502.496l308.64-308.896a31.968 31.968 0 1 0-45.248-45.248l-308.608 308.896-308.64-308.928a31.968 31.968 0 1 0-45.248 45.248l308.64 308.896-308.64 308.896a31.968 31.968 0 1 0 45.248 45.248l308.64-308.896 308.608 308.896a31.968 31.968 0 1 0 45.248-45.248l-308.64-308.864z"
-                                                Fill="{TemplateBinding Foreground}"
+                                                Fill="{TemplateBinding HeaderForeground}"
                                                 IsHitTestVisible="false"
                                                 Stretch="Fill" />
                                         </lay:LayButton>

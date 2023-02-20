@@ -23,6 +23,22 @@ namespace LayUI.Avalonia.Controls
         private Panel PART_WindowButtonGrid = null;
         private CompositeDisposable _disposables;
 
+
+        /// <summary>
+        /// 顶部标题栏文字颜色
+        /// </summary>
+        public IBrush HeaderForeground
+        {
+            get { return GetValue(HeaderForegroundProperty); }
+            set { SetValue(HeaderForegroundProperty, value); }
+        }
+        /// <summary>
+        /// 定义<see cref="IBrush"/>属性
+        /// </summary>
+        public static readonly StyledProperty<IBrush> HeaderForegroundProperty =
+       AvaloniaProperty.Register<LayTitleBar, IBrush>(nameof(HeaderForeground), null);
+
+
         /// <summary>
         /// Defines the <see cref="HeaderVisible"/> property.
         /// </summary>
