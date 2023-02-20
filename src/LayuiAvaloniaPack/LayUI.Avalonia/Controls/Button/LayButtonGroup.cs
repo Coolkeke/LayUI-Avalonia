@@ -2,7 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Generators;
 using Avalonia.Media;
-using LayUI.Avalonia.Enums.Button;
+using LayUI.Avalonia.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

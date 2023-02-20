@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LayUI.Avalonia.Enums.Button
+namespace LayUI.Avalonia.Enums
 {
     /// <summary>
     /// 按钮样式枚举

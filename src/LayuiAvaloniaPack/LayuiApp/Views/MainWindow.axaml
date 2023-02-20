@@ -11,14 +11,27 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:res="using:Layui.Core.Resources"
+    Name="mainWindow"
     Title="{lang:Localize AppTitle}"
     d:DesignHeight="1080"
     d:DesignWidth="1920"
     prism:ViewModelLocator.AutoWireViewModel="True"
     Classes="LayWindow"
     FontFamily="avares://LayuiApp/Assets/Fonts/微软雅黑.ttf#Microsoft YaHei"
+    Icon="/Assets/AvaloniaLogo.png"
     mc:Ignorable="d">
     <lay:LayTitleBar HeaderHeight="40">
+        <lay:LayTitleBar.HeaderContent>
+            <StackPanel IsHitTestVisible="false" Orientation="Horizontal">
+                <Image
+                    Width="20"
+                    Height="20"
+                    Margin="5,0"
+                    Source="/Assets/AvaloniaLogo.png"
+                    Stretch="Fill" />
+                <TextBlock VerticalAlignment="Center" Text="{Binding #mainWindow.Title, Mode=OneWay}" />
+            </StackPanel>
+        </lay:LayTitleBar.HeaderContent>
         <lay:LayDialogHost dialog:LayDialog.Token="RootDialog">
             <ContentControl prism:RegionManager.RegionName="{Binding Source={x:Static res:SystemResource.Nav_MainContent}}" />
         </lay:LayDialogHost>

@@ -1,7 +1,8 @@
 ﻿<Styles
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    xmlns:enum="clr-namespace:LayUI.Avalonia.Enums;assembly=LayUI.Avalonia"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls;assembly=LayUI.Avalonia">
     <Design.PreviewWith>
         <lay:LayTitleBar
             Width="550"
@@ -9,8 +10,11 @@
             Margin="20" />
     </Design.PreviewWith>
     <Style Selector="lay|LayTitleBar">
+        <Setter Property="HeaderHeight" Value="30" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="HeaderBackground" Value="#393D49" />
         <Setter Property="Background" Value="White" />
-        <Setter Property="HeaderHeight" Value="35" />
+        <Setter Property="ClipToBounds" Value="true" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -25,84 +29,104 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition />
                             </Grid.RowDefinitions>
-                            <Grid
-                                Name="PART_HeaderBody"
-                                Height="{TemplateBinding HeaderHeight}"
-                                Background="Transparent"
-                                IsVisible="{TemplateBinding HeaderVisible}">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="auto" />
-                                </Grid.ColumnDefinitions>
-                                <ContentPresenter Background="{x:Null}" Content="{TemplateBinding HeaderContent}" />
-                                <Grid Grid.Column="1">
+                            <lay:LayCard ShadowColor="#000" ZIndex="1">
+                                <Grid
+                                    Name="PART_HeaderBody"
+                                    Height="{TemplateBinding HeaderHeight}"
+                                    Background="{TemplateBinding HeaderBackground}"
+                                    IsVisible="{TemplateBinding HeaderVisible}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto" />
-                                        <ColumnDefinition Width="auto" />
-                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition />
                                         <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
-                                    <Button
-                                        Width="{TemplateBinding HeaderHeight}"
-                                        HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Stretch"
-                                        HorizontalContentAlignment="Center"
-                                        VerticalContentAlignment="Center">
-                                        <Path
-                                            x:Name="winfullscreenPath"
-                                            Width="15"
-                                            Height="15"
-                                            Fill="Black"
-                                            IsHitTestVisible="false"
-                                            Stretch="Fill" />
-                                    </Button>
-                                    <Button
-                                        Grid.Column="1"
-                                        Width="{TemplateBinding HeaderHeight}"
-                                        HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Stretch"
-                                        HorizontalContentAlignment="Center"
-                                        VerticalContentAlignment="Center">
-                                        <Path
-                                            Width="15"
-                                            Height="2"
-                                            Data="M772.963422 533.491105l-528.06716 0c-12.38297 0-22.514491-10.131521-22.514491-22.514491l0 0c0-12.38297 10.131521-22.514491 22.514491-22.514491l528.06716 0c12.38297 0 22.514491 10.131521 22.514491 22.514491l0 0C795.477913 523.359584 785.346392 533.491105 772.963422 533.491105z"
-                                            Fill="Black"
-                                            IsHitTestVisible="false"
-                                            Stretch="Fill" />
-                                    </Button>
-                                    <Button
-                                        Grid.Column="2"
-                                        Width="{TemplateBinding HeaderHeight}"
-                                        HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Stretch"
-                                        HorizontalContentAlignment="Center"
-                                        VerticalContentAlignment="Center">
-                                        <Path
-                                            x:Name="winCnangePath"
-                                            Width="15"
-                                            Height="15"
-                                            Fill="Black"
-                                            IsHitTestVisible="false"
-                                            Stretch="Fill" />
-                                    </Button>
-                                    <Button
-                                        Grid.Column="3"
-                                        Width="{TemplateBinding HeaderHeight}"
-                                        HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Stretch"
-                                        HorizontalContentAlignment="Center"
-                                        VerticalContentAlignment="Center">
-                                        <Path
-                                            Width="15"
-                                            Height="15"
-                                            Data="M550.848 502.496l308.64-308.896a31.968 31.968 0 1 0-45.248-45.248l-308.608 308.896-308.64-308.928a31.968 31.968 0 1 0-45.248 45.248l308.64 308.896-308.64 308.896a31.968 31.968 0 1 0 45.248 45.248l308.64-308.896 308.608 308.896a31.968 31.968 0 1 0 45.248-45.248l-308.64-308.864z"
-                                            Fill="Black"
-                                            IsHitTestVisible="false"
-                                            Stretch="Fill" />
-                                    </Button>
+                                    <ContentPresenter Background="{x:Null}" Content="{TemplateBinding HeaderContent}" />
+                                    <Grid Name="PART_WindowButtonGrid" Grid.Column="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <lay:LayButton
+                                            Width="{TemplateBinding HeaderHeight}"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Stretch"
+                                            HorizontalContentAlignment="Center"
+                                            VerticalContentAlignment="Center"
+                                            Background="Transparent"
+                                            CommandParameter="{x:Static enum:WindowButtonType.FullScreen}"
+                                            CornerRadius="0"
+                                            Type="Default">
+                                            <Path
+                                                x:Name="winfullscreenPath"
+                                                Width="15"
+                                                Height="15"
+                                                Fill="{TemplateBinding Foreground}"
+                                                IsHitTestVisible="false"
+                                                Stretch="Fill" />
+                                        </lay:LayButton>
+                                        <lay:LayButton
+                                            Grid.Column="1"
+                                            Width="{TemplateBinding HeaderHeight}"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Stretch"
+                                            HorizontalContentAlignment="Center"
+                                            VerticalContentAlignment="Center"
+                                            Background="Transparent"
+                                            CommandParameter="{x:Static enum:WindowButtonType.Minimized}"
+                                            CornerRadius="0"
+                                            Type="Default">
+                                            <Path
+                                                Width="15"
+                                                Height="2"
+                                                Data="M772.963422 533.491105l-528.06716 0c-12.38297 0-22.514491-10.131521-22.514491-22.514491l0 0c0-12.38297 10.131521-22.514491 22.514491-22.514491l528.06716 0c12.38297 0 22.514491 10.131521 22.514491 22.514491l0 0C795.477913 523.359584 785.346392 533.491105 772.963422 533.491105z"
+                                                Fill="{TemplateBinding Foreground}"
+                                                IsHitTestVisible="false"
+                                                Stretch="Fill" />
+                                        </lay:LayButton>
+                                        <lay:LayButton
+                                            Grid.Column="2"
+                                            Width="{TemplateBinding HeaderHeight}"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Stretch"
+                                            HorizontalContentAlignment="Center"
+                                            VerticalContentAlignment="Center"
+                                            Background="Transparent"
+                                            Classes="LayWinButton"
+                                            CommandParameter="{x:Static enum:WindowButtonType.MaximizedOrNormal}"
+                                            CornerRadius="0"
+                                            Type="Default">
+                                            <Path
+                                                x:Name="winCnangePath"
+                                                Width="15"
+                                                Height="15"
+                                                Fill="{TemplateBinding Foreground}"
+                                                IsHitTestVisible="false"
+                                                Stretch="Fill" />
+                                        </lay:LayButton>
+                                        <lay:LayButton
+                                            Grid.Column="3"
+                                            Width="{TemplateBinding HeaderHeight}"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Stretch"
+                                            HorizontalContentAlignment="Center"
+                                            VerticalContentAlignment="Center"
+                                            Background="Transparent"
+                                            Classes="LayWinButton"
+                                            CommandParameter="{x:Static enum:WindowButtonType.Closed}"
+                                            CornerRadius="0"
+                                            Type="Default">
+                                            <Path
+                                                Width="15"
+                                                Height="15"
+                                                Data="M550.848 502.496l308.64-308.896a31.968 31.968 0 1 0-45.248-45.248l-308.608 308.896-308.64-308.928a31.968 31.968 0 1 0-45.248 45.248l308.64 308.896-308.64 308.896a31.968 31.968 0 1 0 45.248 45.248l308.64-308.896 308.608 308.896a31.968 31.968 0 1 0 45.248-45.248l-308.64-308.864z"
+                                                Fill="{TemplateBinding Foreground}"
+                                                IsHitTestVisible="false"
+                                                Stretch="Fill" />
+                                        </lay:LayButton>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
+                            </lay:LayCard>
                             <ContentPresenter
                                 Name="PART_ContentPresenter"
                                 Grid.Row="1"
@@ -118,10 +142,10 @@
         </Setter>
     </Style>
     <Style Selector="lay|LayTitleBar:not(:fullscreen) /template/ Path#winfullscreenPath">
-        <Setter Property="Data" Value="M285.866667 810.666667H384v42.666666H213.333333v-170.666666h42.666667v98.133333l128-128 29.866667 29.866667-128 128z m494.933333 0l-128-128 29.866667-29.866667 128 128V682.666667h42.666666v170.666666h-170.666666v-42.666666h98.133333zM285.866667 256l128 128-29.866667 29.866667-128-128V384H213.333333V213.333333h170.666667v42.666667H285.866667z m494.933333 0H682.666667V213.333333h170.666666v170.666667h-42.666666V285.866667l-128 128-29.866667-29.866667 128-128z" />
+        <Setter Property="Data" Value="M629.556904 391.972323c17.328667 17.319457 47.028083 17.319457 66.814732 0l168.302147-165.81449 0 133.63765c0 19.805068 14.85022 34.646078 34.636868 34.646078l24.743544 0c19.806091 0 34.656311-12.371772 34.656311-29.691229L958.710506 119.732965l-2.478448 0 2.478448-17.318434c0-9.903557-2.478448-17.328667-7.435343-24.75173-4.936429-4.947685-14.848173-9.894348-24.743544-9.894348l-17.326621 0 0 0L664.211169 65.290005c-19.805068 0-34.654264 17.328667-34.654264 34.646078l0 24.75173c2.478448 22.274306 19.788695 34.646078 39.59274 34.646078l128.690988 0L632.035352 325.149405C609.751836 342.467839 609.751836 372.175441 629.556904 391.972323L629.556904 391.972323 629.556904 391.972323zM394.441049 629.557416c-17.310248-17.327644-47.00864-17.327644-66.814732 0l-168.301124 165.806303L159.325194 664.195308c0-19.787672-14.8318-34.637892-34.636868-34.637892l-24.76094 0c-19.787672 0-34.637892 12.371772-34.637892 29.698392l0 242.532779 2.477424 0-2.477424 17.327644c0 9.893324 2.477424 17.310248 7.4159 24.743544 4.955872 4.955872 14.867616 9.894348 24.76094 9.894348l17.327644 0 0 0 244.992807 2.477424c19.823488 0 34.655288-17.327644 34.655288-34.637892l0-24.759917c-2.478448-22.26612-19.787672-34.637892-39.59274-34.637892l-128.690988 0 168.283728-165.8237C411.768693 679.044504 411.768693 649.345088 394.441049 629.557416L394.441049 629.557416 394.441049 629.557416zM956.231035 904.266012 956.231035 661.71686c0-19.787672-17.328667-29.680996-34.638915-29.680996l-24.758893 0c-19.788695 0-34.638915 17.309224-34.638915 34.637892l0 131.168412L693.893188 632.035864c-17.308201-17.328667-47.00864-17.328667-66.814732 0-17.326621 17.309224-17.326621 47.00864 0 66.813708l168.283728 165.806303-128.690988 0c-19.786649 0-37.115316 12.388145-39.59274 34.654264l0 24.744567c0 19.805068 17.328667 34.654264 34.638915 34.654264l240.071727-2.478448 0 0 17.328667 0c9.893324 0 17.310248-2.477424 24.743544-9.893324 4.954849-4.955872 7.414877-14.85022 7.414877-24.744567L956.231035 904.266012C953.752588 904.266012 956.231035 904.266012 956.231035 904.266012L956.231035 904.266012 956.231035 904.266012zM228.635769 159.334915l128.690988 0c19.805068 0 37.115316-12.372795 39.59274-34.646078L396.919497 99.936083c0-19.796882-17.309224-34.646078-34.654264-34.646078l-244.992807 2.478448 0 0-17.34504 0c-9.875928 0-17.310248 2.477424-24.743544 9.894348-4.938476 4.955872-7.4159 14.849196-7.4159 24.75173l2.477424 17.318434-2.477424 0 0 245.01839c0 19.796882 14.85022 29.691229 34.637892 29.691229l24.743544 0c19.822464 0 34.654264-14.84101 34.654264-34.646078L161.803641 226.157833l168.283728 165.81449c17.34504 17.319457 47.044456 17.319457 66.832128 0 17.328667-17.327644 17.328667-47.026036 0-66.822918L228.635769 159.334915 228.635769 159.334915 228.635769 159.334915zM228.635769 159.334915" />
     </Style>
     <Style Selector="lay|LayTitleBar:fullscreen /template/ Path#winfullscreenPath">
-        <Setter Property="Data" Value="M10.62,72a9.92,9.92,0,0,1-4-.86A11.15,11.15,0,0,1,.86,65.43,9.92,9.92,0,0,1,0,61.38V25A9.86,9.86,0,0,1,.86,21,11.32,11.32,0,0,1,3.18,17.6a11,11,0,0,1,3.38-2.32,9.68,9.68,0,0,1,4.06-.87H47a9.84,9.84,0,0,1,4.08.87A11,11,0,0,1,56.72,21,9.84,9.84,0,0,1,57.59,25V61.38a9.68,9.68,0,0,1-.87,4.06,11,11,0,0,1-2.32,3.38A11.32,11.32,0,0,1,51,71.14,9.86,9.86,0,0,1,47,72Zm36.17-7.21a3.39,3.39,0,0,0,1.39-.28,3.79,3.79,0,0,0,1.16-.77,3.47,3.47,0,0,0,1.07-2.53v-36a3.55,3.55,0,0,0-.28-1.41,3.51,3.51,0,0,0-.77-1.16,3.67,3.67,0,0,0-1.16-.77,3.55,3.55,0,0,0-1.41-.28h-36a3.45,3.45,0,0,0-1.39.28,3.59,3.59,0,0,0-1.14.79,3.79,3.79,0,0,0-.77,1.16,3.39,3.39,0,0,0-.28,1.39v36a3.45,3.45,0,0,0,.28,1.39A3.62,3.62,0,0,0,9.4,64.51a3.45,3.45,0,0,0,1.39.28Zm18-43.45a13.14,13.14,0,0,0-1.16-5.5,14.41,14.41,0,0,0-3.14-4.5,15,15,0,0,0-4.61-3,14.14,14.14,0,0,0-5.5-1.1H15A10.73,10.73,0,0,1,21.88.51,10.93,10.93,0,0,1,25.21,0H50.38a20.82,20.82,0,0,1,8.4,1.71A21.72,21.72,0,0,1,70.29,13.18,20.91,20.91,0,0,1,72,21.59v25.2a10.93,10.93,0,0,1-.51,3.33A10.71,10.71,0,0,1,70,53.05a10.84,10.84,0,0,1-2.28,2.36,10.66,10.66,0,0,1-3,1.58Z" />
+        <Setter Property="Data" Value="M400.595 345.365l-0.948-245.022c-0.42-18.881-16.018-30.215-34.956-30.637h-25.406c-18.88-0.42-33.874 16.018-33.457 34.881l1.061 133.251L138.772 72.417c-18.274-18.311-47.844-18.311-66.119 0-18.218 18.314-18.218 47.907 0 66.236l166.575 164.885-127.697 0.512c-18.88-0.477-36.394 12.606-39.26 34.899v24.08c0.477 18.917 16.077 34.558 34.957 34.972l243.826-1.438c0.362 0.035 0.608 0.171 0.928 0.171l17.1 0.378c9.441 0.226 17.9-3.467 23.923-9.593 6.124-6.083 8.382-14.58 8.131-24.078l-1.821-17.138c0.001-0.335 1.27-0.562 1.27-0.945zM766.211 701.451l127.524-0.512c18.88 0.421 36.357-11.183 39.26-33.474v-24.077c-0.478-18.922-16.134-34.558-34.957-35.037l-240.702 1.458c-0.378 0-0.605-0.151-0.967-0.151l-17.062-0.42c-9.441-0.226-17.95 3.469-23.98 9.611-6.159 6.03-8.361 14.559-8.173 24.057l1.881 17.1c0.033 0.42-1.234 0.661-1.234 0.986l0.986 241.248c0.477 18.863 16.078 30.162 34.957 30.576l24.017 0.037c18.827 0.433 33.874-16.055 33.403-34.941l-1.062-130.388 168.117 166.502c18.276 18.314 47.809 18.314 66.085 0 18.255-18.31 18.255-47.906 0-66.218L766.209 701.442zM392.992 618.855c-6.028-6.14-14.541-9.834-23.923-9.61l-17.104 0.42c-0.346 0-0.566 0.151-0.948 0.151l-243.81-1.458c-18.881 0.478-34.503 16.112-34.956 35.034v24.078c2.843 22.292 20.357 33.892 39.206 33.474l129.158 0.42-167.983 166.37c-18.234 18.255-18.234 47.906 0 66.218 18.256 18.314 47.845 18.314 66.102 0l168.137-165.418-1.079 131.185c-0.42 18.922 14.579 35.413 33.424 34.938h25.406c18.937-0.477 34.54-11.713 34.956-30.637l0.987-243.05c0-0.346-1.267-0.571-1.267-0.949l1.821-17.104c0.206-9.495-1.993-18.025-8.116-24.053zM615.434 387.559c6.03 6.123 14.541 9.819 23.965 9.553l17.06-0.378c0.378 0 0.608-0.132 0.986-0.19l244.19 1.457c18.88-0.434 34.482-16.078 34.956-34.994l0.058-24.078c-2.898-22.331-20.439-35.355-39.26-34.939l-129.573-0.511 166.483-164.893c18.31-18.235 18.31-47.83 0.054-66.143-18.276-18.311-47.809-18.311-66.084 0L700.152 238.89l1.079-134.276c0.454-18.863-14.598-35.355-33.424-34.939H643.79c-18.881 0.477-34.484 11.773-34.957 30.637l-0.967 245.075c0 0.378 1.251 0.608 1.251 0.948l-1.859 17.138c-0.192 9.499 2.007 17.991 8.173 24.078z" />
     </Style>
     <Style Selector="lay|LayTitleBar:not(:maximized) /template/ Path#winCnangePath">
         <Setter Property="Data" Value="M10.62,72a9.92,9.92,0,0,1-4-.86A11.15,11.15,0,0,1,.86,65.43,9.92,9.92,0,0,1,0,61.38V10.62a9.92,9.92,0,0,1,.86-4A11.15,11.15,0,0,1,6.57.86a9.92,9.92,0,0,1,4-.86H61.38a9.92,9.92,0,0,1,4.05.86,11.15,11.15,0,0,1,5.71,5.71,9.92,9.92,0,0,1,.86,4V61.38a9.92,9.92,0,0,1-.86,4.05,11.15,11.15,0,0,1-5.71,5.71,9.92,9.92,0,0,1-4.05.86Zm50.59-7.21a3.45,3.45,0,0,0,1.39-.28,3.62,3.62,0,0,0,1.91-1.91,3.45,3.45,0,0,0,.28-1.39V10.79a3.45,3.45,0,0,0-.28-1.39A3.62,3.62,0,0,0,62.6,7.49a3.45,3.45,0,0,0-1.39-.28H10.79a3.45,3.45,0,0,0-1.39.28A3.62,3.62,0,0,0,7.49,9.4a3.45,3.45,0,0,0-.28,1.39V61.21a3.45,3.45,0,0,0,.28,1.39A3.62,3.62,0,0,0,9.4,64.51a3.45,3.45,0,0,0,1.39.28Z" />

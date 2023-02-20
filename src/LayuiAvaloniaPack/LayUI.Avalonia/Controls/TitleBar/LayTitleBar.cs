@@ -10,13 +10,17 @@ using System.Reactive.Disposables;
 using Avalonia.LogicalTree;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Chrome;
+using Avalonia.Media;
+using System.Linq;
+using LayUI.Avalonia.Enums;
 
 namespace LayUI.Avalonia.Controls
 {
     [PseudoClasses(":minimized", ":normal", ":maximized", ":fullscreen")]
     public class LayTitleBar : ContentControl
     {
-        private Control PART_HeaderBody = null;
+        private Panel PART_HeaderBody = null;
+        private Panel PART_WindowButtonGrid = null;
         private CompositeDisposable _disposables;
 
         /// <summary>
@@ -76,6 +80,21 @@ namespace LayUI.Avalonia.Controls
                 }
             }
         }
+
+        /// <summary>
+        /// 这是依赖属性名称
+        /// </summary>
+        public IBrush HeaderBackground
+        {
+            get { return GetValue(HeaderBackgroundProperty); }
+            set { SetValue(HeaderBackgroundProperty, value); }
+        }
+        /// <summary>
+        /// 定义<see cref="IBrush?"/>属性
+        /// </summary>
+        public static readonly StyledProperty<IBrush> HeaderBackgroundProperty =
+       AvaloniaProperty.Register<LayTitleBar, IBrush>(nameof(HeaderBackground), null);
+
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
             base.OnApplyTemplate(e);
@@ -93,9 +112,56 @@ namespace LayUI.Avalonia.Controls
                         }),
                 };
             }
-            PART_HeaderBody = e.NameScope.Find<Control>("PART_HeaderBody");
+            PART_HeaderBody = e.NameScope.Find<Panel>("PART_HeaderBody");
+            PART_WindowButtonGrid = e.NameScope.Find<Panel>("PART_WindowButtonGrid");
+            if (PART_HeaderBody != null) AddOreRemoveHandler(true);
             if (PART_HeaderBody != null) PART_HeaderBody.DoubleTapped -= PART_HeaderBody_DoubleTapped;
             if (PART_HeaderBody != null) PART_HeaderBody.DoubleTapped += PART_HeaderBody_DoubleTapped;
+        }
+        private void AddOreRemoveHandler(bool isAdd)
+        {
+            var items = PART_WindowButtonGrid.Children.ToList();
+            foreach (var item in items)
+            {
+                if (item is LayButton button)
+                {
+                    if (button.CommandParameter is WindowButtonType)
+                    {
+                        if (isAdd) item.AddHandler(Button.ClickEvent, UpdateWindowState);
+                        else item.RemoveHandler(Button.ClickEvent, UpdateWindowState);
+                    }
+                }
+            }
+        }
+        private void UpdateWindowState(object sender, global::Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            if (sender is LayButton button) {
+                if (button.CommandParameter is WindowButtonType type)
+                {
+                    if (VisualRoot is Window window)
+                    {
+                        switch (type)
+                        {
+                            case WindowButtonType.FullScreen:
+                                if (window.WindowState == WindowState.FullScreen) window.WindowState = WindowState.Normal;
+                                else window.WindowState = WindowState.FullScreen;
+                                break;
+                            case WindowButtonType.Minimized:
+                                window.WindowState = WindowState.Minimized;
+                                break;
+                            case WindowButtonType.MaximizedOrNormal:
+                                if (window.WindowState == WindowState.Maximized) window.WindowState = WindowState.Normal;
+                                else window.WindowState = WindowState.Maximized;
+                                break;
+                            case WindowButtonType.Closed:
+                                window.Close();
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
         }
 
         private void PART_HeaderBody_DoubleTapped(object sender, global::Avalonia.Interactivity.RoutedEventArgs e)
@@ -113,6 +179,7 @@ namespace LayUI.Avalonia.Controls
             base.OnDetachedFromVisualTree(e);
             _disposables?.Dispose();
             if (PART_HeaderBody != null) PART_HeaderBody.DoubleTapped -= PART_HeaderBody_DoubleTapped;
+            if (PART_HeaderBody != null) AddOreRemoveHandler(false);
         }
     }
 }

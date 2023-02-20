@@ -21,10 +21,12 @@
     <None Remove=".gitignore" />
     <None Remove="Assets\1.jpg" />
     <None Remove="Assets\2.jpg" />
+    <None Remove="Assets\AvaloniaLogo.png" />
     <None Remove="Assets\Fonts\微软雅黑.ttf" />
     <None Remove="Assets\动图.gif" />
   </ItemGroup>
   <ItemGroup>
+    <AvaloniaResource Include="Assets\AvaloniaLogo.png" />
     <AvaloniaResource Include="Assets\动图.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AvaloniaResource>

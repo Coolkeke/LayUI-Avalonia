@@ -7,6 +7,7 @@
         <Setter Property="SystemDecorations" Value="Full" />
         <Setter Property="ExtendClientAreaToDecorationsHint" Value="True" />
         <Setter Property="ExtendClientAreaChromeHints" Value="NoChrome" />
+        <Setter Property="WindowStartupLocation" Value="CenterScreen" />
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="TransparencyLevelHint" Value="Transparent" />
         <Setter Property="Template">
@@ -26,10 +27,10 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style Selector="Window.LayWindow[WindowState=Maximized] /template/ Grid#PART_Grid">
-        <Setter Property="Margin" Value="7" />
-    </Style>
     <Style Selector="Window.LayWindow[WindowState=FullScreen]/template/ Grid#PART_Grid">
+        <Setter Property="Margin" Value="0" />
+    </Style>
+    <Style Selector="Window.LayWindow[WindowState=Maximized] /template/ Grid#PART_Grid">
         <Setter Property="Margin" Value="7" />
     </Style>
     <!--  Add Styles Here  -->
