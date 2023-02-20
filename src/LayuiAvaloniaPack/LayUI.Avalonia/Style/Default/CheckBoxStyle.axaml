@@ -21,7 +21,7 @@
                         Content="选中"
                         IsChecked="true"
                         Type="Primary" />
-                    <lay:LayCheckBox Content="未选中" Type="Switch" />
+                    <lay:LayCheckBox Content="未选中" />
                     <lay:LayCheckBox
                         Margin="5,0"
                         Content="禁用"

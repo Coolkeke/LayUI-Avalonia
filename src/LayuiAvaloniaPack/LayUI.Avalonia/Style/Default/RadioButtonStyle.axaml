@@ -1,0 +1,79 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Design.PreviewWith>
+        <StackPanel>
+            <lay:LayRadioButton
+                Content="123"
+                GroupName="sez"
+                IsChecked="{x:Null}" />
+            <lay:LayRadioButton Content="123" GroupName="sez" />
+            <lay:LayRadioButton Content="123" GroupName="sez" />
+        </StackPanel>
+    </Design.PreviewWith>
+    <Style Selector="lay|LayRadioButton">
+        <Setter Property="Padding" Value="5 0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid Background="{TemplateBinding Background}">
+                        <Grid Background="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Viewbox Width="{TemplateBinding Size}" Height="{TemplateBinding Size}">
+                                <Grid>
+                                    <Ellipse
+                                        Width="30"
+                                        Height="30"
+                                        Stroke="{TemplateBinding BorderBrush}"
+                                        StrokeThickness="2" />
+                                    <Ellipse
+                                        Name="PART_Icon"
+                                        Margin="7"
+                                        Fill="{TemplateBinding BorderBrush}"
+                                        StrokeThickness="2" />
+                                </Grid>
+                            </Viewbox>
+                            <ContentPresenter
+                                Name="PART_ContentPresenter"
+                                Grid.Column="1"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}" />
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayRadioButton:unchecked">
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+    </Style>
+    <Style Selector="lay|LayRadioButton:unchecked /template/ Ellipse#PART_Icon">
+        <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="lay|LayRadioButton:unchecked:pointerover">
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
+    </Style>
+    <Style Selector="lay|LayRadioButton:indeterminate">
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+    </Style>
+    <Style Selector="lay|LayRadioButton:indeterminate:pointerover">
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
+    </Style>
+    <Style Selector="lay|LayRadioButton:indeterminate /template/ Ellipse#PART_Icon">
+        <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="lay|LayRadioButton:checked">
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
+    </Style>
+    <Style Selector="lay|LayRadioButton:checked /template/ Ellipse#PART_Icon">
+        <Setter Property="Opacity" Value="1" />
+    </Style>
+</Styles>

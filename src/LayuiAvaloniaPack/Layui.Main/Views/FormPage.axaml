@@ -67,8 +67,9 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <RadioButton Content="男" GroupName="sex" />
-                <RadioButton Content="女" GroupName="sex" />
+                <lay:LayRadioButton Content="未知" GroupName="sex" />
+                <lay:LayRadioButton Content="男" GroupName="sex" />
+                <lay:LayRadioButton Content="女" GroupName="sex" />
             </StackPanel>
         </StackPanel>
     </StackPanel>

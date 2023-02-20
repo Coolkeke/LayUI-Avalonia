@@ -8,6 +8,7 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ButtonStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CheckBoxStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TextBoxStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/RadioButtonStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ComboBoxStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ComboBoxItemStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ProgressBarStyle.axaml" />
