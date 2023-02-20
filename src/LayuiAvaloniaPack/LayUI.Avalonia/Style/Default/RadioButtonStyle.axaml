@@ -15,6 +15,7 @@
     <Style Selector="lay|LayRadioButton">
         <Setter Property="Padding" Value="5 0" />
         <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
