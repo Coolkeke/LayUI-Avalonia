@@ -27,8 +27,20 @@ namespace LayuiApp
 
         // Avalonia configuration, don't remove; also used by visual designer.
         public static AppBuilder BuildAvaloniaApp()
-            => AppBuilder.Configure<App>()
+        {
+            return AppBuilder.Configure<App>()
                 .UsePlatformDetect()
+                .With(new X11PlatformOptions
+                {
+                    EnableMultiTouch = true,
+                    UseDBusMenu = true,
+                    EnableIme = true
+                })
+                .With(new Win32PlatformOptions
+                {
+                    EnableMultitouch = true
+                })
                 .LogToTrace();
+        }
     }
 }

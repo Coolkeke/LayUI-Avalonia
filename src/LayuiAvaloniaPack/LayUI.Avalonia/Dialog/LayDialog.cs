@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Logging;
 using Avalonia.LogicalTree;
 using Avalonia.Threading;
 using LayUI.Avalonia.Controls;
@@ -133,8 +134,8 @@ namespace LayUI.Avalonia.Dialog
                 }
                 catch (Exception ex)
                 {
-
-                    throw ex;
+                    Logger.TryGet(LogEventLevel.Error, "LayUI-Avalonia")
+                        ?.Log("Dialog", "当前对话框出现异常", ex);
                 }
             });
         }
@@ -160,8 +161,8 @@ namespace LayUI.Avalonia.Dialog
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                Logger.TryGet(LogEventLevel.Error, "LayUI-Avalonia")
+                                       ?.Log("ViewAndViewModelAction", "VM转换异常", ex);
             }
         }
         /// <summary>

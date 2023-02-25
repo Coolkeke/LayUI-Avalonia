@@ -1,4 +1,5 @@
 ﻿using Avalonia.Controls;
+using Avalonia.Logging;
 using LayUI.Avalonia.Interface;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,8 @@ namespace LayUI.Avalonia.Dialog
             }
             catch (Exception ex)
             {
-                throw ex;
+                Logger.TryGet(LogEventLevel.Error, "LayUI-Avalonia")
+                                       ?.Log("RegisterDialog", "对话框注册异常", ex);
             }
         }
         public void RegisterDialog<TView, TViewModel>(string dialogName) where TViewModel : ILayDialogAware
@@ -37,7 +39,8 @@ namespace LayUI.Avalonia.Dialog
             }
             catch (Exception ex)
             {
-                throw ex;
+                Logger.TryGet(LogEventLevel.Error, "LayUI-Avalonia")
+                                       ?.Log("RegisterDialog", "对话框注册异常", ex);
             }
         }
     }
