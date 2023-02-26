@@ -1,5 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Logging;
 using Layui.Core.Mvvm;
 using Layui.Core.Resources;
 using Layui.Main.Models;

@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Data;
+using Avalonia.Logging;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
@@ -28,57 +29,67 @@ namespace LayUI.Avalonia.Extends
         }
         private static async void OnSourceChanged(AvaloniaPropertyChangedEventArgs obj)
         {
-            if (obj.Sender is Image image)
+            try
             {
-                Uri uri = null;
-                if (obj.NewValue is string rawUri)
+
+                if (obj.Sender is Image image)
                 {
-                    if (rawUri.StartsWith("assembly://"))
+                    Uri uri = null;
+                    if (obj.NewValue is string rawUri)
                     {
-                        SetIsLoaded(image, true);
-                        var appDirectory = System.IO.Directory.GetCurrentDirectory();
-                        uri = new Uri($"{appDirectory}/{rawUri.Replace("assembly://", "")}");
-                        image.Source = new Bitmap(uri.LocalPath);
-                        SetIsLoaded(image, false);
-                        return;
-                    }
-                    else if (rawUri.Trim().StartsWith("http://") || rawUri.Trim().StartsWith("https://"))
-                    {
-                        await Task.Run(async () =>
+                        if (rawUri.StartsWith("assembly://"))
                         {
-                            using (WebClient client = new WebClient())
+                            SetIsLoaded(image, true);
+                            var appDirectory = System.IO.Directory.GetCurrentDirectory();
+                            uri = new Uri($"{appDirectory}/{rawUri.Replace("assembly://", "")}");
+                            image.Source = new Bitmap(uri.LocalPath);
+                            SetIsLoaded(image, false);
+                            return;
+                        }
+                        else if (rawUri.Trim().StartsWith("http://") || rawUri.Trim().StartsWith("https://"))
+                        {
+                            await Task.Run(async () =>
                             {
-                                await Dispatcher.UIThread.InvokeAsync(() => SetIsLoaded(image, true));
-                                var bytes = await client.DownloadDataTaskAsync(new Uri(rawUri));
-                                Stream stream = new MemoryStream(bytes);
-                                await Dispatcher.UIThread.InvokeAsync(() =>
+                                using (WebClient client = new WebClient())
                                 {
-                                    image.Source = new Bitmap(stream);
-                                    SetIsLoaded(image, false);
-                                });
-                            }
-                        });
+                                    await Dispatcher.UIThread.InvokeAsync(() => SetIsLoaded(image, true));
+                                    var bytes = await client.DownloadDataTaskAsync(new Uri(rawUri));
+                                    Stream stream = new MemoryStream(bytes);
+                                    await Dispatcher.UIThread.InvokeAsync(() =>
+                                    {
+                                        image.Source = new Bitmap(stream);
+                                        SetIsLoaded(image, false);
+                                    });
+                                }
+                            });
+                        }
+                        else if (rawUri.StartsWith("avares://"))
+                        {
+                            SetIsLoaded(image, true);
+                            uri = new Uri(rawUri);
+                            var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
+                            var asset = assets.Open(uri);
+                            image.Source = new Bitmap(asset);
+                            SetIsLoaded(image, false);
+                        }
+                        else
+                        {
+                            SetIsLoaded(image, true);
+                            image.Source = new Bitmap(rawUri);
+                            SetIsLoaded(image, true);
+                        }
                     }
-                    else if (rawUri.StartsWith("avares://"))
+                    if (obj.NewValue is IImage)
                     {
-                        SetIsLoaded(image, true);
-                        uri = new Uri(rawUri);
-                        var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
-                        var asset = assets.Open(uri);
-                        image.Source = new Bitmap(asset);
-                        SetIsLoaded(image, false);
-                    }
-                    else
-                    {
-                        SetIsLoaded(image, true);
-                        image.Source = new Bitmap(rawUri);
-                        SetIsLoaded(image, true);
+                        image.Source = obj.NewValue as IImage;
                     }
                 }
-                if (obj.NewValue is IImage)
-                {
-                    image.Source = obj.NewValue as IImage;
-                }
+            }
+            catch (Exception ex)
+            {
+
+                Logger.TryGet(LogEventLevel.Error, "LayUI-Avalonia")
+                    ?.Log("ImageHelper", "图片帮助类Source解析出错：", ex);
             }
         }
 

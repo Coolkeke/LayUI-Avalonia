@@ -1,8 +1,10 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Logging;
 using Avalonia.Media;
 using System;
+using System.IO;
 
 namespace LayuiApp
 {
@@ -12,18 +14,36 @@ namespace LayuiApp
         // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
         // yet and stuff might break.
         [STAThread]
-        public static void Main(string[] args) => BuildAvaloniaApp()
-        .With(new FontManagerOptions
+        public static void Main(string[] args)
         {
-            FontFallbacks = new[]
+            
+            try
             {
-                new FontFallback
-                {
-                    FontFamily = new FontFamily("avares://LayuiApp/Assets/Fonts/微软雅黑.ttf#Microsoft YaHei")
-                }
+                BuildAvaloniaApp()
+               .With(new FontManagerOptions
+               {
+                   FontFallbacks = new[]
+                   {
+                        new FontFallback
+                        {
+                            FontFamily = new FontFamily("avares://LayuiApp/Assets/Fonts/微软雅黑.ttf#Microsoft YaHei")
+                        }
+                   }
+               })
+               .StartWithClassicDesktopLifetime(args);
             }
-        })
-        .StartWithClassicDesktopLifetime(args);
+            catch (Exception ex)
+            {
+                // 在此处理异常，例如新增到日志文件
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                // 这段代码块是可选项
+                // 使用 finally 代码块释放资源
+
+            }
+        }
 
         // Avalonia configuration, don't remove; also used by visual designer.
         public static AppBuilder BuildAvaloniaApp()
