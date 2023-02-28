@@ -67,6 +67,7 @@
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="0.10.18" />
     <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="0.10.18" />
     <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.18" />
+    <PackageReference Include="log4net" Version="2.0.15" />
     <PackageReference Include="Prism.Avalonia" Version="8.1.97.2" />
     <PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.2" />
     <PackageReference Include="XamlNameReferenceGenerator" Version="1.3.4" />
@@ -75,5 +76,10 @@
     <ProjectReference Include="..\LayUI.Avalonia\LayUI.Avalonia.csproj" />
     <ProjectReference Include="..\Layui.Core\Layui.Core.csproj" />
     <ProjectReference Include="..\Layui.Main\Layui.Main.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

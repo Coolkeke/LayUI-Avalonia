@@ -9,7 +9,6 @@
     xmlns:prism="http://prismlibrary.com/"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
     <lay:LayDialogHost dialog:LayDialog.Token="DialogPageRoot">
         <Grid>

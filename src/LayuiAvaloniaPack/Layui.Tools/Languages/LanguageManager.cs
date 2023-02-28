@@ -41,8 +41,15 @@ namespace Layui.Tools.Languages
         {
             get
             {
-                if (LanguageDictionary == null) return key;
-                return LanguageDictionary[key].ToString();
+                try
+                {
+                    if (LanguageDictionary == null) return key;
+                    return LanguageDictionary[key].ToString();
+                }
+                catch
+                {
+                    return key;
+                }
             }
         }
         public void Invalidate()

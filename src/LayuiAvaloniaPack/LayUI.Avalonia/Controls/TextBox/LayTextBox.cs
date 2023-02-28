@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
+using Avalonia.Logging;
 using Avalonia.Media;
 using LayUI.Avalonia.Enums;
 using System;
@@ -51,22 +52,26 @@ namespace LayUI.Avalonia.Controls
         }
         protected override void OnTextInput(TextInputEventArgs e)
         {
-            switch (InputType)
+            try
             {
-                case InputType.Phone:
-                    e.Handled = IsPhone(e);
-                    break;
-                case InputType.Number:
-                    e.Handled = new Regex(@"[^0-9|\-|\.]").IsMatch(e.Text);
-                    break;
-                default:
-                    break;
+                switch (InputType)
+                {
+                    case InputType.Phone:
+                        e.Handled = IsPhone(e);
+                        break;
+                    case InputType.Number:
+                        e.Handled = new Regex(@"[^0-9|\-|\.]").IsMatch(e.Text);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.TryGet(LogEventLevel.Error, "LayUI-Avalonia")
+                                   ?.Log("OnTextInput", "", ex);
             }
             base.OnTextInput(e);
-        }
-        protected override void OnKeyDown(KeyEventArgs e)
-        {
-            base.OnKeyDown(e);
         }
         /// 检验手机号
         /// </summary>
@@ -74,8 +79,17 @@ namespace LayUI.Avalonia.Controls
         /// <returns></returns>
         private bool IsPhone(TextInputEventArgs e)
         {
-            if ((e.Source as TextBox).Text?.ToCharArray().Length > 10) return true;
-            return Regex.IsMatch(e.Text, @"[^(1)\d{10}$]");
+            try
+            {
+                if ((e.Source as TextBox).Text?.ToCharArray().Length > 10) return true;
+                return Regex.IsMatch(e.Text, @"[^(1)\d{10}$]");
+            }
+            catch (Exception ex)
+            {
+                Logger.TryGet(LogEventLevel.Error, "LayUI-Avalonia")
+                                   ?.Log("IsPhone", "", ex);
+            }
+            return false;
         }
         protected override void OnLostFocus(RoutedEventArgs e)
         {
@@ -85,7 +99,7 @@ namespace LayUI.Avalonia.Controls
         protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
         {
             base.OnAttachedToVisualTree(e);
-            if (IsFocus) Focus();
+            if (IsFocus)Focus();
         }
     }
 }

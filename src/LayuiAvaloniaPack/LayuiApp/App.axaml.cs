@@ -7,7 +7,7 @@ using Avalonia.Platform;
 using Layui.Main;
 using Layui.Tools.Fonts;
 using Layui.Tools.Languages;
-using Layui.Tools.Log;
+using Layui.Tools.Logs;
 using LayUI.Avalonia;
 using LayUI.Avalonia.Dialog;
 using LayUI.Avalonia.Interface;
@@ -24,12 +24,13 @@ namespace LayuiApp
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
-            base.Initialize();
+            if (!Design.IsDesignMode) base.Initialize();
         }
         public override void RegisterServices()
         {
+            AvaloniaLocator.CurrentMutable.Bind<IContainerProvider>().ToConstant(Container);
             AvaloniaLocator.CurrentMutable.Bind<IFontManagerImpl>().ToConstant(new CustomFontManagerImpl());
-           // AvaloniaLocator.CurrentMutable.Bind<ILogSink>().ToConstant(new LayLogSink());
+            AvaloniaLocator.CurrentMutable.Bind<ILogSink>().ToConstant(new LayLogSink());
             base.RegisterServices();
         }
         protected override IAvaloniaObject CreateShell()
@@ -40,9 +41,11 @@ namespace LayuiApp
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterInstance<ILayDialogService>(new LayDialogService());
+            containerRegistry.RegisterInstance<ILayLogger>(new LayLogger());
         }
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
+            Container.Resolve<ILayLogger>().Info("ÕýÔÚ×¢²áÄ£¿é...");
             moduleCatalog.AddModule<MainModule>();
         }
     }

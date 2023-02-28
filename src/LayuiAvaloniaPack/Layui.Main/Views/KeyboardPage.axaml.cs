@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Input;
+using Prism.Mvvm;
 
 namespace Layui.Main.Views
 {
@@ -8,6 +9,8 @@ namespace Layui.Main.Views
         public KeyboardPage()
         {
             InitializeComponent();
+            if (!Design.IsDesignMode)
+                ViewModelLocator.SetAutoWireViewModel(this, true);
         }
     }
 }

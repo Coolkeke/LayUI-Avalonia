@@ -1,7 +1,10 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Logging;
 using Avalonia.Media;
+using Layui.Tools.Logs;
+using Prism.Ioc;
 using System;
 
 namespace LayuiApp
@@ -12,18 +15,24 @@ namespace LayuiApp
         // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
         // yet and stuff might break.
         [STAThread]
-        public static void Main(string[] args) => BuildAvaloniaApp()
-        .With(new FontManagerOptions
+        public static void Main(string[] args)
         {
-            FontFallbacks = new[]
+            try
             {
-                new FontFallback
-                {
-                    FontFamily = new FontFamily("avares://LayuiApp/Assets/Fonts/微软雅黑.ttf#Microsoft YaHei")
-                }
+                //初始化日志配置信息
+                log4net.Config.XmlConfigurator.Configure();
+                BuildAvaloniaApp()
+                .StartWithClassicDesktopLifetime(args);
             }
-        })
-        .StartWithClassicDesktopLifetime(args);
+            catch (Exception ex)
+            {
+                Logger.TryGet(LogEventLevel.Error, nameof(Program)).GetValueOrDefault().Log(nameof(Main), "", ex);
+            }
+            finally
+            {
+                AvaloniaLocator.Current.GetService<IContainerProvider>()?.Resolve<ILayLogger>()?.Dispose();
+            }
+        }
 
         // Avalonia configuration, don't remove; also used by visual designer.
         public static AppBuilder BuildAvaloniaApp()
@@ -40,7 +49,8 @@ namespace LayuiApp
                 {
                     EnableMultitouch = true
                 })
-                .LogToTrace();
+                //日志过滤
+                .LogToTrace(LogEventLevel.Error, LogArea.Property, LogArea.Layout);
         }
     }
 }

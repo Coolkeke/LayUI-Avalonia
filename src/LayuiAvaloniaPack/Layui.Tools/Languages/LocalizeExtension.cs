@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Data;
 using Avalonia.Data.Converters;
 using Avalonia.Data.Core;
+using Avalonia.Logging;
 using Avalonia.Markup.Xaml;
 using Avalonia.Markup.Xaml.MarkupExtensions;
 using System;
@@ -54,50 +55,65 @@ namespace Layui.Tools.Languages
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            if (!(serviceProvider.GetService(typeof(IProvideValueTarget)) is IProvideValueTarget provideValueTarget)) return this;
-            if (!(provideValueTarget.TargetObject is AvaloniaObject targetObject)) return this;
-            if (!(provideValueTarget.TargetProperty is AvaloniaProperty targetProperty)) return this;
-            switch (Key)
+            try
             {
-                case string key:
-                    {
-                        var binding = new ReflectionBindingExtension($"[{Key}]")
+                if (!(serviceProvider.GetService(typeof(IProvideValueTarget)) is IProvideValueTarget provideValueTarget)) return this;
+                if (!(provideValueTarget.TargetObject is AvaloniaObject targetObject)) return this;
+                if (!(provideValueTarget.TargetProperty is AvaloniaProperty targetProperty)) return this;
+                switch (Key)
+                {
+                    case string key:
                         {
-                            Converter = Converter,
-                            ConverterParameter = ConverterParameter,
-                            Source = Source,
-                            Mode = BindingMode.OneWay
-                        };
-                        return binding.ProvideValue(serviceProvider);
-                    }
-                case Binding keyBinding when targetObject is StyledElement element:
-                    {
-                        if (element.DataContext != null)
-                        {
-                            var binding = SetLangBinding(element, targetProperty, keyBinding.Path, element.DataContext);
+                            var binding = new ReflectionBindingExtension($"[{Key}]")
+                            {
+                                Converter = Converter,
+                                ConverterParameter = ConverterParameter,
+                                Source = Source,
+                                Mode = BindingMode.OneWay
+                            };
                             return binding.ProvideValue(serviceProvider);
                         }
-                        SetTargetProperty(element, targetProperty);
-                        element.DataContextChanged += LangExtension_DataContextChanged;
-                        break;
-                    }
+                    case Binding keyBinding when targetObject is StyledElement element:
+                        {
+                            if (element.DataContext != null)
+                            {
+                                var binding = SetLangBinding(element, targetProperty, keyBinding.Path, element.DataContext);
+                                return binding.ProvideValue(serviceProvider);
+                            }
+                            SetTargetProperty(element, targetProperty);
+                            element.DataContextChanged += LangExtension_DataContextChanged;
+                            break;
+                        }
+                }
             }
-
+            catch (Exception ex)
+            {
+                Logger.TryGet(LogEventLevel.Error, "LayUI-Avalonia")
+                    ?.Log("ProvideValue", "", ex);
+            }
             return string.Empty;
         }
 
         private void LangExtension_DataContextChanged(object? sender, EventArgs e)
         {
-            switch (sender)
+            try
             {
-                case StyledElement element:
-                    {
-                        element.DataContextChanged -= LangExtension_DataContextChanged;
-                        if (!(Key is Binding keyBinding)) return;
-                        var targetProperty = GetTargetProperty(element);
-                        element.Bind(targetProperty, keyBinding);
-                        break;
-                    }
+                switch (sender)
+                {
+                    case StyledElement element:
+                        {
+                            element.DataContextChanged -= LangExtension_DataContextChanged;
+                            if (!(Key is Binding keyBinding)) return;
+                            var targetProperty = GetTargetProperty(element);
+                            element.Bind(targetProperty, keyBinding);
+                            break;
+                        }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.TryGet(LogEventLevel.Error, "LayUI-Avalonia")
+                    ?.Log("LangExtension_DataContextChanged", "", ex);
             }
         }
 

@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Prism.Mvvm;
 
 namespace Layui.Main.Views
 {
@@ -7,6 +8,8 @@ namespace Layui.Main.Views
         public Message()
         {
             InitializeComponent();
+            if (!Design.IsDesignMode)
+                ViewModelLocator.SetAutoWireViewModel(this, true);
         }
     }
 }
