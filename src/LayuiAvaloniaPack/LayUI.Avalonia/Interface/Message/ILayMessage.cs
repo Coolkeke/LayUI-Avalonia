@@ -13,12 +13,12 @@ namespace LayUI.Avalonia.Interface
     public interface ILayMessage
     {
         /// <summary>
-        /// 发送数据
+        /// 显示
         /// </summary>
         /// <param name="info">详情</param>
         /// <param name="type">类型</param>
         /// <param name="token">唯一标识</param>
         /// <returns></returns>
-        Task Send(Information info, MessageType type, string token);
+        Task Show(Information info, MessageType type, string token);
     }
 }
