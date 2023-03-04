@@ -3,7 +3,7 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:dialog="using:LayUI.Avalonia.Dialog"
+    xmlns:global="using:LayUI.Avalonia.Global"
     xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
     xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
     xmlns:lang="clr-namespace:Layui.Tools.Languages;assembly=Layui.Tools"
@@ -32,8 +32,17 @@
                 <TextBlock VerticalAlignment="Center" Text="{Binding #mainWindow.Title, Mode=OneWay}" />
             </StackPanel>
         </lay:LayTitleBar.HeaderContent>
-        <lay:LayDialogHost dialog:LayDialog.Token="RootDialog">
-            <ContentControl prism:RegionManager.RegionName="{Binding Source={x:Static res:SystemResource.Nav_MainContent}}" />
-        </lay:LayDialogHost>
+        <lay:LayMessageHost global:LayMessage.Token="RootMessage">
+            <lay:LayMessageHost.Styles>
+                <Style Selector="lay|LayMessageControl">
+                    <Setter Property="Margin" Value="2 1" />
+                    <Setter Property="Padding" Value="10" />
+                    <Setter Property="FontSize" Value="20" />
+                </Style>
+            </lay:LayMessageHost.Styles>
+            <lay:LayDialogHost global:LayDialog.Token="RootDialog">
+                <ContentControl prism:RegionManager.RegionName="{Binding Source={x:Static res:SystemResource.Nav_MainContent}}" />
+            </lay:LayDialogHost>
+        </lay:LayMessageHost>
     </lay:LayTitleBar>
 </Window>

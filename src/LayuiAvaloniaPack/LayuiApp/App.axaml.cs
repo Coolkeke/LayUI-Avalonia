@@ -9,7 +9,7 @@ using Layui.Tools.Fonts;
 using Layui.Tools.Languages;
 using Layui.Tools.Logs;
 using LayUI.Avalonia;
-using LayUI.Avalonia.Dialog;
+using LayUI.Avalonia.Global;
 using LayUI.Avalonia.Interface;
 using LayuiApp.Views;
 using Prism.DryIoc;
@@ -42,6 +42,7 @@ namespace LayuiApp
         {
             containerRegistry.RegisterInstance<ILayDialogService>(new LayDialogService());
             containerRegistry.RegisterInstance<ILayLogger>(new LayLogger());
+            containerRegistry.RegisterInstance<ILayMessage>(new LayMessage());
         }
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {

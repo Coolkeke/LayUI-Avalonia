@@ -12,7 +12,7 @@ namespace LayUI.Avalonia.Controls
         /// <summary>
         /// 存储对话视图容器
         /// </summary>
-        internal Grid Items { get; private set; }
+        internal StackPanel Items { get; private set; }
         /// <summary>
         /// 唯一标识ID
         /// </summary>
@@ -30,7 +30,7 @@ namespace LayUI.Avalonia.Controls
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
             base.OnApplyTemplate(e);
-            Items = e.NameScope.Find<Grid>("PART_Items");
+            Items = e.NameScope.Find<StackPanel>("PART_Items");
         }
     }
 }

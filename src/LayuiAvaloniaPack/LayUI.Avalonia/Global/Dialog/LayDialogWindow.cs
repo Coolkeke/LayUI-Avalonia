@@ -12,7 +12,7 @@ using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LayUI.Avalonia.Dialog
+namespace LayUI.Avalonia.Global
 {
     /// <summary>
     ///  LayDialogWindow

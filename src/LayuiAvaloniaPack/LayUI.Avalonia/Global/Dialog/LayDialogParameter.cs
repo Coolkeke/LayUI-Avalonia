@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using LayUI.Avalonia.Interface;
 
-namespace LayUI.Avalonia.Dialog
+namespace LayUI.Avalonia.Global
 {
     public class LayDialogParameter : ILayDialogParameter
     {

@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace LayUI.Avalonia.Dialog
+namespace LayUI.Avalonia.Global
 {
     public class LayDialog : ILayDialog
     {
@@ -181,6 +181,43 @@ namespace LayUI.Avalonia.Dialog
                 Dispatcher.UIThread.MainLoop(source.Token);
             }
 
+        }
+
+        public void Close(string token)
+        {
+            Dispatcher.UIThread.InvokeAsync(() =>
+            {
+                try
+                {
+
+                    if (!DialogHosts.ContainsKey(token)) return;
+                    var dialogHosts = DialogHosts[token];
+                    dialogHosts?.Items?.Children?.Clear();
+
+                }
+                catch (Exception ex)
+                {
+                    Logger.TryGet(LogEventLevel.Error, "LayUI-Avalonia")
+                                             ?.Log("Close", "对话框关闭异常", ex);
+                }
+            });
+        }
+
+        public void CloseAll()
+        {
+            try
+            {
+                if (DialogHosts == null) return;
+                foreach (var dialogHost in DialogHosts)
+                {
+                    Close(dialogHost.Key);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.TryGet(LogEventLevel.Error, "LayUI-Avalonia")
+                                                         ?.Log("CloseAll", "对话框关闭异常", ex);
+            }
         }
     }
 }

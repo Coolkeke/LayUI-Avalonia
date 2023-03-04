@@ -19,7 +19,7 @@ namespace LayUI.Avalonia.Interface
         /// <param name="type">类型</param>
         /// <param name="token">唯一标识</param>
         /// <returns></returns>
-        Task Show(Information info, NotificationType type, string token);
+        void Show(Information info, NotificationType type, string token);
         /// <summary>
         /// 显示
         /// </summary>
@@ -28,6 +28,15 @@ namespace LayUI.Avalonia.Interface
         /// <param name="callback">数据处理回调</param>
         /// <param name="token">唯一标识</param>
         /// <returns></returns>
-        Task Show(Information info, NotificationType type, Action<ButtonResult> callback, string token);
+        void Show(Information info, NotificationType type, Action<ButtonResult> callback, string token);
+        /// <summary>
+        /// 关闭信息通知目标容器
+        /// </summary>
+        /// <param name="token"></param>
+        void Close(string token);
+        /// <summary>
+        /// 关闭所有信息通知容器
+        /// </summary>
+        void CloseAll();
     }
 }

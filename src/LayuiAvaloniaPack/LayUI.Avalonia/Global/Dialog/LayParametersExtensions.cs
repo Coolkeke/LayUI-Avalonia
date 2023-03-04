@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-namespace LayUI.Avalonia.Dialog
+namespace LayUI.Avalonia.Global
 {
     [EditorBrowsable(EditorBrowsableState.Never)]
     internal static class LayParametersExtensions

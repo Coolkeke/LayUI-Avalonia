@@ -1,13 +1,13 @@
 ﻿<Styles
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:dialog="clr-namespace:LayUI.Avalonia.Dialog">
+    xmlns:global="clr-namespace:LayUI.Avalonia.Global">
     <Design.PreviewWith>
         <Border Padding="20">
-            <dialog:LayDialogWindow Width="500" Height="300" />
+            <global:LayDialogWindow Width="500" Height="300" />
         </Border>
     </Design.PreviewWith>
-    <Style Selector="dialog|LayDialogWindow">
+    <Style Selector="global|LayDialogWindow">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -27,7 +27,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style Selector="dialog|LayDialogWindow[IsOpen=false] /template/ Grid#PART_Body">
+    <Style Selector="global|LayDialogWindow[IsOpen=false] /template/ Grid#PART_Body">
         <Style.Animations>
             <Animation Duration="0:0:0.1">
                 <KeyFrame Cue="0%">
@@ -39,7 +39,7 @@
             </Animation>
         </Style.Animations>
     </Style>
-    <Style Selector="dialog|LayDialogWindow[IsOpen=false] /template/ ContentPresenter#PART_ContentPresenter">
+    <Style Selector="global|LayDialogWindow[IsOpen=false] /template/ ContentPresenter#PART_ContentPresenter">
         <Style.Animations>
             <Animation Duration="0:0:0.1">
                 <KeyFrame Cue="0%">
@@ -55,7 +55,7 @@
             </Animation>
         </Style.Animations>
     </Style>
-    <Style Selector="dialog|LayDialogWindow[IsOpen=true] /template/ ContentPresenter#PART_ContentPresenter">
+    <Style Selector="global|LayDialogWindow[IsOpen=true] /template/ ContentPresenter#PART_ContentPresenter">
         <Style.Animations>
             <Animation Duration="0:0:0.1">
                 <KeyFrame Cue="0%">
@@ -71,7 +71,7 @@
             </Animation>
         </Style.Animations>
     </Style>
-    <Style Selector="dialog|LayDialogWindow[IsOpen=true] /template/ Grid#PART_Body">
+    <Style Selector="global|LayDialogWindow[IsOpen=true] /template/ Grid#PART_Body">
         <Style.Animations>
             <Animation Duration="0:0:0.1">
                 <KeyFrame Cue="0%">

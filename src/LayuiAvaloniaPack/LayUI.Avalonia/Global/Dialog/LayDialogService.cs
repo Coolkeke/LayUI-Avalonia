@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LayUI.Avalonia.Dialog
+namespace LayUI.Avalonia.Global
 {
     /// <summary>
     ///  LayDialogService

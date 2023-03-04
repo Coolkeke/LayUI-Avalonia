@@ -15,5 +15,9 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CheckBoxStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/KeyboardStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DialogHostStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/MessageControlStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/MessageHostStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/NotificationControlStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/NotificationHostStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DialogWindowStyle.axaml" />
 </Styles>

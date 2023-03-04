@@ -22,5 +22,14 @@ namespace LayUI.Avalonia.Interface
         Task Show(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string token);
 
         //void ShowDialog(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string token);
+        /// <summary>
+        /// 关闭目标容器对话框
+        /// </summary>
+        /// <param name="token"></param>
+        void Close(string token);
+        /// <summary>
+        /// 关闭所有容器对话框
+        /// </summary>
+        void CloseAll();
     }
 }
