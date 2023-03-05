@@ -28,6 +28,7 @@ namespace LayUI.Avalonia.Extends
         }
         private static async void OnSourceChanged(AvaloniaPropertyChangedEventArgs obj)
         {
+            if (Design.IsDesignMode) return;
             if (obj.Sender is Image image)
             {
                 Uri uri = null;
@@ -110,7 +111,7 @@ namespace LayUI.Avalonia.Extends
         /// </summary>
         public static readonly AttachedProperty<bool> IsLoadedProperty =
             AvaloniaProperty.RegisterAttached<IAvaloniaObject, IAvaloniaObject, bool>(
-            "IsLoaded", false,false, BindingMode.TwoWay);
+            "IsLoaded", false, false, BindingMode.TwoWay);
         /// <summary>
         /// 设置图片加载状态
         /// </summary>

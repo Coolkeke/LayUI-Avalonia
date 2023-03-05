@@ -5,12 +5,13 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ColorStyle.axaml" />
     <Design.PreviewWith>
         <Border Padding="20">
-            <lay:LayTextBox Width="200" />
+            <lay:LayTextBox Width="200" IsFocus="True" />
         </Border>
     </Design.PreviewWith>
     <Style Selector="lay|LayTextBox">
         <Setter Property="Background" Value="White" />
         <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="MinHeight" Value="40" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="SelectionForegroundBrush" Value="White" />
         <Setter Property="CornerRadius" Value="2" />
@@ -21,94 +22,72 @@
         <Setter Property="Cursor" Value="Ibeam" />
         <Setter Property="InputMethod.IsInputMethodEnabled" Value="True" />
         <Setter Property="ClipToBounds" Value="False" />
-        <Setter Property="FocusAdorner">
-            <FocusAdornerTemplate>
-                <Grid>
-                    <Path
-                        Width="10"
-                        Height="10"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Data="M0.99999994,0 L9,0 C9.5522852,0 10,0.44771525 10,0.99999994 10,1.5522847 9.5522852,2 9,2 L2,2 2,9 C2,9.5522852 1.5522847,10 0.99999994,10 0.44771525,10 0,9.5522852 0,9 L0,0.99999994 C0,0.98274112 0.00043722193,0.96558434 0.0013011694,0.94854009 0.0021651657,0.93149596 0.0034558875,0.91456437 0.0051629543,0.89775574 0.006869887,0.88094729 0.0089931646,0.86426181 0.011522174,0.84770977 0.014051332,0.83115792 0.016986223,0.81473953 0.020316392,0.79846501 0.023646669,0.78219074 0.027372228,0.76606035 0.031482577,0.7500844 0.035593066,0.73410851 0.040088348,0.71828705 0.044957995,0.70263058 0.049827691,0.68697411 0.055071756,0.67148256 0.060679764,0.65616637 0.066287711,0.64085037 0.072259612,0.62570965&#xD;&#xA;0.078584999,0.61075479 0.084910303,0.5958001 0.091589093,0.5810312 0.098610818,0.56645858 0.10563262,0.55188614 0.11299736,0.53750998 0.12069464,0.52334058 0.12839185,0.50917131 0.13642159,0.4952088 0.14477327,0.48146352 0.15312514,0.46771845 0.16179894,0.45419058 0.17078429,0.44089049 0.17976965,0.4275904 0.18906657,0.41451809 0.19866452,0.40168405 0.20826259,0.38885 0.21816169,0.3762542 0.22835135,0.36390707 0.2385411,0.35156009 0.24902141,0.33946171 0.25978193,0.32762259 0.27054235,0.31578344&#xD;&#xA;0.28158295,0.30420348 0.2928932,0.2928932 0.30420348,0.28158295 0.31578344,0.27054235 0.32762259,0.25978193 0.33946171,0.24902141 0.35156009,0.2385411 0.36390707,0.22835135 0.3762542,0.21816169 0.38885,0.20826259 0.40168405,0.19866452 0.41451809,0.18906657 0.4275904,0.17976965 0.44089049,0.17078429 0.45419058,0.16179894 0.46771845,0.15312514 0.48146352,0.14477327 0.4952088,0.13642159 0.50917131,0.12839185 0.52334058,0.12069464 0.53750998,0.11299736 0.55188614,0.10563262 0.56645858,0.098610818&#xD;&#xA;0.5810312,0.091589093 0.5958001,0.084910303 0.61075479,0.078584999 0.62570965,0.072259612 0.64085037,0.066287711 0.65616637,0.060679764 0.67148256,0.055071756 0.68697411,0.049827691 0.70263058,0.044957995 0.71828705,0.040088348 0.73410851,0.035593066 0.7500844,0.031482577 0.76606035,0.027372228 0.78219074,0.023646669 0.79846501,0.020316392 0.81473953,0.016986223 0.83115792,0.014051332 0.84770977,0.011522174 0.86426181,0.0089931646 0.88094729,0.006869887 0.89775574,0.0051629543 0.91456437,0.0034558875 0.93149596,0.0021651657&#xD;&#xA;0.94854009,0.0013011694 0.96558434,0.00043722193 0.98274112,0 0.99999994,0 z"
-                        Fill="{DynamicResource LightGreen}"
-                        Stretch="Fill" />
-                    <Path
-                        Width="10"
-                        Height="10"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Bottom"
-                        Data="M0.99999994,0 C1.5522847,0 2,0.44771525 2,0.99999994 L2,8 9,8 C9.5522852,8 10,8.4477148 10,9 10,9.5522852 9.5522852,10 9,10 L0.99999994,10 C0.98274112,10 0.96558434,9.9995632 0.94854009,9.9986992 0.93149596,9.9978352 0.91456437,9.9965439 0.89775574,9.9948368 0.88094729,9.9931297 0.86426181,9.9910069 0.84770977,9.9884777 0.83115792,9.9859486 0.81473953,9.9830141 0.79846501,9.9796839 0.78219074,9.9763536 0.76606035,9.9726276 0.7500844,9.9685173 0.73410851,9.964407 0.71828705,9.9599113 0.70263058,9.9550419 0.68697411,9.9501724 0.67148256,9.9449282 0.65616637,9.9393206 0.64085037,9.933712 0.62570965,9.9277401&#xD;&#xA;0.61075479,9.9214153 0.5958001,9.9150896 0.5810312,9.908411 0.56645858,9.9013891 0.55188614,9.8943672 0.53750998,9.8870029 0.52334058,9.8793058 0.50917131,9.8716078 0.4952088,9.8635788 0.48146352,9.8552265 0.46771845,9.8468752 0.45419058,9.8382015 0.44089049,9.829216 0.4275904,9.8202305 0.41451809,9.8109331 0.40168405,9.8013353 0.38885,9.7917376 0.3762542,9.7818384 0.36390707,9.7716484 0.35156009,9.7614594 0.33946171,9.7509785 0.32762259,9.7402182 0.31578344,9.7294579&#xD;&#xA;0.30420348,9.7184172 0.2928932,9.7071066 0.28158295,9.695797 0.27054235,9.6842165 0.25978193,9.6723776 0.24902141,9.6605387 0.2385411,9.6484404 0.22835135,9.6360931 0.21816169,9.6237459 0.20826259,9.6111498 0.19866452,9.5983162 0.18906657,9.5854816 0.17976965,9.5724096 0.17078429,9.5591097 0.16179894,9.5458097 0.15312514,9.5322819 0.14477327,9.5185366 0.13642159,9.5047913 0.12839185,9.4908285 0.12069464,9.4766598 0.11299736,9.4624901 0.10563262,9.4481144 0.098610818,9.4335413&#xD;&#xA;0.091589093,9.4189692 0.084910303,9.4042006 0.078584999,9.389245 0.072259612,9.3742905 0.066287711,9.3591499 0.060679764,9.3438339 0.055071756,9.3285179 0.049827691,9.3130264 0.044957995,9.29737 0.040088348,9.2817135 0.035593066,9.265892 0.031482577,9.2499161 0.027372228,9.2339401 0.023646669,9.2178097 0.020316392,9.2015352 0.016986223,9.1852608 0.014051332,9.1688423 0.011522174,9.1522903 0.0089931646,9.1357384 0.006869887,9.1190529 0.0051629543,9.1022444 0.0034558875,9.0854359 0.0021651657,9.0685043&#xD;&#xA;0.0013011694,9.0514603 0.00043722193,9.0344152 0,9.0172586 0,9 L0,0.99999994 C0,0.44771525 0.44771525,0 0.99999994,0 z"
-                        Fill="{DynamicResource LightGreen}"
-                        Stretch="Fill" />
-                    <Path
-                        Width="10"
-                        Height="10"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Bottom"
-                        Data="M9,0 C9.5522847,0 10,0.44771525 10,0.99999994 L10,9 C10,9.0172586 9.9995627,9.0344152 9.9986988,9.0514603 9.9978348,9.0685043 9.9965441,9.0854359 9.994837,9.1022444 9.9931301,9.1190529 9.9910069,9.1357384 9.9884778,9.1522903 9.9859487,9.1688423 9.9830137,9.1852608 9.9796836,9.2015352 9.9763533,9.2178097 9.9726278,9.2339401 9.9685174,9.2499161 9.964407,9.265892 9.9599117,9.2817135 9.955042,9.29737 9.9501723,9.3130264 9.9449283,9.3285179 9.9393202,9.3438339 9.9337122,9.3591499 9.9277403,9.3742905&#xD;&#xA;9.921415,9.389245 9.9150897,9.4042006 9.9084109,9.4189692 9.9013891,9.4335413 9.8943673,9.4481144 9.8870026,9.4624901 9.8793054,9.4766598 9.8716081,9.4908285 9.8635784,9.5047913 9.8552268,9.5185366 9.8468748,9.5322819 9.838201,9.5458097 9.8292158,9.5591097 9.8202304,9.5724096 9.8109335,9.5854816 9.8013355,9.5983162 9.7917374,9.6111498 9.7818383,9.6237459 9.7716486,9.6360931 9.7614589,9.6484404 9.7509786,9.6605387 9.740218,9.6723776 9.7294576,9.6842165&#xD;&#xA;9.718417,9.695797 9.7071068,9.7071066 9.6957965,9.7184172 9.6842165,9.7294579 9.6723773,9.7402182 9.6605383,9.7509785 9.6484399,9.7614594 9.6360929,9.7716484 9.6237458,9.7818384 9.61115,9.7917376 9.598316,9.8013353 9.5854819,9.8109331 9.5724096,9.8202305 9.5591094,9.829216 9.5458094,9.8382015 9.5322815,9.8468752 9.5185364,9.8552265 9.5047911,9.8635788 9.4908288,9.8716078 9.4766594,9.8793058 9.4624901,9.8870029 9.4481139,9.8943672 9.4335414,9.9013891&#xD;&#xA;9.4189688,9.908411 9.4042,9.9150896 9.3892453,9.9214153 9.3742903,9.9277401 9.3591496,9.933712 9.3438337,9.9393206 9.3285174,9.9449282 9.3130258,9.9501724 9.2973695,9.9550419 9.2817129,9.9599113 9.2658914,9.964407 9.2499156,9.9685173 9.2339396,9.9726276 9.2178093,9.9763536 9.201535,9.9796839 9.1852604,9.9830141 9.1688421,9.9859486 9.1522902,9.9884777 9.1357381,9.9910069 9.1190528,9.9931297 9.1022443,9.9948368 9.0854356,9.9965439 9.0685041,9.9978352&#xD;&#xA;9.0514599,9.9986992 9.0344157,9.9995632 9.0172589,10 9,10 L1,10 C0.44771528,10 0,9.5522852 0,9 0,8.4477148 0.44771528,8 1,8 L8,8 8,0.99999994 C8,0.44771525 8.4477153,0 9,0 z"
-                        Fill="{DynamicResource LightGreen}"
-                        Stretch="Fill" />
-                    <Path
-                        Width="10"
-                        Height="10"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top"
-                        Data="M1,0 L9,0 C9.0172589,0 9.0344157,0.00043722193 9.0514599,0.0013011694 9.0685041,0.0021651657 9.0854356,0.0034558875 9.1022443,0.0051629543 9.1190528,0.006869887 9.1357381,0.0089931646 9.1522902,0.011522174 9.1688421,0.014051332 9.1852604,0.016986223 9.201535,0.020316392 9.2178093,0.023646669 9.2339396,0.027372228 9.2499156,0.031482577 9.2658914,0.035593066 9.2817129,0.040088348 9.2973695,0.044957995 9.3130258,0.049827691 9.3285174,0.055071756 9.3438337,0.060679764 9.3591496,0.066287711 9.3742903,0.072259612&#xD;&#xA;9.3892453,0.078584999 9.4042,0.084910303 9.4189688,0.091589093 9.4335414,0.098610818 9.4481139,0.10563262 9.4624901,0.11299736 9.4766594,0.12069464 9.4908288,0.12839185 9.5047911,0.13642159 9.5185364,0.14477327 9.5322815,0.15312514 9.5458094,0.16179894 9.5591094,0.17078429 9.5724096,0.17976965 9.5854819,0.18906657 9.598316,0.19866452 9.61115,0.20826259 9.6237458,0.21816169 9.6360929,0.22835135 9.6484399,0.2385411 9.6605383,0.24902141 9.6723773,0.25978193 9.6842165,0.27054235&#xD;&#xA;9.6957965,0.28158295 9.7071068,0.2928932 9.718417,0.30420348 9.7294576,0.31578344 9.740218,0.32762259 9.7509786,0.33946171 9.7614589,0.35156009 9.7716486,0.36390707 9.7818383,0.3762542 9.7917374,0.38885 9.8013355,0.40168405 9.8109335,0.41451809 9.8202304,0.4275904 9.8292158,0.44089049 9.838201,0.45419058 9.8468748,0.46771845 9.8552268,0.48146352 9.8635784,0.4952088 9.8716081,0.50917131 9.8793054,0.52334058 9.8870026,0.53750998 9.8943673,0.55188614 9.9013891,0.56645858&#xD;&#xA;9.9084109,0.5810312 9.9150897,0.5958001 9.921415,0.61075479 9.9277403,0.62570965 9.9337122,0.64085037 9.9393202,0.65616637 9.9449283,0.67148256 9.9501723,0.68697411 9.955042,0.70263058 9.9599117,0.71828705 9.964407,0.73410851 9.9685174,0.7500844 9.9726278,0.76606035 9.9763533,0.78219074 9.9796836,0.79846501 9.9830137,0.81473953 9.9859487,0.83115792 9.9884778,0.84770977 9.9910069,0.86426181 9.9931301,0.88094729 9.994837,0.89775574 9.9965441,0.91456437 9.9978348,0.93149596&#xD;&#xA;9.9986988,0.94854009 9.9995627,0.96558434 10,0.98274112 10,0.99999994 L10,9 C10,9.5522852 9.5522847,10 9,10 8.4477153,10 8,9.5522852 8,9 L8,2 1,2 C0.44771528,2 0,1.5522847 0,0.99999994 0,0.44771525 0.44771528,0 1,0 z"
-                        Fill="{DynamicResource LightGreen}"
-                        Stretch="Fill" />
-                </Grid>
-            </FocusAdornerTemplate>
-        </Setter>
+        <Setter Property="FocusAdorner" Value="{x:Null}" />
         <Setter Property="Template">
             <ControlTemplate>
-                <Border
-                    Name="PART_Border"
-                    Padding="{TemplateBinding Padding}"
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="{TemplateBinding CornerRadius}">
-                    <Grid>
-                        <TextBlock
-                            Name="PART_PlaceholderText"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            FontFamily="{TemplateBinding FontFamily}"
-                            FontSize="{TemplateBinding FontSize}"
-                            FontStyle="{TemplateBinding FontStyle}"
-                            FontWeight="{TemplateBinding FontWeight}"
-                            Foreground="{TemplateBinding Foreground}"
-                            Text="{TemplateBinding Watermark}"
-                            TextTrimming="WordEllipsis" />
-                        <ScrollViewer
-                            Name="PART_ScrollViewer"
-                            HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
-                            VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}">
-                            <TextPresenter
-                                Name="PART_TextPresenter"
+                <DataValidationErrors>
+                    <Border
+                        Name="PART_Border"
+                        MinWidth="{TemplateBinding MinWidth}"
+                        MinHeight="{TemplateBinding MinHeight}"
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <ContentPresenter
+                                Grid.Column="0"
+                                Grid.ColumnSpan="1"
+                                Content="{TemplateBinding InnerLeftContent}" />
+                            <TextBlock
+                                Name="PART_PlaceholderText"
+                                Grid.Column="1"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                CaretBrush="{TemplateBinding CaretBrush}"
-                                CaretIndex="{TemplateBinding CaretIndex}"
-                                InputMethod.IsInputMethodEnabled="{TemplateBinding InputMethod.IsInputMethodEnabled}"
-                                PasswordChar="{TemplateBinding PasswordChar}"
-                                RevealPassword="{TemplateBinding RevealPassword}"
-                                SelectionBrush="{TemplateBinding SelectionBrush}"
-                                SelectionEnd="{TemplateBinding SelectionEnd}"
-                                SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
-                                SelectionStart="{TemplateBinding SelectionStart}"
-                                Text="{TemplateBinding Text,
-                                                       Mode=TwoWay}"
-                                TextAlignment="{TemplateBinding TextAlignment}"
-                                TextBlock.FontFamily="{TemplateBinding FontFamily}"
-                                TextBlock.FontSize="{TemplateBinding FontSize}"
-                                TextBlock.FontStyle="{TemplateBinding FontStyle}"
-                                TextBlock.FontWeight="{TemplateBinding FontWeight}"
-                                TextBlock.Foreground="{TemplateBinding Foreground}"
-                                TextWrapping="{TemplateBinding TextWrapping}" />
-                        </ScrollViewer>
-                    </Grid>
-                </Border>
+                                FontFamily="{TemplateBinding FontFamily}"
+                                FontSize="{TemplateBinding FontSize}"
+                                FontStyle="{TemplateBinding FontStyle}"
+                                FontWeight="{TemplateBinding FontWeight}"
+                                Foreground="{TemplateBinding Foreground}"
+                                Text="{TemplateBinding Watermark}"
+                                TextTrimming="WordEllipsis" />
+                            <ScrollViewer
+                                Name="PART_ScrollViewer"
+                                Grid.Column="1"
+                                AllowAutoHide="{TemplateBinding (ScrollViewer.AllowAutoHide)}"
+                                HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+                                VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}">
+                                <TextPresenter
+                                    Name="PART_TextPresenter"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    CaretBrush="{TemplateBinding CaretBrush}"
+                                    CaretIndex="{TemplateBinding CaretIndex}"
+                                    InputMethod.IsInputMethodEnabled="{TemplateBinding InputMethod.IsInputMethodEnabled}"
+                                    PasswordChar="{TemplateBinding PasswordChar}"
+                                    RevealPassword="{TemplateBinding RevealPassword}"
+                                    SelectionBrush="{TemplateBinding SelectionBrush}"
+                                    SelectionEnd="{TemplateBinding SelectionEnd}"
+                                    SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                    SelectionStart="{TemplateBinding SelectionStart}"
+                                    Text="{TemplateBinding Text,
+                                                           Mode=TwoWay}"
+                                    TextAlignment="{TemplateBinding TextAlignment}"
+                                    TextBlock.FontFamily="{TemplateBinding FontFamily}"
+                                    TextBlock.FontSize="{TemplateBinding FontSize}"
+                                    TextBlock.FontStyle="{TemplateBinding FontStyle}"
+                                    TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                                    TextBlock.Foreground="{TemplateBinding Foreground}"
+                                    TextWrapping="{TemplateBinding TextWrapping}" />
+                            </ScrollViewer>
+                            <ContentPresenter
+                                Grid.Column="2"
+                                Grid.ColumnSpan="1"
+                                Content="{TemplateBinding InnerRightContent}" />
+                        </Grid>
+                    </Border>
+                </DataValidationErrors>
             </ControlTemplate>
         </Setter>
     </Style>

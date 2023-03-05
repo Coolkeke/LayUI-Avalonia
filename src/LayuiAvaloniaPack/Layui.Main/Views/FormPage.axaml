@@ -11,8 +11,13 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <StackPanel Margin="5">
-        <lay:LayTextBox
+        <TextBox
             Height="40"
+            Margin="5"
+            Text="{Binding Value, Mode=TwoWay}"
+            Watermark="只能输入数字" />
+        <lay:LayTextBox
+            MinHeight="40"
             Margin="5"
             Text="{Binding Value, Mode=TwoWay}"
             Watermark="只能输入数字" />
