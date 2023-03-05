@@ -86,6 +86,7 @@ namespace Layui.Main.ViewModels
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.DialogPage, Title = "Dialog" },
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.CardPage, Title = "Card" },
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.MessagePage, Title = "Message" },
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.NotificationPage, Title = "Notification" },
             };
             return menus;
         }

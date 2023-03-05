@@ -43,6 +43,7 @@ namespace LayuiApp
             containerRegistry.RegisterInstance<ILayDialogService>(new LayDialogService());
             containerRegistry.RegisterInstance<ILayLogger>(new LayLogger());
             containerRegistry.RegisterInstance<ILayMessage>(new LayMessage());
+            containerRegistry.RegisterInstance<ILayNotification>(new LayNotification());
         }
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {

@@ -4,9 +4,37 @@
     xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
     <Design.PreviewWith>
         <Border Padding="20">
-            <!--  Add Controls for Previewer Here  -->
+            <lay:LayNotificationControl />
         </Border>
     </Design.PreviewWith>
-
+    <Style Selector="lay|LayNotificationControl">
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="ClipToBounds" Value="false" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border
+                        Name="PART_BorderBody"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <ContentPresenter
+                            Name="PART_ContentPresenter"
+                            Padding="{TemplateBinding Padding}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <!--  Add Styles Here  -->
 </Styles>

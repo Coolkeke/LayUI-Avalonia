@@ -31,6 +31,7 @@ namespace Layui.Main
             containerRegistry.RegisterForNavigation<DialogPage>(SystemResource.DialogPage);
             containerRegistry.RegisterForNavigation<CardPage>(SystemResource.CardPage);
             containerRegistry.RegisterForNavigation<MessagePage>(SystemResource.MessagePage);
+            containerRegistry.RegisterForNavigation<NotificationPage>(SystemResource.NotificationPage);
         }
     }
 }

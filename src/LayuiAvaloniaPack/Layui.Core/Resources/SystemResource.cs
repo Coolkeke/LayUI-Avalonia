@@ -51,10 +51,14 @@ namespace Layui.Core.Resources
         /// <summary>
         /// 卡片
         /// </summary>
-        public static string CardPage = "CardPage"; 
+        public static string CardPage = "CardPage";
         /// <summary>
         /// 简单通知信息
         /// </summary>
-        public static string MessagePage = "MessagePage"; 
+        public static string MessagePage = "MessagePage";
+        /// <summary>
+        /// 普通信息通知
+        /// </summary>
+        public static string NotificationPage = "NotificationPage";
     }
 }

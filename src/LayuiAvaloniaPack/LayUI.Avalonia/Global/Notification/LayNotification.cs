@@ -1,5 +1,7 @@
 ﻿using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Logging;
+using Avalonia.Markup.Xaml.Templates;
 using Avalonia.Threading;
 using LayUI.Avalonia.Controls;
 using LayUI.Avalonia.Enums;
@@ -62,7 +64,16 @@ namespace LayUI.Avalonia.Global
         /// </summary>
         public static readonly AttachedProperty<string> TokenProperty = AvaloniaProperty.RegisterAttached<IAvaloniaObject, IAvaloniaObject, string>(
             "Token", null);
+        public void Show(Information info, string token)
+        {
+            Show(info, NotificationType.Info, null, token);
+        }
         public void Show(Information info, NotificationType type, string token)
+        {
+            Show(info, type, null, token);
+        }
+
+        public void Show(Information info, NotificationType type, Action<ButtonResult> callback, string token)
         {
             Dispatcher.UIThread.InvokeAsync(() =>
             {
@@ -70,15 +81,13 @@ namespace LayUI.Avalonia.Global
                 {
                     if (!NotificationHosts.ContainsKey(token)) return;
                     var messageHost = NotificationHosts[token];
-                    var content = new LayNotificationControl()
+                    var content = new LayNotificationControl(messageHost)
                     {
                         DataContext = info,
+                        Content = info,
                     };
-                    if (content.DataTemplate != null)
-                    {
-                        content.Content = info;
-                    }
-                    messageHost?.Items?.Children?.Add(content);
+                    if (messageHost.ItemTemplate != null) content.ContentTemplate = messageHost.ItemTemplate;
+                    messageHost?.Items?.Children?.Insert(0, content);
 
                 }
                 catch (Exception ex)
@@ -88,11 +97,6 @@ namespace LayUI.Avalonia.Global
                                               ?.Log("Show", "信息提示显示异常", ex);
                 }
             });
-        }
-
-        public void Show(Information info, NotificationType type, Action<ButtonResult> callback, string token)
-        {
-
         }
 
         public void Close(string token)

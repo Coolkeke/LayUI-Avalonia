@@ -16,6 +16,13 @@ namespace LayUI.Avalonia.Interface
         /// 显示
         /// </summary>
         /// <param name="info">详情</param>
+        /// <param name="token">唯一标识</param>
+        /// <returns></returns>
+        void Show(Information info, string token);
+        /// <summary>
+        /// 显示
+        /// </summary>
+        /// <param name="info">详情</param>
         /// <param name="type">类型</param>
         /// <param name="token">唯一标识</param>
         /// <returns></returns>

@@ -33,9 +33,39 @@
             </StackPanel>
         </lay:LayTitleBar.HeaderContent>
         <lay:LayMessageHost global:LayMessage.Token="RootMessage">
-            <lay:LayDialogHost global:LayDialog.Token="RootDialog">
-                <ContentControl prism:RegionManager.RegionName="{Binding Source={x:Static res:SystemResource.Nav_MainContent}}" />
-            </lay:LayDialogHost>
+            <lay:LayNotificationHost global:LayNotification.Token="RootNotification">
+                <lay:LayNotificationHost.ItemTemplate>
+                    <DataTemplate>
+                        <lay:LayCard
+                            Margin="5"
+                            Padding="0"
+                            Background="White"
+                            CornerRadius="2">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid Height="5" Background="{DynamicResource Green}" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Margin="10,2"
+                                    FontSize="16"
+                                    Text="{Binding Title}" />
+                                <TextBlock
+                                    Grid.Row="2"
+                                    Margin="10"
+                                    FontSize="16"
+                                    Text="{Binding Message}" />
+                            </Grid>
+                        </lay:LayCard>
+                    </DataTemplate>
+                </lay:LayNotificationHost.ItemTemplate>
+                <lay:LayDialogHost global:LayDialog.Token="RootDialog">
+                    <ContentControl prism:RegionManager.RegionName="{Binding Source={x:Static res:SystemResource.Nav_MainContent}}" />
+                </lay:LayDialogHost>
+            </lay:LayNotificationHost>
         </lay:LayMessageHost>
     </lay:LayTitleBar>
 </Window>
