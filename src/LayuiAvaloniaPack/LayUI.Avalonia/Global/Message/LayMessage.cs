@@ -68,6 +68,16 @@ namespace LayUI.Avalonia.Global
         }
         public void Show(string message, string token, TimeSpan time)
         {
+            Show(message, token, time, MessageType.Zoom);
+        }
+
+        public void Show(string message, string token, MessageType type)
+        {
+            Show(message, token, TimeSpan.FromMilliseconds(2000), type);
+        }
+
+        public void Show(string message, string token, TimeSpan time, MessageType type)
+        {
             Dispatcher.UIThread.InvokeAsync(() =>
             {
                 try
@@ -76,7 +86,8 @@ namespace LayUI.Avalonia.Global
                     var messageHost = MessageHosts[token];
                     var content = new LayMessageControl(messageHost, time)
                     {
-                        Content = message
+                        Content = message,
+                        Type = type
                     };
                     messageHost?.Items?.Children?.Clear();
                     messageHost?.Items?.Children?.Add(content);

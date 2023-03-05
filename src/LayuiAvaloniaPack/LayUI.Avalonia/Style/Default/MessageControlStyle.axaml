@@ -4,11 +4,14 @@
     xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
     <Design.PreviewWith>
         <Border Padding="10">
-            <lay:LayMessageControl MaxWidth="150" Content="这是提示信息" />
+            <lay:LayMessageControl
+                MaxWidth="150"
+                Content="这是提示信息"
+                Type="Shake" />
         </Border>
     </Design.PreviewWith>
     <Style Selector="lay|LayMessageControl">
-        <Setter Property="Padding" Value="5" />
+        <Setter Property="Padding" Value="12 15" />
         <Setter Property="Background">
             <Setter.Value>
                 <SolidColorBrush Opacity="0.7" Color="#000" />
@@ -18,6 +21,7 @@
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="14" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="CornerRadius" Value="2" />
         <Setter Property="IsHitTestVisible" Value="false" />
@@ -42,5 +46,50 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    <Style Selector="lay|LayMessageControl[Type=Zoom]">
+        <Style.Animations>
+            <Animation Easing="CubicEaseInOut" Duration="0:0:0.2">
+                <KeyFrame Cue="0%">
+                    <Setter Property="ScaleTransform.ScaleX" Value="0.7" />
+                    <Setter Property="ScaleTransform.ScaleY" Value="0.7" />
+                    <Setter Property="Opacity" Value="0" />
+                </KeyFrame>
+                <KeyFrame Cue="100%">
+                    <Setter Property="Opacity" Value="1" />
+                    <Setter Property="ScaleTransform.ScaleX" Value="1" />
+                    <Setter Property="ScaleTransform.ScaleY" Value="1" />
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
+    </Style>
+    <Style Selector="lay|LayMessageControl[Type=Shake]">
+        <Style.Animations>
+            <Animation Duration="0:0:0.3">
+                <KeyFrame Cue="0%">
+                    <Setter Property="RotateTransform.CenterX" Value="0" />
+                    <Setter Property="Opacity" Value="0" />
+                </KeyFrame>
+                <KeyFrame Cue="10%">
+                    <Setter Property="TranslateTransform.X" Value="-40" />
+                </KeyFrame>
+                <KeyFrame Cue="35%">
+                    <Setter Property="TranslateTransform.X" Value="30" />
+                    <Setter Property="Opacity" Value="1" />
+                </KeyFrame>
+                <KeyFrame Cue="50%">
+                    <Setter Property="TranslateTransform.X" Value="-30" />
+                </KeyFrame>
+                <KeyFrame Cue="60%">
+                    <Setter Property="TranslateTransform.X" Value="20" />
+                </KeyFrame>
+                <KeyFrame Cue="75%">
+                    <Setter Property="TranslateTransform.X" Value="-20" />
+                </KeyFrame>
+                <KeyFrame Cue="100%">
+                    <Setter Property="TranslateTransform.X" Value="0" />
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
     </Style>
 </Styles>

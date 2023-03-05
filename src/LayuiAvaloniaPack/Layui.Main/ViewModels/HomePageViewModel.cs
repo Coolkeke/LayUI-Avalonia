@@ -4,6 +4,8 @@ using Layui.Core.Mvvm;
 using Layui.Core.Resources;
 using Layui.Main.Models;
 using Layui.Tools.Languages;
+using LayUI.Avalonia.Enums;
+using LayUI.Avalonia.Interface;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -12,12 +14,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Security.Policy; 
+using System.Security.Policy;
+using System.Threading.Tasks;
 
 namespace Layui.Main.ViewModels
 {
     public class HomePageViewModel : ViewModelBase
     {
+        private ILayMessage message;
         private ResourceDictionary _Language;
         public ResourceDictionary Language
         {
@@ -45,6 +49,7 @@ namespace Layui.Main.ViewModels
 
         public HomePageViewModel(IContainerExtension container) : base(container) 
         {
+            message = container.Resolve<ILayMessage>();
         }
         private MenuInfo _MenuInfo;
         public MenuInfo MenuInfo
@@ -79,17 +84,19 @@ namespace Layui.Main.ViewModels
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.ProgressBarPage, Title ="ProgressBar" },
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.KeyboardPage, Title = "Keyboard" },
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.DialogPage, Title = "Dialog" },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.CardPage, Title = "CardPage" },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.MessagePage, Title = "MessagePage" },
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.CardPage, Title = "Card" },
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.MessagePage, Title = "Message" },
             };
             return menus;
         }
-        public override void ExecuteLoadedCommand()
+        public async override void ExecuteLoadedCommand()
         {
             OnLanugageChanged(false);
             Menus = CreateMenus();
             MenuInfo= Menus?.FirstOrDefault();
             if(MenuInfo!=null) Region.RegisterViewWithRegion(SystemResource.Nav_HomeContent, MenuInfo.PageKey);
+            await Task.Delay(1000);
+            message.Show($"欢迎使用LayUI-Avalonia", "RootMessage",TimeSpan.FromMilliseconds(3000));
         }
     }
 }

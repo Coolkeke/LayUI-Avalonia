@@ -2,7 +2,9 @@
 using Avalonia.Controls;
 using Avalonia.LogicalTree;
 using Avalonia.Markup.Xaml.Templates;
+using Avalonia.Media;
 using Avalonia.Threading;
+using LayUI.Avalonia.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,14 +16,33 @@ namespace LayUI.Avalonia.Controls
         private LayMessageHost Host;
         private DispatcherTimer timer;
         private TimeSpan Time;
+        public LayMessageControl()
+        {
+        }
         public LayMessageControl(LayMessageHost host, TimeSpan time)
         {
             Host = host;
             Time = time;
         }
+
+        /// <summary>
+        /// Defines the <see cref="Type"/> property.
+        /// </summary>
+        public static readonly StyledProperty<MessageType> TypeProperty =
+            AvaloniaProperty.Register<LayMessageControl, MessageType>(nameof(Type));
+
+        /// <summary>
+        /// 提示效果类型
+        /// </summary>
+        public MessageType Type
+        {
+            get { return GetValue(TypeProperty); }
+            set { SetValue(TypeProperty, value); }
+        }
         protected override void OnAttachedToLogicalTree(LogicalTreeAttachmentEventArgs e)
         {
             base.OnAttachedToLogicalTree(e);
+            if (Design.IsDesignMode) return;
             timer = new DispatcherTimer()
             {
                 Interval = Time,
@@ -33,6 +54,7 @@ namespace LayUI.Avalonia.Controls
         protected override void OnDetachedFromLogicalTree(LogicalTreeAttachmentEventArgs e)
         {
             base.OnDetachedFromLogicalTree(e);
+            if (Design.IsDesignMode) return;
             if (timer != null)
             {
                 timer.Stop();

@@ -1,4 +1,5 @@
 ﻿using Layui.Core.Mvvm;
+using LayUI.Avalonia.Enums;
 using LayUI.Avalonia.Interface;
 using Prism.Commands;
 using Prism.Ioc;
@@ -20,11 +21,21 @@ namespace Layui.Main.ViewModels
         private DelegateCommand _MessageCommand;
         public DelegateCommand MessageCommand =>
             _MessageCommand ?? (_MessageCommand = new DelegateCommand(ExecuteMessageCommand));
-
+        bool flag = false;
         void ExecuteMessageCommand()
         {
+
             num++;
-            message.Show($"尼玛，第{num}次打酱油", "RootMessage");
+            if (flag)
+            {
+                flag= false;
+                message.Show($"尼玛，第{num}次打酱油", "RootMessage", MessageType.Shake);
+            }
+            else
+            {
+                flag = true;
+                message.Show($"尼玛，第{num}次打酱油", "RootMessage", MessageType.Zoom);
+            }
         }
     }
 }
