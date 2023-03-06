@@ -27,21 +27,6 @@ namespace LayUI.Avalonia.Controls
         /// </summary>
         internal static readonly StyledProperty<string> GUIDProperty =
        AvaloniaProperty.Register<LayNotificationHost, string>(nameof(GUID));
-
-        /// <summary>
-        /// Defines the <see cref="ItemTemplate"/> property.
-        /// </summary>
-        public static readonly StyledProperty<IDataTemplate> ItemTemplateProperty =
-            AvaloniaProperty.Register<LayNotificationHost, IDataTemplate>(nameof(ItemTemplate));
-
-        /// <summary>
-        /// 数据模板
-        /// </summary>
-        public IDataTemplate ItemTemplate
-        {
-            get { return GetValue(ItemTemplateProperty); }
-            set { SetValue(ItemTemplateProperty, value); }
-        }
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
             base.OnApplyTemplate(e);

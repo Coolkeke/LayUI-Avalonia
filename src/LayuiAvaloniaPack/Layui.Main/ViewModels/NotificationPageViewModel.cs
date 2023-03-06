@@ -1,4 +1,5 @@
 ﻿using Layui.Core.Mvvm;
+using LayUI.Avalonia.Enums;
 using LayUI.Avalonia.Interface;
 using LayUI.Avalonia.Models;
 using Prism.Commands;
@@ -15,7 +16,7 @@ namespace Layui.Main.ViewModels
         private ILayNotification notification;
         public NotificationPageViewModel(IContainerExtension container) : base(container)
         {
-            notification= container.Resolve<ILayNotification>();
+            notification = container.Resolve<ILayNotification>();
         }
         private DelegateCommand _NotificationCommand;
         public DelegateCommand NotificationCommand =>
@@ -23,7 +24,10 @@ namespace Layui.Main.ViewModels
 
         void ExecuteNotificationCommand()
         {
-            notification.Show(new Information() {Title="这是标题",Message="恭喜您完成信息通知功能！" }, "RootNotification");
+            notification.Show(new Information() { Title = "这是标题", Message = "恭喜您完成信息通知功能！" }, NotificationType.Info, "RootNotification");
+            notification.Show(new Information() { Title = "这是标题", Message = "恭喜您完成信息通知功能！" }, NotificationType.Success, "RootNotification");
+            notification.Show(new Information() { Title = "这是标题", Message = "恭喜您完成信息通知功能！" }, NotificationType.Warning, "RootNotification");
+            notification.Show(new Information() { Title = "这是标题", Message = "恭喜您完成信息通知功能！" }, NotificationType.Error, "RootNotification");
         }
     }
 }

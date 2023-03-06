@@ -84,9 +84,8 @@ namespace LayUI.Avalonia.Global
                     var content = new LayNotificationControl(messageHost)
                     {
                         DataContext = info,
-                        Content = info,
+                        Type = type
                     };
-                    if (messageHost.ItemTemplate != null) content.ContentTemplate = messageHost.ItemTemplate;
                     messageHost?.Items?.Children?.Insert(0, content);
 
                 }
