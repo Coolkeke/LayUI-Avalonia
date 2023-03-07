@@ -66,14 +66,27 @@ namespace LayUI.Avalonia.Global
             "Token", null);
         public void Show(Information info, string token)
         {
-            Show(info, NotificationType.Info, null, token);
+            Show(info, token, TimeSpan.FromMilliseconds(2000));
+        }
+        public void Show(Information info, string token, TimeSpan time)
+        {
+            Show(info, NotificationType.Info, token, time);
         }
         public void Show(Information info, NotificationType type, string token)
         {
-            Show(info, type, null, token);
+            Show(info, type, token, TimeSpan.FromMilliseconds(2000));
+        }
+
+        public void Show(Information info, NotificationType type, string token, TimeSpan time)
+        {
+            Show(info, type, null, token, time);
         }
 
         public void Show(Information info, NotificationType type, Action<ButtonResult> callback, string token)
+        {
+            Show( info,  type, callback,  token, TimeSpan.FromMilliseconds(2000));
+        }
+        public void Show(Information info, NotificationType type, Action<ButtonResult> callback, string token, TimeSpan time)
         {
             Dispatcher.UIThread.InvokeAsync(() =>
             {
@@ -81,7 +94,7 @@ namespace LayUI.Avalonia.Global
                 {
                     if (!NotificationHosts.ContainsKey(token)) return;
                     var messageHost = NotificationHosts[token];
-                    var content = new LayNotificationControl(messageHost)
+                    var content = new LayNotificationControl(messageHost, time)
                     {
                         DataContext = info,
                         Type = type
@@ -133,5 +146,7 @@ namespace LayUI.Avalonia.Global
                                                          ?.Log("CloseAll", "信息通知关闭异常", ex);
             }
         }
+
+
     }
 }

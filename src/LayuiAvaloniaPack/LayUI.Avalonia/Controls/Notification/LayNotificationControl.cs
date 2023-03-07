@@ -3,27 +3,71 @@ using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
 using Avalonia.Interactivity;
+using Avalonia.Layout;
 using Avalonia.LogicalTree;
 using Avalonia.Markup.Xaml.Templates;
+using Avalonia.Media;
+using Avalonia.Threading;
 using LayUI.Avalonia.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Controls
 {
     public class LayNotificationControl: TemplatedControl
     {
+
+
+        /// <summary>
+        /// 关闭通知信息按钮
+        /// </summary>
         private Button CloseButton;
         private LayNotificationHost Host;
-        public LayNotificationControl() { 
-        
-        }
-        public LayNotificationControl(LayNotificationHost host)
+        private DispatcherTimer timer;
+        private TimeSpan Time;
+        static LayNotificationControl()
         {
-            Host=host;
+            IsOpenProperty.Changed.Subscribe(OnIsOpenChanged);
         }
+        public LayNotificationControl() {
 
+        }
+        public LayNotificationControl(LayNotificationHost host, TimeSpan time)
+        {
+            Host = host;
+            Time = time;
+        }
+        private async static void OnIsOpenChanged(AvaloniaPropertyChangedEventArgs<bool> obj)
+        {
+            if (obj.Sender is LayNotificationControl control)
+            {
+                if (control.IsOpen) return;
+                if (control.timer != null)
+                {
+                    control.timer.Stop();
+                    control.timer.Tick -= control.Timer_Tick;
+                    control.timer = null;
+                }
+                await Task.Delay(250);
+                control.Host.Items.Children.Remove(control);
+            } 
+        }
+        /// <summary>
+        /// Defines the <see cref="IsOpen"/> property.
+        /// </summary>
+        internal static readonly StyledProperty<bool> IsOpenProperty =
+            AvaloniaProperty.Register<Control, bool>(nameof(IsOpen),true);
+
+        /// <summary>
+        /// 是否开启
+        /// </summary>
+        internal bool IsOpen
+        {
+            get { return GetValue(IsOpenProperty); }
+            set { SetValue(IsOpenProperty, value); }
+        }
         /// <summary>
         /// Defines the <see cref="Type"/> property.
         /// </summary>
@@ -48,17 +92,54 @@ namespace LayUI.Avalonia.Controls
                 CloseButton.AddHandler(Button.ClickEvent, Closed);
             }
         }
+        protected override void OnAttachedToLogicalTree(LogicalTreeAttachmentEventArgs e)
+        {
+            base.OnAttachedToLogicalTree(e);
+            if (Design.IsDesignMode) return;
+            timer = new DispatcherTimer()
+            {
+                Interval = Time,
+            };
+            timer.Tick -= Timer_Tick;
+            timer.Tick += Timer_Tick;
+            if(Type!= NotificationType.Error && Type != NotificationType.Warning) timer.Start(); 
+        }
         protected override void OnDetachedFromLogicalTree(LogicalTreeAttachmentEventArgs e)
         {
             base.OnDetachedFromLogicalTree(e); 
+            if (Design.IsDesignMode) return;
+            if (timer != null)
+            {
+                timer.Stop();
+                timer.Tick -= Timer_Tick;
+                timer = null;
+            }
             if (CloseButton != null)
             {
                 CloseButton.RemoveHandler(Button.ClickEvent, Closed); 
             }
         }
-        private void Closed(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// 倒计时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Timer_Tick(object sender, EventArgs e)
         {
-            Host.Items.Children.Remove(this);
+            if (timer == null) return;
+            timer.Stop();
+            timer.Tick -= Timer_Tick;
+            IsOpen = false;
+        }
+        /// <summary>
+        /// 关闭当前提示信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private  void Closed(object sender, RoutedEventArgs e)
+        {
+            if (Design.IsDesignMode) return;
+            IsOpen = false;
         }
     }
 }

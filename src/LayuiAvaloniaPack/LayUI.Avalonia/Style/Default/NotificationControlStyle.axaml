@@ -1,7 +1,9 @@
 ﻿<Styles
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls"
+    xmlns:layCv="clr-namespace:LayUI.Avalonia.Converters"
+    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
     <Design.PreviewWith>
         <Border Padding="20">
             <StackPanel>
@@ -14,13 +16,12 @@
     </Design.PreviewWith>
     <Style Selector="lay|LayNotificationControl">
         <Setter Property="MinWidth" Value="240" />
-        <Setter Property="MinHeight" Value="70" />
         <Setter Property="Background" Value="White" />
         <Setter Property="ClipToBounds" Value="false" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
         <Setter Property="Margin" Value="10 5" />
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="CornerRadius" Value="2" />
-        <Setter Property="HorizontalAlignment" Value="Right" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -72,6 +73,78 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    <Style Selector="lay|LayNotificationControl[HorizontalAlignment=Left],lay|LayNotificationControl[IsOpen=false]">
+        <Style.Resources>
+            <sys:Boolean x:Key="False">false</sys:Boolean>
+            <layCv:InverseDataConverter x:Key="InverseData" />
+        </Style.Resources>
+        <Style.Animations>
+            <Animation Duration="0:0:0.3">
+                <KeyFrame Cue="0%">
+                    <Setter Property="TranslateTransform.X" Value="0" />
+                    <Setter Property="Opacity" Value="1" />
+                </KeyFrame>
+                <KeyFrame Cue="100%">
+                    <Setter Property="Opacity" Value="0" />
+                    <Setter Property="TranslateTransform.X" Value="{Binding $self.MinWidth, Converter={StaticResource InverseData}, ConverterParameter={StaticResource False}}" />
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
+    </Style>
+    <Style Selector="lay|LayNotificationControl[HorizontalAlignment=Left],lay|LayNotificationControl[IsOpen=true]">
+        <Style.Resources>
+            <sys:Boolean x:Key="True">true</sys:Boolean>
+            <layCv:InverseDataConverter x:Key="InverseData" />
+        </Style.Resources>
+        <Style.Animations>
+            <Animation Duration="0:0:0.3">
+                <KeyFrame Cue="0%">
+                    <Setter Property="Opacity" Value="0" />
+                    <Setter Property="TranslateTransform.X" Value="{Binding $self.MinWidth, Converter={StaticResource InverseData}, ConverterParameter={StaticResource True}}" />
+                </KeyFrame>
+                <KeyFrame Cue="100%">
+                    <Setter Property="TranslateTransform.X" Value="0" />
+                    <Setter Property="Opacity" Value="1" />
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
+    </Style>
+    <Style Selector="lay|LayNotificationControl[HorizontalAlignment=Right],lay|LayNotificationControl[IsOpen=false]">
+        <Style.Resources>
+            <sys:Boolean x:Key="True">true</sys:Boolean>
+            <layCv:InverseDataConverter x:Key="InverseData" />
+        </Style.Resources>
+        <Style.Animations>
+            <Animation Duration="0:0:0.3">
+                <KeyFrame Cue="0%">
+                    <Setter Property="TranslateTransform.X" Value="0" />
+                    <Setter Property="Opacity" Value="1" />
+                </KeyFrame>
+                <KeyFrame Cue="100%">
+                    <Setter Property="Opacity" Value="0" />
+                    <Setter Property="TranslateTransform.X" Value="{Binding $self.MinWidth, Converter={StaticResource InverseData}, ConverterParameter={StaticResource True}}" />
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
+    </Style>
+    <Style Selector="lay|LayNotificationControl[HorizontalAlignment=Right],lay|LayNotificationControl[IsOpen=true]">
+        <Style.Resources>
+            <sys:Boolean x:Key="False">false</sys:Boolean>
+            <layCv:InverseDataConverter x:Key="InverseData" />
+        </Style.Resources>
+        <Style.Animations>
+            <Animation Duration="0:0:0.3">
+                <KeyFrame Cue="0%">
+                    <Setter Property="Opacity" Value="0" />
+                    <Setter Property="TranslateTransform.X" Value="{Binding $self.MinWidth, Converter={StaticResource InverseData}, ConverterParameter={StaticResource False}}" />
+                </KeyFrame>
+                <KeyFrame Cue="100%">
+                    <Setter Property="TranslateTransform.X" Value="0" />
+                    <Setter Property="Opacity" Value="1" />
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
     </Style>
     <Style Selector="lay|LayNotificationControl[Type=Info] /template/ Path#PART_Icon">
         <Setter Property="Data" Value="M175.533,428.13901 L526.618,428.13901 526.618,468.108 175.533,468.108 z M175.533,313.358 L760.662,313.358 760.662,351.08499 175.533,351.08499 z M175.533,193.436 L760.662,193.436 760.662,234.05301 175.533,234.05301 z M117.022,41.586998 C84.758011,41.586998 39.159012,84.75 39.159019,117.02299 L39.159019,585.138 C39.159012,617.42102 84.757004,660.57397 117.022,660.57397 L316.795,660.57397 333.94002,677.71802 484.07002,833.70599 484.07002,660.57397 819.19002,660.57397 C851.45601,660.57397 895.11501,617.41998 895.11501,585.138 L895.11501,117.02299 C895.11501,84.75 851.45601,41.586998 819.19002,41.586998 z M117.022,0 L819.19002,0 C883.821,0 936.21303,52.392998 936.21199,117.02299 L936.21199,585.138 C936.21199,649.76801 883.821,702.16803 819.19002,702.16803 L526.618,702.16803 526.618,936.22101 292.55602,702.16699 117.022,702.16699 C52.392006,702.16699 7.6293945E-06,649.76703 0,585.13702 L0,117.022 C7.6293945E-06,52.392998 52.392006,0 117.022,0 z" />

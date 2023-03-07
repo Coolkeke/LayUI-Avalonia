@@ -23,6 +23,14 @@ namespace LayUI.Avalonia.Interface
         /// 显示
         /// </summary>
         /// <param name="info">详情</param>
+        /// <param name="token">唯一标识</param>
+        /// <param name="time">倒计时</param>
+        /// <returns></returns>
+        void Show(Information info, string token, TimeSpan time);
+        /// <summary>
+        /// 显示
+        /// </summary>
+        /// <param name="info">详情</param>
         /// <param name="type">类型</param>
         /// <param name="token">唯一标识</param>
         /// <returns></returns>
@@ -32,10 +40,27 @@ namespace LayUI.Avalonia.Interface
         /// </summary>
         /// <param name="info">详情</param>
         /// <param name="type">类型</param>
+        /// <param name="token">唯一标识</param>
+        /// <param name="time">倒计时</param>
+        void Show(Information info, NotificationType type, string token, TimeSpan time);
+        /// <summary>
+        /// 显示
+        /// </summary>
+        /// <param name="info">详情</param>
+        /// <param name="type">类型</param>
         /// <param name="callback">数据处理回调</param>
         /// <param name="token">唯一标识</param>
         /// <returns></returns>
         void Show(Information info, NotificationType type, Action<ButtonResult> callback, string token);
+        /// <summary>
+        /// 显示
+        /// </summary>
+        /// <param name="info">详情</param>
+        /// <param name="type">类型</param>
+        /// <param name="callback">数据处理回调</param>
+        /// <param name="token">唯一标识</param>
+        /// <param name="time">倒计时</param>
+        void Show(Information info, NotificationType type, Action<ButtonResult> callback, string token, TimeSpan time);
         /// <summary>
         /// 关闭信息通知目标容器
         /// </summary>
