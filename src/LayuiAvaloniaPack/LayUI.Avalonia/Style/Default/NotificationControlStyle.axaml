@@ -7,7 +7,7 @@
     <Design.PreviewWith>
         <Border Padding="20">
             <StackPanel>
-                <lay:LayNotificationControl Width="150" />
+                <lay:LayNotificationControl Width="150" IsOpen="True" />
                 <lay:LayNotificationControl Width="150" Type="Success" />
                 <lay:LayNotificationControl Width="150" Type="Warning" />
                 <lay:LayNotificationControl Width="150" Type="Error" />
@@ -18,7 +18,6 @@
         <Setter Property="MinWidth" Value="240" />
         <Setter Property="Background" Value="White" />
         <Setter Property="ClipToBounds" Value="false" />
-        <Setter Property="HorizontalAlignment" Value="Right" />
         <Setter Property="Margin" Value="10 5" />
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="CornerRadius" Value="2" />

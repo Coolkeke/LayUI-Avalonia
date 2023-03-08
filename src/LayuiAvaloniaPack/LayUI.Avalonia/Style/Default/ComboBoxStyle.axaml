@@ -168,6 +168,9 @@
     <Style Selector="lay|LayComboBox[SelectedIndex=-1] /template/ TextBlock#PART_PlaceholderText">
         <Setter Property="IsVisible" Value="true" />
     </Style>
+    <Style Selector="lay|LayComboBox:pointerover">
+        <Setter Property="BorderBrush" Value="{DynamicResource LightBlack}" />
+    </Style>
     <!--  指定当前控件被集中状态  -->
     <Style Selector="lay|LayComboBox:focus">
         <Setter Property="BorderBrush" Value="{DynamicResource LightBlack}" />

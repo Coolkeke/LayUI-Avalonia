@@ -102,6 +102,9 @@
     <Style Selector="lay|LayTextBox:empty[UseFloatingWatermark=False] /template/ TextBlock#PART_PlaceholderText">
         <Setter Property="IsVisible" Value="true" />
     </Style>
+    <Style Selector="lay|LayTextBox:pointerover">
+        <Setter Property="BorderBrush" Value="{DynamicResource LightBlack}" />
+    </Style>
     <Style Selector="lay|LayTextBox:focus">
         <Setter Property="BorderBrush" Value="{DynamicResource LightBlack}" />
     </Style>

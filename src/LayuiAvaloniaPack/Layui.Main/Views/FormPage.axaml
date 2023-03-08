@@ -7,75 +7,77 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:vm="using:Layui.Main.ViewModels"
-    d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <StackPanel Margin="5">
-        <TextBox
-            Height="40"
-            Margin="5"
-            Text="{Binding Value, Mode=TwoWay}"
-            Watermark="只能输入数字" />
-        <lay:LayTextBox
-            MinHeight="40"
-            Margin="5"
-            Text="{Binding Value, Mode=TwoWay}"
-            Watermark="只能输入数字" />
-        <lay:LayTextBox
-            Height="40"
-            Margin="5"
-            InputType="Number"
-            Watermark="只能输入数字" />
-        <lay:LayTextBox
-            Height="40"
-            Margin="5"
-            InputType="Phone"
-            Watermark="输入电话" />
-        <lay:LayTextBox
-            Height="40"
-            Margin="5"
-            Watermark="这是文本框" />
-        <lay:LayTextBox
-            Height="40"
-            Margin="5"
-            PasswordChar="*"
-            Watermark="这是密码框" />
-        <lay:LayComboBox Height="40" Margin="5">
-            <lay:LayComboBoxItem Height="40" Content="123" />
-            <lay:LayComboBoxItem Height="40" Content="asd" />
-            <lay:LayComboBoxItem Height="40" Content="阿萨德" />
-        </lay:LayComboBox>
-        <StackPanel>
+    <ScrollViewer>
+        <StackPanel Margin="5">
+            <TextBox
+                Height="40"
+                Margin="5"
+                Text="{Binding Value, Mode=TwoWay}"
+                Watermark="只能输入数字" />
+            <lay:LayTextBox
+                MinHeight="40"
+                Margin="5"
+                Text="{Binding Value, Mode=TwoWay}"
+                Watermark="只能输入数字" />
+            <lay:LayTextBox
+                Height="40"
+                Margin="5"
+                InputType="Number"
+                Watermark="只能输入数字" />
+            <lay:LayTextBox
+                Height="40"
+                Margin="5"
+                InputType="Phone"
+                Watermark="输入电话" />
+            <lay:LayTextBox
+                Height="40"
+                Margin="5"
+                Watermark="这是文本框" />
+            <lay:LayTextBox
+                Height="40"
+                Margin="5"
+                PasswordChar="*"
+                Watermark="这是密码框" />
+            <lay:LayComboBox Height="40" Margin="5">
+                <lay:LayComboBoxItem Height="40" Content="123" />
+                <lay:LayComboBoxItem Height="40" Content="asd" />
+                <lay:LayComboBoxItem Height="40" Content="阿萨德" />
+            </lay:LayComboBox>
             <StackPanel>
-                <StackPanel Margin="0,5" Orientation="Horizontal">
-                    <lay:LayCheckBox Content="Null" IsChecked="{x:Null}" />
-                    <lay:LayCheckBox Content="选中" IsChecked="true" />
-                    <lay:LayCheckBox Content="未选中" />
-                    <lay:LayCheckBox Content="禁用" IsEnabled="False" />
+                <StackPanel>
+                    <StackPanel Margin="0,5" Orientation="Horizontal">
+                        <lay:LayCheckBox Content="Null" IsChecked="{x:Null}" />
+                        <lay:LayCheckBox Content="选中" IsChecked="true" />
+                        <lay:LayCheckBox Content="未选中" />
+                        <lay:LayCheckBox Content="禁用" IsEnabled="False" />
+                    </StackPanel>
+                    <StackPanel Margin="0,5" Orientation="Horizontal">
+                        <lay:LayCheckBox
+                            Content="Null"
+                            IsChecked="{x:Null}"
+                            Type="Primary" />
+                        <lay:LayCheckBox
+                            Margin="5,0"
+                            Content="选中"
+                            IsChecked="true"
+                            Type="Primary" />
+                        <lay:LayCheckBox Content="未选中" Type="Primary" />
+                        <lay:LayCheckBox
+                            Margin="5,0"
+                            Content="禁用"
+                            IsEnabled="False"
+                            Type="Primary" />
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel Margin="0,5" Orientation="Horizontal">
-                    <lay:LayCheckBox
-                        Content="Null"
-                        IsChecked="{x:Null}"
-                        Type="Primary" />
-                    <lay:LayCheckBox
-                        Margin="5,0"
-                        Content="选中"
-                        IsChecked="true"
-                        Type="Primary" />
-                    <lay:LayCheckBox Content="未选中" Type="Primary" />
-                    <lay:LayCheckBox
-                        Margin="5,0"
-                        Content="禁用"
-                        IsEnabled="False"
-                        Type="Primary" />
+                <StackPanel Orientation="Horizontal">
+                    <lay:LayRadioButton Content="未知" GroupName="sex" />
+                    <lay:LayRadioButton Content="男" GroupName="sex" />
+                    <lay:LayRadioButton Content="女" GroupName="sex" />
                 </StackPanel>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <lay:LayRadioButton Content="未知" GroupName="sex" />
-                <lay:LayRadioButton Content="男" GroupName="sex" />
-                <lay:LayRadioButton Content="女" GroupName="sex" />
+                <lay:LayNumericUpDown Margin="0,5" />
             </StackPanel>
         </StackPanel>
-    </StackPanel>
+    </ScrollViewer>
 </UserControl>
