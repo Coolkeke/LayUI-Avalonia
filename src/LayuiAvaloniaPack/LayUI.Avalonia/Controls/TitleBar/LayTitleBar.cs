@@ -13,6 +13,7 @@ using Avalonia.Controls.Chrome;
 using Avalonia.Media;
 using System.Linq;
 using LayUI.Avalonia.Enums;
+using Avalonia.Styling;
 
 namespace LayUI.Avalonia.Controls
 {
@@ -111,11 +112,94 @@ namespace LayUI.Avalonia.Controls
         public static readonly StyledProperty<IBrush> HeaderBackgroundProperty =
        AvaloniaProperty.Register<LayTitleBar, IBrush>(nameof(HeaderBackground), null);
 
+        /// <summary>
+        /// Defines the <see cref="ExtendClientAreaTitleBarHeightHint"/> property.
+        /// </summary>
+        public static readonly StyledProperty<double> ExtendClientAreaTitleBarHeightHintProperty =
+            AvaloniaProperty.Register<LayTitleBar, double>(nameof(ExtendClientAreaTitleBarHeightHint), 7);
+
+        /// <summary>
+        /// Gets or Sets the TitlebarHeightHint for when the client area is extended.
+        /// A value of -1 will cause the titlebar to be auto sized to the OS default.
+        /// Any other positive value will cause the titlebar to assume that height.
+        /// </summary>
+        public double ExtendClientAreaTitleBarHeightHint
+        {
+            get { return GetValue(ExtendClientAreaTitleBarHeightHintProperty); }
+            set { SetValue(ExtendClientAreaTitleBarHeightHintProperty, value); }
+        }
+
+        /// <summary>
+        /// Defines the <see cref="SystemDecorations"/> property.
+        /// </summary>
+        public static readonly StyledProperty<SystemDecorations> SystemDecorationsProperty =
+            AvaloniaProperty.Register<LayTitleBar, SystemDecorations>(nameof(SystemDecorations), SystemDecorations.Full);
+
+        /// <summary>
+        /// Sets the system decorations (title bar, border, etc)
+        /// </summary>
+        public SystemDecorations SystemDecorations
+        {
+            get { return GetValue(SystemDecorationsProperty); }
+            set { SetValue(SystemDecorationsProperty, value); }
+        }
+
+        /// <summary>
+        /// Defines the <see cref="ExtendClientAreaToDecorationsHint"/> property.
+        /// </summary>
+        public static readonly StyledProperty<bool> ExtendClientAreaToDecorationsHintProperty =
+            AvaloniaProperty.Register<LayTitleBar, bool>(nameof(ExtendClientAreaToDecorationsHint), true);
+
+        /// <summary>
+        /// Gets or sets if the ClientArea is Extended into the Window Decorations (chrome or border).
+        /// </summary>
+        public bool ExtendClientAreaToDecorationsHint
+        {
+            get { return GetValue(ExtendClientAreaToDecorationsHintProperty); }
+            set { SetValue(ExtendClientAreaToDecorationsHintProperty, value); }
+        }
+
+        /// <summary>
+        /// Defines the <see cref="ExtendClientAreaChromeHints"/> property.
+        /// </summary>
+        public static readonly StyledProperty<ExtendClientAreaChromeHints> ExtendClientAreaChromeHintsProperty =
+            AvaloniaProperty.Register<LayTitleBar, ExtendClientAreaChromeHints>(nameof(ExtendClientAreaChromeHints), ExtendClientAreaChromeHints.NoChrome);
+
+        /// <summary>
+        /// Gets or Sets the <see cref="Avalonia.Platform.ExtendClientAreaChromeHints"/> that control
+        /// how the chrome looks when the client area is extended.
+        /// </summary>
+        public ExtendClientAreaChromeHints ExtendClientAreaChromeHints
+        {
+            get { return GetValue(ExtendClientAreaChromeHintsProperty); }
+            set { SetValue(ExtendClientAreaChromeHintsProperty, value); }
+        }
+
+        /// <summary>
+        /// Defines the <see cref="TransparencyLevelHint"/> property.
+        /// </summary>
+        public static readonly StyledProperty<WindowTransparencyLevel> TransparencyLevelHintProperty =
+            AvaloniaProperty.Register<LayTitleBar, WindowTransparencyLevel>(nameof(TransparencyLevelHint), WindowTransparencyLevel.Transparent);
+
+        /// <summary>
+        /// Gets or sets the <see cref="WindowTransparencyLevel"/> that the TopLevel should use when possible.
+        /// </summary>
+        public WindowTransparencyLevel TransparencyLevelHint
+        {
+            get { return GetValue(TransparencyLevelHintProperty); }
+            set { SetValue(TransparencyLevelHintProperty, value); }
+        }
+
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
             base.OnApplyTemplate(e);
             if (VisualRoot is Window window)
             {
+                window.ExtendClientAreaTitleBarHeightHint = ExtendClientAreaTitleBarHeightHint;
+                window.SystemDecorations = SystemDecorations;
+                window.ExtendClientAreaToDecorationsHint = ExtendClientAreaToDecorationsHint;
+                window.ExtendClientAreaChromeHints = ExtendClientAreaChromeHints;
+                window.TransparencyLevelHint = TransparencyLevelHint;
                 _disposables = new CompositeDisposable
                 {
                     window.GetObservable(Window.WindowStateProperty)

@@ -40,7 +40,6 @@ namespace LayuiApp
         {
             return Container.Resolve<MainWindow>();
         }
-
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterDialogWindow<DialogWindowBase>();

@@ -39,16 +39,9 @@ namespace LayuiApp
         {
             return AppBuilder.Configure<App>()
                 .UsePlatformDetect()
-                .With(new X11PlatformOptions
-                {
-                    EnableMultiTouch = true,
-                    UseDBusMenu = true,
-                    EnableIme = true
-                })
-                .With(new Win32PlatformOptions
-                {
-                    EnableMultitouch = true
-                })
+                .With(new X11PlatformOptions { EnableMultiTouch = true, UseDBusMenu = true, })
+                .With(new Win32PlatformOptions { EnableMultitouch = true, AllowEglInitialization = true, })
+                .UseSkia()
                 //»’÷æπ˝¬À
                 .LogToTrace(LogEventLevel.Error, LogArea.Property, LogArea.Layout);
         }

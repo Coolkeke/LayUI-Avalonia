@@ -1,5 +1,8 @@
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Prism.Services.Dialogs;
+using System.Linq;
 
 namespace LayuiApp.Views.Dialog
 {

@@ -3,13 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
     <Style Selector="Window.LayWindow">
-        <Setter Property="ExtendClientAreaTitleBarHeightHint" Value="7" />
-        <Setter Property="SystemDecorations" Value="Full" />
-        <Setter Property="ExtendClientAreaToDecorationsHint" Value="True" />
-        <Setter Property="ExtendClientAreaChromeHints" Value="NoChrome" />
-        <Setter Property="WindowStartupLocation" Value="CenterScreen" />
-        <Setter Property="UseLayoutRounding" Value="True" />
-        <Setter Property="TransparencyLevelHint" Value="Transparent" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
