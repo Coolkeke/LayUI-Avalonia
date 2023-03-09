@@ -5,6 +5,8 @@ using Avalonia.Logging;
 using Avalonia.Markup.Xaml;
 using Avalonia.Platform;
 using Layui.Main;
+using Layui.Main.ViewModels;
+using Layui.Main.Views;
 using Layui.Tools.Fonts;
 using Layui.Tools.Languages;
 using Layui.Tools.Logs;
@@ -12,6 +14,7 @@ using LayUI.Avalonia;
 using LayUI.Avalonia.Global;
 using LayUI.Avalonia.Interface;
 using LayuiApp.Views;
+using LayuiApp.Views.Dialog;
 using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -40,10 +43,12 @@ namespace LayuiApp
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterInstance<ILayDialogService>(new LayDialogService());
-            containerRegistry.RegisterInstance<ILayLogger>(new LayLogger());
-            containerRegistry.RegisterInstance<ILayMessage>(new LayMessage());
-            containerRegistry.RegisterInstance<ILayNotification>(new LayNotification());
+            containerRegistry.RegisterDialogWindow<DialogWindowBase>();
+            containerRegistry.RegisterSingleton<ILayDialogService, LayDialogService>();
+            containerRegistry.RegisterSingleton<ILayLogger, LayLogger>();
+            containerRegistry.RegisterSingleton<ILayMessage, LayMessage>();
+            containerRegistry.RegisterSingleton<ILayNotification, LayNotification>();
+            containerRegistry.RegisterDialog<PrismMessageBox, PrismMessageBoxViewModel>("MessageBox"); 
         }
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {

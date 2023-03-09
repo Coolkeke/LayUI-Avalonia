@@ -24,5 +24,13 @@ namespace Layui.Main.ViewModels
                 var data = res;
             }, messageRootName); 
         }
+        private DelegateCommand _PrismDlalogCommand;
+        public DelegateCommand PrismDlalogCommand =>
+            _PrismDlalogCommand ?? (_PrismDlalogCommand = new DelegateCommand(ExecutePrismDlalogCommand));
+
+        void ExecutePrismDlalogCommand()
+        {
+            Dialog.ShowDialog("MessageBox", null,null);
+        }
     }
 }

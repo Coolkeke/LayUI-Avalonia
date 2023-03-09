@@ -18,6 +18,7 @@
         <Setter Property="MinWidth" Value="240" />
         <Setter Property="Background" Value="White" />
         <Setter Property="ClipToBounds" Value="false" />
+		<Setter Property="HorizontalAlignment" Value="Right" />
         <Setter Property="Margin" Value="10 5" />
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="CornerRadius" Value="2" />

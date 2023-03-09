@@ -24,6 +24,11 @@
                     CommandParameter="DialogPageRoot"
                     Content="内联对话框"
                     Type="Default" />
+                <lay:LayButton
+                    Margin="5"
+                    Command="{Binding PrismDlalogCommand}"
+                    Content="Prismd对话框"
+                    Type="Default" />
             </StackPanel>
         </Grid>
     </lay:LayDialogHost>
