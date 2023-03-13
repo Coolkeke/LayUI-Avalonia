@@ -40,6 +40,15 @@ namespace LayuiApp
         {
             return Container.Resolve<MainWindow>();
         }
+        protected override IContainerExtension CreateContainerExtension()
+        {
+            var local = base.CreateContainerExtension();
+            AvaloniaLocator.CurrentMutable.Bind<IContainerExtension>().ToConstant(local);
+            //将Prism容器打入Avalonia ICO 中
+            IContainerExtension? container = AvaloniaLocator.Current?.GetService<IContainerExtension>();
+            //非空判断
+            return container?? local;
+        }
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterDialogWindow<DialogWindowBase>();
