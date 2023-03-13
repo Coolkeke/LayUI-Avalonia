@@ -1,6 +1,8 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Logging;
+using LayUI.Avalonia.Interface.Page;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
@@ -9,6 +11,9 @@ using System.Windows.Input;
 
 namespace LayUI.Avalonia.Tools
 {
+    /// <summary>
+    /// 通用控件元素扩展帮助类
+    /// </summary>
     public class LayControlHelper
     {
 
@@ -22,7 +27,7 @@ namespace LayUI.Avalonia.Tools
             if (obj.Sender is Control ui)
             {
                 if (GetIsAttach(ui))
-                {
+                { 
                     ui.AttachedToLogicalTree += Ui_Loaded;
                     ui.DetachedFromLogicalTree += Ui_Unloaded;
                 }
@@ -37,12 +42,34 @@ namespace LayUI.Avalonia.Tools
 
         private static void Ui_Loaded(object sender, global::Avalonia.LogicalTree.LogicalTreeAttachmentEventArgs e)
         {
-            GetLoadedCommand((AvaloniaObject)sender).Execute(GetCommandParameter((AvaloniaObject)sender));
+            try
+            {
+                if (sender is StyledElement ui)
+                {
+                    if (ui.DataContext is ILayPageInitialized initialized) initialized.Loaded();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.TryGet(LogEventLevel.Error, "LayUI-Avalonia")
+                    ?.Log("LayControlHelper", "VM中Loaded方法出现异常", ex);
+            }
         }
 
         private static void Ui_Unloaded(object sender, global::Avalonia.LogicalTree.LogicalTreeAttachmentEventArgs e)
         {
-            GetUnloadedCommand((AvaloniaObject)sender).Execute(GetCommandParameter((AvaloniaObject)sender));
+            try
+            {
+                if (sender is StyledElement ui)
+                {
+                    if (ui.DataContext is ILayPageInitialized initialized) initialized.Unloaded();
+                }
+            }
+            catch (Exception ex)
+            { 
+                Logger.TryGet(LogEventLevel.Error, "LayUI-Avalonia")
+                    ?.Log("LayControlHelper", "VM中Unloaded方法出现异常", ex);
+            }
         }
 
         /// <summary>
@@ -65,72 +92,5 @@ namespace LayUI.Avalonia.Tools
         {
             return element.GetValue(IsAttachProperty);
         }
-        /// <summary>
-        /// 扩展界面初始化加载命令
-        /// </summary>
-        public static readonly AttachedProperty<ICommand> LoadedCommandProperty = 
-            AvaloniaProperty.RegisterAttached<IAvaloniaObject, IAvaloniaObject, ICommand>(
-            "LoadedCommand", null);
-
-        /// <summary>
-        /// Accessor for Attached property <see cref="LoadedCommandProperty"/>.
-        /// </summary>
-        public static void SetLoadedCommand(AvaloniaObject element, ICommand value)
-        {
-            element.SetValue(LoadedCommandProperty, value);
-        }
-        /// <summary>
-        /// Accessor for Attached property <see cref="LoadedCommandProperty"/>.
-        /// </summary>
-        public static ICommand GetLoadedCommand(AvaloniaObject element)
-        {
-            return element.GetValue(LoadedCommandProperty);
-        }
-        /// <summary>
-        /// 扩展界面销毁命令
-        /// </summary>
-        public static readonly AttachedProperty<ICommand> UnloadedCommandProperty = 
-            AvaloniaProperty.RegisterAttached<IAvaloniaObject, IAvaloniaObject, ICommand>(
-            "UnloadedCommand", null);
-        /// <summary>
-        /// Accessor for Attached property <see cref="UnloadedCommandProperty"/>.
-        /// </summary>
-        public static void SetUnloadedCommand(AvaloniaObject element, ICommand value)
-        {
-            element.SetValue(UnloadedCommandProperty, value);
-        }
-
-        /// <summary>
-        /// Accessor for Attached property <see cref="UnloadedCommandProperty"/>.
-        /// </summary>
-        public static ICommand GetUnloadedCommand(AvaloniaObject element)
-        {
-            return element.GetValue(UnloadedCommandProperty);
-        }
-
-        /// <summary>
-        /// 参数传递
-        /// </summary>
-        public static readonly AttachedProperty<object> CommandParameterProperty = 
-            AvaloniaProperty.RegisterAttached<IAvaloniaObject, IAvaloniaObject, object>(
-            "CommandParameter", null);
-
-
-        /// <summary>
-        /// Accessor for Attached property <see cref="CommandParameterProperty"/>.
-        /// </summary>
-        public static void SetCommandParameter(AvaloniaObject element, object value)
-        {
-            element.SetValue(CommandParameterProperty, value);
-        }
-
-        /// <summary>
-        /// Accessor for Attached property <see cref="CommandParameterProperty"/>.
-        /// </summary>
-        public static object GetCommandParameter(AvaloniaObject element)
-        {
-            return element.GetValue(CommandParameterProperty);
-        }
-
     }
 }

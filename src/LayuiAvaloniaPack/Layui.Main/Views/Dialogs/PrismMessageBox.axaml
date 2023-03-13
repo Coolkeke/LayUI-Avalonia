@@ -8,9 +8,5 @@
     MinWidth="300"
     MinHeight="200"
     mc:Ignorable="d">
-    <UserControl.Styles>
-        <Style Selector="Window">
-            <Setter Property="WindowStartupLocation" Value="CenterOwner" />
-        </Style>
-    </UserControl.Styles>
+    
 </UserControl>

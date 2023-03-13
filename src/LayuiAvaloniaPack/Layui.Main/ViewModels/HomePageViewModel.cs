@@ -6,6 +6,7 @@ using Layui.Main.Models;
 using Layui.Tools.Languages;
 using LayUI.Avalonia.Enums;
 using LayUI.Avalonia.Interface;
+using LayUI.Avalonia.Interface.Page;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -19,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace Layui.Main.ViewModels
 {
-    public class HomePageViewModel : ViewModelBase
+    public class HomePageViewModel : ViewModelBase, ILayPageInitialized
     {
         private ILayMessage message;
         private ResourceDictionary _Language;
@@ -98,6 +99,16 @@ namespace Layui.Main.ViewModels
             if(MenuInfo!=null) Region.RegisterViewWithRegion(SystemResource.Nav_HomeContent, MenuInfo.PageKey);
             await Task.Delay(1000);
             message.Show($"欢迎使用LayUI-Avalonia", "RootMessage",TimeSpan.FromMilliseconds(3000));
+        }
+
+        public void Loaded()
+        {
+            LoadedCommand.Execute();
+        }
+
+        public void Unloaded()
+        {
+
         }
     }
 }
