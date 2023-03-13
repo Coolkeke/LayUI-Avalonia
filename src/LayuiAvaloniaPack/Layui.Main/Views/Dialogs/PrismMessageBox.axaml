@@ -8,5 +8,9 @@
     MinWidth="300"
     MinHeight="200"
     mc:Ignorable="d">
-    <lay:LayTitleBar HeaderHeight="40" />
+    <UserControl.Styles>
+        <Style Selector="Window">
+            <Setter Property="WindowStartupLocation" Value="CenterOwner" />
+        </Style>
+    </UserControl.Styles>
 </UserControl>

@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Data;
+using Avalonia.Logging;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
@@ -47,16 +48,24 @@ namespace LayUI.Avalonia.Extends
                     {
                         await Task.Run(async () =>
                         {
-                            using (WebClient client = new WebClient())
+                            try
                             {
-                                await Dispatcher.UIThread.InvokeAsync(() => SetIsLoaded(image, true));
-                                var bytes = await client.DownloadDataTaskAsync(new Uri(rawUri));
-                                Stream stream = new MemoryStream(bytes);
-                                await Dispatcher.UIThread.InvokeAsync(() =>
+                                using (WebClient client = new WebClient())
                                 {
-                                    image.Source = new Bitmap(stream);
-                                    SetIsLoaded(image, false);
-                                });
+                                    await Dispatcher.UIThread.InvokeAsync(() => SetIsLoaded(image, true));
+                                    var bytes = await client.DownloadDataTaskAsync(new Uri(rawUri));
+                                    Stream stream = new MemoryStream(bytes);
+                                    await Dispatcher.UIThread.InvokeAsync(() =>
+                                    {
+                                        image.Source = new Bitmap(stream);
+                                        SetIsLoaded(image, false);
+                                    });
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Logger.TryGet(LogEventLevel.Error, "LayUI-Avalonia")
+                                                        ?.Log("ImageHelper", "图片获取失败", ex);
                             }
                         });
                     }

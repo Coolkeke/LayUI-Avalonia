@@ -10,15 +10,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:res="using:Layui.Core.Resources"
+    xmlns:tools="using:LayUI.Avalonia.Tools"
     d:DesignHeight="1080"
     d:DesignWidth="1920"
     prism:ViewModelLocator.AutoWireViewModel="True"
+    tools:LayControlHelper.IsAttach="True"
+    tools:LayControlHelper.LoadedCommand="{Binding LoadedCommand}"
     mc:Ignorable="d">
-    <i:Interaction.Behaviors>
-        <ia:EventTriggerBehavior EventName="Initialized">
-            <ia:InvokeCommandAction Command="{Binding LoadedCommand}" />
-        </ia:EventTriggerBehavior>
-    </i:Interaction.Behaviors>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />

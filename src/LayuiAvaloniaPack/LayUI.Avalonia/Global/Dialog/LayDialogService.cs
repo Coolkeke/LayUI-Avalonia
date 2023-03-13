@@ -28,20 +28,5 @@ namespace LayUI.Avalonia.Global
                                        ?.Log("RegisterDialog", "对话框注册异常", ex);
             }
         }
-        public void RegisterDialog<TView, TViewModel>(string dialogName) where TViewModel : ILayDialogAware
-        {
-            try
-            {
-                if (DialogViews.ContainsKey(dialogName)) throw new Exception($"{dialogName}弹窗视图多次注入");
-                if (DialogViewModels.ContainsKey(dialogName)) throw new Exception($"{dialogName}弹窗视图ViewModel多次注入");
-                DialogViews.Add(dialogName, typeof(TView));
-                DialogViewModels.Add(dialogName, typeof(TViewModel));
-            }
-            catch (Exception ex)
-            {
-                Logger.TryGet(LogEventLevel.Error, "LayUI-Avalonia")
-                                       ?.Log("RegisterDialog", "对话框注册异常", ex);
-            }
-        }
     }
 }

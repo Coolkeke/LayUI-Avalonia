@@ -19,6 +19,19 @@ namespace LayUI.Avalonia.Controls
     public class LayTextBox : TextBox
     {
 
+        static LayTextBox()
+        {
+            IsFocusProperty.Changed.Subscribe(IsFocusChanged);
+        }
+        /// <summary>
+        /// 设置文本聚焦
+        /// </summary>
+        /// <param name="obj"></param>
+        private static void IsFocusChanged(AvaloniaPropertyChangedEventArgs<bool> obj)
+        {
+            if (obj.Sender is LayTextBox textBox) if (!textBox.IsFocus) textBox.Focus();
+        }
+
         /// <summary>
         /// 是否聚焦
         /// </summary>
@@ -99,7 +112,7 @@ namespace LayUI.Avalonia.Controls
         protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
         {
             base.OnAttachedToVisualTree(e);
-            if (IsFocus)Focus();
+            if (IsFocus) Focus();
         }
     }
 }

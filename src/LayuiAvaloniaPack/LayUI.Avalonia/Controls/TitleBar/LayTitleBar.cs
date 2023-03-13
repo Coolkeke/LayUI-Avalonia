@@ -24,7 +24,10 @@ namespace LayUI.Avalonia.Controls
         private Panel PART_WindowButtonGrid = null;
         private CompositeDisposable _disposables;
 
+        static LayTitleBar()
+        {
 
+        }
         /// <summary>
         /// 顶部标题栏文字颜色
         /// </summary>
@@ -189,10 +192,11 @@ namespace LayUI.Avalonia.Controls
             get { return GetValue(TransparencyLevelHintProperty); }
             set { SetValue(TransparencyLevelHintProperty, value); }
         }
-
-        protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
+        /// <summary>
+        /// 修改Window样式
+        /// </summary>
+        private void UpdateWindowStyle()
         {
-            base.OnApplyTemplate(e);
             if (VisualRoot is Window window)
             {
                 window.ExtendClientAreaTitleBarHeightHint = ExtendClientAreaTitleBarHeightHint;
@@ -200,6 +204,14 @@ namespace LayUI.Avalonia.Controls
                 window.ExtendClientAreaToDecorationsHint = ExtendClientAreaToDecorationsHint;
                 window.ExtendClientAreaChromeHints = ExtendClientAreaChromeHints;
                 window.TransparencyLevelHint = TransparencyLevelHint;
+            }
+        }
+        protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
+        {
+            base.OnApplyTemplate(e);
+            UpdateWindowStyle();
+            if (VisualRoot is Window window)
+            {
                 _disposables = new CompositeDisposable
                 {
                     window.GetObservable(Window.WindowStateProperty)
@@ -223,7 +235,7 @@ namespace LayUI.Avalonia.Controls
             var items = PART_WindowButtonGrid.Children.ToList();
             foreach (var item in items)
             {
-                if (item is LayButton button)
+                if (item is Button button)
                 {
                     if (button.CommandParameter is WindowButtonType)
                     {
@@ -235,7 +247,8 @@ namespace LayUI.Avalonia.Controls
         }
         private void UpdateWindowState(object sender, global::Avalonia.Interactivity.RoutedEventArgs e)
         {
-            if (sender is LayButton button) {
+            if (sender is Button button)
+            {
                 if (button.CommandParameter is WindowButtonType type)
                 {
                     if (VisualRoot is Window window)
