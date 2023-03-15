@@ -90,7 +90,7 @@ namespace LayUI.Avalonia.Controls
         protected override void OnPointerPressed(PointerPressedEventArgs e)
         {
             base.OnPointerPressed(e);
-            if (PART_HeaderBody != null && e.Source == PART_HeaderBody)
+            if (e.Source == PART_HeaderBody)
             {
                 if (VisualRoot is Window window)
                 {

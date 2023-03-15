@@ -30,7 +30,7 @@ namespace Layui.Main.ViewModels
 
         void ExecutePrismDlalogCommand()
         {
-            Dialog.ShowDialog("MessageBox", null,null);
+            Dialog.Show("MessageBox", null,null);
         }
     }
 }

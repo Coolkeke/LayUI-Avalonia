@@ -28,6 +28,7 @@
                     Margin="5"
                     Command="{Binding PrismDlalogCommand}"
                     Content="Prismd对话框"
+                    HotKey="Ctrl+A"
                     Type="Default" />
             </StackPanel>
         </Grid>

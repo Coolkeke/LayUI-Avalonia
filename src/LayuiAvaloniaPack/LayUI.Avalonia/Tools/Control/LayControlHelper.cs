@@ -20,7 +20,6 @@ namespace LayUI.Avalonia.Tools
         static LayControlHelper()
         {
             IsAttachProperty.Changed.Subscribe(OnIsAttachChanged);
-
         }
         private static void OnIsAttachChanged(AvaloniaPropertyChangedEventArgs<bool> obj)
         {
