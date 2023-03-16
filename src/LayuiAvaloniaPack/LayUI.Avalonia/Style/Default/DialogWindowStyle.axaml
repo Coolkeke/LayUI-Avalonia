@@ -15,7 +15,7 @@
                         <Grid
                             Name="PART_Body"
                             Background="Black"
-                            Opacity="0.8" />
+                            Opacity="0.3" />
                         <ContentPresenter
                             Name="PART_ContentPresenter"
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -31,7 +31,7 @@
         <Style.Animations>
             <Animation Duration="0:0:0.1">
                 <KeyFrame Cue="0%">
-                    <Setter Property="Opacity" Value="0.8" />
+                    <Setter Property="Opacity" Value="0.3" />
                 </KeyFrame>
                 <KeyFrame Cue="100%">
                     <Setter Property="Opacity" Value="0.0" />
@@ -78,7 +78,7 @@
                     <Setter Property="Opacity" Value="0.0" />
                 </KeyFrame>
                 <KeyFrame Cue="100%">
-                    <Setter Property="Opacity" Value="0.8" />
+                    <Setter Property="Opacity" Value="0.3" />
                 </KeyFrame>
             </Animation>
         </Style.Animations>
