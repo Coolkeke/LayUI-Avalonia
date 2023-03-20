@@ -6,25 +6,23 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Grid Name="PART_Grid">
-                        <ContentPresenter
-                            Name="PART_ContentPresenter"
-                            Padding="{TemplateBinding Padding}"
-                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Content="{TemplateBinding Content}"
-                            ContentTemplate="{TemplateBinding ContentTemplate}"
-                            UseLayoutRounding="{TemplateBinding UseLayoutRounding}" />
+                    <Grid>
+                        <VisualLayerManager>
+                            <Grid Name="PART_Grid">
+                                <ContentPresenter
+                                    Name="PART_ContentPresenter"
+                                    Padding="{TemplateBinding Padding}"
+                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                    UseLayoutRounding="{TemplateBinding UseLayoutRounding}" />
+                            </Grid>
+                        </VisualLayerManager>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
-    <Style Selector="Window.LayWindow[WindowState=FullScreen]/template/ Grid#PART_Grid">
-        <Setter Property="Margin" Value="0" />
-    </Style>
-    <Style Selector="Window.LayWindow[WindowState=Maximized] /template/ Grid#PART_Grid">
-        <Setter Property="Margin" Value="7" />
     </Style>
     <!--  Add Styles Here  -->
 </Styles>

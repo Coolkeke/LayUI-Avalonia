@@ -14,16 +14,17 @@ using Avalonia.Media;
 using System.Linq;
 using LayUI.Avalonia.Enums;
 using Avalonia.Styling;
+using Avalonia.Threading;
 
 namespace LayUI.Avalonia.Controls
 {
     [PseudoClasses(":minimized", ":normal", ":maximized", ":fullscreen")]
     public class LayTitleBar : ContentControl
     {
+        private Grid PART_TopGrid = null;
         private Panel PART_HeaderBody = null;
         private Panel PART_WindowButtonGrid = null;
         private CompositeDisposable _disposables;
-
         static LayTitleBar()
         {
 
@@ -90,6 +91,7 @@ namespace LayUI.Avalonia.Controls
         protected override void OnPointerPressed(PointerPressedEventArgs e)
         {
             base.OnPointerPressed(e);
+            if (e.ClickCount > 1) return;
             if (e.Source == PART_HeaderBody)
             {
                 if (VisualRoot is Window window)
@@ -99,6 +101,7 @@ namespace LayUI.Avalonia.Controls
                     window.BeginMoveDrag(e);
                 }
             }
+
         }
 
         /// <summary>
@@ -116,27 +119,10 @@ namespace LayUI.Avalonia.Controls
        AvaloniaProperty.Register<LayTitleBar, IBrush>(nameof(HeaderBackground), null);
 
         /// <summary>
-        /// Defines the <see cref="ExtendClientAreaTitleBarHeightHint"/> property.
-        /// </summary>
-        public static readonly StyledProperty<double> ExtendClientAreaTitleBarHeightHintProperty =
-            AvaloniaProperty.Register<LayTitleBar, double>(nameof(ExtendClientAreaTitleBarHeightHint), 7);
-
-        /// <summary>
-        /// Gets or Sets the TitlebarHeightHint for when the client area is extended.
-        /// A value of -1 will cause the titlebar to be auto sized to the OS default.
-        /// Any other positive value will cause the titlebar to assume that height.
-        /// </summary>
-        public double ExtendClientAreaTitleBarHeightHint
-        {
-            get { return GetValue(ExtendClientAreaTitleBarHeightHintProperty); }
-            set { SetValue(ExtendClientAreaTitleBarHeightHintProperty, value); }
-        }
-
-        /// <summary>
         /// Defines the <see cref="SystemDecorations"/> property.
         /// </summary>
         public static readonly StyledProperty<SystemDecorations> SystemDecorationsProperty =
-            AvaloniaProperty.Register<LayTitleBar, SystemDecorations>(nameof(SystemDecorations), SystemDecorations.Full);
+            AvaloniaProperty.Register<LayTitleBar, SystemDecorations>(nameof(SystemDecorations), SystemDecorations.None);
 
         /// <summary>
         /// Sets the system decorations (title bar, border, etc)
@@ -147,36 +133,6 @@ namespace LayUI.Avalonia.Controls
             set { SetValue(SystemDecorationsProperty, value); }
         }
 
-        /// <summary>
-        /// Defines the <see cref="ExtendClientAreaToDecorationsHint"/> property.
-        /// </summary>
-        public static readonly StyledProperty<bool> ExtendClientAreaToDecorationsHintProperty =
-            AvaloniaProperty.Register<LayTitleBar, bool>(nameof(ExtendClientAreaToDecorationsHint), true);
-
-        /// <summary>
-        /// Gets or sets if the ClientArea is Extended into the Window Decorations (chrome or border).
-        /// </summary>
-        public bool ExtendClientAreaToDecorationsHint
-        {
-            get { return GetValue(ExtendClientAreaToDecorationsHintProperty); }
-            set { SetValue(ExtendClientAreaToDecorationsHintProperty, value); }
-        }
-
-        /// <summary>
-        /// Defines the <see cref="ExtendClientAreaChromeHints"/> property.
-        /// </summary>
-        public static readonly StyledProperty<ExtendClientAreaChromeHints> ExtendClientAreaChromeHintsProperty =
-            AvaloniaProperty.Register<LayTitleBar, ExtendClientAreaChromeHints>(nameof(ExtendClientAreaChromeHints), ExtendClientAreaChromeHints.NoChrome);
-
-        /// <summary>
-        /// Gets or Sets the <see cref="Avalonia.Platform.ExtendClientAreaChromeHints"/> that control
-        /// how the chrome looks when the client area is extended.
-        /// </summary>
-        public ExtendClientAreaChromeHints ExtendClientAreaChromeHints
-        {
-            get { return GetValue(ExtendClientAreaChromeHintsProperty); }
-            set { SetValue(ExtendClientAreaChromeHintsProperty, value); }
-        }
 
         /// <summary>
         /// Defines the <see cref="TransparencyLevelHint"/> property.
@@ -199,17 +155,16 @@ namespace LayUI.Avalonia.Controls
         {
             if (VisualRoot is Window window)
             {
-                window.ExtendClientAreaTitleBarHeightHint = ExtendClientAreaTitleBarHeightHint;
-                window.SystemDecorations = SystemDecorations;
-                window.ExtendClientAreaToDecorationsHint = ExtendClientAreaToDecorationsHint;
-                window.ExtendClientAreaChromeHints = ExtendClientAreaChromeHints;
                 window.TransparencyLevelHint = TransparencyLevelHint;
+                window.SystemDecorations = SystemDecorations;
             }
         }
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
             base.OnApplyTemplate(e);
-            UpdateWindowStyle();
+            PART_HeaderBody = e.NameScope.Find<Panel>("PART_HeaderBody");
+            PART_WindowButtonGrid = e.NameScope.Find<Panel>("PART_WindowButtonGrid");
+            PART_TopGrid = e.NameScope.Find<Grid>("PART_TopGrid");
             if (VisualRoot is Window window)
             {
                 _disposables = new CompositeDisposable
@@ -217,20 +172,38 @@ namespace LayUI.Avalonia.Controls
                     window.GetObservable(Window.WindowStateProperty)
                         .Subscribe(delegate(WindowState x)
                         {
+                            if(x==WindowState.Maximized||x==WindowState.FullScreen)
+                            {
+                                PART_TopGrid.ColumnDefinitions=new ColumnDefinitions("0,*,0");
+                                PART_TopGrid.RowDefinitions=new RowDefinitions("0,*,0");
+                            }else{
+                                PART_TopGrid.ColumnDefinitions=new ColumnDefinitions("2,*,2");
+                                PART_TopGrid.RowDefinitions=new RowDefinitions("2,*,2");
+                            }
                             PseudoClasses.Set(":minimized", x == WindowState.Minimized);
                             PseudoClasses.Set(":normal", x == WindowState.Normal);
                             PseudoClasses.Set(":maximized", x == WindowState.Maximized);
                             PseudoClasses.Set(":fullscreen", x == WindowState.FullScreen);
                         }),
+                    window.GetObservable(Window.SystemDecorationsProperty)
+                        .Subscribe(delegate(SystemDecorations x)
+                        {
+                          x= SystemDecorations;
+                        }),
+                    window.GetObservable(Window.TransparencyLevelHintProperty)
+                        .Subscribe(delegate(WindowTransparencyLevel x)
+                        {
+                          x= TransparencyLevelHint;
+                        }),
                 };
             }
-            PART_HeaderBody = e.NameScope.Find<Panel>("PART_HeaderBody");
-            PART_WindowButtonGrid = e.NameScope.Find<Panel>("PART_WindowButtonGrid");
-            if (PART_HeaderBody != null) AddOreRemoveHandler(true);
+            if (PART_HeaderBody != null) AddOrRemoveHandler(true);
             if (PART_HeaderBody != null) PART_HeaderBody.DoubleTapped -= PART_HeaderBody_DoubleTapped;
             if (PART_HeaderBody != null) PART_HeaderBody.DoubleTapped += PART_HeaderBody_DoubleTapped;
+            UpdateWindowStyle();
+            SetWindowSide();
         }
-        private void AddOreRemoveHandler(bool isAdd)
+        private void AddOrRemoveHandler(bool isAdd)
         {
             var items = PART_WindowButtonGrid.Children.ToList();
             foreach (var item in items)
@@ -256,7 +229,14 @@ namespace LayUI.Avalonia.Controls
                         switch (type)
                         {
                             case WindowButtonType.FullScreen:
-                                if (window.WindowState == WindowState.FullScreen) window.WindowState = WindowState.Normal;
+                                if (window.WindowState == WindowState.Maximized)
+                                {
+                                    window.WindowState = WindowState.FullScreen;
+                                }
+                                else if (window.WindowState == WindowState.FullScreen)
+                                {
+                                    window.WindowState = WindowState.Normal;
+                                }
                                 else window.WindowState = WindowState.FullScreen;
                                 break;
                             case WindowButtonType.Minimized:
@@ -276,9 +256,39 @@ namespace LayUI.Avalonia.Controls
                 }
             }
         }
-
+        /// <summary>
+        /// 设置当前Window可拖拽区域
+        /// </summary>
+        void SetWindowSide()
+        {
+            SetupSide("Left", StandardCursorType.LeftSide, WindowEdge.West);
+            SetupSide("Right", StandardCursorType.RightSide, WindowEdge.East);
+            SetupSide("Top", StandardCursorType.TopSide, WindowEdge.North);
+            SetupSide("Bottom", StandardCursorType.BottomSide, WindowEdge.South);
+            SetupSide("TopLeft", StandardCursorType.TopLeftCorner, WindowEdge.NorthWest);
+            SetupSide("TopRight", StandardCursorType.TopRightCorner, WindowEdge.NorthEast);
+            SetupSide("BottomLeft", StandardCursorType.BottomLeftCorner, WindowEdge.SouthWest);
+            SetupSide("BottomRight", StandardCursorType.BottomRightCorner, WindowEdge.SouthEast);
+        }
+        internal void SetupSide(string name, StandardCursorType cursor, WindowEdge edge)
+        {
+            if (PART_TopGrid == null) return;
+            if (VisualRoot is Window window)
+            {
+                var ctl = PART_TopGrid.Children.Where(o => o.Name == name).FirstOrDefault() as Control;
+                if (ctl == null) return;
+                ctl.Cursor = new Cursor(cursor);
+                ctl.PointerPressed += (i, e) =>
+                {
+                    Dispatcher.UIThread.Post(() => {
+                        window.PlatformImpl?.BeginResizeDrag(edge, e);
+                    });
+                };
+            }
+        }
         private void PART_HeaderBody_DoubleTapped(object sender, global::Avalonia.Interactivity.RoutedEventArgs e)
         {
+
             if (e.Source != PART_HeaderBody) return;
             if (VisualRoot is Window window)
             {
@@ -292,7 +302,7 @@ namespace LayUI.Avalonia.Controls
             base.OnDetachedFromVisualTree(e);
             _disposables?.Dispose();
             if (PART_HeaderBody != null) PART_HeaderBody.DoubleTapped -= PART_HeaderBody_DoubleTapped;
-            if (PART_HeaderBody != null) AddOreRemoveHandler(false);
+            if (PART_HeaderBody != null) AddOrRemoveHandler(false);
         }
     }
 }

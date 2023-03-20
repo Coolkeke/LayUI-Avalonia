@@ -9,5 +9,6 @@
     Title="{Binding Title}"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    IsDialog="True"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d" />

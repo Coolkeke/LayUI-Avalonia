@@ -2,6 +2,7 @@ using Avalonia;
 using Avalonia.Animation;
 using Avalonia.Controls;
 using Avalonia.Controls.Chrome;
+using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media.Imaging;
 using LayUI.Avalonia.Controls;
@@ -13,7 +14,7 @@ namespace LayuiApp.Views
     {
         public MainWindow()
         {
-            InitializeComponent();
-        }
+            InitializeComponent(); 
+        } 
     }
 }

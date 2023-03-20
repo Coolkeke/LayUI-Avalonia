@@ -15,12 +15,15 @@
     Title="{lang:Localize AppTitle}"
     d:DesignHeight="1080"
     d:DesignWidth="1920"
-    prism:ViewModelLocator.AutoWireViewModel="True"
+    Background="Transparent"
     Classes="LayWindow"
     FontFamily="avares://LayuiApp/Assets/Fonts/微软雅黑.ttf#Microsoft YaHei"
     Icon="/Assets/AvaloniaLogo.png"
     mc:Ignorable="d">
-    <lay:LayTitleBar HeaderHeight="40">
+    <lay:LayTitleBar
+        ClipToBounds="True"
+        CornerRadius="10"
+        HeaderHeight="40">
         <lay:LayTitleBar.HeaderContent>
             <StackPanel IsHitTestVisible="false" Orientation="Horizontal">
                 <Image
