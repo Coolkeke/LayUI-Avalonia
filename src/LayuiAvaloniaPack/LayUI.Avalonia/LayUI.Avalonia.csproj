@@ -20,4 +20,8 @@
     <Folder Include="Controls\Switch\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Style\Default\ToggleSwitchStyle.axaml" />
+  </ItemGroup>
+
 </Project>
