@@ -4,13 +4,10 @@
     xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
     <Design.PreviewWith>
         <Border Padding="20">
-            <lay:LaySwitch
-                Width="150"
-                Height="50"
-                Content="123" />
+            <lay:LaySpecialToggleButton Width="150" Content="123" />
         </Border>
     </Design.PreviewWith>
-    <Style Selector="lay|LaySwitch">
+    <Style Selector="lay|LaySpecialToggleButton">
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource LightBlack}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -37,7 +34,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style Selector="lay|LaySwitch:checked">
+    <Style Selector="lay|LaySpecialToggleButton:checked">
         <Setter Property="Background" Value="{DynamicResource CyanGreen}" />
     </Style>
 </Styles>

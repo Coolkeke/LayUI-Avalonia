@@ -15,44 +15,44 @@ namespace LayUI.Avalonia.Controls
     /// <para>唯一区别是IsChecked属性不在为Null</para>
     /// </summary>
     [PseudoClasses(":checked", ":unchecked")]
-    public class LaySwitch: Button
+    public class LaySpecialToggleButton : Button
     {
         /// <summary>
         /// Defines the <see cref="IsChecked"/> property.
         /// </summary>
-        public static readonly DirectProperty<LaySwitch, bool> IsCheckedProperty =
-            AvaloniaProperty.RegisterDirect<LaySwitch, bool>(
+        public static readonly DirectProperty<LaySpecialToggleButton, bool> IsCheckedProperty =
+            AvaloniaProperty.RegisterDirect<LaySpecialToggleButton, bool>(
                 nameof(IsChecked),
                 o => o.IsChecked,
-                (o, v) => o.IsChecked = v, 
+                (o, v) => o.IsChecked = v,
                 defaultBindingMode: BindingMode.TwoWay);
 
         /// <summary>
         /// Defines the <see cref="Checked"/> event.
         /// </summary>
         public static readonly RoutedEvent<RoutedEventArgs> CheckedEvent =
-            RoutedEvent.Register<LaySwitch, RoutedEventArgs>(nameof(Checked), RoutingStrategies.Bubble);
+            RoutedEvent.Register<LaySpecialToggleButton, RoutedEventArgs>(nameof(Checked), RoutingStrategies.Bubble);
 
         /// <summary>
         /// Defines the <see cref="Unchecked"/> event.
         /// </summary>
         public static readonly RoutedEvent<RoutedEventArgs> UncheckedEvent =
-            RoutedEvent.Register<LaySwitch, RoutedEventArgs>(nameof(Unchecked), RoutingStrategies.Bubble);
+            RoutedEvent.Register<LaySpecialToggleButton, RoutedEventArgs>(nameof(Unchecked), RoutingStrategies.Bubble);
 
         private bool _isChecked = false;
 
-        static LaySwitch()
+        static LaySpecialToggleButton()
         {
-            IsCheckedProperty.Changed.AddClassHandler<LaySwitch>((x, e) => x.OnIsCheckedChanged(e));
+            IsCheckedProperty.Changed.AddClassHandler<LaySpecialToggleButton>((x, e) => x.OnIsCheckedChanged(e));
         }
 
-        public LaySwitch()
+        public LaySpecialToggleButton()
         {
             UpdatePseudoClasses(IsChecked);
         }
 
         /// <summary>
-        /// Raised when a <see cref="LaySwitch"/> is checked.
+        /// Raised when a <see cref="LaySpecialToggleButton"/> is checked.
         /// </summary>
         public event EventHandler<RoutedEventArgs> Checked
         {
@@ -61,7 +61,7 @@ namespace LayUI.Avalonia.Controls
         }
 
         /// <summary>
-        /// Raised when a <see cref="LaySwitch"/> is unchecked.
+        /// Raised when a <see cref="LaySpecialToggleButton"/> is unchecked.
         /// </summary>
         public event EventHandler<RoutedEventArgs> Unchecked
         {
@@ -70,7 +70,7 @@ namespace LayUI.Avalonia.Controls
         }
 
         /// <summary>
-        /// Gets or sets whether the <see cref="LaySwitch"/> is checked.
+        /// Gets or sets whether the <see cref="LaySpecialToggleButton"/> is checked.
         /// </summary>
         public bool IsChecked
         {
