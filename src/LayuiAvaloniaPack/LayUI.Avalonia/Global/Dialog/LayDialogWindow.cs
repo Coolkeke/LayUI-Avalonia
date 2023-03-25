@@ -33,24 +33,21 @@ namespace LayUI.Avalonia.Global
         }
         public ILayDialogResult Result { get; set; }
 
-        [Bindable(true)]
 
         /// <summary>
         /// Defines the <see cref="IsOpen"/> property.
         /// </summary>
-        public static readonly DirectProperty<LayDialogWindow, bool> IsOpenProperty =
-            AvaloniaProperty.RegisterDirect<LayDialogWindow, bool>(nameof(IsOpen),
-                o => o.IsOpen,
-                (o, v) => o.IsOpen = v);
-        private bool _IsOpen;
+        public static readonly StyledProperty<bool> IsOpenProperty =
+            AvaloniaProperty.Register<LayDialogWindow, bool>(nameof(IsOpen), false);
+        [Bindable(true)]
         /// <summary>
         /// 对话框是否开启
         /// </summary>
         public bool IsOpen
         {
-            get { return _IsOpen; }
-            set { SetAndRaise(IsOpenProperty, ref _IsOpen, value); IsOpenChanged(); }
-        }
+            get { return GetValue(IsOpenProperty); }
+            set { SetValue(IsOpenProperty, value); IsOpenChanged(); }
+        } 
         private Action<ILayDialogResult> GetRequestCloseHandler()
         {
             Action<ILayDialogResult> requestCloseHandler = null;

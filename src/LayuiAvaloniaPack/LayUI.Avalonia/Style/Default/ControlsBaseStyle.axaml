@@ -1,0 +1,33 @@
+﻿<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <StackPanel>
+            <Border
+                Width="100"
+                Height="50"
+                Margin="10"
+                Padding="20"
+                Background="Red"
+                Classes="anim zoom" />
+            <Button
+                Width="100"
+                Height="50"
+                Margin="10"
+                Padding="20"
+                Background="Red"
+                Classes="anim zoom" />
+        </StackPanel>
+    </Design.PreviewWith>
+    <Style Selector=":is(Control).anim">
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2" />
+                </Transitions>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector=":is(Panel).zoom:pointerover">
+        <Setter Property="RenderTransform" Value="scale(1.1)" />
+    </Style>
+    <!--  Add Styles Here  -->
+</Styles>
