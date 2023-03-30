@@ -16,14 +16,17 @@
     d:DesignHeight="1080"
     d:DesignWidth="1920"
     Background="Transparent"
-    Classes="LayWindow"
+    ExtendClientAreaChromeHints="NoChrome"
+    ExtendClientAreaTitleBarHeightHint="-1"
+    ExtendClientAreaToDecorationsHint="true"
     FontFamily="avares://LayuiApp/Assets/Fonts/微软雅黑.ttf#Microsoft YaHei"
     Icon="/Assets/AvaloniaLogo.png"
+    SystemDecorations="None"
+    TransparencyBackgroundFallback="Transparent"
+    TransparencyLevelHint="AcrylicBlur"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <lay:LayTitleBar
-        ClipToBounds="True"
-        CornerRadius="10"
-        HeaderHeight="40">
+    <lay:LayTitleBar ClipToBounds="True" HeaderHeight="40">
         <lay:LayTitleBar.HeaderContent>
             <StackPanel IsHitTestVisible="false" Orientation="Horizontal">
                 <Image

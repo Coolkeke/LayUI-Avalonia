@@ -21,7 +21,6 @@ namespace LayUI.Avalonia.Controls
     [PseudoClasses(":minimized", ":normal", ":maximized", ":fullscreen")]
     public class LayTitleBar : ContentControl
     {
-        private Grid PART_TopGrid = null;
         private Panel PART_HeaderBody = null;
         private Panel PART_WindowButtonGrid = null;
         private CompositeDisposable _disposables;
@@ -116,55 +115,12 @@ namespace LayUI.Avalonia.Controls
         /// 定义<see cref="IBrush?"/>属性
         /// </summary>
         public static readonly StyledProperty<IBrush> HeaderBackgroundProperty =
-       AvaloniaProperty.Register<LayTitleBar, IBrush>(nameof(HeaderBackground), null);
-
-        /// <summary>
-        /// Defines the <see cref="SystemDecorations"/> property.
-        /// </summary>
-        public static readonly StyledProperty<SystemDecorations> SystemDecorationsProperty =
-            AvaloniaProperty.Register<LayTitleBar, SystemDecorations>(nameof(SystemDecorations), SystemDecorations.None);
-
-        /// <summary>
-        /// Sets the system decorations (title bar, border, etc)
-        /// </summary>
-        public SystemDecorations SystemDecorations
-        {
-            get { return GetValue(SystemDecorationsProperty); }
-            set { SetValue(SystemDecorationsProperty, value); }
-        }
-
-
-        /// <summary>
-        /// Defines the <see cref="TransparencyLevelHint"/> property.
-        /// </summary>
-        public static readonly StyledProperty<WindowTransparencyLevel> TransparencyLevelHintProperty =
-            AvaloniaProperty.Register<LayTitleBar, WindowTransparencyLevel>(nameof(TransparencyLevelHint), WindowTransparencyLevel.Transparent);
-
-        /// <summary>
-        /// Gets or sets the <see cref="WindowTransparencyLevel"/> that the TopLevel should use when possible.
-        /// </summary>
-        public WindowTransparencyLevel TransparencyLevelHint
-        {
-            get { return GetValue(TransparencyLevelHintProperty); }
-            set { SetValue(TransparencyLevelHintProperty, value); }
-        }
-        /// <summary>
-        /// 修改Window样式
-        /// </summary>
-        private void UpdateWindowStyle()
-        {
-            if (VisualRoot is Window window)
-            {
-                window.TransparencyLevelHint = TransparencyLevelHint;
-                window.SystemDecorations = SystemDecorations;
-            }
-        }
+       AvaloniaProperty.Register<LayTitleBar, IBrush>(nameof(HeaderBackground), null); 
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
             base.OnApplyTemplate(e);
             PART_HeaderBody = e.NameScope.Find<Panel>("PART_HeaderBody");
             PART_WindowButtonGrid = e.NameScope.Find<Panel>("PART_WindowButtonGrid");
-            PART_TopGrid = e.NameScope.Find<Grid>("PART_TopGrid");
             if (VisualRoot is Window window)
             {
                 _disposables = new CompositeDisposable
@@ -172,36 +128,16 @@ namespace LayUI.Avalonia.Controls
                     window.GetObservable(Window.WindowStateProperty)
                         .Subscribe(delegate(WindowState x)
                         {
-                            if(x==WindowState.Maximized||x==WindowState.FullScreen)
-                            {
-                                PART_TopGrid.ColumnDefinitions=new ColumnDefinitions("0,*,0");
-                                PART_TopGrid.RowDefinitions=new RowDefinitions("0,*,0");
-                            }else{
-                                PART_TopGrid.ColumnDefinitions=new ColumnDefinitions("2,*,2");
-                                PART_TopGrid.RowDefinitions=new RowDefinitions("2,*,2");
-                            }
                             PseudoClasses.Set(":minimized", x == WindowState.Minimized);
                             PseudoClasses.Set(":normal", x == WindowState.Normal);
                             PseudoClasses.Set(":maximized", x == WindowState.Maximized);
                             PseudoClasses.Set(":fullscreen", x == WindowState.FullScreen);
-                        }),
-                    window.GetObservable(Window.SystemDecorationsProperty)
-                        .Subscribe(delegate(SystemDecorations x)
-                        {
-                          x= SystemDecorations;
-                        }),
-                    window.GetObservable(Window.TransparencyLevelHintProperty)
-                        .Subscribe(delegate(WindowTransparencyLevel x)
-                        {
-                          x= TransparencyLevelHint;
-                        }),
+                        }), 
                 };
             }
             if (PART_HeaderBody != null) AddOrRemoveHandler(true);
             if (PART_HeaderBody != null) PART_HeaderBody.DoubleTapped -= PART_HeaderBody_DoubleTapped;
             if (PART_HeaderBody != null) PART_HeaderBody.DoubleTapped += PART_HeaderBody_DoubleTapped;
-            UpdateWindowStyle();
-            SetWindowSide();
         }
         private void AddOrRemoveHandler(bool isAdd)
         {
@@ -254,36 +190,6 @@ namespace LayUI.Avalonia.Controls
                         }
                     }
                 }
-            }
-        }
-        /// <summary>
-        /// 设置当前Window可拖拽区域
-        /// </summary>
-        void SetWindowSide()
-        {
-            SetupSide("Left", StandardCursorType.LeftSide, WindowEdge.West);
-            SetupSide("Right", StandardCursorType.RightSide, WindowEdge.East);
-            SetupSide("Top", StandardCursorType.TopSide, WindowEdge.North);
-            SetupSide("Bottom", StandardCursorType.BottomSide, WindowEdge.South);
-            SetupSide("TopLeft", StandardCursorType.TopLeftCorner, WindowEdge.NorthWest);
-            SetupSide("TopRight", StandardCursorType.TopRightCorner, WindowEdge.NorthEast);
-            SetupSide("BottomLeft", StandardCursorType.BottomLeftCorner, WindowEdge.SouthWest);
-            SetupSide("BottomRight", StandardCursorType.BottomRightCorner, WindowEdge.SouthEast);
-        }
-        internal void SetupSide(string name, StandardCursorType cursor, WindowEdge edge)
-        {
-            if (PART_TopGrid == null) return;
-            if (VisualRoot is Window window)
-            {
-                var ctl = PART_TopGrid.Children.Where(o => o.Name == name).FirstOrDefault() as Control;
-                if (ctl == null) return;
-                ctl.Cursor = new Cursor(cursor);
-                ctl.PointerPressed += (i, e) =>
-                {
-                    Dispatcher.UIThread.Post(() => {
-                        window.PlatformImpl?.BeginResizeDrag(edge, e);
-                    });
-                };
             }
         }
         private void PART_HeaderBody_DoubleTapped(object sender, global::Avalonia.Interactivity.RoutedEventArgs e)
