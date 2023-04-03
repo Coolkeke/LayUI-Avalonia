@@ -59,6 +59,10 @@ namespace Layui.Core.Resources
         /// <summary>
         /// 普通信息通知
         /// </summary>
-        public static string NotificationPage = "NotificationPage";
+        public static string NotificationPage = "NotificationPage"; 
+        /// <summary>
+        /// 忙碌控件
+        /// </summary>
+        public static string LoadingPage = "LoadingPage"; 
     }
 }

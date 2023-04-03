@@ -32,6 +32,7 @@ namespace Layui.Main
             containerRegistry.RegisterForNavigation<CardPage>(SystemResource.CardPage);
             containerRegistry.RegisterForNavigation<MessagePage>(SystemResource.MessagePage);
             containerRegistry.RegisterForNavigation<NotificationPage>(SystemResource.NotificationPage);
+            containerRegistry.RegisterForNavigation<LoadingPage>(SystemResource.LoadingPage);
         }
     }
 }

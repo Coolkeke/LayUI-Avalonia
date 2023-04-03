@@ -3,6 +3,7 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ContentControlStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/UserControlStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ControlsBaseStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/LoadingStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/WindowStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TitleBarStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TransitionsStyle.axaml" />
