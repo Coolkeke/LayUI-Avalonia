@@ -7,7 +7,8 @@
             <lay:LayLoading
                 Width="200"
                 Height="200"
-                IsActive="True">
+                IsActive="True"
+                Type="Skip">
                 <lay:LayButton />
             </lay:LayLoading>
         </Border>
@@ -17,6 +18,7 @@
     </Style>
     <Style Selector="lay|LayLoading">
         <Setter Property="Color" Value="{DynamicResource Blue}" />
+        <Setter Property="ClipToBounds" Value="false" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -59,6 +61,9 @@
         </Setter>
     </Style>
     <!--  Window忙碌效果 Start  -->
+    <Style Selector="lay|LayLoading[Type=Window]">
+        <Setter Property="Size" Value="60" />
+    </Style>
     <Style Selector="lay|LayLoading[Type=Window]/template/ TemplatedControl#PART_LoadingContent">
         <Setter Property="Template">
             <Setter.Value>
@@ -457,6 +462,89 @@
                 </KeyFrame>
                 <KeyFrame KeyTime="0:0:3.47">
                     <Setter Property="RotateTransform.Angle" Value="580" />
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
+    </Style>
+    <!--  Window忙碌效果 End  -->
+    <!--  Window忙碌效果 Start  -->
+    <Style Selector="lay|LayLoading[Type=Skip]">
+        <Setter Property="Size" Value="50" />
+    </Style>
+    <Style Selector="lay|LayLoading[Type=Skip]/template/ TemplatedControl#PART_LoadingContent">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Viewbox Width="{TemplateBinding Tag}" Height="{TemplateBinding Tag}">
+                        <Grid Width="150" Height="150">
+                            <Grid
+                                Width="150"
+                                Height="150"
+                                ClipToBounds="True">
+                                <Grid
+                                    Name="PART_GridRotate"
+                                    Width="100"
+                                    Height="100">
+                                    <Border
+                                        Name="PART_BorderRotate"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="5">
+                                        <Border.Styles>
+                                            <Style Selector="Border#PART_BorderRotate">
+                                                <Setter Property="RenderTransform" Value="rotate(45deg)" />
+                                            </Style>
+                                        </Border.Styles>
+                                    </Border>
+                                </Grid>
+                                <Ellipse
+                                    Name="PART_EllipseRotate"
+                                    Width="100"
+                                    Height="5"
+                                    VerticalAlignment="Bottom"
+                                    Fill="{TemplateBinding Background}"
+                                    Opacity="0.5" />
+                            </Grid>
+                        </Grid>
+                    </Viewbox>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayLoading[Type=Skip]lay|LayLoading[IsActive=true]/template/ TemplatedControl#PART_LoadingContent /template/ Grid#PART_GridRotate">
+        <Style.Animations>
+            <Animation
+                FillMode="None"
+                IterationCount="Infinite"
+                Duration="0:0:0.7">
+                <KeyFrame Cue="0%">
+                    <Setter Property="TranslateTransform.Y" Value="0" />
+                    <Setter Property="RotateTransform.Angle" Value="0" />
+                </KeyFrame>
+                <KeyFrame Cue="50%">
+                    <Setter Property="TranslateTransform.Y" Value="50" />
+                    <Setter Property="RotateTransform.Angle" Value="90" />
+                </KeyFrame>
+                <KeyFrame Cue="100%">
+                    <Setter Property="TranslateTransform.Y" Value="0" />
+                    <Setter Property="RotateTransform.Angle" Value="180" />
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
+    </Style>
+    <Style Selector="lay|LayLoading[Type=Skip]lay|LayLoading[IsActive=true]/template/ TemplatedControl#PART_LoadingContent /template/ Ellipse#PART_EllipseRotate">
+        <Style.Animations>
+            <Animation
+                FillMode="None"
+                IterationCount="Infinite"
+                Duration="0:0:0.7">
+                <KeyFrame Cue="0%">
+                    <Setter Property="Width" Value="100" />
+                </KeyFrame>
+                <KeyFrame Cue="50%">
+                    <Setter Property="Width" Value="150" />
+                </KeyFrame>
+                <KeyFrame Cue="100%">
+                    <Setter Property="Width" Value="100" />
                 </KeyFrame>
             </Animation>
         </Style.Animations>

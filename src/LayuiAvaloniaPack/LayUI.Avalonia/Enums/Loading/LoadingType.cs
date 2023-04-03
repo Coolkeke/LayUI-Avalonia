@@ -10,8 +10,20 @@ namespace LayUI.Avalonia.Enums
     public enum LoadingType
     {
         /// <summary>
-        /// 
+        /// Window
         /// </summary>
         Window,
+        /// <summary>
+        /// 旋转
+        /// </summary>
+        Revolve,
+        /// <summary>
+        /// 缩放
+        /// </summary>
+        Zoom,
+        /// <summary>
+        /// 跳跃
+        /// </summary>
+        Skip
     }
 }
