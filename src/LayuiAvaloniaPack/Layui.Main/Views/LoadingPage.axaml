@@ -14,7 +14,7 @@
             Name="check"
             Content="开关"
             IsChecked="true" />
-        <UniformGrid Grid.Row="1" Columns="3">
+        <UniformGrid Grid.Row="1">
             <lay:LayLoading Title="正在加载..." IsActive="{Binding #check.IsChecked}" />
             <lay:LayLoading
                 Title="正在加载..."
