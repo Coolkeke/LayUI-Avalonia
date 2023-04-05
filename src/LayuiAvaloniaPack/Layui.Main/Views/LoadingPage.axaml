@@ -20,6 +20,14 @@
                 Title="正在加载..."
                 IsActive="{Binding #check.IsChecked}"
                 Type="Skip" />
+            <lay:LayLoading
+                Title="正在加载..."
+                IsActive="{Binding #check.IsChecked}"
+                Type="Simple" />
+            <lay:LayLoading
+                Title="正在加载..."
+                IsActive="{Binding #check.IsChecked}"
+                Type="Revolve" />
         </UniformGrid>
     </Grid>
 </UserControl>

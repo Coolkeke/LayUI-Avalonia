@@ -24,6 +24,10 @@ namespace LayUI.Avalonia.Enums
         /// <summary>
         /// 跳跃
         /// </summary>
-        Skip
+        Skip,
+        /// <summary>
+        /// 简约
+        /// </summary>
+        Simple
     }
 }
