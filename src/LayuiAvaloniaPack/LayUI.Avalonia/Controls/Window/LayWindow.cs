@@ -1,45 +1,43 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Platform;
 using Avalonia.Threading;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Controls
 {
     public class LayWindow: Window
     {
-
-        /// <summary>
-        /// Defines the <see cref="IsDialog"/> property.
-        /// </summary>
-        public static readonly StyledProperty<bool> IsDialogProperty =
-            AvaloniaProperty.Register<LayWindow, bool>(nameof(IsDialog), false);
-
-        /// <summary>
-        /// 是否为对话框
-        /// </summary>
-        public bool IsDialog
-        {
-            get { return GetValue(IsDialogProperty); }
-            set { SetValue(IsDialogProperty, value); }
-        }
-        public override void Show()
+        public override async void Show()
         {
             base.Show();
-            //判断当前窗体是否为对话框模式
-            if (IsDialog&&WindowStartupLocation == WindowStartupLocation.CenterOwner)
+            await Task.Delay(1);
+            SetWindowStartupLocationWorkaround();
+        }
+        private void SetWindowStartupLocationWorkaround()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) return; 
+            double scale = PlatformImpl?.DesktopScaling ?? 1.0;
+            IWindowBaseImpl powner = Owner?.PlatformImpl;
+            if (powner != null) scale = powner.DesktopScaling;
+            PixelRect rect = new PixelRect(PixelPoint.Origin,
+               PixelSize.FromSize(ClientSize, scale));
+            if (WindowStartupLocation == WindowStartupLocation.CenterScreen)
             {
-                var main = Application.Current.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime;
-                var CenterX = main.MainWindow.Position.X + (main.MainWindow.Bounds.Width / 2);
-                var CenterY = main.MainWindow.Position.Y + (main.MainWindow.Bounds.Height / 2);
-                var X = CenterX - (Bounds.Width / 2);
-                var Y = CenterY - (Bounds.Height / 2);
-                Dispatcher.UIThread.Post(() =>
-                {
-                    Position = new PixelPoint((int)X, (int)Y);
-                });
+                Screen screen = Screens.ScreenFromPoint(powner?.Position ?? Position);
+                if (screen == null) return;
+                Position = screen.WorkingArea.CenterRect(rect).Position;
+            }
+            else
+            {
+                if (powner == null || WindowStartupLocation != WindowStartupLocation.CenterOwner) return;
+                Position = new PixelRect(powner.Position,
+                   PixelSize.FromSize(powner.ClientSize, scale)).CenterRect(rect).Position;
             }
         }
     }
