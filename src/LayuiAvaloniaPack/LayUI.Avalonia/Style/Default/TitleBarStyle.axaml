@@ -17,129 +17,177 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        ClipToBounds="false"
-                        CornerRadius="{TemplateBinding CornerRadius}">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto" />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <lay:LayCard ShadowColor="#000" ZIndex="1">
-                                <Grid
-                                    Name="PART_HeaderBody"
-                                    Height="{TemplateBinding HeaderHeight}"
-                                    Background="{TemplateBinding HeaderBackground}"
-                                    IsVisible="{TemplateBinding HeaderVisible}"
-                                    TextBlock.Foreground="{TemplateBinding HeaderForeground}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition />
-                                        <ColumnDefinition Width="auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <ContentPresenter Background="{x:Null}" Content="{TemplateBinding HeaderContent}" />
-                                    <Grid Name="PART_WindowButtonGrid" Grid.Column="1">
+                    <Grid>
+                        <Border
+                            Grid.RowSpan="3"
+                            Grid.ColumnSpan="3"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            ClipToBounds="false"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <lay:LayCard ShadowColor="#000" ZIndex="1">
+                                    <Grid
+                                        Name="PART_HeaderBody"
+                                        Height="{TemplateBinding HeaderHeight}"
+                                        Background="{TemplateBinding HeaderBackground}"
+                                        IsVisible="{TemplateBinding HeaderVisible}"
+                                        TextBlock.Foreground="{TemplateBinding HeaderForeground}">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="auto" />
-                                            <ColumnDefinition Width="auto" />
-                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition />
                                             <ColumnDefinition Width="auto" />
                                         </Grid.ColumnDefinitions>
-                                        <lay:LayButton
-                                            Width="{TemplateBinding HeaderHeight}"
-                                            HorizontalAlignment="Stretch"
-                                            VerticalAlignment="Stretch"
-                                            HorizontalContentAlignment="Center"
-                                            VerticalContentAlignment="Center"
-                                            Background="Transparent"
-                                            CommandParameter="{x:Static enum:WindowButtonType.FullScreen}"
-                                            CornerRadius="0"
-                                            Type="Default">
-                                            <Path
-                                                x:Name="winfullscreenPath"
-                                                Width="15"
-                                                Height="15"
-                                                Fill="{TemplateBinding HeaderForeground}"
-                                                IsHitTestVisible="false"
-                                                Stretch="Fill" />
-                                        </lay:LayButton>
-                                        <lay:LayButton
-                                            Grid.Column="1"
-                                            Width="{TemplateBinding HeaderHeight}"
-                                            HorizontalAlignment="Stretch"
-                                            VerticalAlignment="Stretch"
-                                            HorizontalContentAlignment="Center"
-                                            VerticalContentAlignment="Center"
-                                            Background="Transparent"
-                                            CommandParameter="{x:Static enum:WindowButtonType.Minimized}"
-                                            CornerRadius="0"
-                                            Type="Default">
-                                            <Path
-                                                Width="15"
-                                                Height="2"
-                                                Data="M772.963422 533.491105l-528.06716 0c-12.38297 0-22.514491-10.131521-22.514491-22.514491l0 0c0-12.38297 10.131521-22.514491 22.514491-22.514491l528.06716 0c12.38297 0 22.514491 10.131521 22.514491 22.514491l0 0C795.477913 523.359584 785.346392 533.491105 772.963422 533.491105z"
-                                                Fill="{TemplateBinding HeaderForeground}"
-                                                IsHitTestVisible="false"
-                                                Stretch="Fill" />
-                                        </lay:LayButton>
-                                        <lay:LayButton
-                                            Grid.Column="2"
-                                            Width="{TemplateBinding HeaderHeight}"
-                                            HorizontalAlignment="Stretch"
-                                            VerticalAlignment="Stretch"
-                                            HorizontalContentAlignment="Center"
-                                            VerticalContentAlignment="Center"
-                                            Background="Transparent"
-                                            Classes="LayWinButton"
-                                            CommandParameter="{x:Static enum:WindowButtonType.MaximizedOrNormal}"
-                                            CornerRadius="0"
-                                            Type="Default">
-                                            <Path
-                                                x:Name="winCnangePath"
-                                                Width="15"
-                                                Height="15"
-                                                Fill="{TemplateBinding HeaderForeground}"
-                                                IsHitTestVisible="false"
-                                                Stretch="Fill" />
-                                        </lay:LayButton>
-                                        <lay:LayButton
-                                            Grid.Column="3"
-                                            Width="{TemplateBinding HeaderHeight}"
-                                            HorizontalAlignment="Stretch"
-                                            VerticalAlignment="Stretch"
-                                            HorizontalContentAlignment="Center"
-                                            VerticalContentAlignment="Center"
-                                            Background="Transparent"
-                                            Classes="LayWinButton"
-                                            CommandParameter="{x:Static enum:WindowButtonType.Closed}"
-                                            CornerRadius="0"
-                                            Type="Default">
-                                            <Path
-                                                Width="15"
-                                                Height="15"
-                                                Data="M550.848 502.496l308.64-308.896a31.968 31.968 0 1 0-45.248-45.248l-308.608 308.896-308.64-308.928a31.968 31.968 0 1 0-45.248 45.248l308.64 308.896-308.64 308.896a31.968 31.968 0 1 0 45.248 45.248l308.64-308.896 308.608 308.896a31.968 31.968 0 1 0 45.248-45.248l-308.64-308.864z"
-                                                Fill="{TemplateBinding HeaderForeground}"
-                                                IsHitTestVisible="false"
-                                                Stretch="Fill" />
-                                        </lay:LayButton>
+                                        <ContentPresenter Background="{x:Null}" Content="{TemplateBinding HeaderContent}" />
+                                        <Grid Name="PART_WindowButtonGrid" Grid.Column="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto" />
+                                                <ColumnDefinition Width="auto" />
+                                                <ColumnDefinition Width="auto" />
+                                                <ColumnDefinition Width="auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <lay:LayButton
+                                                Width="{TemplateBinding HeaderHeight}"
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch"
+                                                HorizontalContentAlignment="Center"
+                                                VerticalContentAlignment="Center"
+                                                Background="Transparent"
+                                                CommandParameter="{x:Static enum:WindowButtonType.FullScreen}"
+                                                CornerRadius="0"
+                                                Type="Default">
+                                                <Path
+                                                    x:Name="winfullscreenPath"
+                                                    Width="15"
+                                                    Height="15"
+                                                    Fill="{TemplateBinding HeaderForeground}"
+                                                    IsHitTestVisible="false"
+                                                    Stretch="Fill" />
+                                            </lay:LayButton>
+                                            <lay:LayButton
+                                                Grid.Column="1"
+                                                Width="{TemplateBinding HeaderHeight}"
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch"
+                                                HorizontalContentAlignment="Center"
+                                                VerticalContentAlignment="Center"
+                                                Background="Transparent"
+                                                CommandParameter="{x:Static enum:WindowButtonType.Minimized}"
+                                                CornerRadius="0"
+                                                Type="Default">
+                                                <Path
+                                                    Width="15"
+                                                    Height="2"
+                                                    Data="M772.963422 533.491105l-528.06716 0c-12.38297 0-22.514491-10.131521-22.514491-22.514491l0 0c0-12.38297 10.131521-22.514491 22.514491-22.514491l528.06716 0c12.38297 0 22.514491 10.131521 22.514491 22.514491l0 0C795.477913 523.359584 785.346392 533.491105 772.963422 533.491105z"
+                                                    Fill="{TemplateBinding HeaderForeground}"
+                                                    IsHitTestVisible="false"
+                                                    Stretch="Fill" />
+                                            </lay:LayButton>
+                                            <lay:LayButton
+                                                Grid.Column="2"
+                                                Width="{TemplateBinding HeaderHeight}"
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch"
+                                                HorizontalContentAlignment="Center"
+                                                VerticalContentAlignment="Center"
+                                                Background="Transparent"
+                                                Classes="LayWinButton"
+                                                CommandParameter="{x:Static enum:WindowButtonType.MaximizedOrNormal}"
+                                                CornerRadius="0"
+                                                Type="Default">
+                                                <Path
+                                                    x:Name="winCnangePath"
+                                                    Width="15"
+                                                    Height="15"
+                                                    Fill="{TemplateBinding HeaderForeground}"
+                                                    IsHitTestVisible="false"
+                                                    Stretch="Fill" />
+                                            </lay:LayButton>
+                                            <lay:LayButton
+                                                Grid.Column="3"
+                                                Width="{TemplateBinding HeaderHeight}"
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch"
+                                                HorizontalContentAlignment="Center"
+                                                VerticalContentAlignment="Center"
+                                                Background="Transparent"
+                                                Classes="LayWinButton"
+                                                CommandParameter="{x:Static enum:WindowButtonType.Closed}"
+                                                CornerRadius="0"
+                                                Type="Default">
+                                                <Path
+                                                    Width="15"
+                                                    Height="15"
+                                                    Data="M550.848 502.496l308.64-308.896a31.968 31.968 0 1 0-45.248-45.248l-308.608 308.896-308.64-308.928a31.968 31.968 0 1 0-45.248 45.248l308.64 308.896-308.64 308.896a31.968 31.968 0 1 0 45.248 45.248l308.64-308.896 308.608 308.896a31.968 31.968 0 1 0 45.248-45.248l-308.64-308.864z"
+                                                    Fill="{TemplateBinding HeaderForeground}"
+                                                    IsHitTestVisible="false"
+                                                    Stretch="Fill" />
+                                            </lay:LayButton>
+                                        </Grid>
                                     </Grid>
-                                </Grid>
-                            </lay:LayCard>
-                            <ContentPresenter
-                                Name="PART_ContentPresenter"
+                                </lay:LayCard>
+                                <ContentPresenter
+                                    Name="PART_ContentPresenter"
+                                    Grid.Row="1"
+                                    Padding="{TemplateBinding Padding}"
+                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}" />
+                            </Grid>
+                        </Border>
+                        <Grid
+                            Name="PART_BeginResizeDrag"
+                            Background="{x:Null}"
+                            ColumnDefinitions="5,*,5"
+                            RowDefinitions="5,*,5">
+                            <Border Name="PART_LeftTop" Background="Transparent" />
+                            <Border
+                                Name="PART_Top"
+                                Grid.Column="1"
+                                Background="Transparent" />
+                            <Border
+                                Name="PART_RightTop"
+                                Grid.Column="2"
+                                Background="Transparent" />
+                            <Border
+                                Name="PART_Left"
                                 Grid.Row="1"
-                                Padding="{TemplateBinding Padding}"
-                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Content="{TemplateBinding Content}"
-                                ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                Background="Transparent" />
+                            <Border
+                                Name="PART_Right"
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                Background="Transparent" />
+                            <Border
+                                Name="PART_LeftBottom"
+                                Grid.Row="2"
+                                Background="Transparent" />
+                            <Border
+                                Name="PART_Bottom"
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Background="Transparent" />
+                            <Border
+                                Name="PART_RightBottom"
+                                Grid.Row="2"
+                                Grid.Column="2"
+                                Background="Transparent" />
                         </Grid>
-                    </Border>
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    <Style Selector="lay|LayTitleBar:fullscreen /template/ Grid#PART_BeginResizeDrag">
+        <Setter Property="IsHitTestVisible" Value="false" />
+    </Style>
+    <Style Selector="lay|LayTitleBar:maximized /template/ Grid#PART_BeginResizeDrag">
+        <Setter Property="IsHitTestVisible" Value="false" />
     </Style>
     <Style Selector="lay|LayTitleBar:not(:fullscreen) /template/ Path#winfullscreenPath">
         <Setter Property="Data" Value="M629.556904 391.972323c17.328667 17.319457 47.028083 17.319457 66.814732 0l168.302147-165.81449 0 133.63765c0 19.805068 14.85022 34.646078 34.636868 34.646078l24.743544 0c19.806091 0 34.656311-12.371772 34.656311-29.691229L958.710506 119.732965l-2.478448 0 2.478448-17.318434c0-9.903557-2.478448-17.328667-7.435343-24.75173-4.936429-4.947685-14.848173-9.894348-24.743544-9.894348l-17.326621 0 0 0L664.211169 65.290005c-19.805068 0-34.654264 17.328667-34.654264 34.646078l0 24.75173c2.478448 22.274306 19.788695 34.646078 39.59274 34.646078l128.690988 0L632.035352 325.149405C609.751836 342.467839 609.751836 372.175441 629.556904 391.972323L629.556904 391.972323 629.556904 391.972323zM394.441049 629.557416c-17.310248-17.327644-47.00864-17.327644-66.814732 0l-168.301124 165.806303L159.325194 664.195308c0-19.787672-14.8318-34.637892-34.636868-34.637892l-24.76094 0c-19.787672 0-34.637892 12.371772-34.637892 29.698392l0 242.532779 2.477424 0-2.477424 17.327644c0 9.893324 2.477424 17.310248 7.4159 24.743544 4.955872 4.955872 14.867616 9.894348 24.76094 9.894348l17.327644 0 0 0 244.992807 2.477424c19.823488 0 34.655288-17.327644 34.655288-34.637892l0-24.759917c-2.478448-22.26612-19.787672-34.637892-39.59274-34.637892l-128.690988 0 168.283728-165.8237C411.768693 679.044504 411.768693 649.345088 394.441049 629.557416L394.441049 629.557416 394.441049 629.557416zM956.231035 904.266012 956.231035 661.71686c0-19.787672-17.328667-29.680996-34.638915-29.680996l-24.758893 0c-19.788695 0-34.638915 17.309224-34.638915 34.637892l0 131.168412L693.893188 632.035864c-17.308201-17.328667-47.00864-17.328667-66.814732 0-17.326621 17.309224-17.326621 47.00864 0 66.813708l168.283728 165.806303-128.690988 0c-19.786649 0-37.115316 12.388145-39.59274 34.654264l0 24.744567c0 19.805068 17.328667 34.654264 34.638915 34.654264l240.071727-2.478448 0 0 17.328667 0c9.893324 0 17.310248-2.477424 24.743544-9.893324 4.954849-4.955872 7.414877-14.85022 7.414877-24.744567L956.231035 904.266012C953.752588 904.266012 956.231035 904.266012 956.231035 904.266012L956.231035 904.266012 956.231035 904.266012zM228.635769 159.334915l128.690988 0c19.805068 0 37.115316-12.372795 39.59274-34.646078L396.919497 99.936083c0-19.796882-17.309224-34.646078-34.654264-34.646078l-244.992807 2.478448 0 0-17.34504 0c-9.875928 0-17.310248 2.477424-24.743544 9.894348-4.938476 4.955872-7.4159 14.849196-7.4159 24.75173l2.477424 17.318434-2.477424 0 0 245.01839c0 19.796882 14.85022 29.691229 34.637892 29.691229l24.743544 0c19.822464 0 34.654264-14.84101 34.654264-34.646078L161.803641 226.157833l168.283728 165.81449c17.34504 17.319457 47.044456 17.319457 66.832128 0 17.328667-17.327644 17.328667-47.026036 0-66.822918L228.635769 159.334915 228.635769 159.334915 228.635769 159.334915zM228.635769 159.334915" />

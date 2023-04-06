@@ -12,10 +12,11 @@ namespace Layui.Main
     public class MainModule : IModule
     {
         private ILayDialogService layDialog;
+        public MainModule(ILayDialogService layDialogService) {
+            layDialog= layDialogService;
+        }
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            layDialog = containerProvider.Resolve<ILayDialogService>();
-            layDialog.RegisterDialog<Message>(nameof(Message));
             var regionManager = containerProvider.Resolve<IRegionManager>();
             regionManager.RegisterViewWithRegion(SystemResource.Nav_MainContent, typeof(HomePage));
         }
@@ -33,6 +34,7 @@ namespace Layui.Main
             containerRegistry.RegisterForNavigation<MessagePage>(SystemResource.MessagePage);
             containerRegistry.RegisterForNavigation<NotificationPage>(SystemResource.NotificationPage);
             containerRegistry.RegisterForNavigation<LoadingPage>(SystemResource.LoadingPage);
+            layDialog.RegisterDialog<Message>(nameof(Message));
         }
     }
 }

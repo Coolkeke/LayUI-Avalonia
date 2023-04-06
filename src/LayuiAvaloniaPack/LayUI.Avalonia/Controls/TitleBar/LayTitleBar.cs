@@ -115,7 +115,7 @@ namespace LayUI.Avalonia.Controls
         /// 定义<see cref="IBrush?"/>属性
         /// </summary>
         public static readonly StyledProperty<IBrush> HeaderBackgroundProperty =
-       AvaloniaProperty.Register<LayTitleBar, IBrush>(nameof(HeaderBackground), null); 
+       AvaloniaProperty.Register<LayTitleBar, IBrush>(nameof(HeaderBackground), null);
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
             base.OnApplyTemplate(e);
@@ -132,9 +132,10 @@ namespace LayUI.Avalonia.Controls
                             PseudoClasses.Set(":normal", x == WindowState.Normal);
                             PseudoClasses.Set(":maximized", x == WindowState.Maximized);
                             PseudoClasses.Set(":fullscreen", x == WindowState.FullScreen);
-                        }), 
+                        }),
                 };
             }
+            WindowBeginResizeDrag(e);
             if (PART_HeaderBody != null) AddOrRemoveHandler(true);
             if (PART_HeaderBody != null) PART_HeaderBody.DoubleTapped -= PART_HeaderBody_DoubleTapped;
             if (PART_HeaderBody != null) PART_HeaderBody.DoubleTapped += PART_HeaderBody_DoubleTapped;
@@ -152,6 +153,33 @@ namespace LayUI.Avalonia.Controls
                         else item.RemoveHandler(Button.ClickEvent, UpdateWindowState);
                     }
                 }
+            }
+        }
+        private void WindowBeginResizeDrag(TemplateAppliedEventArgs e)
+        {
+            SetupSide(e.NameScope.Find<Control>("PART_Left"), StandardCursorType.LeftSide, WindowEdge.West);
+            SetupSide(e.NameScope.Find<Control>("PART_Right"), StandardCursorType.RightSide, WindowEdge.East);
+            SetupSide(e.NameScope.Find<Control>("PART_Top"), StandardCursorType.TopSide, WindowEdge.North);
+            SetupSide(e.NameScope.Find<Control>("PART_Bottom"), StandardCursorType.BottomSide, WindowEdge.South);
+            SetupSide(e.NameScope.Find<Control>("PART_LeftTop"), StandardCursorType.TopLeftCorner, WindowEdge.NorthWest);
+            SetupSide(e.NameScope.Find<Control>("PART_RightTop"), StandardCursorType.TopRightCorner, WindowEdge.NorthEast);
+            SetupSide(e.NameScope.Find<Control>("PART_LeftBottom"), StandardCursorType.BottomLeftCorner, WindowEdge.SouthWest);
+            SetupSide(e.NameScope.Find<Control>("PART_RightBottom"), StandardCursorType.BottomRightCorner, WindowEdge.SouthEast);
+        }
+        private void SetupSide(Control ui, StandardCursorType cursor, WindowEdge edge)
+        {
+            if (VisualRoot is Window window)
+            { 
+
+                EventHandler<PointerPressedEventArgs> PointerPressed = (i, e) =>
+                {
+                    Dispatcher.UIThread.InvokeAsync(() =>
+                    {
+                        window.PlatformImpl?.BeginResizeDrag(edge, e);
+                    });
+                };
+                ui.Cursor = new Cursor(cursor);
+                ui.PointerPressed += PointerPressed;
             }
         }
         private void UpdateWindowState(object sender, global::Avalonia.Interactivity.RoutedEventArgs e)
