@@ -4,6 +4,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Logging;
+using Avalonia.LogicalTree;
 using Avalonia.Media;
 using LayUI.Avalonia.Enums;
 using System;
@@ -18,34 +19,34 @@ namespace LayUI.Avalonia.Controls
     /// </summary>
     public class LayTextBox : TextBox
     {
-
-        static LayTextBox()
-        {
-            IsFocusProperty.Changed.Subscribe(IsFocusChanged);
-        }
         /// <summary>
-        /// 设置文本聚焦
+        /// 判断元素是否加载
         /// </summary>
-        /// <param name="obj"></param>
-        private static void IsFocusChanged(AvaloniaPropertyChangedEventArgs<bool> obj)
-        {
-            if (obj.Sender is LayTextBox textBox) if (!textBox.IsFocus) textBox.Focus();
-        }
-
+        private bool _isLoaded = false;
         /// <summary>
         /// 是否聚焦
         /// </summary>
         public bool IsFocus
         {
             get { return GetValue(IsFocusProperty); }
-            set { SetValue(IsFocusProperty, value); }
+            set { SetValue(IsFocusProperty, value); OnIsFocusedChanged(); }
         }
         /// <summary>
         /// 定义<see cref="bool"/>属性
         /// </summary>
         public static readonly StyledProperty<bool> IsFocusProperty =
        AvaloniaProperty.Register<LayTextBox, bool>(nameof(IsFocus));
-
+        /// <summary>
+        /// 调整设置文本聚焦问题
+        /// </summary>
+        private void OnIsFocusedChanged()
+        {
+            if (IsFocus && _isLoaded)
+            {
+                Focus();
+                if (!string.IsNullOrEmpty(Text)) CaretIndex = Text.Length;
+            }
+        }
         /// <summary>
         /// 输入类型
         /// </summary>
@@ -109,10 +110,16 @@ namespace LayUI.Avalonia.Controls
             base.OnLostFocus(e);
             IsFocus = false;
         }
+        protected override void OnDetachedFromLogicalTree(LogicalTreeAttachmentEventArgs e)
+        {
+            base.OnDetachedFromLogicalTree(e);
+            _isLoaded = false;
+        }
         protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
         {
             base.OnAttachedToVisualTree(e);
-            if (IsFocus) Focus();
+            _isLoaded = true;
+            OnIsFocusedChanged();
         }
     }
 }
