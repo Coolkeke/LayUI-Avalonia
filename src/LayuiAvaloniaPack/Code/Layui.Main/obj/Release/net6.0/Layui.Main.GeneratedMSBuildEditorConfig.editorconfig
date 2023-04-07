@@ -1,0 +1,54 @@
+is_global = true
+build_property.AvaloniaNameGeneratorBehavior = InitializeComponent
+build_property.AvaloniaNameGeneratorDefaultFieldModifier = internal
+build_property.AvaloniaNameGeneratorFilterByPath = *
+build_property.AvaloniaNameGeneratorFilterByNamespace = *
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Layui.Main
+build_property.ProjectDir = D:\项目\LayUI-Avalonia\src\LayuiAvaloniaPack\Layui.Main\
+
+[D:/项目/LayUI-Avalonia/src/LayuiAvaloniaPack/Layui.Main/Views/ButtonPage.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/项目/LayUI-Avalonia/src/LayuiAvaloniaPack/Layui.Main/Views/CardPage.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/项目/LayUI-Avalonia/src/LayuiAvaloniaPack/Layui.Main/Views/DialogPage.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/项目/LayUI-Avalonia/src/LayuiAvaloniaPack/Layui.Main/Views/Dialogs/PrismMessageBox.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/项目/LayUI-Avalonia/src/LayuiAvaloniaPack/Layui.Main/Views/FormPage.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/项目/LayUI-Avalonia/src/LayuiAvaloniaPack/Layui.Main/Views/HomePage.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/项目/LayUI-Avalonia/src/LayuiAvaloniaPack/Layui.Main/Views/ImagePage.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/项目/LayUI-Avalonia/src/LayuiAvaloniaPack/Layui.Main/Views/KeyboardPage.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/项目/LayUI-Avalonia/src/LayuiAvaloniaPack/Layui.Main/Views/LoadingPage.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/项目/LayUI-Avalonia/src/LayuiAvaloniaPack/Layui.Main/Views/Message.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/项目/LayUI-Avalonia/src/LayuiAvaloniaPack/Layui.Main/Views/MessagePage.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/项目/LayUI-Avalonia/src/LayuiAvaloniaPack/Layui.Main/Views/NotificationPage.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/项目/LayUI-Avalonia/src/LayuiAvaloniaPack/Layui.Main/Views/ProgressBarPage.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

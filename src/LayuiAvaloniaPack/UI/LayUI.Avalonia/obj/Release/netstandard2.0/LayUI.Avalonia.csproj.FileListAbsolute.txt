@@ -1,0 +1,10 @@
+D:\项目\LayUI-Avalonia\src\LayuiAvaloniaPack\LayUI.Avalonia\bin\Release\netstandard2.0\LayUI.Avalonia.deps.json
+D:\项目\LayUI-Avalonia\src\LayuiAvaloniaPack\LayUI.Avalonia\bin\Release\netstandard2.0\LayUI.Avalonia.dll
+D:\项目\LayUI-Avalonia\src\LayuiAvaloniaPack\LayUI.Avalonia\bin\Release\netstandard2.0\LayUI.Avalonia.pdb
+D:\项目\LayUI-Avalonia\src\LayuiAvaloniaPack\LayUI.Avalonia\obj\Release\netstandard2.0\LayUI.Avalonia.csproj.AssemblyReference.cache
+D:\项目\LayUI-Avalonia\src\LayuiAvaloniaPack\LayUI.Avalonia\obj\Release\netstandard2.0\LayUI.Avalonia.GeneratedMSBuildEditorConfig.editorconfig
+D:\项目\LayUI-Avalonia\src\LayuiAvaloniaPack\LayUI.Avalonia\obj\Release\netstandard2.0\LayUI.Avalonia.AssemblyInfoInputs.cache
+D:\项目\LayUI-Avalonia\src\LayuiAvaloniaPack\LayUI.Avalonia\obj\Release\netstandard2.0\LayUI.Avalonia.AssemblyInfo.cs
+D:\项目\LayUI-Avalonia\src\LayuiAvaloniaPack\LayUI.Avalonia\obj\Release\netstandard2.0\LayUI.Avalonia.csproj.CoreCompileInputs.cache
+D:\项目\LayUI-Avalonia\src\LayuiAvaloniaPack\LayUI.Avalonia\obj\Release\netstandard2.0\LayUI.Avalonia.dll
+D:\项目\LayUI-Avalonia\src\LayuiAvaloniaPack\LayUI.Avalonia\obj\Release\netstandard2.0\LayUI.Avalonia.pdb

@@ -1,0 +1,375 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\Code\\Layui.Main\\Layui.Main.csproj": {}
+  },
+  "projects": {
+    "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\Code\\Layui.Core\\Layui.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\Code\\Layui.Core\\Layui.Core.csproj",
+        "projectName": "Layui.Core",
+        "projectPath": "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\Code\\Layui.Core\\Layui.Core.csproj",
+        "packagesPath": "C:\\Users\\wenke\\.nuget\\packages\\",
+        "outputPath": "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\Code\\Layui.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "F:\\VS2019\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\wenke\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Avalonia": {
+              "target": "Package",
+              "version": "[0.10.18, )"
+            },
+            "Avalonia.Desktop": {
+              "target": "Package",
+              "version": "[0.10.18, )"
+            },
+            "Avalonia.Diagnostics": {
+              "target": "Package",
+              "version": "[0.10.18, )"
+            },
+            "Avalonia.Markup.Xaml.Loader": {
+              "target": "Package",
+              "version": "[0.10.18, )"
+            },
+            "Prism.Avalonia": {
+              "target": "Package",
+              "version": "[8.1.97.2, )"
+            },
+            "Prism.DryIoc.Avalonia": {
+              "target": "Package",
+              "version": "[8.1.97.2, )"
+            },
+            "log4net": {
+              "target": "Package",
+              "version": "[2.0.15, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\Code\\Layui.Main\\Layui.Main.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\Code\\Layui.Main\\Layui.Main.csproj",
+        "projectName": "Layui.Main",
+        "projectPath": "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\Code\\Layui.Main\\Layui.Main.csproj",
+        "packagesPath": "C:\\Users\\wenke\\.nuget\\packages\\",
+        "outputPath": "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\Code\\Layui.Main\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "F:\\VS2019\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\wenke\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\Code\\Layui.Core\\Layui.Core.csproj": {
+                "projectPath": "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\Code\\Layui.Core\\Layui.Core.csproj"
+              },
+              "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\Code\\Layui.Tools\\Layui.Tools.csproj": {
+                "projectPath": "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\Code\\Layui.Tools\\Layui.Tools.csproj"
+              },
+              "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\UI\\LayUI.Avalonia\\LayUI.Avalonia.csproj": {
+                "projectPath": "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\UI\\LayUI.Avalonia\\LayUI.Avalonia.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Avalonia": {
+              "target": "Package",
+              "version": "[0.10.18, )"
+            },
+            "Avalonia.Desktop": {
+              "target": "Package",
+              "version": "[0.10.18, )"
+            },
+            "Avalonia.Diagnostics": {
+              "target": "Package",
+              "version": "[0.10.18, )"
+            },
+            "Avalonia.Markup.Xaml.Loader": {
+              "target": "Package",
+              "version": "[0.10.18, )"
+            },
+            "Avalonia.Xaml.Behaviors": {
+              "target": "Package",
+              "version": "[0.10.18, )"
+            },
+            "Prism.Avalonia": {
+              "target": "Package",
+              "version": "[8.1.97.2, )"
+            },
+            "Prism.DryIoc.Avalonia": {
+              "target": "Package",
+              "version": "[8.1.97.2, )"
+            },
+            "XamlNameReferenceGenerator": {
+              "target": "Package",
+              "version": "[1.5.1, )"
+            },
+            "log4net": {
+              "target": "Package",
+              "version": "[2.0.15, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\Code\\Layui.Tools\\Layui.Tools.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\Code\\Layui.Tools\\Layui.Tools.csproj",
+        "projectName": "Layui.Tools",
+        "projectPath": "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\Code\\Layui.Tools\\Layui.Tools.csproj",
+        "packagesPath": "C:\\Users\\wenke\\.nuget\\packages\\",
+        "outputPath": "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\Code\\Layui.Tools\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "F:\\VS2019\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\wenke\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Avalonia": {
+              "target": "Package",
+              "version": "[0.10.18, )"
+            },
+            "Avalonia.Desktop": {
+              "target": "Package",
+              "version": "[0.10.18, )"
+            },
+            "Avalonia.Diagnostics": {
+              "target": "Package",
+              "version": "[0.10.18, )"
+            },
+            "Avalonia.Markup.Xaml.Loader": {
+              "target": "Package",
+              "version": "[0.10.18, )"
+            },
+            "Prism.Avalonia": {
+              "target": "Package",
+              "version": "[8.1.97.2, )"
+            },
+            "Prism.DryIoc.Avalonia": {
+              "target": "Package",
+              "version": "[8.1.97.2, )"
+            },
+            "XamlNameReferenceGenerator": {
+              "target": "Package",
+              "version": "[1.5.1, )"
+            },
+            "log4net": {
+              "target": "Package",
+              "version": "[2.0.15, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\UI\\LayUI.Avalonia\\LayUI.Avalonia.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\UI\\LayUI.Avalonia\\LayUI.Avalonia.csproj",
+        "projectName": "LayUI.Avalonia",
+        "projectPath": "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\UI\\LayUI.Avalonia\\LayUI.Avalonia.csproj",
+        "packagesPath": "C:\\Users\\wenke\\.nuget\\packages\\",
+        "outputPath": "D:\\项目\\LayUI-Avalonia\\src\\LayuiAvaloniaPack\\UI\\LayUI.Avalonia\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "F:\\VS2019\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\wenke\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "Avalonia": {
+              "target": "Package",
+              "version": "[0.10.13, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

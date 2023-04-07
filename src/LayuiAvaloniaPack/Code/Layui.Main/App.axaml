@@ -1,0 +1,10 @@
+<prism:PrismApplication
+    x:Class="Layui.Main.App"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:prism="http://prismlibrary.com/">
+    <Application.Styles>
+        <FluentTheme Mode="Light" />
+        <StyleInclude Source="avares://LayUI.Avalonia/Themes/Default.axaml" />
+    </Application.Styles>
+</prism:PrismApplication>
