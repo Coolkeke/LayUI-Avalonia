@@ -36,12 +36,10 @@ namespace LayUI.Avalonia.Controls
             }
             else
             {
-                if (IsOwner)
-                {
-                    var owner = GetOwner();
-                    base.Show(owner);
-                }
-                else base.Show();
+                if (!IsOwner) base.Show();
+                var owner = GetOwner();
+                if (owner == null) base.Show();
+                else base.Show(owner);
             }
             await Task.Delay(1);
             SetWindowStartupLocationWorkaround();
