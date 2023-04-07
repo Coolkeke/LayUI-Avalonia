@@ -6,20 +6,44 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Grid>
-                        <VisualLayerManager>
-                            <Grid Name="PART_Grid">
-                                <ContentPresenter
-                                    Name="PART_ContentPresenter"
-                                    Padding="{TemplateBinding Padding}"
-                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                    Content="{TemplateBinding Content}"
-                                    ContentTemplate="{TemplateBinding ContentTemplate}"
-                                    UseLayoutRounding="{TemplateBinding UseLayoutRounding}" />
-                            </Grid>
-                        </VisualLayerManager>
-                    </Grid>
+                    <VisualLayerManager>
+                        <VisualLayerManager.ChromeOverlayLayer>
+                            <TitleBar />
+                        </VisualLayerManager.ChromeOverlayLayer>
+                        <Grid Name="PART_Grid">
+                            <ContentPresenter
+                                Name="PART_ContentPresenter"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                UseLayoutRounding="{TemplateBinding UseLayoutRounding}" />
+                        </Grid>
+                    </VisualLayerManager>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector=":is(lay|LayWindow)">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <VisualLayerManager>
+                        <VisualLayerManager.ChromeOverlayLayer>
+                            <TitleBar />
+                        </VisualLayerManager.ChromeOverlayLayer>
+                        <Grid Name="PART_Grid">
+                            <ContentPresenter
+                                Name="PART_ContentPresenter"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                UseLayoutRounding="{TemplateBinding UseLayoutRounding}" />
+                        </Grid>
+                    </VisualLayerManager>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

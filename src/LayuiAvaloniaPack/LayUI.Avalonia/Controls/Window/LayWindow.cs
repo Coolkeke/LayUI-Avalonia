@@ -11,17 +11,62 @@ using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Controls
 {
-    public class LayWindow: Window
+    public class LayWindow : Window
     {
+
+        /// <summary>
+        /// Defines the <see cref="IsOwner"/> property.
+        /// </summary>
+        public static readonly StyledProperty<bool> IsOwnerProperty =
+            AvaloniaProperty.Register<LayWindow, bool>(nameof(IsOwner));
+
+        /// <summary>
+        /// 是否激活窗体拥有者
+        /// </summary>
+        public bool IsOwner
+        {
+            get { return GetValue(IsOwnerProperty); }
+            set { SetValue(IsOwnerProperty, value); }
+        }
         public override async void Show()
         {
-            base.Show();
+            if (Design.IsDesignMode)
+            {
+                base.Show();
+            }
+            else
+            {
+                if (IsOwner)
+                {
+                    var owner = GetOwner();
+                    base.Show(owner);
+                }
+                else base.Show();
+            }
             await Task.Delay(1);
             SetWindowStartupLocationWorkaround();
+
         }
+        /// <summary>
+        /// 获取或设置窗口的所有者。
+        /// </summary>
+        /// <returns></returns>
+        private Window GetOwner()
+        {
+            if (!IsOwner) return null;
+            Window owner = null;
+            if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime app)
+            {
+                owner = app.MainWindow;
+            }
+            return owner;
+        }
+        /// <summary>
+        /// 解决Linux以及MacOS定位问题
+        /// </summary>
         private void SetWindowStartupLocationWorkaround()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) return; 
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) return;
             double scale = PlatformImpl?.DesktopScaling ?? 1.0;
             IWindowBaseImpl powner = Owner?.PlatformImpl;
             if (powner != null) scale = powner.DesktopScaling;
