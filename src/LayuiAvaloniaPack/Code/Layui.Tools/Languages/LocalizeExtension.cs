@@ -25,7 +25,7 @@ namespace Layui.Tools.Languages
         public LocalizeExtension(object key) : this()
         {
             this.Key = key;
-        }
+        } 
         public object Key
         {
             get { return _proxy.GetValue(KeyProperty); }
@@ -69,7 +69,8 @@ namespace Layui.Tools.Languages
                                 Converter = Converter,
                                 ConverterParameter = ConverterParameter,
                                 Source = Source,
-                                Mode = BindingMode.OneWay
+                                Mode = BindingMode.OneWay,
+                                
                             };
                             return binding.ProvideValue(serviceProvider);
                         }

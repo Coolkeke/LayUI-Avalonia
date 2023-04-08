@@ -1,7 +1,0 @@
-D:\项目\LayUI-Avalonia\src\LayuiAvaloniaPack\LayUI.Avalonia\obj\Debug\netcoreapp3.1\LayUI.Avalonia.csproj.AssemblyReference.cache
-D:\项目\LayUI-Avalonia\src\LayuiAvaloniaPack\LayUI.Avalonia\obj\Debug\netcoreapp3.1\Avalonia\Resources.Inputs.cache
-D:\项目\LayUI-Avalonia\src\LayuiAvaloniaPack\LayUI.Avalonia\obj\Debug\netcoreapp3.1\Avalonia\resources
-D:\项目\LayUI-Avalonia\src\LayuiAvaloniaPack\LayUI.Avalonia\obj\Debug\netcoreapp3.1\LayUI.Avalonia.GeneratedMSBuildEditorConfig.editorconfig
-D:\项目\LayUI-Avalonia\src\LayuiAvaloniaPack\LayUI.Avalonia\obj\Debug\netcoreapp3.1\LayUI.Avalonia.AssemblyInfoInputs.cache
-D:\项目\LayUI-Avalonia\src\LayuiAvaloniaPack\LayUI.Avalonia\obj\Debug\netcoreapp3.1\LayUI.Avalonia.AssemblyInfo.cs
-D:\项目\LayUI-Avalonia\src\LayuiAvaloniaPack\LayUI.Avalonia\obj\Debug\netcoreapp3.1\LayUI.Avalonia.csproj.CoreCompileInputs.cache
