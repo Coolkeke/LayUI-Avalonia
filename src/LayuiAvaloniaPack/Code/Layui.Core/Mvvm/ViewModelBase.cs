@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using Layui.Tools.Logs;
+using Prism.Commands;
 using Prism.Events;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -25,6 +26,10 @@ namespace Layui.Core.Mvvm
         /// </summary>
         public IEventAggregator Event;
         /// <summary>
+        /// 日志
+        /// </summary>
+        public ILayLogger Logger;
+        /// <summary>
         /// VM基类
         /// </summary>
         public ViewModelBase(IContainerExtension container)
@@ -32,6 +37,7 @@ namespace Layui.Core.Mvvm
             this.Region = container.Resolve<IRegionManager>();
             this.Dialog = container.Resolve<IDialogService>();
             this.Event = container.Resolve<IEventAggregator>();
+            this.Logger = container.Resolve<ILayLogger>();
         }
         private DelegateCommand _LoadedCommand;
         public DelegateCommand LoadedCommand =>

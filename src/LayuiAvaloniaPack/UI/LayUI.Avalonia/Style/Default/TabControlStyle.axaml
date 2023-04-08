@@ -1,0 +1,91 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <lay:LayTabControl Width="500" Height="300">
+                <lay:LayTabItem Header="Tab1">
+                    <Grid>
+                        <TextBlock Text="Tab1" />
+                    </Grid>
+                </lay:LayTabItem>
+                <lay:LayTabItem Header="Tab2">
+                    <Grid>
+                        <TextBlock Text="Tab2" />
+                    </Grid>
+                </lay:LayTabItem>
+            </lay:LayTabControl>
+        </Border>
+    </Design.PreviewWith>
+    <Style Selector="lay|LayTabControl">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="LineClolor" Value="{DynamicResource Gray}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                    VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <DockPanel>
+                        <ItemsPresenter
+                            Name="PART_ItemsPresenter"
+                            ItemTemplate="{TemplateBinding ItemTemplate}"
+                            Items="{TemplateBinding Items}"
+                            ItemsPanel="{TemplateBinding ItemsPanel}" />
+                        <Border
+                            Name="PART_BorderContentHost"
+                            BorderBrush="{TemplateBinding LineClolor}"
+                            BorderThickness="{TemplateBinding LineThickness}">
+                            <ContentPresenter
+                                Name="PART_SelectedContentHost"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding SelectedContent}"
+                                ContentTemplate="{TemplateBinding SelectedContentTemplate}" />
+                        </Border>
+                    </DockPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Top]">
+        <Setter Property="Padding" Value="0 4 0 0" />
+        <Setter Property="LineThickness" Value="0 1 0 0" />
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Top] /template/ ItemsPresenter#PART_ItemsPresenter">
+        <Setter Property="DockPanel.Dock" Value="Top" />
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Bottom] /template/ ItemsPresenter#PART_ItemsPresenter">
+        <Setter Property="DockPanel.Dock" Value="Bottom" />
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Bottom]">
+        <Setter Property="LineThickness" Value="0 0 0 1" />
+        <Setter Property="Padding" Value="0 0 0 4" />
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter">
+        <Setter Property="DockPanel.Dock" Value="Left" />
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
+        <Setter Property="Orientation" Value="Vertical" />
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Left]">
+        <Setter Property="LineThickness" Value="1 0 0 0" />
+        <Setter Property="Padding" Value="4 0 0 0" />
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter">
+        <Setter Property="DockPanel.Dock" Value="Right" />
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
+        <Setter Property="Orientation" Value="Vertical" />
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Right]">
+        <Setter Property="LineThickness" Value="0 0 1 0" />
+        <Setter Property="Padding" Value="0 0 4 0" />
+    </Style>
+</Styles>

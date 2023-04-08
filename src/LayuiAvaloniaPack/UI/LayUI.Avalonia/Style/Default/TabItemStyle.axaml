@@ -1,0 +1,68 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <lay:LayTabControl Width="500" Height="300">
+                <lay:LayTabItem Header="Tab1">
+                    <Grid>
+                        <TextBlock Text="Tab1" />
+                    </Grid>
+                </lay:LayTabItem>
+                <lay:LayTabItem Header="Tab2">
+                    <Grid>
+                        <TextBlock Text="Tab2" />
+                    </Grid>
+                </lay:LayTabItem>
+            </lay:LayTabControl>
+        </Border>
+    </Design.PreviewWith>
+    <Style Selector="lay|LayTabItem">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="BorderThickness" Value="0 0 0 1" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ContentPresenter
+                    Name="PART_ContentPresenter"
+                    Padding="{TemplateBinding Padding}"
+                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Content="{TemplateBinding Header}"
+                    ContentTemplate="{TemplateBinding HeaderTemplate}"
+                    CornerRadius="{TemplateBinding CornerRadius}" />
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayTabItem:disabled">
+        <Setter Property="Opacity" Value="0.5" />
+    </Style>
+    <Style Selector="lay|LayTabItem:pointerover">
+        <Setter Property="BorderBrush" Value="{DynamicResource Green}" />
+        <Setter Property="Foreground" Value="{DynamicResource Green}" />
+    </Style>
+    <Style Selector="lay|LayTabItem:selected">
+        <Setter Property="BorderBrush" Value="{DynamicResource Green}" />
+        <Setter Property="Foreground" Value="{DynamicResource Green}" />
+    </Style>
+    <Style Selector="lay|LayTabItem:selected:focus">
+        <Setter Property="BorderBrush" Value="{DynamicResource Green}" />
+        <Setter Property="Foreground" Value="{DynamicResource Green}" />
+    </Style>
+    <Style Selector="lay|LayTabItem:selected:pointerover">
+        <Setter Property="BorderBrush" Value="{DynamicResource Green}" />
+        <Setter Property="Foreground" Value="{DynamicResource Green}" />
+    </Style>
+    <Style Selector="lay|LayTabItem:selected:focus:pointerover">
+        <Setter Property="BorderBrush" Value="{DynamicResource Green}" />
+        <Setter Property="Foreground" Value="{DynamicResource Green}" />
+    </Style>
+    <Style Selector="lay|LayTabItem[TabStripPlacement=Right]">
+        <Setter Property="HorizontalContentAlignment" Value="Right" />
+    </Style>
+</Styles>

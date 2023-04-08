@@ -45,4 +45,8 @@
     <UpToDateCheckInput Remove="Views\KeyboardPage.axaml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\TabControlPage.axaml" />
+  </ItemGroup>
+
 </Project>

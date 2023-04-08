@@ -63,6 +63,10 @@ namespace Layui.Core.Resources
         /// <summary>
         /// 忙碌控件
         /// </summary>
-        public static string LoadingPage = "LoadingPage"; 
+        public static string LoadingPage = "LoadingPage";
+        /// <summary>
+        /// 选项卡
+        /// </summary>
+        public static string TabControlPage = "TabControlPage"; 
     }
 }

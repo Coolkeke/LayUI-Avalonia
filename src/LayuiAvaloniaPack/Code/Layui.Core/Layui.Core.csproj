@@ -16,4 +16,8 @@
     <PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Layui.Tools\Layui.Tools.csproj" />
+  </ItemGroup>
+
 </Project>

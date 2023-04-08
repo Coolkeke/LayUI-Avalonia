@@ -27,4 +27,6 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/NotificationControlStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/NotificationHostStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DialogWindowStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TabControlStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TabItemStyle.axaml" />
 </Styles>

@@ -69,6 +69,7 @@ namespace Layui.Main
             containerRegistry.RegisterForNavigation<MessagePage>(SystemResource.MessagePage);
             containerRegistry.RegisterForNavigation<NotificationPage>(SystemResource.NotificationPage);
             containerRegistry.RegisterForNavigation<LoadingPage>(SystemResource.LoadingPage);
+            containerRegistry.RegisterForNavigation<TabControlPage>(SystemResource.TabControlPage);
             var layDialog = Container.Resolve<ILayDialogService>();
             layDialog.RegisterDialog<Message>(nameof(Message));
         }

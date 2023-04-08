@@ -1,0 +1,57 @@
+<UserControl
+    x:Class="Layui.Main.Views.TabControlPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UniformGrid Columns="1">
+        <Grid RowDefinitions="auto,*">
+            <TextBlock Margin="5" Text="这是默认" />
+            <lay:LayTabControl Grid.Row="1">
+                <lay:LayTabItem Header="这是选卡一">
+                    <TextBlock Text="这是选卡一" />
+                </lay:LayTabItem>
+                <lay:LayTabItem Header="这是选卡二">
+                    <TextBlock Text="这是选卡二" />
+                </lay:LayTabItem>
+                <lay:LayTabItem Header="这是选卡三">
+                    <TextBlock Text="这是选卡三" />
+                </lay:LayTabItem>
+            </lay:LayTabControl>
+        </Grid>
+        <Grid RowDefinitions="auto,*">
+            <TextBlock Margin="5" Text="这是MVVM方式" />
+            <lay:LayTabControl
+                Grid.Row="1"
+                Items="{Binding Tabs}"
+                SelectedItem="{Binding SelectedItem}">
+                <lay:LayTabControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="auto,auto">
+                            <TextBlock Text="{Binding Title}" />
+                            <lay:LayButton
+                                Grid.Column="1"
+                                Margin="5,0"
+                                Padding="10,5"
+                                Command="{Binding RelativeSource={RelativeSource AncestorType=lay:LayTabControl}, Path=DataContext.CloseCommand}"
+                                CommandParameter="{Binding}"
+                                Content="X"
+                                FontSize="10" />
+                        </Grid>
+                    </DataTemplate>
+                </lay:LayTabControl.ItemTemplate>
+                <lay:LayTabControl.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Title, StringFormat={}这是数据绑定呈现的模板绑定效果：{0}}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </lay:LayTabControl.ContentTemplate>
+            </lay:LayTabControl>
+        </Grid>
+    </UniformGrid>
+</UserControl>
