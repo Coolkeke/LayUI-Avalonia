@@ -12,9 +12,9 @@ using Prism.Services.Dialogs;
 
 namespace Layui.Main.ViewModels
 {
-    public class MainWindowViewModel : ViewModelBase
+    public class MainPageViewModel : ViewModelBase
     {
-        public MainWindowViewModel(IContainerExtension container) : base(container) { }
+        public MainPageViewModel(IContainerExtension container) : base(container) { }
         
     }
 }

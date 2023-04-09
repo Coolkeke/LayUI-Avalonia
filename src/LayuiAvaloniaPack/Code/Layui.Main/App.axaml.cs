@@ -14,6 +14,7 @@ using Prism.Ioc;
 using Prism.Modularity;
 using Layui.Core.Resources;
 using Prism.Regions;
+using Avalonia.Controls.ApplicationLifetimes;
 
 namespace Layui.Main
 {
@@ -31,9 +32,20 @@ namespace Layui.Main
             AvaloniaLocator.CurrentMutable.Bind<ILogSink>().ToConstant(new LayLogSink());
             base.RegisterServices();
         }
+        public override void OnFrameworkInitializationCompleted()
+        {
+            base.OnFrameworkInitializationCompleted();
+        }
         protected override IAvaloniaObject CreateShell()
         {
-            return Container.Resolve<MainWindow>();
+            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            {
+                return Container.Resolve<MainWindow>();
+            }
+            else 
+            {
+                return Container.Resolve<MainPage>();
+            } 
         }
         protected override IContainerExtension CreateContainerExtension()
         {
@@ -46,7 +58,7 @@ namespace Layui.Main
         }
         protected override void OnInitialized()
         {
-            base.OnInitialized(); 
+            base.OnInitialized();
             var regionManager = Container.Resolve<IRegionManager>();
             regionManager.RegisterViewWithRegion(SystemResource.Nav_MainContent, typeof(HomePage));
         }
@@ -75,7 +87,7 @@ namespace Layui.Main
         }
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            Container.Resolve<ILayLogger>().Info("正在注册模块..."); 
+            Container.Resolve<ILayLogger>().Info("正在注册模块...");
         }
     }
 }

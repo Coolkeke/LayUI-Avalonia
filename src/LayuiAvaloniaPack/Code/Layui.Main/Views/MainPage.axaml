@@ -1,0 +1,21 @@
+<UserControl
+    x:Class="Layui.Main.Views.MainPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:global="using:LayUI.Avalonia.Global"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:res="using:Layui.Core.Resources"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <lay:LayMessageHost global:LayMessage.Token="RootMessage">
+        <lay:LayNotificationHost global:LayNotification.Token="RootNotification">
+            <lay:LayDialogHost global:LayDialog.Token="RootDialog">
+                <ContentControl prism:RegionManager.RegionName="{Binding Source={x:Static res:SystemResource.Nav_MainContent}}" />
+            </lay:LayDialogHost>
+        </lay:LayNotificationHost>
+    </lay:LayMessageHost>
+</UserControl>

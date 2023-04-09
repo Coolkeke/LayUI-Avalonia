@@ -11,6 +11,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:res="using:Layui.Core.Resources"
+    xmlns:view="using:Layui.Main.Views"
     Name="mainWindow"
     Title="{lang:Localize AppTitle}"
     d:DesignHeight="1080"
@@ -34,12 +35,6 @@
                 <TextBlock VerticalAlignment="Center" Text="{Binding #mainWindow.Title, Mode=OneWay}" />
             </StackPanel>
         </lay:LayTitleBar.HeaderContent>
-        <lay:LayMessageHost global:LayMessage.Token="RootMessage">
-            <lay:LayNotificationHost global:LayNotification.Token="RootNotification">
-                <lay:LayDialogHost global:LayDialog.Token="RootDialog">
-                    <ContentControl prism:RegionManager.RegionName="{Binding Source={x:Static res:SystemResource.Nav_MainContent}}" />
-                </lay:LayDialogHost>
-            </lay:LayNotificationHost>
-        </lay:LayMessageHost>
+        <view:MainPage />
     </lay:LayTitleBar>
 </lay:LayWindow>

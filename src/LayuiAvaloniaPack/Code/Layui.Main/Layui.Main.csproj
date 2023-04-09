@@ -29,6 +29,9 @@
     <Compile Update="Views\Dialogs\DialogWindowBase.axaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
+    <Compile Update="Views\MainPage.axaml.cs">
+      <DependentUpon>MainPage.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\MainWindow.axaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
@@ -47,6 +50,10 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Views\TabControlPage.axaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Dialogs\MainView.axaml" />
   </ItemGroup>
 
 </Project>
