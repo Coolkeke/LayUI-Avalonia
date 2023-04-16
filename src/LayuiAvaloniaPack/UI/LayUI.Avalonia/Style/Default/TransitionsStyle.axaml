@@ -4,38 +4,55 @@
     xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
     <Design.PreviewWith>
         <Border Padding="20">
-            <!--  Add Controls for Previewer Here  -->
+            <StackPanel>
+                <CheckBox Name="IsChecked" />
+                <lay:LayTransitions IsActive="{Binding #IsChecked.IsChecked}">
+                    <Button Width="150" Height="40" />
+                </lay:LayTransitions>
+            </StackPanel>
         </Border>
     </Design.PreviewWith>
     <Style Selector="lay|LayTransitions">
+        <Setter Property="Type" Value="Zoom" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <ContentPresenter
-                        Name="PART_ContentPresenter"
-                        Padding="{TemplateBinding Padding}"
-                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                        Content="{TemplateBinding Content}"
-                        ContentTemplate="{TemplateBinding ContentTemplate}" />
+                    <Grid Name="PART_Body">
+                        <ContentPresenter
+                            Name="PART_ContentPresenter"
+                            Padding="{TemplateBinding Padding}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}">
+                            <ContentPresenter.Transitions>
+                                <Transitions>
+                                    <DoubleTransition
+                                        Easing="CubicEaseInOut"
+                                        Property="Opacity"
+                                        Duration="0:0:0.1" />
+                                    <TransformOperationsTransition
+                                        Easing="CubicEaseInOut"
+                                        Property="RenderTransform"
+                                        Duration="0:0:0.1" />
+                                </Transitions>
+                            </ContentPresenter.Transitions>
+                        </ContentPresenter>
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
     <Style Selector="lay|LayTransitions[Type=Zoom] /template/ ContentPresenter#PART_ContentPresenter">
-        <Style.Animations>
-            <Animation Easing="CubicEaseInOut" Duration="0:0:0.2">
-                <KeyFrame Cue="0%">
-                    <Setter Property="ScaleTransform.ScaleX" Value="0.7" />
-                    <Setter Property="ScaleTransform.ScaleY" Value="0.7" />
-                    <Setter Property="Opacity" Value="0" />
-                </KeyFrame>
-                <KeyFrame Cue="100%">
-                    <Setter Property="Opacity" Value="1" />
-                    <Setter Property="ScaleTransform.ScaleX" Value="1" />
-                    <Setter Property="ScaleTransform.ScaleY" Value="1" />
-                </KeyFrame>
-            </Animation>
-        </Style.Animations>
+        <Setter Property="RenderTransform" Value="scale(0.7)" />
+        <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="lay|LayTransitions[Type=Zoom][IsActive=false] /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="RenderTransform" Value="scale(0.7)" />
+        <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="lay|LayTransitions[Type=Zoom][IsActive=true] /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="RenderTransform" Value="scale(1)" />
+        <Setter Property="Opacity" Value="1" />
     </Style>
 </Styles>

@@ -16,6 +16,21 @@ namespace LayUI.Avalonia.Controls
     /// </summary>
     public class LayTransitions : ContentControl
     {
+
+        /// <summary>
+        /// 是否激活
+        /// </summary>
+        public bool IsActive
+        {
+            get { return GetValue(IsActiveProperty); }
+            set { SetValue(IsActiveProperty, value); }
+        }
+        /// <summary>
+        /// 定义<see cref="bool"/>属性
+        /// </summary>
+        public static readonly StyledProperty<bool> IsActiveProperty =
+       AvaloniaProperty.Register<LayTransitions, bool>(nameof(IsActive), false);
+
         /// <summary>
         /// Defines the <see cref="Type"/> property.
         /// </summary>
@@ -23,7 +38,7 @@ namespace LayUI.Avalonia.Controls
             AvaloniaProperty.Register<LayTransitions, AnimationType>(nameof(Type), AnimationType.Default);
 
         /// <summary>
-        /// Comment
+        /// 动画类型
         /// </summary>
         public AnimationType Type
         {
