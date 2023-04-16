@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Logging;
 using Avalonia.LogicalTree;
+using Avalonia.Media;
 using Avalonia.Threading;
 using LayUI.Avalonia.Controls;
 using LayUI.Avalonia.Enums;
@@ -130,7 +131,7 @@ namespace LayUI.Avalonia.Global
                         throw new NullReferenceException("对话框的 ViewModel 必须实现 IDialogAware 接口 ");
                     //给对应的ViewModel传值
                     ViewAndViewModelAction<ILayDialogAware>(viewModel, d => d.OnDialogOpened(parameters));
-                    dialogView.IsOpen = true;
+                    host.Items.Children.Add(dialogView); 
                     await host.TaskCompletion.Task;
                 }
                 catch (Exception ex)

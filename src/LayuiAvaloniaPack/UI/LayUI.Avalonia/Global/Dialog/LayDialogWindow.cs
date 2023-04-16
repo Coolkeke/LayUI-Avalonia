@@ -46,7 +46,12 @@ namespace LayUI.Avalonia.Global
         public bool IsOpen
         {
             get { return GetValue(IsOpenProperty); }
-            set { SetValue(IsOpenProperty, value); IsOpenChanged(); }
+            set { SetValue(IsOpenProperty, value);
+                new Action(async () =>
+                {
+                   await IsOpenChanged();
+                }).Invoke();
+            }
         } 
         private Action<ILayDialogResult> GetRequestCloseHandler()
         {
@@ -59,14 +64,13 @@ namespace LayUI.Avalonia.Global
             };
             return requestCloseHandler;
         }
-        private async void IsOpenChanged()
+        private async Task IsOpenChanged()
         {
             if (!IsOpen)
             {
-                await Task.Delay(90);
+                await Task.Delay(100);
                 Host.Items.Children.Remove(this);
-            }
-            else Host.Items.Children.Add(this);
+            } 
         }
         public static readonly DirectProperty<LayDialogWindow, Action<ILayDialogResult>> RequestCloseHandlerProperty =
         AvaloniaProperty.RegisterDirect<LayDialogWindow, Action<ILayDialogResult>>(nameof(RequestCloseHandler),
@@ -84,6 +88,7 @@ namespace LayUI.Avalonia.Global
         {
             base.OnAttachedToLogicalTree(e);
             this.GetDialogViewModel().RequestClose += RequestCloseHandler;
+            IsOpen = true;
         }
         protected override void OnDetachedFromLogicalTree(LogicalTreeAttachmentEventArgs e)
         {
