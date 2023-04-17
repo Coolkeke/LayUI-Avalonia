@@ -14,18 +14,19 @@
         <Setter Property="HeaderForeground" Value="White" />
         <Setter Property="HeaderBackground" Value="#393D49" />
         <Setter Property="Background" Value="White" />
+        <Setter Property="ClipToBounds" Value="false" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
                     <Grid>
-                        <Border
-                            Grid.RowSpan="3"
-                            Grid.ColumnSpan="3"
+                        <lay:LayCard
                             Background="{TemplateBinding Background}"
+                            Blur="7"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             ClipToBounds="false"
-                            CornerRadius="{TemplateBinding CornerRadius}">
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            ShadowColor="#6000">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
@@ -139,7 +140,7 @@
                                     Content="{TemplateBinding Content}"
                                     ContentTemplate="{TemplateBinding ContentTemplate}" />
                             </Grid>
-                        </Border>
+                        </lay:LayCard>
                         <Grid
                             Name="PART_BeginResizeDrag"
                             Background="{x:Null}"
@@ -182,6 +183,16 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    <Style Selector="lay|LayTitleBar:not(:fullscreen):not(:maximized)">
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="Margin" Value="7" />
+    </Style>
+    <Style Selector="lay|LayTitleBar:maximized">
+        <Setter Property="Margin" Value="0" />
+    </Style>
+    <Style Selector="lay|LayTitleBar:fullscreen">
+        <Setter Property="Margin" Value="0" />
     </Style>
     <Style Selector="lay|LayTitleBar:fullscreen /template/ Grid#PART_BeginResizeDrag">
         <Setter Property="IsHitTestVisible" Value="false" />
