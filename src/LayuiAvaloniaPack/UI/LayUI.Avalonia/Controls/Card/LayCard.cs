@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
+using LayUI.Avalonia.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -139,5 +140,20 @@ namespace LayUI.Avalonia.Controls
             get { return GetValue(OffsetYProperty); }
             set { SetValue(OffsetYProperty, value); }
         }
+
+        /// <summary>
+        /// 阴影类型
+        /// </summary>
+        public ShadowType Type
+        {
+            get { return GetValue(TypeProperty); }
+            set { SetValue(TypeProperty, value); }
+        }
+        /// <summary>
+        /// 定义<see cref="ShadowType"/>属性
+        /// </summary>
+        public static readonly StyledProperty<ShadowType> TypeProperty =
+       AvaloniaProperty.Register<LayCard, ShadowType>(nameof(Type), ShadowType.Always);
+
     }
 }

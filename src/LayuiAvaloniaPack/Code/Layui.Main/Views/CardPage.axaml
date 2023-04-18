@@ -11,7 +11,10 @@
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
     <StackPanel>
-        <lay:LayCard Height="150" Margin="10">
+        <lay:LayCard
+            Height="100"
+            Margin="10"
+            Blur="10">
             <TextBlock
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
@@ -19,13 +22,27 @@
                 Text="卡片" />
         </lay:LayCard>
         <lay:LayCard
-            Height="150"
+            Height="100"
             Margin="10"
             Blur="10"
+            BorderBrush="{DynamicResource SilverGray}"
+            BorderThickness="1"
+            Type="Hover">
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="50"
+                Text="卡片" />
+        </lay:LayCard>
+        <lay:LayCard
+            Height="100"
+            Margin="10"
+            Blur="10"
+            BorderBrush="{DynamicResource SilverGray}"
+            BorderThickness="1"
             IsInset="True"
             OffsetX="0"
             OffsetY="0"
-            ShadowColor="{DynamicResource LightBlack}"
             Spread="4">
             <TextBlock
                 HorizontalAlignment="Center"

@@ -4,15 +4,29 @@
     xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
     <Design.PreviewWith>
         <Border Padding="20">
-            <lay:LayCard
-                Width="50"
-                Height="50"
-                ShadowColor="{DynamicResource LightBlack}" />
+            <StackPanel Orientation="Horizontal">
+                <lay:LayCard
+                    Width="50"
+                    Height="50"
+                    Margin="5" />
+                <lay:LayCard
+                    Width="50"
+                    Height="50"
+                    Margin="5"
+                    Type="Hover" />
+                <lay:LayCard
+                    Width="50"
+                    Height="50"
+                    Margin="5"
+                    Type="None" />
+            </StackPanel>
         </Border>
     </Design.PreviewWith>
     <Style Selector="lay|LayCard">
         <Setter Property="Blur" Value="4" />
         <Setter Property="CornerRadius" Value="1" />
+        <Setter Property="ShadowColor" Value="{DynamicResource Gray}" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="ClipToBounds" Value="false" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
@@ -21,19 +35,22 @@
                 <ControlTemplate>
                     <Grid>
                         <Border
-                            Background="{TemplateBinding Background}"
+                            Name="PART_Root"
+                            Background="Transparent"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             BoxShadow="{TemplateBinding BoxShadow}"
                             CornerRadius="{TemplateBinding CornerRadius}" />
                         <Border
+                            Name="PART_Border"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            ClipToBounds="true"
-                            CornerRadius="{TemplateBinding CornerRadius}">
+                            CornerRadius="{TemplateBinding CornerRadius}" />
+                        <Border ClipToBounds="true" CornerRadius="{TemplateBinding CornerRadius}">
                             <ContentPresenter
                                 Name="PART_ContentPresenter"
+                                Margin="{TemplateBinding BorderThickness}"
                                 Padding="{TemplateBinding Padding}"
                                 HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -44,6 +61,46 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    <Style Selector="lay|LayCard[Type=Always] /template/ Border#PART_Root">
+        <Setter Property="IsVisible" Value="true" />
+    </Style>
+    <Style Selector="lay|LayCard[Type=Hover] /template/ Border#PART_Root">
+        <Setter Property="IsVisible" Value="true" />
+        <Setter Property="Opacity" Value="0" />
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <Transitions>
+                    <DoubleTransition
+                        Easing="CubicEaseInOut"
+                        Property="Opacity"
+                        Duration="0:0:0.3" />
+                </Transitions>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayCard[Type=Hover]:pointerover /template/ Border#PART_Root">
+        <Setter Property="Opacity" Value="1" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+    </Style>
+    <Style Selector="lay|LayCard[Type=Hover]/template/ Border#PART_Border">
+        <Setter Property="Opacity" Value="1" />
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <Transitions>
+                    <DoubleTransition
+                        Easing="CubicEaseInOut"
+                        Property="Opacity"
+                        Duration="0:0:0.3" />
+                </Transitions>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayCard[Type=Hover]:pointerover /template/ Border#PART_Border">
+        <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="lay|LayCard[Type=None] /template/ Border#PART_Root">
+        <Setter Property="IsVisible" Value="false" />
     </Style>
     <!--  Add Styles Here  -->
 </Styles>
