@@ -30,4 +30,5 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TabControlStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TabItemStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TransitionsStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DrawerStyle.axaml" />
 </Styles>
