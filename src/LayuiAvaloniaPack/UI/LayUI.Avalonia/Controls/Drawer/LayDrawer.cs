@@ -12,11 +12,25 @@ namespace LayUI.Avalonia.Controls
     /// </summary>
     public class LayDrawer: ContentControl
     {
+        static LayDrawer()
+        {
+            BoundsProperty.Changed.AddClassHandler<LayDrawer>(OnDrawerResized); 
+        }
 
-		/// <summary>
-		/// 开启抽屉
-		/// </summary>
-		public bool IsOpen
+        private static void OnDrawerResized(LayDrawer arg, AvaloniaPropertyChangedEventArgs e)
+        {
+            arg.UpdateDesktopExpand(arg.Bounds.Width);
+        }
+
+        private void UpdateDesktopExpand(double width)
+        {
+           
+        }
+
+        /// <summary>
+        /// 开启抽屉
+        /// </summary>
+        public bool IsOpen
 		{
 			get { return GetValue(IsOpenProperty); }
 			set { SetValue(IsOpenProperty, value); }
