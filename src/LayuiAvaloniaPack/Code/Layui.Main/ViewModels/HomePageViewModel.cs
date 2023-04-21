@@ -90,6 +90,7 @@ namespace Layui.Main.ViewModels
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.NotificationPage, Title = "Notification" },
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.LoadingPage, Title = "Loading" },
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.TabControlPage, Title = "TabControl" },
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.StepBarPage, Title = "StepBar" },
             };
             return menus;
         }

@@ -31,4 +31,6 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TabItemStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TransitionsStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DrawerStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/StepBarStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/StepBarItemStyle.axaml" />
 </Styles>

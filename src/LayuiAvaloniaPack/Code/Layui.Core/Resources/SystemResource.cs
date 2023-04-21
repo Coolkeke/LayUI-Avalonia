@@ -15,58 +15,62 @@ namespace Layui.Core.Resources
         /// <summary>
         /// ManWindow导航容器名称
         /// </summary>
-        public static string Nav_MainContent = "Nav_MainContent";
+        public static string Nav_MainContent { get; } = "Nav_MainContent";
         /// <summary>
         /// 首页导航容器名称
         /// </summary>
-        public static string Nav_HomeContent  = "Nav_HomeContent";
+        public static string Nav_HomeContent { get; } = "Nav_HomeContent";
         /// <summary>
         /// 首页
         /// </summary>
-        public static string HomePage  = "HomePage";
+        public static string HomePage { get; } = "HomePage";
         /// <summary>
         /// 按钮
         /// </summary>
-        public static string ButtonPage  = "ButtonPage";
+        public static string ButtonPage { get; } = "ButtonPage";
         /// <summary>
         /// 表单
         /// </summary>
-        public static string FormPage  = "FormPage"; 
+        public static string FormPage { get; } = "FormPage"; 
         /// <summary>
         /// 图片
         /// </summary>
-        public static string ImagePage = "ImagePage"; 
+        public static string ImagePage { get; } = "ImagePage"; 
         /// <summary>
         /// 进度条
         /// </summary>
-        public static string ProgressBarPage = "ProgressBarPage"; 
+        public static string ProgressBarPage { get; } = "ProgressBarPage"; 
         /// <summary>
         /// 键盘
         /// </summary>
-        public static string KeyboardPage = "KeyboardPage"; 
+        public static string KeyboardPage { get; } = "KeyboardPage"; 
         /// <summary>
         /// 对话框
         /// </summary>
-        public static string DialogPage = "DialogPage"; 
+        public static string DialogPage { get; } = "DialogPage"; 
         /// <summary>
         /// 卡片
         /// </summary>
-        public static string CardPage = "CardPage";
+        public static string CardPage { get; } = "CardPage";
         /// <summary>
         /// 简单通知信息
         /// </summary>
-        public static string MessagePage = "MessagePage";
+        public static string MessagePage { get; } = "MessagePage";
         /// <summary>
         /// 普通信息通知
         /// </summary>
-        public static string NotificationPage = "NotificationPage"; 
+        public static string NotificationPage { get; } = "NotificationPage"; 
         /// <summary>
         /// 忙碌控件
         /// </summary>
-        public static string LoadingPage = "LoadingPage";
+        public static string LoadingPage { get; } = "LoadingPage";
         /// <summary>
         /// 选项卡
         /// </summary>
-        public static string TabControlPage = "TabControlPage"; 
+        public static string TabControlPage { get; } = "TabControlPage";
+        /// <summary>
+        /// 步骤条
+        /// </summary>
+        public static string StepBarPage { get; } = "StepBarPage"; 
     }
 }

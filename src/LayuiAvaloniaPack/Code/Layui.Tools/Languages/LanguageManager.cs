@@ -43,7 +43,7 @@ namespace Layui.Tools.Languages
             {
                 try
                 {
-                    if (LanguageDictionary == null) return key;
+                    if (LanguageDictionary == null) return key; 
                     return LanguageDictionary[key].ToString();
                 }
                 catch

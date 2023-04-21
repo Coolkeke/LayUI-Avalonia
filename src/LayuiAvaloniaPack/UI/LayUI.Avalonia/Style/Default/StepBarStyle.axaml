@@ -1,0 +1,45 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Design.PreviewWith>
+        <Border Width="500" Padding="20">
+            <lay:LayStepBar>
+                <lay:LayStepBarItem Content="123123" />
+                <lay:LayStepBarItem Content="123123" />
+                <lay:LayStepBarItem Content="123123" />
+                <lay:LayStepBarItem Content="123123" />
+                <lay:LayStepBarItem Content="123123" />
+            </lay:LayStepBar>
+        </Border>
+    </Design.PreviewWith>
+    <Style Selector="lay|LayStepBar">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="1" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <ItemsPresenter
+                            ItemTemplate="{TemplateBinding ItemTemplate}"
+                            Items="{TemplateBinding Items}"
+                            ItemsPanel="{TemplateBinding ItemsPanel}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--  Add Styles Here  -->
+</Styles>
