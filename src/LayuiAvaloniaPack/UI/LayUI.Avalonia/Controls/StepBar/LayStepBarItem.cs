@@ -39,7 +39,7 @@ namespace LayUI.Avalonia.Controls
         /// 定义<see cref="StepType"/>属性
         /// </summary>
         public static readonly StyledProperty<StepType> TypeProperty =
-       AvaloniaProperty.Register<LayStepBarItem, StepType>(nameof(Type), StepType.None);
+       AvaloniaProperty.Register<LayStepBarItem, StepType>(nameof(Type), StepType.Executing);
 
 
     }

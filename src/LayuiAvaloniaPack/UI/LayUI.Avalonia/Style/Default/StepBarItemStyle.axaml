@@ -2,80 +2,38 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:lay="clr-namespace:LayUI.Avalonia.Controls;assembly=LayUI.Avalonia"
-    xmlns:layCv="clr-namespace:LayUI.Avalonia.Converters;assembly=LayUI.Avalonia">
+    xmlns:layCv="clr-namespace:LayUI.Avalonia.Converters;assembly=LayUI.Avalonia"
+    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
 
     <Design.PreviewWith>
         <Border Padding="20">
             <lay:LayStepBar>
-                <lay:LayStepBarItem Content="123123123123" />
-                <lay:LayStepBarItem Content="123123" />
-                <lay:LayStepBarItem Content="123123" />
-                <lay:LayStepBarItem Content="123123" />
+                <lay:LayStepBarItem Content="123123" Type="Executing" />
+                <lay:LayStepBarItem Content="123123" Type="Waiting" />
+                <lay:LayStepBarItem Content="123123" Type="Complete" />
             </lay:LayStepBar>
         </Border>
     </Design.PreviewWith>
     <Style Selector="lay|LayStepBarItem">
-        <Setter Property="Background" Value="Red" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="Black" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Grid RowDefinitions="auto,*">
-                        <Grid ColumnDefinitions="*,auto,*">
-                            <Grid Height="1" Background="Black" />
-                            <Grid
-                                Grid.Column="1"
-                                Width="30"
-                                Height="30">
-                                <Border
-                                    Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="15" />
-                                <ContentControl
-                                    Name="PART_StepContent"
-                                    Margin="{TemplateBinding BorderThickness}"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center" />
-                                <TextBlock
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Foreground="White"
-                                    Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Index}" />
-                            </Grid>
-
-                            <Grid
-                                Grid.Column="2"
-                                Height="1"
-                                Background="Black" />
-                        </Grid>
-                        <ContentPresenter
-                            Grid.Row="1"
-                            Padding="{TemplateBinding Padding}"
-                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Content="{TemplateBinding Content}"
-                            ContentTemplate="{TemplateBinding ContentTemplate}" />
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <Style Selector="lay|LayStepBarItem">
         <Style.Resources>
-            <layCv:StepBarItemConverter x:Key="StepBarItem" />
+            <sys:Boolean x:Key="False">false</sys:Boolean>
+            <sys:Boolean x:Key="True">true</sys:Boolean>
         </Style.Resources>
-        <Setter Property="Background" Value="Red" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="2" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
                     <Grid RowDefinitions="auto,*">
                         <Grid ColumnDefinitions="*,auto,*">
-                            <Grid Height="1" Background="Black" />
+                            <Grid Height="2" Background="{TemplateBinding BorderBrush}">
+                                <Grid.IsVisible>
+                                    <MultiBinding Converter="{x:Static layCv:StepBarItemConverter.Instance}" ConverterParameter="{StaticResource True}">
+                                        <TemplateBinding Property="Index" />
+                                        <Binding Path="Items.Count" RelativeSource="{RelativeSource AncestorType=lay:LayStepBar}" />
+                                    </MultiBinding>
+                                </Grid.IsVisible>
+                            </Grid>
                             <Grid
                                 Grid.Column="1"
                                 Width="30"
@@ -94,14 +52,20 @@
                                     Name="PART_Index"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Foreground="White"
                                     Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Index}" />
                             </Grid>
 
                             <Grid
                                 Grid.Column="2"
-                                Height="1"
-                                Background="Black" />
+                                Height="2"
+                                Background="{TemplateBinding BorderBrush}">
+                                <Grid.IsVisible>
+                                    <MultiBinding Converter="{x:Static layCv:StepBarItemConverter.Instance}" ConverterParameter="{StaticResource False}">
+                                        <TemplateBinding Property="Index" />
+                                        <Binding Path="Items.Count" RelativeSource="{RelativeSource AncestorType=lay:LayStepBar}" />
+                                    </MultiBinding>
+                                </Grid.IsVisible>
+                            </Grid>
                         </Grid>
                         <ContentPresenter
                             Grid.Row="1"
@@ -114,6 +78,24 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    <Style Selector="lay|LayStepBarItem[Type=Waiting]">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource LightBlack}" />
+    </Style>
+    <Style Selector="lay|LayStepBarItem[Type=Waiting] /template/ TextBlock#PART_Index">
+        <Setter Property="Foreground" Value="{DynamicResource LightBlack}" />
+    </Style>
+    <Style Selector="lay|LayStepBarItem[Type=Complete]">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
+    </Style>
+    <Style Selector="lay|LayStepBarItem[Type=Executing]">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Blue}" />
+    </Style>
+    <Style Selector="lay|LayStepBarItem[Type=Executing] /template/ TextBlock#PART_Index">
+        <Setter Property="Foreground" Value="{DynamicResource Blue}" />
     </Style>
     <!--  Add Styles Here  -->
 </Styles>

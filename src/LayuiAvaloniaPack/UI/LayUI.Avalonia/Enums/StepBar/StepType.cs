@@ -8,11 +8,7 @@ namespace LayUI.Avalonia.Enums
     /// 步骤状态
     /// </summary>
     public enum StepType
-    {
-        /// <summary>
-        /// 无
-        /// </summary>
-        None,
+    { 
         /// <summary>
         /// 完成
         /// </summary>
