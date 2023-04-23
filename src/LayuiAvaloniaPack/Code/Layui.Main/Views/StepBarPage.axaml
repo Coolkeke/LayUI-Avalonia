@@ -10,5 +10,11 @@
     d:DesignWidth="800"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
-    <lay:LayStepBar Items="{Binding Items}" SelectedIndex="1" />
+    <StackPanel>
+        <lay:LayNumericUpDown Value="{Binding #StepBar.StepIndex}" />
+        <lay:LayStepBar
+            Name="StepBar"
+            FontSize="20"
+            Items="{Binding Items}" />
+    </StackPanel>
 </UserControl>

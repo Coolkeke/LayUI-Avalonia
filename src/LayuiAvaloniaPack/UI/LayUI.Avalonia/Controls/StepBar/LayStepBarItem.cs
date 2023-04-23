@@ -1,17 +1,20 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Generators;
+using Avalonia.Controls.Metadata;
+using Avalonia.Controls.Mixins;
+using Avalonia.Input;
 using LayUI.Avalonia.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace LayUI.Avalonia.Controls
-{
+{ 
     /// <summary>
     /// 步骤子项
-    /// </summary>
-    public class LayStepBarItem : ListBoxItem
+    /// </summary> 
+    public class LayStepBarItem : ContentControl
     {
         /// <summary>
         /// 记录当前步骤索引
