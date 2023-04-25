@@ -33,4 +33,5 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DrawerStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/StepBarStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/StepBarItemStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CarouselStyle.axaml" />
 </Styles>

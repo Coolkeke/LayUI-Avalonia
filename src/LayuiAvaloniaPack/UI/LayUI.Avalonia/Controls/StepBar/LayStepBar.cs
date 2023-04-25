@@ -40,8 +40,8 @@ namespace LayUI.Avalonia.Controls
         {
             return new ItemContainerGenerator<LayStepBarItem>(
                 this,
-                LayComboBoxItem.ContentProperty,
-                LayComboBoxItem.ContentTemplateProperty);
+                LayStepBarItem.ContentProperty,
+                LayStepBarItem.ContentTemplateProperty);
         }
         protected override void OnContainersDematerialized(ItemContainerEventArgs e)
         {
