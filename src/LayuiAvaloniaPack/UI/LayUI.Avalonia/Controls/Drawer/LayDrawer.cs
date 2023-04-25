@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.Controls.Shapes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,15 +15,10 @@ namespace LayUI.Avalonia.Controls
     {
         static LayDrawer()
         {
-            BoundsProperty.Changed.AddClassHandler<LayDrawer>(OnDrawerResized); 
-        }
+            BoundsProperty.Changed.AddClassHandler<LayDrawer>((s,e)=> s.UpdateDesktopExpand()); 
+        } 
 
-        private static void OnDrawerResized(LayDrawer arg, AvaloniaPropertyChangedEventArgs e)
-        {
-            arg.UpdateDesktopExpand(arg.Bounds.Width);
-        }
-
-        private void UpdateDesktopExpand(double width)
+        private void UpdateDesktopExpand()
         {
            
         }

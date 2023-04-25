@@ -21,5 +21,11 @@ namespace Layui.Main.ViewModels
             get { return _Items; }
             set { SetProperty(ref _Items, value); }
         }
+        private int _SelectedIndex;
+        public int SelectedIndex
+        {
+            get { return _SelectedIndex; }
+            set { SetProperty(ref _SelectedIndex, value); }
+        }
     }
 }

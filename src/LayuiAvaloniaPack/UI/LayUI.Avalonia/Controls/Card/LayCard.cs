@@ -15,16 +15,11 @@ namespace LayUI.Avalonia.Controls
     {
         static LayCard()
         {
-            ShadowColorProperty.Changed.Subscribe(UpdateBoxShadow);
-            BlurProperty.Changed.Subscribe(UpdateBoxShadow);
-            OffsetXProperty.Changed.Subscribe(UpdateBoxShadow);
-            OffsetYProperty.Changed.Subscribe(UpdateBoxShadow);
-        }
-
-        private static void UpdateBoxShadow(AvaloniaPropertyChangedEventArgs obj)
-        {
-            if (obj.Sender is LayCard card) card.UpdateBoxShadow();
-        }
+            ShadowColorProperty.Changed.AddClassHandler<LayCard>((s,e)=>s.UpdateBoxShadow());
+            BlurProperty.Changed.AddClassHandler<LayCard>((s, e) => s.UpdateBoxShadow());
+            OffsetXProperty.Changed.AddClassHandler<LayCard>((s, e) => s.UpdateBoxShadow());
+            OffsetYProperty.Changed.AddClassHandler<LayCard>((s, e) => s.UpdateBoxShadow()); 
+        } 
         /// <summary>
         /// 修改阴影效果
         /// </summary>

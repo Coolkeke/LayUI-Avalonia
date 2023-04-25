@@ -22,7 +22,7 @@ namespace LayUI.Avalonia.Interface
         /// <summary>
         /// 集合项
         /// </summary>
-        int ItemCount { get; }
+        int ItemsCount { get; }
         /// <summary>
         /// 子集模板
         /// </summary>

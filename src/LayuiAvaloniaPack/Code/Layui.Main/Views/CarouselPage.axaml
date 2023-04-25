@@ -16,7 +16,7 @@
                 Height="500"
                 Margin="5"
                 Items="{Binding Items}"
-                SelectedIndex="0">
+                SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
                 <lay:LayGradientCarousel.ItemTemplate>
                     <DataTemplate>
                         <Grid Background="{DynamicResource Green}">

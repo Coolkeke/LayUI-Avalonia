@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Controls
 {
-    public class LayNotificationControl: TemplatedControl
+    public class LayNotificationControl : TemplatedControl
     {
 
 
@@ -29,9 +29,10 @@ namespace LayUI.Avalonia.Controls
         private TimeSpan Time;
         static LayNotificationControl()
         {
-            IsOpenProperty.Changed.Subscribe(OnIsOpenChanged);
+            IsOpenProperty.Changed.AddClassHandler<LayNotificationControl>((x, e) => x.OnIsOpenChanged());
         }
-        public LayNotificationControl() {
+        public LayNotificationControl()
+        {
 
         }
         public LayNotificationControl(LayNotificationHost host, TimeSpan time)
@@ -39,26 +40,23 @@ namespace LayUI.Avalonia.Controls
             Host = host;
             Time = time;
         }
-        private async static void OnIsOpenChanged(AvaloniaPropertyChangedEventArgs<bool> obj)
+        private async void OnIsOpenChanged()
         {
-            if (obj.Sender is LayNotificationControl control)
+            if (IsOpen) return;
+            if (timer != null)
             {
-                if (control.IsOpen) return;
-                if (control.timer != null)
-                {
-                    control.timer.Stop();
-                    control.timer.Tick -= control.Timer_Tick;
-                    control.timer = null;
-                }
-                await Task.Delay(250);
-                control.Host.Items.Children.Remove(control);
-            } 
+                timer.Stop();
+                timer.Tick -= Timer_Tick;
+                timer = null;
+            }
+            await Task.Delay(250);
+            Host.Items.Children.Remove(this);
         }
         /// <summary>
         /// Defines the <see cref="IsOpen"/> property.
         /// </summary>
         internal static readonly StyledProperty<bool> IsOpenProperty =
-            AvaloniaProperty.Register<Control, bool>(nameof(IsOpen),true);
+            AvaloniaProperty.Register<Control, bool>(nameof(IsOpen), true);
 
         /// <summary>
         /// 是否开启
@@ -102,11 +100,11 @@ namespace LayUI.Avalonia.Controls
             };
             timer.Tick -= Timer_Tick;
             timer.Tick += Timer_Tick;
-            if(Type!= NotificationType.Error && Type != NotificationType.Warning) timer.Start(); 
+            if (Type != NotificationType.Error && Type != NotificationType.Warning) timer.Start();
         }
         protected override void OnDetachedFromLogicalTree(LogicalTreeAttachmentEventArgs e)
         {
-            base.OnDetachedFromLogicalTree(e); 
+            base.OnDetachedFromLogicalTree(e);
             if (Design.IsDesignMode) return;
             if (timer != null)
             {
@@ -116,7 +114,7 @@ namespace LayUI.Avalonia.Controls
             }
             if (CloseButton != null)
             {
-                CloseButton.RemoveHandler(Button.ClickEvent, Closed); 
+                CloseButton.RemoveHandler(Button.ClickEvent, Closed);
             }
         }
         /// <summary>
@@ -136,7 +134,7 @@ namespace LayUI.Avalonia.Controls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private  void Closed(object sender, RoutedEventArgs e)
+        private void Closed(object sender, RoutedEventArgs e)
         {
             if (Design.IsDesignMode) return;
             IsOpen = false;
