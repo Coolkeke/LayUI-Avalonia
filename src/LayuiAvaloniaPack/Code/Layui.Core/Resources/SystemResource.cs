@@ -72,5 +72,9 @@ namespace Layui.Core.Resources
         /// 步骤条
         /// </summary>
         public static string StepBarPage { get; } = "StepBarPage"; 
+        /// <summary>
+        /// 轮播图
+        /// </summary>
+        public static string CarouselPage { get; } = "CarouselPage"; 
     }
 }

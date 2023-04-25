@@ -9,7 +9,7 @@ namespace LayUI.Avalonia.Controls
 	/// <summary>
 	/// 轮播子项
 	/// </summary>
-    public class LayCarouselItem : ContentControl, ISelectable
+    public class LayCarouselItem : ContentControl
     { 
 		/// <summary>
 		/// 选中
@@ -17,7 +17,7 @@ namespace LayUI.Avalonia.Controls
 		public bool IsSelected
         {
 			get { return GetValue(IsSelectedProperty); }
-			set { SetValue(IsSelectedProperty, value); }
+			private set { SetValue(IsSelectedProperty, value); }
 		}
 		/// <summary>
 		/// 定义<see cref="bool"/>属性

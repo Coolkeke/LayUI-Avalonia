@@ -12,6 +12,7 @@ using Avalonia.Controls;
 using Avalonia.LogicalTree;
 using Avalonia.Controls.Generators;
 using System;
+using Avalonia.Media;
 
 namespace LayUI.Avalonia.Controls
 {
@@ -26,14 +27,18 @@ namespace LayUI.Avalonia.Controls
         private Panel PART_ItemsGrid;
         static LayCarousel()
         {
-            ItemsProperty.Changed.AddClassHandler(delegate (LayCarousel x, AvaloniaPropertyChangedEventArgs e)
-            {
-                x.ItemsChanged(e);
-            });
-            ItemTemplateProperty.Changed.AddClassHandler(delegate (LayCarousel x, AvaloniaPropertyChangedEventArgs e)
-            {
-                x.ItemTemplateChanged(e);
-            });
+            ItemsProperty.Changed.AddClassHandler<LayCarousel>((x, e) => x.ItemsChanged(e));
+            ItemTemplateProperty.Changed.AddClassHandler<LayCarousel>((x, e) => x.ItemTemplateChanged(e));
+            SelectedIndexProperty.Changed.AddClassHandler<LayCarousel>((x, e) => x.OnSelectedIndexChanged());
+        }
+
+        private void OnSelectedIndexChanged()
+        {
+            UpdateItems();
+        }
+        public LayCarousel()
+        {
+            SubscribeToItems(_items);
         }
         /// <summary>
         /// 创建或标识用于显示给定项的元素
@@ -41,7 +46,7 @@ namespace LayUI.Avalonia.Controls
         /// <returns>用于显示给定项的元素</returns>
         protected virtual AvaloniaObject GetContainerForItemOverride()
         {
-            return new LayCarouselItem() { ContentTemplate = ItemTemplate };
+            return new LayCarouselItem();
         }
         /// <summary>
         /// 确定指定项是否是（或者是否可以作为）其自己的容器
@@ -89,16 +94,20 @@ namespace LayUI.Avalonia.Controls
             {
                 enumerableCollectionChanged.CollectionChanged -= ItemsCollectionChanged;
             }
-            INotifyCollectionChanged itemsCollectionChanged = items as INotifyCollectionChanged;
-            if (itemsCollectionChanged != null)
-            {
-                itemsCollectionChanged.CollectionChanged += ItemsCollectionChanged;
-            }
             RemoveControlItemsFromLogicalChildren(enumerable);
             AddControlItemsToLogicalChildren(items);
             UpdateItemCount();
+            SubscribeToItems(items);
+            UpdateItems();
         }
-
+        private void SubscribeToItems(IEnumerable items)
+        {
+            if (items is INotifyCollectionChanged incc)
+            {
+                incc.CollectionChanged -= ItemsCollectionChanged;
+                incc.CollectionChanged += ItemsCollectionChanged;
+            }
+        }
         protected virtual void ItemsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             UpdateItemCount();
@@ -112,6 +121,7 @@ namespace LayUI.Avalonia.Controls
                     RemoveControlItemsFromLogicalChildren(e.OldItems);
                     break;
             }
+            UpdateItems();
         }
         /// <summary>
         /// 删除历史Item
@@ -119,7 +129,6 @@ namespace LayUI.Avalonia.Controls
         /// <param name="items"></param>
         private void RemoveControlItemsFromLogicalChildren(IEnumerable items)
         {
-            if (PART_ItemsGrid == null) return;
             if (items != null)
             {
                 foreach (var i in items)
@@ -128,7 +137,7 @@ namespace LayUI.Avalonia.Controls
                     var control = i as IControl;
                     if (control != null)
                     {
-                        PART_ItemsGrid.Children.Remove(control);
+                        LogicalChildren.Remove(control);
                     }
                 }
             }
@@ -139,20 +148,20 @@ namespace LayUI.Avalonia.Controls
         /// <param name="items"></param>
         private void AddControlItemsToLogicalChildren(IEnumerable items)
         {
-            if (PART_ItemsGrid == null) return;
             if (items != null)
             {
                 foreach (var i in items)
                 {
-                    if (IsItemItsOwnContainerOverride(i) && i is LayCarouselItem control && !PART_ItemsGrid.Children.Contains(control))
+                    if (IsItemItsOwnContainerOverride(i) && i is LayCarouselItem control && !LogicalChildren.Contains(control))
                     {
-                        PART_ItemsGrid.Children.Add(control);
+                        LogicalChildren.Add(control);
                     }
                     else
                     {
                         var item = GetContainerForItemOverride() as LayCarouselItem;
                         item.Content = i;
-                        PART_ItemsGrid.Children.Add(item);
+                        item.ContentTemplate = ItemTemplate;
+                        LogicalChildren.Add(item);
                     }
 
                 }
@@ -172,21 +181,21 @@ namespace LayUI.Avalonia.Controls
         /// </summary>
         public static readonly StyledProperty<int> SelectedIndexProperty =
        AvaloniaProperty.Register<LayCarousel, int>(nameof(SelectedIndex), -1);
-
+        private IEnumerable _items = new AvaloniaList<object>();
         /// <summary>
         /// 集合
         /// </summary>
         [Content]
         public IEnumerable Items
         {
-            get { return GetValue(ItemsProperty); }
-            set { SetValue(ItemsProperty, value); }
+            get { return _items; }
+            set { SetAndRaise(ItemsProperty, ref _items, value); }
         }
         /// <summary>
         /// 定义<see cref="IEnumerable"/>属性
         /// </summary>
-        public static readonly StyledProperty<IEnumerable> ItemsProperty =
-       AvaloniaProperty.Register<LayCarousel, IEnumerable>(nameof(Items), new AvaloniaList<object>());
+        public static readonly DirectProperty<LayCarousel, IEnumerable> ItemsProperty =
+       AvaloniaProperty.RegisterDirect<LayCarousel, IEnumerable>(nameof(Items), o => o.Items, (o, v) => o.Items = v);
 
 
         /// <summary>
@@ -219,19 +228,36 @@ namespace LayUI.Avalonia.Controls
 
         public void Next()
         {
-            if (SelectedIndex >= ItemCount) SelectedIndex = 0;
-            SelectedIndex++;
+            if (SelectedIndex >= (ItemCount - 1)) SelectedIndex = 0;
+            else SelectedIndex++;
         }
 
         public void Previous()
         {
             if (SelectedIndex <= 0) SelectedIndex = ItemCount - 1;
-            SelectedIndex--;
+            else SelectedIndex--;
         }
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
             base.OnApplyTemplate(e);
             PART_ItemsGrid = e.NameScope.Find<Panel>("PART_ItemsGrid");
+            UpdateItems();
+        }
+        void UpdateItems()
+        {
+            if (PART_ItemsGrid == null) return;
+            PART_ItemsGrid.Children.Clear();
+            foreach (var item in LogicalChildren)
+            {
+                PART_ItemsGrid.Children.Add(item as IControl);
+            }
+            for (int i = 0; i < PART_ItemsGrid.Children.Count; i++)
+            {
+                if (!(PART_ItemsGrid.Children[i] is LayCarouselItem item)) continue;
+                if (i == SelectedIndex) item.Opacity = 1;
+                else item.Opacity = 0;
+                item.ContentTemplate = ItemTemplate;
+            }  
         }
     }
 }

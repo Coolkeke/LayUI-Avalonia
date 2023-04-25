@@ -1,0 +1,45 @@
+<UserControl
+    x:Class="Layui.Main.Views.CarouselPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <ScrollViewer>
+        <ItemsControl>
+            <lay:LayGradientCarousel
+                Height="500"
+                Margin="5"
+                Items="{Binding Items}"
+                SelectedIndex="0">
+                <lay:LayGradientCarousel.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Background="{DynamicResource Green}">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Foreground="White"
+                                Text="{Binding Title}" />
+                        </Grid>
+                    </DataTemplate>
+                </lay:LayGradientCarousel.ItemTemplate>
+            </lay:LayGradientCarousel>
+            <lay:LayGradientCarousel
+                Height="500"
+                Margin="5"
+                SelectedIndex="0">
+                <lay:LayCarouselItem>
+                    <Image Source="avares://LayuiApp.Desktop/Assets/2.jpg" />
+                </lay:LayCarouselItem>
+                <lay:LayCarouselItem>
+                    <Image Source="avares://LayuiApp.Desktop/Assets/AvaloniaLogo.png" />
+                </lay:LayCarouselItem>
+            </lay:LayGradientCarousel>
+        </ItemsControl>
+    </ScrollViewer>
+</UserControl>
