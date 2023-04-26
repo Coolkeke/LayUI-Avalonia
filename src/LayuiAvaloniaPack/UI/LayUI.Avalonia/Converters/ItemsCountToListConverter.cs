@@ -18,12 +18,12 @@ namespace LayUI.Avalonia.Converters
         public static ItemsCountToListConverter Instance => _Instance ?? (_Instance = new ItemsCountToListConverter());
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var items = new List<object>();
+            var items = new List<int>();
             if (value is int count)
             {
                 for (int i = 0; i < count; i++)
                 {
-                    items.Add(new { });
+                    items.Add(i);
                 }
 
             }

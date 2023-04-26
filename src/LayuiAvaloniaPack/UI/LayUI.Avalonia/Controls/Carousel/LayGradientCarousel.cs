@@ -104,6 +104,14 @@ namespace LayUI.Avalonia.Controls
             UpdateItems();
         }
         /// <summary>
+        /// 选中项
+        /// </summary>
+        /// <param name="index"></param>
+        public void SelectedItem(int index)
+        {
+            SelectedIndex = index;
+        }
+        /// <summary>
         /// 删除历史Item
         /// </summary>
         /// <param name="items"></param>
@@ -153,7 +161,7 @@ namespace LayUI.Avalonia.Controls
             base.OnApplyTemplate(e);
             PART_ItemsGrid = e.NameScope.Find<Panel>("PART_ItemsGrid");
             UpdateItems();
-        } 
+        }
         void UpdateItems()
         {
             if (PART_ItemsGrid == null) return;

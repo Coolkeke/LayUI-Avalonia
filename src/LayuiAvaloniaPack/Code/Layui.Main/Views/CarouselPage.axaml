@@ -16,7 +16,8 @@
                 Height="500"
                 Margin="5"
                 Items="{Binding Items}"
-                SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
+                SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
+                Type="Hover">
                 <lay:LayGradientCarousel.ItemTemplate>
                     <DataTemplate>
                         <Grid Background="{DynamicResource Green}">
@@ -32,6 +33,7 @@
             <lay:LayGradientCarousel
                 Height="500"
                 Margin="5"
+                IsIndicatorVisible="False"
                 SelectedIndex="0">
                 <lay:LayCarouselItem>
                     <Image Source="avares://LayuiApp.Desktop/Assets/2.jpg" />

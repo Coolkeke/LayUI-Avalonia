@@ -10,12 +10,16 @@ namespace LayUI.Avalonia.Enums
     public enum CarouselType
     {
         /// <summary>
-        /// 滑动
+        /// 始终显示
         /// </summary>
-        Slide,
+        Always,
         /// <summary>
-        /// 渐变
+        /// 鼠标悬浮时显示
         /// </summary>
-        Gradient
+        Hover,
+        /// <summary>
+        /// 从不显示
+        /// </summary>
+        None
     }
 }

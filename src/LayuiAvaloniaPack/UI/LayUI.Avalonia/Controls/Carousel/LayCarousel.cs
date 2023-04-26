@@ -13,6 +13,7 @@ using Avalonia.LogicalTree;
 using Avalonia.Controls.Generators;
 using System;
 using Avalonia.Media;
+using LayUI.Avalonia.Enums;
 
 namespace LayUI.Avalonia.Controls
 {
@@ -96,6 +97,38 @@ namespace LayUI.Avalonia.Controls
         /// </summary>
         public static readonly StyledProperty<IDataTemplate> ItemTemplateProperty =
        AvaloniaProperty.Register<LayCarousel, IDataTemplate>(nameof(ItemTemplate), null);
+
+
+        /// <summary>
+        /// 指示器状态
+        /// </summary>
+        public bool IsIndicatorVisible
+        {
+            get { return GetValue(IsIndicatorVisibleProperty); }
+            set { SetValue(IsIndicatorVisibleProperty, value); }
+        }
+        /// <summary>
+        /// 定义<see cref="bool"/>属性
+        /// </summary>
+        public static readonly StyledProperty<bool> IsIndicatorVisibleProperty =
+       AvaloniaProperty.Register<LayCarousel, bool>(nameof(IsIndicatorVisible), true);
+
+
+        /// <summary>
+        /// 轮播箭头类型
+        /// </summary>
+        public CarouselType Type
+        {
+            get { return GetValue(TypeProperty); }
+            set { SetValue(TypeProperty, value); }
+        }
+        /// <summary>
+        /// 定义<see cref="CarouselType"/>属性
+        /// </summary>
+        public static readonly StyledProperty<CarouselType> TypeProperty =
+       AvaloniaProperty.Register<LayCarousel, CarouselType>(nameof(Type), CarouselType.Always);
+
+
 
         public void Next()
         {
