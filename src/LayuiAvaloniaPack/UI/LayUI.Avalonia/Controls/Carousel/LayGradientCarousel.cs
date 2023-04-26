@@ -183,7 +183,7 @@ namespace LayUI.Avalonia.Controls
                     item.Opacity = 0;
                     item.ZIndex = 0;
                 }
-                item.ContentTemplate = ItemTemplate;
+                item.ContentTemplate = ItemTemplate; 
             }
         }
     }
