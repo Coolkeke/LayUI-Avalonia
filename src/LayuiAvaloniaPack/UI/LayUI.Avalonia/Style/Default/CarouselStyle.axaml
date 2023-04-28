@@ -6,49 +6,19 @@
     <Design.PreviewWith>
         <Border Padding="20">
             <StackPanel>
-                <lay:LayGradientCarousel
+                <lay:LayCarousel
                     Width="500"
                     Height="200"
                     Margin="10"
-                    Background="Red"
                     Type="Hover">
                     <lay:LayCarouselItem Content="123123" />
                     <lay:LayCarouselItem Content="adasdasd" />
-                </lay:LayGradientCarousel>
-                <lay:LaySlideCarousel
-                    Width="500"
-                    Height="200"
-                    Margin="10" />
+                </lay:LayCarousel>
             </StackPanel>
         </Border>
     </Design.PreviewWith>
-    <Style Selector="lay|LaySlideCarousel">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Grid Name="PART_Grid" Width="300">
-                        <Grid Name="PART_ItemsGrid" Margin="{Binding ElementName=PART_Grid, Path=Bounds.Width, Converter={x:Static layCv:CarouselItemsGridMarginConverter.Instance}}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
-                                <ColumnDefinition Width="auto" />
-                                <ColumnDefinition Width="auto" />
-                            </Grid.ColumnDefinitions>
-                            <Grid Width="{Binding ElementName=PART_Grid, Path=Bounds.Width, Mode=OneWay}" Background="Red" />
-                            <Grid
-                                Grid.Column="1"
-                                Width="{Binding ElementName=PART_Grid, Path=Bounds.Width, Mode=OneWay}"
-                                Background="Black" />
-                            <Grid
-                                Grid.Column="2"
-                                Width="{Binding ElementName=PART_Grid, Path=Bounds.Width, Mode=OneWay}"
-                                Background="Bisque" />
-                        </Grid>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <Style Selector="lay|LayGradientCarousel">
+    <Style Selector="lay|LayCarousel">
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="CornerRadius" Value="2" />
         <Setter Property="Template">
             <Setter.Value>
@@ -131,8 +101,8 @@
                                 <ListBox
                                     Background="Transparent"
                                     BorderThickness="0"
-                                    Items="{Binding RelativeSource={RelativeSource AncestorType=lay:LayGradientCarousel}, Path=ItemsCount, Converter={x:Static layCv:ItemsCountToListConverter.Instance}}"
-                                    SelectedIndex="{Binding RelativeSource={RelativeSource AncestorType=lay:LayGradientCarousel}, Path=SelectedIndex, Mode=OneWay}">
+                                    Items="{Binding RelativeSource={RelativeSource AncestorType=lay:LayCarousel}, Path=ItemCount, Converter={x:Static layCv:ItemsCountToListConverter.Instance}}"
+                                    SelectedIndex="{Binding RelativeSource={RelativeSource AncestorType=lay:LayCarousel}, Path=SelectedIndex, Mode=OneWay}">
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <StackPanel Margin="5" Orientation="Horizontal" />
@@ -175,7 +145,7 @@
                                             <Button
                                                 HorizontalAlignment="Stretch"
                                                 VerticalAlignment="Stretch"
-                                                Command="{Binding RelativeSource={RelativeSource AncestorType=lay:LayGradientCarousel}, Path=SelectedItem}"
+                                                Command="{Binding RelativeSource={RelativeSource AncestorType=lay:LayCarousel}, Path=Selected}"
                                                 CommandParameter="{Binding .}"
                                                 Cursor="Hand" />
                                         </DataTemplate>
@@ -188,31 +158,31 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style Selector="lay|LayGradientCarousel/template/Button#PART_Previous">
+    <Style Selector="lay|LayCarousel/template/Button#PART_Previous">
         <Setter Property="IsVisible" Value="false" />
         <Setter Property="Opacity" Value="0" />
     </Style>
-    <Style Selector="lay|LayGradientCarousel/template/Button#PART_Next">
+    <Style Selector="lay|LayCarousel/template/Button#PART_Next">
         <Setter Property="IsVisible" Value="false" />
         <Setter Property="Opacity" Value="0" />
     </Style>
-    <Style Selector="lay|LayGradientCarousel[Type=Always]/template/Button#PART_Previous">
+    <Style Selector="lay|LayCarousel[Type=Always]/template/Button#PART_Previous">
         <Setter Property="IsVisible" Value="true" />
         <Setter Property="Opacity" Value="1" />
     </Style>
-    <Style Selector="lay|LayGradientCarousel[Type=Always]/template/Button#PART_Next">
+    <Style Selector="lay|LayCarousel[Type=Always]/template/Button#PART_Next">
         <Setter Property="IsVisible" Value="true" />
         <Setter Property="Opacity" Value="1" />
     </Style>
-    <Style Selector="lay|LayGradientCarousel[Type=None]/template/Button#PART_Previous">
+    <Style Selector="lay|LayCarousel[Type=None]/template/Button#PART_Previous">
         <Setter Property="IsVisible" Value="false" />
         <Setter Property="Opacity" Value="0" />
     </Style>
-    <Style Selector="lay|LayGradientCarousel[Type=None]/template/Button#PART_Next">
+    <Style Selector="lay|LayCarousel[Type=None]/template/Button#PART_Next">
         <Setter Property="IsVisible" Value="false" />
         <Setter Property="Opacity" Value="0" />
     </Style>
-    <Style Selector="lay|LayGradientCarousel[Type=Hover]:pointerover/template/Button#PART_Previous">
+    <Style Selector="lay|LayCarousel[Type=Hover]:pointerover/template/Button#PART_Previous">
         <Setter Property="Transitions">
             <Setter.Value>
                 <Transitions>
@@ -226,7 +196,7 @@
         <Setter Property="IsVisible" Value="true" />
         <Setter Property="Opacity" Value="1" />
     </Style>
-    <Style Selector="lay|LayGradientCarousel[Type=Hover]:pointerover/template/Button#PART_Next">
+    <Style Selector="lay|LayCarousel[Type=Hover]:pointerover/template/Button#PART_Next">
         <Setter Property="Transitions">
             <Setter.Value>
                 <Transitions>
@@ -240,16 +210,16 @@
         <Setter Property="IsVisible" Value="true" />
         <Setter Property="Opacity" Value="1" />
     </Style>
-    <Style Selector="lay|LayGradientCarousel/template/Button#PART_Previous/template/ Border#PART_Border">
+    <Style Selector="lay|LayCarousel/template/Button#PART_Previous/template/ Border#PART_Border">
         <Setter Property="Opacity" Value="0.2" />
     </Style>
-    <Style Selector="lay|LayGradientCarousel/template/Button#PART_Next/template/ Border#PART_Border">
+    <Style Selector="lay|LayCarousel/template/Button#PART_Next/template/ Border#PART_Border">
         <Setter Property="Opacity" Value="0.2" />
     </Style>
-    <Style Selector="lay|LayGradientCarousel/template/Button#PART_Previous/template/ Border#PART_Border:pointerover">
+    <Style Selector="lay|LayCarousel/template/Button#PART_Previous/template/ Border#PART_Border:pointerover">
         <Setter Property="Opacity" Value="0.5" />
     </Style>
-    <Style Selector="lay|LayGradientCarousel/template/Button#PART_Next/template/ Border#PART_Border:pointerover">
+    <Style Selector="lay|LayCarousel/template/Button#PART_Next/template/ Border#PART_Border:pointerover">
         <Setter Property="Opacity" Value="0.5" />
     </Style>
     <!--  Add Styles Here  -->

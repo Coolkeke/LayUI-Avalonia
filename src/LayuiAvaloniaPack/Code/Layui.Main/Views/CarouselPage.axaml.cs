@@ -6,7 +6,7 @@ namespace Layui.Main.Views
     {
         public CarouselPage()
         {
-            InitializeComponent();
-        }
+            InitializeComponent(); 
+        } 
     }
 }

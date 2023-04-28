@@ -12,13 +12,14 @@
     mc:Ignorable="d">
     <ScrollViewer>
         <ItemsControl>
-            <lay:LayGradientCarousel
+            <lay:LayCarousel
+                Name="myCarousel"
                 Height="500"
                 Margin="5"
                 Items="{Binding Items}"
                 SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
                 Type="Hover">
-                <lay:LayGradientCarousel.ItemTemplate>
+                <lay:LayCarousel.ItemTemplate>
                     <DataTemplate>
                         <Grid Background="{DynamicResource Green}">
                             <TextBlock
@@ -28,20 +29,20 @@
                                 Text="{Binding Title}" />
                         </Grid>
                     </DataTemplate>
-                </lay:LayGradientCarousel.ItemTemplate>
-            </lay:LayGradientCarousel>
-            <lay:LayGradientCarousel
+                </lay:LayCarousel.ItemTemplate>
+            </lay:LayCarousel>
+            <lay:LayCarousel
                 Height="500"
                 Margin="5"
                 IsIndicatorVisible="False"
                 SelectedIndex="0">
                 <lay:LayCarouselItem>
-                    <Image Source="avares://LayuiApp.Desktop/Assets/2.jpg" />
+                    <Grid Background="Red" />
                 </lay:LayCarouselItem>
                 <lay:LayCarouselItem>
-                    <Image Source="avares://LayuiApp.Desktop/Assets/AvaloniaLogo.png" />
+                    <Grid Background="Black" />
                 </lay:LayCarouselItem>
-            </lay:LayGradientCarousel>
+            </lay:LayCarousel>
         </ItemsControl>
     </ScrollViewer>
 </UserControl>

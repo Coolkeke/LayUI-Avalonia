@@ -17,7 +17,7 @@ namespace LayUI.Avalonia.Controls
 		public bool IsSelected
         {
 			get { return GetValue(IsSelectedProperty); }
-			private set { SetValue(IsSelectedProperty, value); }
+			internal set { SetValue(IsSelectedProperty, value); }
 		}
 		/// <summary>
 		/// 定义<see cref="bool"/>属性

@@ -11,7 +11,6 @@
     <Style Selector="lay|LayCarouselItem">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Opacity" Value="0" />
         <Setter Property="Transitions">
             <Setter.Value>
                 <Transitions>
@@ -22,7 +21,6 @@
                 </Transitions>
             </Setter.Value>
         </Setter>
-        <Setter Property="Width" Value="{Binding RelativeSource={RelativeSource AncestorType=lay:LayCarousel}, Path=Bounds.Width, Mode=OneWay}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
