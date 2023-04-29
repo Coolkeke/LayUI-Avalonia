@@ -1,0 +1,68 @@
+<UserControl
+    x:Class="Layui.Main.Views.ExpanderPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <ScrollViewer>
+        <StackPanel>
+            <lay:LayExpander
+                Width="300"
+                Header="123"
+                IconAlignment="Left">
+                <TextBlock Text="测试信息" />
+            </lay:LayExpander>
+            <lay:LayExpander
+                Width="300"
+                Header="123"
+                IconAlignment="Right">
+                <TextBlock Text="测试信息" />
+            </lay:LayExpander>
+            <StackPanel Orientation="Horizontal">
+                <lay:LayExpander
+                    Height="200"
+                    Margin="5"
+                    VerticalAlignment="Stretch"
+                    ExpandDirection="Left"
+                    IconAlignment="Top">
+                    <lay:LayExpander.Header>
+                        <TextBlock HorizontalAlignment="Left" Text="标题">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="90" />
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </lay:LayExpander.Header>
+                    <Grid Margin="5">
+                        <TextBlock Text="测试信息" />
+                    </Grid>
+                </lay:LayExpander>
+                <lay:LayExpander
+                    Height="200"
+                    Margin="5"
+                    VerticalAlignment="Stretch"
+                    ExpandDirection="Left"
+                    IconAlignment="Bottom">
+                    <lay:LayExpander.Header>
+                        <TextBlock Text="标题">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="90" />
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </lay:LayExpander.Header>
+                    <Grid Margin="5">
+                        <TextBlock Text="测试信息" />
+                    </Grid>
+                </lay:LayExpander>
+
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Layui.Core.Mvvm;
 using Layui.Core.Resources;
 using Layui.Main.Models;
+using Layui.Main.Views;
 using Layui.Tools.Languages;
 using LayUI.Avalonia.Enums;
 using LayUI.Avalonia.Interface;
@@ -92,6 +93,7 @@ namespace Layui.Main.ViewModels
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.TabControlPage, Title = "TabControl" },
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.StepBarPage, Title = "StepBar" },
                 new MenuInfo() { FontIcon = "", PageKey = SystemResource.CarouselPage, Title = "Carousel" },
+                new MenuInfo() { FontIcon = "", PageKey = SystemResource.ExpanderPage, Title = "ExpanderPage" },
             };
             return menus;
         }

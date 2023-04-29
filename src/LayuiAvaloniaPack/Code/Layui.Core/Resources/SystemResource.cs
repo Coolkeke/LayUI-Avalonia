@@ -76,5 +76,9 @@ namespace Layui.Core.Resources
         /// 轮播图
         /// </summary>
         public static string CarouselPage { get; } = "CarouselPage"; 
+        /// <summary>
+        /// 折叠板
+        /// </summary>
+        public static string ExpanderPage { get; } = "ExpanderPage"; 
     }
 }
