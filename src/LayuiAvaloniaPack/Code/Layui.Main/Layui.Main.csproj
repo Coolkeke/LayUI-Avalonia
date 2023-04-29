@@ -56,4 +56,8 @@
     <UpToDateCheckInput Remove="Views\Dialogs\MainView.axaml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Fonts\" />
+  </ItemGroup>
+
 </Project>

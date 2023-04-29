@@ -4,6 +4,8 @@ using Avalonia.Skia;
 using SkiaSharp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Drawing.Text;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -16,13 +18,14 @@ namespace Layui.Tools.Fonts
         private readonly Typeface[] _customTypefaces;
         private readonly string _defaultFamilyName;
 
-        //Load font resources in the project, you can load multiple font resources
         private readonly Typeface _defaultTypeface =
-            new Typeface("avares://LayuiApp.Desktop/Assets/Fonts/微软雅黑.ttf#Microsoft YaHei");
+            new Typeface("resm:LayuiApp.Desktop.Assets.Fonts.微软雅黑.ttf?assembly=LayuiApp.Desktop#Microsoft YaHei"); 
+        private readonly Typeface _emojiTypeface =
+            new Typeface("resm:LayuiApp.Desktop.Assets.Fonts.iconfont.ttf?assembly=LayuiApp.Desktop#iconfont");
 
         public CustomFontManagerImpl()
         {
-            _customTypefaces = new[] { _defaultTypeface };
+            _customTypefaces = new[] { _emojiTypeface, _defaultTypeface };
             _defaultFamilyName = _defaultTypeface.FontFamily.FamilyNames.PrimaryFamilyName;
         }
 
@@ -48,7 +51,7 @@ namespace Layui.Tools.Fonts
                     continue;
                 }
 
-                typeface = new Typeface(customTypeface.FontFamily.Name, fontStyle, fontWeight);
+                typeface = new Typeface(customTypeface.FontFamily, fontStyle, fontWeight);
 
                 return true;
             }
@@ -67,13 +70,19 @@ namespace Layui.Tools.Fonts
 
             switch (typeface.FontFamily.Name)
             {
-                case FontFamily.DefaultFontFamilyName:
-                case "微软雅黑":  //font family name
-                    skTypeface = SKTypeface.FromFamilyName(_defaultTypeface.FontFamily.Name); break;
+                case "Icon":
+                    {
+                        var typefaceCollection = SKTypefaceCollectionCache.GetOrAddTypefaceCollection(_emojiTypeface.FontFamily);
+                        skTypeface = typefaceCollection.Get(typeface);
+                        break;
+                    }
+                case FontFamily.DefaultFontFamilyName: 
                 default:
-                    skTypeface = SKTypeface.FromFamilyName(typeface.FontFamily.Name,
-                        (SKFontStyleWeight)typeface.Weight, SKFontStyleWidth.Normal, (SKFontStyleSlant)typeface.Style);
-                    break;
+                    {
+                        skTypeface = SKTypeface.FromFamilyName(typeface.FontFamily.Name,
+                            (SKFontStyleWeight)typeface.Weight, SKFontStyleWidth.Normal, (SKFontStyleSlant)typeface.Style);
+                        break;
+                    }
             }
 
             return new GlyphTypefaceImpl(skTypeface);

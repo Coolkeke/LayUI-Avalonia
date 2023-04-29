@@ -4,6 +4,7 @@ using Layui.Main;
 using Layui.Tools.Logs;
 using Prism.Ioc;
 using System;
+using System.Text;
 
 namespace LayuiApp.Desktop
 {
@@ -17,6 +18,7 @@ namespace LayuiApp.Desktop
         {
             try
             {
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
                 //初始化日志配置信息
                 log4net.Config.XmlConfigurator.Configure();
                 BuildAvaloniaApp()

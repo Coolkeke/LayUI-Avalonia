@@ -140,7 +140,15 @@
                                     <ColumnDefinition Width="auto" />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Grid Width="20" Height="40" />
+                                <Grid Width="20" Height="40">
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontFamily="Icon"
+                                        FontSize="20"
+                                        Foreground="White"
+                                        Text="{Binding FontIcon}" />
+                                </Grid>
                                 <TextBlock
                                     Name="test"
                                     Grid.Column="1"

@@ -25,9 +25,10 @@
                 </Transitions>
             </Setter.Value>
         </Setter>
+        <Setter Property="RenderTransform" Value="scale(1)" />
     </Style>
-    <Style Selector=":is(Panel).zoom:pointerover">
-        <Setter Property="RenderTransform" Value="scale(1.1)" />
+    <Style Selector=":is(Control).zoom:pointerover">
+        <Setter Property="RenderTransform" Value="scale(1.04)" />
     </Style>
     <!--  Add Styles Here  -->
 </Styles>

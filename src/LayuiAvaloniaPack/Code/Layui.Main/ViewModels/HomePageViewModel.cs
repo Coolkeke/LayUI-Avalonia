@@ -80,21 +80,21 @@ namespace Layui.Main.ViewModels
         {
             ObservableCollection<MenuInfo> menus = new ObservableCollection<MenuInfo>
             {
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.ButtonPage, Title ="Button"},
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.FormPage, Title = "Form" },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.ImagePage, Title ="Image" },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.ProgressBarPage, Title ="ProgressBar" },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.KeyboardPage, Title = "Keyboard" },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.DialogPage, Title = "Dialog" },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.CardPage, Title = "Card" },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.MessagePage, Title = "Message" },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.NotificationPage, Title = "Notification" },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.LoadingPage, Title = "Loading" },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.TabControlPage, Title = "TabControl" },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.StepBarPage, Title = "StepBar" },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.CarouselPage, Title = "Carousel" },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.ExpanderPage, Title = "Expander" },
-                new MenuInfo() { FontIcon = "", PageKey = SystemResource.GroupBoxPage, Title = "GroupBox" },
+                new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.ButtonPage, Title ="Button"},
+                new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.FormPage, Title = "Form" },
+                new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.ImagePage, Title ="Image" },
+                new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.ProgressBarPage, Title ="ProgressBar" },
+                new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.KeyboardPage, Title = "Keyboard" },
+                new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.DialogPage, Title = "Dialog" },
+                new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.CardPage, Title = "Card" },
+                new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.MessagePage, Title = "Message" },
+                new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.NotificationPage, Title = "Notification" },
+                new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.LoadingPage, Title = "Loading" },
+                new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.TabControlPage, Title = "TabControl" },
+                new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.StepBarPage, Title = "StepBar" },
+                new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.CarouselPage, Title = "Carousel" },
+                new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.ExpanderPage, Title = "Expander" },
+                new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.GroupBoxPage, Title = "GroupBox" },
             };
             return menus;
         }
