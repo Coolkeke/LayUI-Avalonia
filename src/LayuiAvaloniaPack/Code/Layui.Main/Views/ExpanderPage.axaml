@@ -11,58 +11,97 @@
     <ScrollViewer>
         <StackPanel>
             <lay:LayExpander
-                Width="300"
-                Header="123"
+                Margin="10"
+                Padding="10,0"
                 IconAlignment="Left">
-                <TextBlock Text="测试信息" />
-            </lay:LayExpander>
-            <lay:LayExpander
-                Width="300"
-                Header="123"
-                IconAlignment="Right">
-                <TextBlock Text="测试信息" />
-            </lay:LayExpander>
-            <StackPanel Orientation="Horizontal">
-                <lay:LayExpander
-                    Height="200"
-                    Margin="5"
-                    VerticalAlignment="Stretch"
-                    ExpandDirection="Left"
-                    IconAlignment="Top">
-                    <lay:LayExpander.Header>
-                        <TextBlock HorizontalAlignment="Left" Text="标题">
-                            <TextBlock.RenderTransform>
-                                <TransformGroup>
-                                    <RotateTransform Angle="90" />
-                                </TransformGroup>
-                            </TextBlock.RenderTransform>
-                        </TextBlock>
-                    </lay:LayExpander.Header>
-                    <Grid Margin="5">
-                        <TextBlock Text="测试信息" />
+                <lay:LayExpander.Header>
+                    <!--  要想文字居中必须完成套一层Grid在进行设置布局  -->
+                    <Grid>
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Text="标题"
+                            TextTrimming="CharacterEllipsis" />
                     </Grid>
-                </lay:LayExpander>
+                </lay:LayExpander.Header>
                 <lay:LayExpander
-                    Height="200"
-                    Margin="5"
-                    VerticalAlignment="Stretch"
-                    ExpandDirection="Left"
-                    IconAlignment="Bottom">
+                    Margin="10"
+                    Padding="10,0"
+                    IconAlignment="Right">
                     <lay:LayExpander.Header>
-                        <TextBlock Text="标题">
-                            <TextBlock.RenderTransform>
-                                <TransformGroup>
-                                    <RotateTransform Angle="90" />
-                                </TransformGroup>
-                            </TextBlock.RenderTransform>
-                        </TextBlock>
+                        <!--  要想文字居中必须完成套一层Grid在进行设置布局  -->
+                        <Grid>
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Text="标题"
+                                TextTrimming="CharacterEllipsis" />
+                        </Grid>
                     </lay:LayExpander.Header>
-                    <Grid Margin="5">
-                        <TextBlock Text="测试信息" />
-                    </Grid>
-                </lay:LayExpander>
 
-            </StackPanel>
+                    <StackPanel>
+                        <lay:LayExpander
+                            Height="200"
+                            Margin="5"
+                            Padding="0,10"
+                            ExpandDirection="Left"
+                            IconAlignment="Top">
+                            <lay:LayExpander.Header>
+                                <!--  旋转排版  -->
+                                <LayoutTransformControl>
+                                    <LayoutTransformControl.LayoutTransform>
+                                        <TransformGroup>
+                                            <RotateTransform Angle="90" />
+                                        </TransformGroup>
+                                    </LayoutTransformControl.LayoutTransform>
+                                    <!--  要想文字居中必须完成套一层Grid在进行设置布局  -->
+                                    <Grid>
+                                        <TextBlock VerticalAlignment="Center" Text="标题" />
+                                    </Grid>
+                                </LayoutTransformControl>
+                            </lay:LayExpander.Header>
+                            <Grid Margin="5">
+                                <TextBlock
+                                    Text="欢迎使用LayUI-Avalonia组件库，这是一个跨平台的.NET框架，用于构建美观、现代的图形用户界面（GUI）。使用LayUI-Avalonia，您可以从一个代码库创建Windows、macOS、Linux应用程序。"
+                                    TextTrimming="CharacterEllipsis"
+                                    TextWrapping="WrapWithOverflow" />
+
+                            </Grid>
+                        </lay:LayExpander>
+                        <lay:LayExpander
+                            Height="200"
+                            Margin="5"
+                            Padding="0,10"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            ExpandDirection="Right"
+                            IconAlignment="Bottom">
+                            <lay:LayExpander.Header>
+                                <!--  旋转排版  -->
+                                <LayoutTransformControl>
+                                    <LayoutTransformControl.LayoutTransform>
+                                        <TransformGroup>
+                                            <RotateTransform Angle="90" />
+                                        </TransformGroup>
+                                    </LayoutTransformControl.LayoutTransform>
+                                    <!--  要想文字居中必须完成套一层Grid在进行设置布局  -->
+                                    <Grid>
+                                        <TextBlock
+                                            VerticalAlignment="Center"
+                                            Text="标题"
+                                            TextTrimming="CharacterEllipsis" />
+                                    </Grid>
+                                </LayoutTransformControl>
+                            </lay:LayExpander.Header>
+                            <Grid Margin="5">
+                                <TextBlock
+                                    Text="欢迎使用LayUI-Avalonia组件库，这是一个跨平台的.NET框架，用于构建美观、现代的图形用户界面（GUI）。使用LayUI-Avalonia，您可以从一个代码库创建Windows、macOS、Linux应用程序。"
+                                    TextTrimming="CharacterEllipsis"
+                                    TextWrapping="WrapWithOverflow" />
+                            </Grid>
+                        </lay:LayExpander>
+
+                    </StackPanel>
+                </lay:LayExpander>
+            </lay:LayExpander>
         </StackPanel>
     </ScrollViewer>
 </UserControl>

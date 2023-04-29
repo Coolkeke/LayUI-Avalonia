@@ -18,58 +18,29 @@
         <Border Padding="50">
             <StackPanel>
                 <lay:LayExpander
-                    Width="300"
-                    Header="123"
-                    IconAlignment="Left">
-                    <TextBlock Text="测试信息" />
+                    Height="200"
+                    Margin="5"
+                    ExpandDirection="Left"
+                    IconAlignment="Bottom">
+                    <lay:LayExpander.Header>
+                        <LayoutTransformControl>
+                            <LayoutTransformControl.LayoutTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="90" />
+                                </TransformGroup>
+                            </LayoutTransformControl.LayoutTransform>
+                            <Grid>
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    Text="123123133123123123123"
+                                    TextTrimming="CharacterEllipsis" />
+                            </Grid>
+                        </LayoutTransformControl>
+                    </lay:LayExpander.Header>
+                    <Grid Margin="5">
+                        <TextBlock Text="测试信息" />
+                    </Grid>
                 </lay:LayExpander>
-                <lay:LayExpander
-                    Width="300"
-                    Header="123"
-                    IconAlignment="Right">
-                    <TextBlock Text="测试信息" />
-                </lay:LayExpander>
-                <StackPanel Orientation="Horizontal">
-                    <lay:LayExpander
-                        Height="200"
-                        Margin="5"
-                        VerticalAlignment="Stretch"
-                        ExpandDirection="Left"
-                        IconAlignment="Top">
-                        <lay:LayExpander.Header>
-                            <TextBlock Text="标题">
-                                <TextBlock.RenderTransform>
-                                    <TransformGroup>
-                                        <RotateTransform Angle="90" />
-                                    </TransformGroup>
-                                </TextBlock.RenderTransform>
-                            </TextBlock>
-                        </lay:LayExpander.Header>
-                        <Grid Margin="5">
-                            <TextBlock Text="测试信息" />
-                        </Grid>
-                    </lay:LayExpander>
-                    <lay:LayExpander
-                        Height="200"
-                        Margin="5"
-                        VerticalAlignment="Stretch"
-                        ExpandDirection="Left"
-                        IconAlignment="Bottom">
-                        <lay:LayExpander.Header>
-                            <TextBlock Text="标题">
-                                <TextBlock.RenderTransform>
-                                    <TransformGroup>
-                                        <RotateTransform Angle="90" />
-                                    </TransformGroup>
-                                </TextBlock.RenderTransform>
-                            </TextBlock>
-                        </lay:LayExpander.Header>
-                        <Grid Margin="5">
-                            <TextBlock Text="测试信息" />
-                        </Grid>
-                    </lay:LayExpander>
-
-                </StackPanel>
             </StackPanel>
         </Border>
     </Design.PreviewWith>
@@ -93,13 +64,15 @@
                     <ToggleButton
                         x:Name="ExpanderHeader"
                         Padding="{TemplateBinding Padding}"
-                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
                         Background="{TemplateBinding HeaderBackground}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         Content="{TemplateBinding Header}"
                         ContentTemplate="{TemplateBinding HeaderTemplate}"
                         CornerRadius="{TemplateBinding CornerRadius}"
+                        Cursor="Hand"
                         IsChecked="{TemplateBinding IsExpanded,
                                                     Mode=TwoWay}"
                         IsEnabled="{TemplateBinding IsEnabled}" />
@@ -124,7 +97,6 @@
     </Style>
     <!--  设置折叠板按钮模板 Start  -->
     <Style Selector="lay|LayExpander /template/ ToggleButton#ExpanderHeader">
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border x:Name="ToggleButtonBackground" CornerRadius="{TemplateBinding CornerRadius}">
@@ -134,8 +106,6 @@
                             Grid.Row="1"
                             Grid.Column="1"
                             Margin="{TemplateBinding Padding}"
-                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalContentAlignment="Center"
                             Background="Transparent"
                             BorderBrush="Transparent"
                             BorderThickness="0"
