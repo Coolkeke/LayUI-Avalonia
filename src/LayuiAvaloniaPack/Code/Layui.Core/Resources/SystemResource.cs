@@ -80,5 +80,9 @@ namespace Layui.Core.Resources
         /// 折叠板
         /// </summary>
         public static string ExpanderPage { get; } = "ExpanderPage"; 
+        /// <summary>
+        /// 用户面板
+        /// </summary>
+        public static string GroupBoxPage { get; } = "GroupBoxPage"; 
     }
 }

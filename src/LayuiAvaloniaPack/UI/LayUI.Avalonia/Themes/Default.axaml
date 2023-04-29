@@ -36,4 +36,5 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CarouselStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CarouselItemStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ExpanderStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/GroupBoxStyle.axaml" />
 </Styles>

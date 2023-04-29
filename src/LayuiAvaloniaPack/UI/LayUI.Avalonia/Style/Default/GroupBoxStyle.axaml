@@ -1,0 +1,53 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <lay:LayGroupBox
+                Width="500"
+                Height="200"
+                Header="标题">
+                <TextBlock Text="这是内容" />
+            </lay:LayGroupBox>
+        </Border>
+    </Design.PreviewWith>
+    <Style Selector="lay|LayGroupBox">
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Line" Value="1" />
+        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <Grid RowDefinitions="auto,auto,*">
+                            <ContentPresenter
+                                Margin="{TemplateBinding Padding}"
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                BorderThickness="0"
+                                Content="{TemplateBinding Header}"
+                                ContentTemplate="{TemplateBinding HeaderTemplate}" />
+                            <Panel
+                                Grid.Row="1"
+                                Height="{TemplateBinding Line}"
+                                Background="{TemplateBinding BorderBrush}" />
+                            <ContentPresenter
+                                Grid.Row="2"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--  Add Styles Here  -->
+</Styles>
