@@ -22,7 +22,6 @@
     <None Remove="Assets\2.jpg" />
     <None Remove="Assets\AvaloniaLogo.png" />
     <None Remove="Assets\Fonts\iconfont.ttf" />
-    <None Remove="Assets\Fonts\微软雅黑.ttf" />
     <None Remove="Assets\动图.gif" />
   </ItemGroup>
   <ItemGroup>
@@ -31,7 +30,6 @@
     </AvaloniaResource>
     <AvaloniaResource Include="Assets\AvaloniaLogo.png" />
     <EmbeddedResource Include="Assets\Fonts\iconfont.ttf" />
-    <EmbeddedResource Include="Assets\Fonts\微软雅黑.ttf" />
     <AvaloniaResource Include="Assets\动图.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AvaloniaResource>

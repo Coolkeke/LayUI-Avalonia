@@ -1,0 +1,26 @@
+<UserControl
+    x:Class="Layui.Main.Views.TreeViewPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <TreeView Items="{Binding ListApps}">
+        <TreeView.ItemTemplate>
+            <TreeDataTemplate ItemsSource="{Binding Child}">
+                <StackPanel Orientation="Horizontal">
+                    <lay:LayCheckBox
+                        Command="{Binding RelativeSource={RelativeSource AncestorType=TreeView}, Path=DataContext.CheckedCommand}"
+                        CommandParameter="{Binding}"
+                        IsChecked="{Binding IsChecked, Mode=TwoWay}" />
+                    <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
+                </StackPanel>
+            </TreeDataTemplate>
+        </TreeView.ItemTemplate>
+    </TreeView>
+</UserControl>

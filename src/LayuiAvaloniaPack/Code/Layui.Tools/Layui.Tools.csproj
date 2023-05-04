@@ -17,4 +17,8 @@
     <PackageReference Include="XamlNameReferenceGenerator" Version="1.5.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\UI\LayUI.Avalonia\LayUI.Avalonia.csproj" />
+  </ItemGroup>
+
 </Project>

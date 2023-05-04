@@ -53,8 +53,8 @@
                             Name="PART_Border"
                             Width="{TemplateBinding Size}"
                             Height="{TemplateBinding Size}"
-                            MinWidth="25"
-                            MinHeight="25"
+                            MinWidth="16"
+                            MinHeight="16"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
@@ -136,8 +136,8 @@
                                 <Border
                                     Width="{TemplateBinding Size}"
                                     Height="{TemplateBinding Size}"
-                                    MinWidth="25"
-                                    MinHeight="25"
+                                    MinWidth="16"
+                                    MinHeight="16"
                                     Background="White"
                                     CornerRadius="{TemplateBinding CornerRadius}">
                                     <Path

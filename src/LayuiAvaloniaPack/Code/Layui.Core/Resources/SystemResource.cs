@@ -84,5 +84,9 @@ namespace Layui.Core.Resources
         /// 用户面板
         /// </summary>
         public static string GroupBoxPage { get; } = "GroupBoxPage"; 
+        /// <summary>
+        /// 树形组件
+        /// </summary>
+        public static string TreeViewPage { get; } = "TreeViewPage"; 
     }
 }

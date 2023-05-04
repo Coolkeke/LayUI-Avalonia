@@ -86,6 +86,7 @@ namespace Layui.Main
             containerRegistry.RegisterForNavigation<CarouselPage>(SystemResource.CarouselPage); 
             containerRegistry.RegisterForNavigation<ExpanderPage>(SystemResource.ExpanderPage);
             containerRegistry.RegisterForNavigation<GroupBoxPage>(SystemResource.GroupBoxPage);
+            containerRegistry.RegisterForNavigation<TreeViewPage>(SystemResource.TreeViewPage);
             var layDialog = Container.Resolve<ILayDialogService>();
             layDialog.RegisterDialog<Message>(nameof(Message));
         }

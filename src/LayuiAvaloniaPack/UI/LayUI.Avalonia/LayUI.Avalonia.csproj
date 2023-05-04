@@ -13,7 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\SourceHanSansSC-Regular-2.otf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.10.13" />
+    <PackageReference Include="Avalonia.Skia" Version="0.10.13" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +27,10 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Style\Default\ToggleSwitchStyle.axaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\SourceHanSansSC-Regular-2.otf" />
   </ItemGroup>
 
 </Project>
