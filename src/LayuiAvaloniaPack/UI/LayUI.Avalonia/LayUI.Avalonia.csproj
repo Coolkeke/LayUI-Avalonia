@@ -13,7 +13,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Fonts\SourceHanSansSC-Regular-2.otf" />
+    <None Remove="Fonts\SourceHanSansCN-Bold.ttf" />
+    <None Remove="Fonts\SourceHanSansCN-ExtraLight.ttf" />
+    <None Remove="Fonts\SourceHanSansCN-Heavy.ttf" />
+    <None Remove="Fonts\SourceHanSansCN-Light.ttf" />
+    <None Remove="Fonts\SourceHanSansCN-Medium.ttf" />
+    <None Remove="Fonts\SourceHanSansCN-Normal.ttf" />
+    <None Remove="Fonts\SourceHanSansCN-Regular.ttf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,7 +36,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Fonts\SourceHanSansSC-Regular-2.otf" />
+    <EmbeddedResource Include="Fonts\SourceHanSansCN-Bold.ttf" />
+    <EmbeddedResource Include="Fonts\SourceHanSansCN-ExtraLight.ttf" />
+    <EmbeddedResource Include="Fonts\SourceHanSansCN-Heavy.ttf" />
+    <EmbeddedResource Include="Fonts\SourceHanSansCN-Light.ttf" />
+    <EmbeddedResource Include="Fonts\SourceHanSansCN-Medium.ttf" />
+    <EmbeddedResource Include="Fonts\SourceHanSansCN-Normal.ttf" />
+    <EmbeddedResource Include="Fonts\SourceHanSansCN-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AvaloniaXaml Update="Style\Default\ColorStyle.axaml">
+      <Generator>MSBuild:Compile</Generator>
+    </AvaloniaXaml>
   </ItemGroup>
 
 </Project>

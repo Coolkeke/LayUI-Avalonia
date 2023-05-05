@@ -47,7 +47,8 @@
                                 HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                 Content="{TemplateBinding SelectedContent}"
-                                ContentTemplate="{TemplateBinding SelectedContentTemplate}" />
+                                ContentTemplate="{TemplateBinding SelectedContentTemplate}"
+                                UseLayoutRounding="True" />
                         </Border>
                     </DockPanel>
                 </Border>

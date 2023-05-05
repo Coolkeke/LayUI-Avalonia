@@ -84,7 +84,8 @@
                                     HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                     VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                     Content="{TemplateBinding Content}"
-                                    ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                    UseLayoutRounding="True" />
                             </Border>
                         </Grid>
                     </Border>

@@ -76,7 +76,7 @@ namespace LayUI.Avalonia.Global
         {
             if (!IsOpen)
             {
-                await Task.Delay(300);
+                await Task.Delay(100);
                 Host.Items.Children.Remove(this);
             }
         }

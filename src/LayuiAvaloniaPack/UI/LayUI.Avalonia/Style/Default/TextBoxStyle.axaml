@@ -39,7 +39,8 @@
                             <ContentPresenter
                                 Grid.Column="0"
                                 Grid.ColumnSpan="1"
-                                Content="{TemplateBinding InnerLeftContent}" />
+                                Content="{TemplateBinding InnerLeftContent}"
+                                UseLayoutRounding="True" />
                             <TextBlock
                                 Name="PART_PlaceholderText"
                                 Grid.Column="1"
@@ -51,7 +52,8 @@
                                 FontWeight="{TemplateBinding FontWeight}"
                                 Foreground="{TemplateBinding Foreground}"
                                 Text="{TemplateBinding Watermark}"
-                                TextTrimming="WordEllipsis" />
+                                TextTrimming="WordEllipsis"
+                                UseLayoutRounding="True" />
                             <ScrollViewer
                                 Name="PART_ScrollViewer"
                                 Grid.Column="1"
@@ -79,12 +81,14 @@
                                     TextBlock.FontStyle="{TemplateBinding FontStyle}"
                                     TextBlock.FontWeight="{TemplateBinding FontWeight}"
                                     TextBlock.Foreground="{TemplateBinding Foreground}"
-                                    TextWrapping="{TemplateBinding TextWrapping}" />
+                                    TextWrapping="{TemplateBinding TextWrapping}"
+                                    UseLayoutRounding="True" />
                             </ScrollViewer>
                             <ContentPresenter
                                 Grid.Column="2"
                                 Grid.ColumnSpan="1"
-                                Content="{TemplateBinding InnerRightContent}" />
+                                Content="{TemplateBinding InnerRightContent}"
+                                UseLayoutRounding="True" />
                         </Grid>
                     </Border>
                 </DataValidationErrors>

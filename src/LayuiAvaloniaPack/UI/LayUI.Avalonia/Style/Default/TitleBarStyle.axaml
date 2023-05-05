@@ -4,11 +4,13 @@
     xmlns:enum="clr-namespace:LayUI.Avalonia.Enums;assembly=LayUI.Avalonia"
     xmlns:lay="clr-namespace:LayUI.Avalonia.Controls;assembly=LayUI.Avalonia">
     <Design.PreviewWith>
-        <lay:LayTitleBar
-            Width="550"
-            Height="350"
-            Margin="20"
-            CornerRadius="5" />
+        <Border Background="Black">
+            <lay:LayTitleBar
+                Width="550"
+                Height="350"
+                Margin="20"
+                CornerRadius="5" />
+        </Border>
     </Design.PreviewWith>
     <Style Selector="lay|LayTitleBar">
         <Setter Property="HeaderHeight" Value="30" />

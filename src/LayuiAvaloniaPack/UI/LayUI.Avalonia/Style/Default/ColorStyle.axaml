@@ -1,4 +1,4 @@
-﻿<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<Style xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <StackPanel Orientation="Horizontal">
             <Border
@@ -67,7 +67,7 @@
                 Background="{DynamicResource Gradient}" />
         </StackPanel>
     </Design.PreviewWith>
-    <Styles.Resources>
+    <Style.Resources>
         <!--  主色  -->
         <Color x:Key="GreenEffect">#009688</Color>
         <Color x:Key="LightGreenEffect">#33ABA0</Color>
@@ -115,6 +115,6 @@
                 <GradientStop Offset="1" Color="#25D8AB" />
             </LinearGradientBrush.GradientStops>
         </LinearGradientBrush>
-    </Styles.Resources>
+    </Style.Resources>
 
-</Styles>
+</Style>

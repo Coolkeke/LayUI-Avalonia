@@ -15,7 +15,7 @@
                     <Grid Name="PART_Root">
                         <Grid.Transitions>
                             <Transitions>
-                                <DoubleTransition Property="Opacity" Duration="0:0:0.3" />
+                                <DoubleTransition Property="Opacity" Duration="0:0:0.1" />
                             </Transitions>
                         </Grid.Transitions>
                         <Grid
@@ -27,7 +27,8 @@
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                             Content="{TemplateBinding Content}"
-                            ContentTemplate="{TemplateBinding ContentTemplate}" />
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            UseLayoutRounding="True" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -41,23 +42,23 @@
     </Style>
     <Style Selector="global|LayDialogWindow[IsOpen=false] /template/ ContentPresenter#PART_ContentPresenter">
         <Setter Property="Opacity" Value="0" />
-        <Setter Property="ScaleTransform.ScaleY" Value="0" />
-        <Setter Property="ScaleTransform.ScaleX" Value="0" />
+        <Setter Property="ScaleTransform.ScaleY" Value="0.7" />
+        <Setter Property="ScaleTransform.ScaleX" Value="0.7" />
     </Style>
     <Style Selector="global|LayDialogWindow[IsOpen=false] /template/ ContentPresenter#PART_ContentPresenter">
         <Style.Animations>
             <Animation
                 Easing="SineEaseInOut"
                 FillMode="Both"
-                Duration="0:0:0.3">
+                Duration="0:0:0.1">
                 <KeyFrame Cue="0%">
                     <Setter Property="ScaleTransform.ScaleX" Value="1" />
                     <Setter Property="ScaleTransform.ScaleY" Value="1" />
                     <Setter Property="Opacity" Value="1" />
                 </KeyFrame>
                 <KeyFrame Cue="100%">
-                    <Setter Property="ScaleTransform.ScaleY" Value="0" />
-                    <Setter Property="ScaleTransform.ScaleX" Value="0" />
+                    <Setter Property="ScaleTransform.ScaleY" Value="0.7" />
+                    <Setter Property="ScaleTransform.ScaleX" Value="0.7" />
                     <Setter Property="Opacity" Value="0" />
                 </KeyFrame>
             </Animation>
@@ -68,11 +69,11 @@
             <Animation
                 Easing="SineEaseInOut"
                 FillMode="Both"
-                Duration="0:0:0.3">
+                Duration="0:0:0.1">
                 <KeyFrame Cue="0%">
                     <Setter Property="Opacity" Value="0" />
-                    <Setter Property="ScaleTransform.ScaleY" Value="0" />
-                    <Setter Property="ScaleTransform.ScaleX" Value="0" />
+                    <Setter Property="ScaleTransform.ScaleY" Value="0.7" />
+                    <Setter Property="ScaleTransform.ScaleX" Value="0.7" />
                 </KeyFrame>
                 <KeyFrame Cue="100%">
                     <Setter Property="ScaleTransform.ScaleX" Value="1" />

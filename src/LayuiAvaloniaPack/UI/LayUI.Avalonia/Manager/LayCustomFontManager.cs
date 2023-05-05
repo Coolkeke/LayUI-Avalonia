@@ -33,7 +33,7 @@ namespace LayUI.Avalonia.Manager
         private readonly string _defaultFamilyName;
 
         private readonly Typeface _defaultTypeface =
-            new Typeface("resm:LayUI.Avalonia.Fonts.SourceHanSansSC-Regular-2.otf?assembly=LayUI.Avalonia#Source Han Sans SC");
+            new Typeface("resm:LayUI.Avalonia.Fonts.SourceHanSansCN?assembly=LayUI.Avalonia#Source Han Sans CN");
 
         public LayCustomFontManager()
         {
@@ -53,7 +53,7 @@ namespace LayUI.Avalonia.Manager
         {
             try
             {
-                AddFontFamily("SourceHanSansSC", _defaultTypeface);
+                AddFontFamily("SourceHanSans", _defaultTypeface);
                 InitFontFamiles();
             }
             catch (Exception ex)
@@ -137,22 +137,25 @@ namespace LayUI.Avalonia.Manager
             try
             {
                 skTypeface = GetSKTypeface(typeface.FontFamily.Name);
-                if (skTypeface != null) return new GlyphTypefaceImpl(skTypeface);
-                switch (typeface.FontFamily.Name)
+                if (skTypeface == null)
                 {
-                    case FontFamily.DefaultFontFamilyName:
-                        {
-                            var typefaceCollection = SKTypefaceCollectionCache.GetOrAddTypefaceCollection(_defaultTypeface.FontFamily);
-                            skTypeface = typefaceCollection.Get(typeface);
-                            break;
-                        }
-                    default:
-                        {
-                            skTypeface = SKTypeface.FromFamilyName(typeface.FontFamily.Name,
-                                (SKFontStyleWeight)typeface.Weight, SKFontStyleWidth.Normal, (SKFontStyleSlant)typeface.Style);
-                            break;
-                        }
+                    switch (typeface.FontFamily.Name)
+                    {
+                        case FontFamily.DefaultFontFamilyName:
+                            {
+                                var typefaceCollection = SKTypefaceCollectionCache.GetOrAddTypefaceCollection(_defaultTypeface.FontFamily);
+                                skTypeface = typefaceCollection.Get(typeface);
+                                break;
+                            }
+                        default:
+                            {
+                                skTypeface = SKTypeface.FromFamilyName(typeface.FontFamily.Name,
+                                    (SKFontStyleWeight)typeface.Weight, SKFontStyleWidth.Normal, (SKFontStyleSlant)typeface.Style);
+                                break;
+                            }
+                    }
                 }
+
                 return new GlyphTypefaceImpl(skTypeface);
             }
             catch
