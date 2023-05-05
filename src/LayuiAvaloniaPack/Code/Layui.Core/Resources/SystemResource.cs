@@ -87,6 +87,10 @@ namespace Layui.Core.Resources
         /// <summary>
         /// 树形组件
         /// </summary>
-        public static string TreeViewPage { get; } = "TreeViewPage"; 
+        public static string TreeViewPage { get; } = "TreeViewPage";
+        /// <summary>
+        /// 标题水平线
+        /// </summary>
+        public static string LegendPage { get; } = "LegendPage"; 
     }
 }

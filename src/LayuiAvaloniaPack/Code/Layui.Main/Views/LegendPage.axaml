@@ -1,0 +1,44 @@
+<UserControl
+    x:Class="Layui.Main.Views.LegendPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <StackPanel>
+        <lay:LayLegend Margin="10" Content="标题水平线" />
+        <lay:LayLegend
+            Margin="10"
+            Padding="2,0"
+            Content="标题水平线"
+            LineColor="{DynamicResource Blue}"
+            LineThickness="1" />
+        <lay:LayLegend
+            Margin="10"
+            Padding="5,0"
+            Content="标题水平线"
+            CornerRadius="2"
+            HorizontalOffset="30"
+            LineColor="{DynamicResource Orange}"
+            LineThickness="4" />
+        <lay:LayLegend
+            Margin="10"
+            Padding="6,0"
+            Content="标题水平线"
+            CornerRadius="3"
+            HorizontalOffset="40"
+            LineColor="{DynamicResource Red}"
+            LineThickness="6" />
+        <lay:LayLegend
+            Margin="10"
+            Padding="10,0"
+            Content="标题水平线"
+            CornerRadius="5"
+            HorizontalOffset="50"
+            LineColor="{DynamicResource Cyan}"
+            LineThickness="10" />
+    </StackPanel>
+</UserControl>

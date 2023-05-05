@@ -42,7 +42,7 @@ namespace LayUI.Avalonia.Controls
         private void OnIsFocusedChanged()
         {
             if (IsFocus && _isLoaded)
-            {
+            { 
                 Focus();
                 if (!string.IsNullOrEmpty(Text)) CaretIndex = Text.Length;
             }

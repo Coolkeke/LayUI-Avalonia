@@ -96,6 +96,7 @@ namespace Layui.Main.ViewModels
                 new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.ExpanderPage, Title = "Expander" },
                 new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.GroupBoxPage, Title = "GroupBox" },
                 new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.TreeViewPage, Title = "TreeView" },
+                new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.LegendPage, Title = "Legend" },
             };
             return menus;
         }

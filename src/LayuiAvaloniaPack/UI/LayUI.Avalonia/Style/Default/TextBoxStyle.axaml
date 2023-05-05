@@ -18,6 +18,7 @@
         <Setter Property="Padding" Value="5 2" />
         <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
         <Setter Property="SelectionBrush" Value="{DynamicResource Blue}" />
+        <Setter Property="UseFloatingWatermark" Value="true" />
         <Setter Property="Watermark" Value="请输入" />
         <Setter Property="Cursor" Value="Ibeam" />
         <Setter Property="InputMethod.IsInputMethodEnabled" Value="True" />
@@ -99,11 +100,11 @@
         <Setter Property="BorderBrush" Value="{DynamicResource Red}" />
         <Setter Property="BoxShadow" Value="0 0 2 0 #FF794E" />
     </Style>
-    <Style Selector="lay|LayTextBox /template/ TextBlock#PART_PlaceholderText">
+    <Style Selector="lay|LayTextBox/template/ TextBlock#PART_PlaceholderText">
         <Setter Property="IsVisible" Value="False" />
         <Setter Property="Opacity" Value="0.5" />
     </Style>
-    <Style Selector="lay|LayTextBox:empty[UseFloatingWatermark=False] /template/ TextBlock#PART_PlaceholderText">
+    <Style Selector="lay|LayTextBox:empty[UseFloatingWatermark=true] /template/ TextBlock#PART_PlaceholderText">
         <Setter Property="IsVisible" Value="true" />
     </Style>
     <Style Selector="lay|LayTextBox:pointerover">
