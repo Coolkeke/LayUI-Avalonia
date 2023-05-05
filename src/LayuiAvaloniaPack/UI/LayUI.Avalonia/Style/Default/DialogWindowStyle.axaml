@@ -8,13 +8,14 @@
         </Border>
     </Design.PreviewWith>
     <Style Selector="global|LayDialogWindow">
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="Cycle" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
                     <Grid Name="PART_Root">
                         <Grid.Transitions>
                             <Transitions>
-                                <DoubleTransition Property="Opacity" Duration="0:0:0.1" />
+                                <DoubleTransition Property="Opacity" Duration="0:0:0.3" />
                             </Transitions>
                         </Grid.Transitions>
                         <Grid
@@ -40,20 +41,23 @@
     </Style>
     <Style Selector="global|LayDialogWindow[IsOpen=false] /template/ ContentPresenter#PART_ContentPresenter">
         <Setter Property="Opacity" Value="0" />
-        <Setter Property="ScaleTransform.ScaleX" Value="0.7" />
-        <Setter Property="ScaleTransform.ScaleY" Value="0.7" />
+        <Setter Property="ScaleTransform.ScaleY" Value="0" />
+        <Setter Property="ScaleTransform.ScaleX" Value="0" />
     </Style>
     <Style Selector="global|LayDialogWindow[IsOpen=false] /template/ ContentPresenter#PART_ContentPresenter">
         <Style.Animations>
-            <Animation Duration="0:0:0.1">
+            <Animation
+                Easing="SineEaseInOut"
+                FillMode="Both"
+                Duration="0:0:0.3">
                 <KeyFrame Cue="0%">
                     <Setter Property="ScaleTransform.ScaleX" Value="1" />
                     <Setter Property="ScaleTransform.ScaleY" Value="1" />
                     <Setter Property="Opacity" Value="1" />
                 </KeyFrame>
                 <KeyFrame Cue="100%">
-                    <Setter Property="ScaleTransform.ScaleX" Value="0.7" />
-                    <Setter Property="ScaleTransform.ScaleY" Value="0.7" />
+                    <Setter Property="ScaleTransform.ScaleY" Value="0" />
+                    <Setter Property="ScaleTransform.ScaleX" Value="0" />
                     <Setter Property="Opacity" Value="0" />
                 </KeyFrame>
             </Animation>
@@ -61,11 +65,14 @@
     </Style>
     <Style Selector="global|LayDialogWindow[IsOpen=true] /template/ ContentPresenter#PART_ContentPresenter">
         <Style.Animations>
-            <Animation Duration="0:0:0.1">
+            <Animation
+                Easing="SineEaseInOut"
+                FillMode="Both"
+                Duration="0:0:0.3">
                 <KeyFrame Cue="0%">
                     <Setter Property="Opacity" Value="0" />
-                    <Setter Property="ScaleTransform.ScaleX" Value="0.7" />
-                    <Setter Property="ScaleTransform.ScaleY" Value="0.7" />
+                    <Setter Property="ScaleTransform.ScaleY" Value="0" />
+                    <Setter Property="ScaleTransform.ScaleX" Value="0" />
                 </KeyFrame>
                 <KeyFrame Cue="100%">
                     <Setter Property="ScaleTransform.ScaleX" Value="1" />

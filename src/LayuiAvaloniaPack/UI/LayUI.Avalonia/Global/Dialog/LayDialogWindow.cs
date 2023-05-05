@@ -33,6 +33,15 @@ namespace LayUI.Avalonia.Global
         }
         public ILayDialogResult Result { get; set; }
 
+        static LayDialogWindow()
+        {
+            IsOpenProperty.Changed.AddClassHandler<LayDialogWindow>((o, e) => o.OnOpenChanged());
+        }
+
+        private async void OnOpenChanged()
+        {
+            await IsOpenChanged();
+        }
 
         /// <summary>
         /// Defines the <see cref="IsOpen"/> property.
@@ -46,13 +55,12 @@ namespace LayUI.Avalonia.Global
         public bool IsOpen
         {
             get { return GetValue(IsOpenProperty); }
-            set { SetValue(IsOpenProperty, value);
-                new Action(async () =>
-                {
-                   await IsOpenChanged();
-                }).Invoke();
+            set
+            {
+                SetValue(IsOpenProperty, value);
+
             }
-        } 
+        }
         private Action<ILayDialogResult> GetRequestCloseHandler()
         {
             Action<ILayDialogResult> requestCloseHandler = null;
@@ -68,9 +76,9 @@ namespace LayUI.Avalonia.Global
         {
             if (!IsOpen)
             {
-                await Task.Delay(100);
+                await Task.Delay(300);
                 Host.Items.Children.Remove(this);
-            } 
+            }
         }
         public static readonly DirectProperty<LayDialogWindow, Action<ILayDialogResult>> RequestCloseHandlerProperty =
         AvaloniaProperty.RegisterDirect<LayDialogWindow, Action<ILayDialogResult>>(nameof(RequestCloseHandler),
