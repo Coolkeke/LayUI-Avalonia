@@ -33,7 +33,7 @@ namespace LayUI.Avalonia.Manager
         private readonly string _defaultFamilyName;
 
         private readonly Typeface _defaultTypeface =
-            new Typeface("resm:LayUI.Avalonia.Fonts.SourceHanSansCN?assembly=LayUI.Avalonia#Source Han Sans CN");
+            new Typeface("resm:LayUI.Avalonia.Fonts.SourceHanSansCN-Regular.ttf?assembly=LayUI.Avalonia#Source Han Sans CN");
 
         public LayCustomFontManager()
         {

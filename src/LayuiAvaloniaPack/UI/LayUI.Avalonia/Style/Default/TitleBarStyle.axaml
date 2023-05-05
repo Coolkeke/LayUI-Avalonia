@@ -21,7 +21,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Grid>
+                    <Grid >
                         <lay:LayCard
                             Background="{TemplateBinding Background}"
                             Blur="7"
