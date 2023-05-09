@@ -1,12 +1,69 @@
 ﻿<Styles
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls;assembly=LayUI.Avalonia">
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls;assembly=LayUI.Avalonia"
+    xmlns:layCv="clr-namespace:LayUI.Avalonia.Converters;assembly=LayUI.Avalonia">
     <Design.PreviewWith>
-        <Border Padding="20">
-            <!--  Add Controls for Previewer Here  -->
-        </Border>
+        <StackPanel Margin="20">
+            <lay:LayBadge Value="new">
+                <Button Width="50" Height="30" />
+            </lay:LayBadge>
+            <lay:LayBadge MaxValue="10" Value="1">
+                <Button Width="50" Height="30" />
+            </lay:LayBadge>
+        </StackPanel>
     </Design.PreviewWith>
-
+    <Style Selector="lay|LayBadge">
+        <Setter Property="Background" Value="{DynamicResource Red}" />
+        <Setter Property="ClipToBounds" Value="false" />
+        <Setter Property="Color" Value="White" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <Canvas
+                            HorizontalAlignment="Right"
+                            IsHitTestVisible="False"
+                            IsVisible="{TemplateBinding IsVisibleBadge}"
+                            ZIndex="10">
+                            <Grid Canvas.Left="{Binding ElementName=PART_BadgeBorder, Path=Bounds.Width, Converter={x:Static layCv:MedianConverter.Instance}, ConverterParameter=-}" Canvas.Top="{Binding ElementName=PART_BadgeBorder, Path=Bounds.Height, Converter={x:Static layCv:MedianConverter.Instance}, ConverterParameter=-}">
+                                <Border
+                                    x:Name="PART_BadgeBorder"
+                                    Background="{TemplateBinding Background}"
+                                    ClipToBounds="True"
+                                    CornerRadius="{Binding ElementName=PART_BadgeBorder, Path=Bounds.Height, Converter={x:Static layCv:MedianConverterToCornerRadius.Instance}}">
+                                    <Grid>
+                                        <Grid
+                                            Width="10"
+                                            Height="10"
+                                            IsVisible="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsDot}" />
+                                        <TextBlock
+                                            MinWidth="12"
+                                            MinHeight="12"
+                                            Margin="5,2"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontSize="13"
+                                            Foreground="{TemplateBinding Color}"
+                                            IsVisible="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=!IsDot}"
+                                            Text="{TemplateBinding Value}"
+                                            TextAlignment="Center" />
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Canvas>
+                        <ContentPresenter
+                            Name="PART_ContentPresenter"
+                            Padding="{TemplateBinding Padding}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            UseLayoutRounding="True" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <!--  Add Styles Here  -->
 </Styles>

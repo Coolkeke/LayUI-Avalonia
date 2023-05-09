@@ -91,6 +91,10 @@ namespace Layui.Core.Resources
         /// <summary>
         /// 标题水平线
         /// </summary>
-        public static string LegendPage { get; } = "LegendPage"; 
+        public static string LegendPage { get; } = "LegendPage";
+        /// <summary>
+        /// 标记
+        /// </summary>
+        public static string BadgePage { get; } = "BadgePage"; 
     }
 }

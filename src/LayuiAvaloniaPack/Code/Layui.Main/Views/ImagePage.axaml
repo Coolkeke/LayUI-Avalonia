@@ -62,7 +62,55 @@
                 Margin="5"
                 ext:ImageHelper.Source="assembly://Assets/1.jpg"
                 Stretch="Fill" />
-
+            <TextBlock
+                HorizontalAlignment="Center"
+                FontSize="20"
+                Text="读取DrawingImage" />
+            <Image Margin="5">
+                <Image.Source>
+                    <DrawingImage>
+                        <DrawingImage.Drawing>
+                            <DrawingGroup>
+                                <DrawingGroup>
+                                    <DrawingGroup.ClipGeometry>
+                                        <RectangleGeometry Rect="0,0,1024,1024" />
+                                    </DrawingGroup.ClipGeometry>
+                                    <GeometryDrawing Brush="#FFC1D4FA">
+                                        <GeometryDrawing.Geometry>
+                                            <PathGeometry Figures="M58.666667,149.333333 M98.986667,149.333333L703.786667,149.333333Q744.106667,149.333333,744.106667,189.653333L744.106667,733.973333Q744.106667,774.293333,703.786667,774.293333L98.986667,774.293333Q58.666667,774.293333,58.666667,733.973333L58.666667,189.653333Q58.666667,149.333333,98.986667,149.333333z" FillRule="NonZero" />
+                                        </GeometryDrawing.Geometry>
+                                    </GeometryDrawing>
+                                    <GeometryDrawing Brush="#FF6C89DD">
+                                        <GeometryDrawing.Geometry>
+                                            <PathGeometry Figures="M631.381333,546.133333L631.381333,575.978667 541.845333,575.978667 541.845333,635.712 631.445333,635.712 631.445333,665.578667 541.845333,665.578667 541.845333,725.333333 482.112,725.333333 482.112,665.6 392.512,665.6 392.512,635.733333 482.154667,635.733333 482.154667,575.978667 392.512,575.978667 392.512,546.112 484.928,546.474667 362.666667,426.666667 422.4,426.666667 512,516.266667 601.6,426.666667 661.333333,426.666667 549.418667,546.474667z" FillRule="NonZero" />
+                                        </GeometryDrawing.Geometry>
+                                    </GeometryDrawing>
+                                    <GeometryDrawing Brush="#FFFF9579">
+                                        <GeometryDrawing.Geometry>
+                                            <PathGeometry Figures="M159.466667,229.973333L844.906667,229.973333 844.906667,330.773333 159.466667,330.773333z" FillRule="NonZero" />
+                                        </GeometryDrawing.Geometry>
+                                    </GeometryDrawing>
+                                    <GeometryDrawing Brush="#FFFAAD14">
+                                        <GeometryDrawing.Geometry>
+                                            <PathGeometry Figures="M832,554.666667A170.666667,170.666667,0,0,0,661.333333,725.333333A170.666667,170.666667,0,1,0,832,554.666667z" FillRule="NonZero" />
+                                        </GeometryDrawing.Geometry>
+                                    </GeometryDrawing>
+                                    <GeometryDrawing Brush="#FFFFFFFF">
+                                        <GeometryDrawing.Geometry>
+                                            <PathGeometry Figures="M938.666667,726.144C938.666667,714.666667,928.384,704,915.285333,704L748.778667,704C735.68,704 724.458667,714.666667 725.397333,726.144 725.397333,737.642667 736.618666,746.666667 748.778667,746.666667L913.408,746.666667C926.506667,746.666667,938.666667,737.642667,938.666667,726.144z" FillRule="NonZero" />
+                                        </GeometryDrawing.Geometry>
+                                    </GeometryDrawing>
+                                    <GeometryDrawing Brush="#FFFFFFFF">
+                                        <GeometryDrawing.Geometry>
+                                            <PathGeometry Figures="M831.189333,832C842.666666,832,853.333333,821.717333,853.333333,808.618667L853.333333,642.112C853.333333,629.013333 842.666666,617.792 831.189333,618.730667 819.690666,618.730667 810.666666,629.952 810.666667,642.112L810.666667,806.741333C810.666667,819.84,819.690667,832,831.189333,832z" FillRule="NonZero" />
+                                        </GeometryDrawing.Geometry>
+                                    </GeometryDrawing>
+                                </DrawingGroup>
+                            </DrawingGroup>
+                        </DrawingImage.Drawing>
+                    </DrawingImage>
+                </Image.Source>
+            </Image>
         </StackPanel>
     </ScrollViewer>
 

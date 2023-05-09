@@ -1,0 +1,63 @@
+<UserControl
+    x:Class="Layui.Main.Views.BadgePage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <StackPanel
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Orientation="Horizontal">
+        <lay:LayBadge
+            Width="80"
+            Height="40"
+            Margin="10">
+            <lay:LayButton Content="回复" />
+        </lay:LayBadge>
+        <lay:LayBadge
+            Width="80"
+            Height="40"
+            Margin="10"
+            Background="{DynamicResource Blue}"
+            MaxValue="10"
+            Value="1">
+            <lay:LayButton Content="回复" />
+        </lay:LayBadge>
+        <lay:LayBadge
+            Width="80"
+            Height="40"
+            Margin="10"
+            MaxValue="99"
+            Value="1000">
+            <lay:LayButton Content="评论" />
+        </lay:LayBadge>
+        <lay:LayBadge
+            Width="80"
+            Height="40"
+            Margin="10"
+            Background="{DynamicResource Orange}"
+            Value="新">
+            <lay:LayButton Content="回复" />
+        </lay:LayBadge>
+        <lay:LayBadge
+            Width="80"
+            Height="40"
+            Margin="10"
+            Value="new">
+            <lay:LayButton Content="回复" />
+        </lay:LayBadge>
+        <lay:LayBadge
+            Width="80"
+            Height="40"
+            Margin="10"
+            Background="{DynamicResource Orange}"
+            IsDot="True"
+            Value="new">
+            <lay:LayButton Content="原点" />
+        </lay:LayBadge>
+    </StackPanel>
+</UserControl>
