@@ -4,9 +4,71 @@
     xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
     <Design.PreviewWith>
         <Border Padding="20">
-            <!--  Add Controls for Previewer Here  -->
+            <Grid Width="500" Height="200">
+                <ToggleButton
+                    Width="100"
+                    Height="50"
+                    IsChecked="{Binding #Drawer.IsOpen}" />
+                <lay:LayDrawer Name="Drawer">
+                    <Button
+                        Width="100"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Stretch" />
+                </lay:LayDrawer>
+            </Grid>
         </Border>
     </Design.PreviewWith>
-
+    <Style Selector="lay|LayDrawer">
+        <Setter Property="IsHitTestVisible" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsOpen}" />
+        <Setter Property="Background" Value="{DynamicResource Gray}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="True"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <Grid>
+                            <Grid Name="PART_Mask" Background="{TemplateBinding Background}">
+                                <Grid.Transitions>
+                                    <Transitions>
+                                        <DoubleTransition Property="Opacity" Duration="0:0:0.3" />
+                                    </Transitions>
+                                </Grid.Transitions>
+                            </Grid>
+                            <ContentPresenter
+                                Name="PART_ContentPresenter"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalAlignment="Right"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                UseLayoutRounding="True">
+                                <ContentPresenter.Transitions>
+                                    <Transitions>
+                                        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.3" />
+                                    </Transitions>
+                                </ContentPresenter.Transitions>
+                            </ContentPresenter>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayDrawer[IsOpen=false]">
+        <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="lay|LayDrawer[IsOpen=true]">
+        <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="lay|LayDrawer[IsOpen=false] /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="RenderTransform" Value="translateX(10px)" />
+    </Style>
+    <Style Selector="lay|LayDrawer[IsOpen=true] /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="RenderTransform" Value="translateX(0px)" />
+    </Style>
     <!--  Add Styles Here  -->
 </Styles>
