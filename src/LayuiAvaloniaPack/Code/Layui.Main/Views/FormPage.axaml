@@ -11,17 +11,6 @@
     mc:Ignorable="d">
     <ScrollViewer>
         <StackPanel Margin="5">
-            <Border
-                Width="150"
-                Height="50"
-                Margin="10"
-                Background="Red"
-                Classes="Zoom" />
-            <TextBox
-                Height="40"
-                Margin="5"
-                Text="{Binding Value, Mode=TwoWay}"
-                Watermark="只能输入数字" />
             <lay:LayTextBox
                 MinHeight="40"
                 Margin="5"

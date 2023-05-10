@@ -15,6 +15,7 @@ using Prism.Modularity;
 using Layui.Core.Resources;
 using Prism.Regions;
 using Avalonia.Controls.ApplicationLifetimes;
+using Prism.Commands;
 
 namespace Layui.Main
 {
@@ -92,7 +93,7 @@ namespace Layui.Main
             containerRegistry.RegisterForNavigation<DrawerPage>(SystemResource.DrawerPage); 
             var layDialog = Container.Resolve<ILayDialogService>();
             layDialog.RegisterDialog<Message>(nameof(Message));
-        }
+        } 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             Container.Resolve<ILayLogger>().Info("ÕýÔÚ×¢²áÄ£¿é...");

@@ -2,7 +2,22 @@
     x:Class="Layui.Main.App"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:prism="http://prismlibrary.com/">
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:vm="using:Layui.Main.ViewModels">
+    <prism:PrismApplication.DataContext>
+        <vm:ApplicationViewModel />
+    </prism:PrismApplication.DataContext>
+    <TrayIcon.Icons>
+        <TrayIcons>
+            <TrayIcon Icon="avares://LayuiApp.Desktop/Assets/AvaloniaLogo.png" ToolTipText="欢迎使用LayUI-Avalonia组件库">
+                <TrayIcon.Menu>
+                    <NativeMenu>
+                        <NativeMenuItem Command="{Binding ExitCommand}" Header="退出" />
+                    </NativeMenu>
+                </TrayIcon.Menu>
+            </TrayIcon>
+        </TrayIcons>
+    </TrayIcon.Icons>
     <Application.Styles>
         <FluentTheme Mode="Light" />
         <StyleInclude Source="avares://LayUI.Avalonia/Themes/Default.axaml" />
