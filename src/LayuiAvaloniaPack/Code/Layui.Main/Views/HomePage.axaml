@@ -64,13 +64,40 @@
             <StackPanel
                 Grid.Column="2"
                 Margin="10,0"
-                VerticalAlignment="Center">
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
                 <ToggleSwitch
                     BorderBrush="{DynamicResource Gradient}"
                     Foreground="White"
                     IsChecked="{Binding IsEn}"
                     OffContent="中"
                     OnContent="英" />
+                <lay:LayToggleButton
+                    Name="More"
+                    Margin="10,0"
+                    VerticalAlignment="Center"
+                    Cursor="Hand"
+                    Foreground="White">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="公告" />
+                        <Border
+                            Width="6"
+                            Height="6"
+                            Margin="5,0"
+                            Background="Red"
+                            CornerRadius="3" />
+                    </StackPanel>
+                    <lay:LayToggleButton.Template>
+                        <ControlTemplate>
+                            <Grid Background="{TemplateBinding Background}">
+                                <ContentPresenter
+                                    VerticalAlignment="Center"
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}" />
+                            </Grid>
+                        </ControlTemplate>
+                    </lay:LayToggleButton.Template>
+                </lay:LayToggleButton>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
@@ -164,5 +191,26 @@
             </ListBox>
             <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{Binding Source={x:Static res:SystemResource.Nav_HomeContent}}" />
         </Grid>
+        <lay:LayDrawer
+            Grid.RowSpan="2"
+            IsOpen="{Binding #More.IsChecked, Mode=TwoWay}"
+            ZIndex="10">
+            <StackPanel Width="300" Background="White">
+                <Border BorderBrush="{DynamicResource Gray}" BorderThickness="0,0,0,1">
+                    <TextBlock
+                        Margin="10,15"
+                        VerticalAlignment="Center"
+                        Text="公告" />
+                </Border>
+                <TextBlock
+                    Margin="10,5"
+                    VerticalAlignment="Center"
+                    Text="你知道吗?" />
+                <TextBlock
+                    Margin="10,5"
+                    Text="LayUI-Avalonia开发的初衷就是为了WPF的学习者迁移到跨平台框架Avalonia开发来学习而开发分享的一个UI组件库,在这套UI组件库中你将利用现有的开源代码进行开发与Web版本的Layui类似风格的桌面客户端！"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+        </lay:LayDrawer>
     </Grid>
 </UserControl>

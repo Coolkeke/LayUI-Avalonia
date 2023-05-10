@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace LayUI.Avalonia.Enums
-{ 
-    public enum DrawerType
+{
+    /// <summary>
+    /// 动画位移类型
+    /// </summary>
+    public enum TranslateType
     {
-        Left,
-        Right,
-        Top,
-        Bottom,
+        X,Y
     }
 }

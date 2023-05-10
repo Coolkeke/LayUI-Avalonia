@@ -96,5 +96,9 @@ namespace Layui.Core.Resources
         /// 标记
         /// </summary>
         public static string BadgePage { get; } = "BadgePage"; 
+        /// <summary>
+        /// 抽屉
+        /// </summary>
+        public static string DrawerPage { get; } = "DrawerPage"; 
     }
 }

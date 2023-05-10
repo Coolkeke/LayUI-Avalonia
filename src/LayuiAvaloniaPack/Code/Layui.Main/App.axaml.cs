@@ -88,7 +88,8 @@ namespace Layui.Main
             containerRegistry.RegisterForNavigation<GroupBoxPage>(SystemResource.GroupBoxPage);
             containerRegistry.RegisterForNavigation<TreeViewPage>(SystemResource.TreeViewPage);
             containerRegistry.RegisterForNavigation<LegendPage>(SystemResource.LegendPage);
-            containerRegistry.RegisterForNavigation<BadgePage>(SystemResource.BadgePage);
+            containerRegistry.RegisterForNavigation<BadgePage>(SystemResource.BadgePage); 
+            containerRegistry.RegisterForNavigation<DrawerPage>(SystemResource.DrawerPage); 
             var layDialog = Container.Resolve<ILayDialogService>();
             layDialog.RegisterDialog<Message>(nameof(Message));
         }

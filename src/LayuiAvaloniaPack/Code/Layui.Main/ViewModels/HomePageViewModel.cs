@@ -98,6 +98,7 @@ namespace Layui.Main.ViewModels
                 new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.TreeViewPage, Title = "TreeView" },
                 new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.LegendPage, Title = "Legend" },
                 new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.BadgePage, Title = "Badge" },
+                new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.DrawerPage, Title = "Drawer" },
             };
             return menus;
         }

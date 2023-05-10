@@ -1,7 +1,8 @@
 ﻿<Styles
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls"
+    xmlns:layCv="clr-namespace:LayUI.Avalonia.Converters;assembly=LayUI.Avalonia">
     <Design.PreviewWith>
         <Border Padding="20">
             <Grid Width="500" Height="200">
@@ -9,10 +10,10 @@
                     Width="100"
                     Height="50"
                     IsChecked="{Binding #Drawer.IsOpen}" />
-                <lay:LayDrawer Name="Drawer">
+                <lay:LayDrawer Name="Drawer" Type="Top">
                     <Button
-                        Width="100"
-                        HorizontalAlignment="Right"
+                        Height="100"
+                        HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch" />
                 </lay:LayDrawer>
             </Grid>
@@ -20,27 +21,32 @@
     </Design.PreviewWith>
     <Style Selector="lay|LayDrawer">
         <Setter Property="IsHitTestVisible" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsOpen}" />
-        <Setter Property="Background" Value="{DynamicResource Gray}" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
                     <Border
+                        Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         ClipToBounds="True"
                         CornerRadius="{TemplateBinding CornerRadius}">
                         <Grid>
-                            <Grid Name="PART_Mask" Background="{TemplateBinding Background}">
-                                <Grid.Transitions>
-                                    <Transitions>
-                                        <DoubleTransition Property="Opacity" Duration="0:0:0.3" />
-                                    </Transitions>
-                                </Grid.Transitions>
-                            </Grid>
+                            <lay:LayButton
+                                Name="PART_MaskButton"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Background="Black"
+                                Cursor="Arrow">
+                                <lay:LayButton.Template>
+                                    <ControlTemplate>
+                                        <Grid Background="{TemplateBinding Background}" Opacity="0.2" />
+                                    </ControlTemplate>
+                                </lay:LayButton.Template>
+                            </lay:LayButton>
                             <ContentPresenter
                                 Name="PART_ContentPresenter"
                                 Padding="{TemplateBinding Padding}"
-                                HorizontalAlignment="Right"
                                 HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                 Content="{TemplateBinding Content}"
@@ -48,7 +54,7 @@
                                 UseLayoutRounding="True">
                                 <ContentPresenter.Transitions>
                                     <Transitions>
-                                        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.3" />
+                                        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2" />
                                     </Transitions>
                                 </ContentPresenter.Transitions>
                             </ContentPresenter>
@@ -58,17 +64,71 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style Selector="lay|LayDrawer">
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <Transitions>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.2" />
+                </Transitions>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style Selector="lay|LayDrawer[IsOpen=false]">
         <Setter Property="Opacity" Value="0" />
     </Style>
     <Style Selector="lay|LayDrawer[IsOpen=true]">
         <Setter Property="Opacity" Value="1" />
     </Style>
-    <Style Selector="lay|LayDrawer[IsOpen=false] /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="RenderTransform" Value="translateX(10px)" />
-    </Style>
     <Style Selector="lay|LayDrawer[IsOpen=true] /template/ ContentPresenter#PART_ContentPresenter">
         <Setter Property="RenderTransform" Value="translateX(0px)" />
+    </Style>
+    <Style Selector="lay|LayDrawer[Type=Right] /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+    <Style Selector="lay|LayDrawer[Type=Left] /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+    <Style Selector="lay|LayDrawer[Type=Top] /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="VerticalAlignment" Value="Top" />
+    </Style>
+    <Style Selector="lay|LayDrawer[Type=Bottom] /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+    </Style>
+    <Style Selector="lay|LayDrawer[IsOpen=false][Type=Right] /template/ ContentPresenter#PART_ContentPresenter">
+        <Style.Resources>
+            <layCv:DrawerTranslateConverter
+                x:Key="TranslateX"
+                drawerType="Right"
+                translate="X" />
+        </Style.Resources>
+        <Setter Property="RenderTransform" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Bounds.Width, Converter={StaticResource TranslateX}}" />
+    </Style>
+    <Style Selector="lay|LayDrawer[IsOpen=false][Type=Left] /template/ ContentPresenter#PART_ContentPresenter">
+        <Style.Resources>
+            <layCv:DrawerTranslateConverter
+                x:Key="TranslateX"
+                drawerType="Left"
+                translate="X" />
+        </Style.Resources>
+        <Setter Property="RenderTransform" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Bounds.Width, Converter={StaticResource TranslateX}}" />
+    </Style>
+    <Style Selector="lay|LayDrawer[IsOpen=false][Type=Top] /template/ ContentPresenter#PART_ContentPresenter">
+        <Style.Resources>
+            <layCv:DrawerTranslateConverter
+                x:Key="TranslateY"
+                drawerType="Top"
+                translate="Y" />
+        </Style.Resources>
+        <Setter Property="RenderTransform" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Bounds.Height, Converter={StaticResource TranslateY}}" />
+    </Style>
+    <Style Selector="lay|LayDrawer[IsOpen=false][Type=Bottom] /template/ ContentPresenter#PART_ContentPresenter">
+        <Style.Resources>
+            <layCv:DrawerTranslateConverter
+                x:Key="TranslateY"
+                drawerType="Bottom"
+                translate="Y" />
+        </Style.Resources>
+        <Setter Property="RenderTransform" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Bounds.Height, Converter={StaticResource TranslateY}}" />
     </Style>
     <!--  Add Styles Here  -->
 </Styles>
