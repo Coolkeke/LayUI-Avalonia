@@ -43,4 +43,5 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ScrollBarStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/LegendStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/BadgeStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/AutoCompleteBoxStyle.axaml" />
 </Styles>

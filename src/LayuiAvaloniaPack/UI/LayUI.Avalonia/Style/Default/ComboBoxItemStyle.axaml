@@ -18,6 +18,7 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Padding" Value="5 2" />
         <Setter Property="Margin" Value="0" />
+        <Setter Property="MinHeight" Value="40" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">

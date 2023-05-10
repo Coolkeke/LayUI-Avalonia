@@ -52,6 +52,18 @@
                 <lay:LayComboBoxItem Height="40" Content="asd" />
                 <lay:LayComboBoxItem Height="40" Content="阿萨德" />
             </lay:LayComboBox>
+            <lay:LayAutoCompleteBox Margin="5">
+                <lay:LayAutoCompleteBox.Items>
+                    Alabama
+                    Alaska
+                    Arizona
+                    Arkansas
+                    California
+                    Colorado
+                    Connecticut
+                    Delaware
+                </lay:LayAutoCompleteBox.Items>
+            </lay:LayAutoCompleteBox>
             <StackPanel>
                 <StackPanel>
                     <StackPanel Margin="0,5" Orientation="Horizontal">
@@ -85,6 +97,7 @@
                 </StackPanel>
                 <lay:LayNumericUpDown Margin="0,5" />
             </StackPanel>
+
         </StackPanel>
     </ScrollViewer>
 </UserControl>
