@@ -11,6 +11,7 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/FocusAdornerStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CardStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ButtonStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ButtonGroupStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CheckBoxStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TextBoxStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ToggleButtonStyle.axaml" />

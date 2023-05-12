@@ -1,52 +1,102 @@
 ﻿using Avalonia;
+using Avalonia.Collections;
 using Avalonia.Controls;
-using Avalonia.Controls.Generators;
+using Avalonia.Controls.Primitives;
 using Avalonia.Media;
-using LayUI.Avalonia.Enums;
-using System;
-using System.Collections.Generic;
+using Avalonia.Metadata;
+using System.Collections.Specialized;
 using System.Linq;
-using System.Text;
+using System;
+using Avalonia.Layout;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace LayUI.Avalonia.Controls
 {
     /// <summary>
     /// 按钮容器
     /// </summary>
-    public class LayButtonGroup : StackPanel
+    public class LayButtonGroup : TemplatedControl
     {
+        private StackPanel PART_Panel = null;
+        public LayButtonGroup()
+        {
+            Children.CollectionChanged += ChildrenChanged;
+        }
         /// <summary>
-        /// Defines the <see cref="Type"/> property.
+        /// Defines the <see cref="Orientation"/> property.
         /// </summary>
-        public static readonly StyledProperty<ButtonType> TypeProperty =
-            AvaloniaProperty.Register<Control, ButtonType>(nameof(Type));
+        public static readonly StyledProperty<Orientation> OrientationProperty =
+            AvaloniaProperty.Register<Control, Orientation>(nameof(Orientation));
 
         /// <summary>
-        /// 类型
+        /// 方向
         /// </summary>
-        public ButtonType Type
+        public Orientation Orientation
         {
-            get { return GetValue(TypeProperty); }
-            set { SetValue(TypeProperty, value); }
+            get { return GetValue(OrientationProperty); }
+            set { SetValue(OrientationProperty, value); }
         }
-        /// <summary>
-        /// 修改列表中按钮样式
-        /// </summary>
-        private void UpdateButtonsStyle()
+
+
+        private void ChildrenChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            var btns = Children.Cast<LayButton>().ToList();
-            if (btns.Count() < 1) return;
-            btns.ForEach(button =>
+            List<Control> controls;
+            switch (e.Action)
             {
-                button.Type= Type;
-                button.CornerRadius = new CornerRadius(0);
-                button.BorderThickness = new Thickness(0);
-            });
+                case NotifyCollectionChangedAction.Add:
+                    controls = e.NewItems.OfType<Control>().ToList();
+                    LogicalChildren.InsertRange(e.NewStartingIndex, controls);
+                    VisualChildren.InsertRange(e.NewStartingIndex, e.NewItems.OfType<Visual>());
+                    break;
+
+                case NotifyCollectionChangedAction.Move:
+                    LogicalChildren.MoveRange(e.OldStartingIndex, e.OldItems.Count, e.NewStartingIndex);
+                    VisualChildren.MoveRange(e.OldStartingIndex, e.OldItems.Count, e.NewStartingIndex);
+                    break;
+
+                case NotifyCollectionChangedAction.Remove:
+                    controls = e.OldItems.OfType<Control>().ToList();
+                    LogicalChildren.RemoveAll(controls);
+                    VisualChildren.RemoveAll(e.OldItems.OfType<Visual>());
+                    break;
+
+                case NotifyCollectionChangedAction.Replace:
+                    for (var i = 0; i < e.OldItems.Count; ++i)
+                    {
+                        var index = i + e.OldStartingIndex;
+                        var child = (IControl)e.NewItems[i];
+                        LogicalChildren[index] = child;
+                        VisualChildren[index] = child;
+                    }
+                    break;
+
+                case NotifyCollectionChangedAction.Reset:
+                    throw new NotSupportedException();
+            }
+            InvalidateMeasure();
         }
+
+        [Content]
+        public AvaloniaList<IControl> Children { get; } = new AvaloniaList<IControl>();
+
+        protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
+        {
+            base.OnApplyTemplate(e);
+            PART_Panel = e.NameScope.Find("PART_Panel") as StackPanel;
+        }
+
         public override void Render(DrawingContext context)
         {
             base.Render(context);
-            UpdateButtonsStyle();
+            PART_Panel?.Children?.Clear();
+            if (PART_Panel != null)
+            {
+                foreach (var child in LogicalChildren)
+                {
+                    PART_Panel.Children.Add(child as Control);
+                }
+            }
         }
     }
 }

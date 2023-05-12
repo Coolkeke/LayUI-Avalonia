@@ -95,10 +95,14 @@ namespace Layui.Core.Resources
         /// <summary>
         /// 标记
         /// </summary>
-        public static string BadgePage { get; } = "BadgePage"; 
+        public static string BadgePage { get; } = "BadgePage";
         /// <summary>
         /// 抽屉
         /// </summary>
-        public static string DrawerPage { get; } = "DrawerPage"; 
+        public static string DrawerPage { get; } = "DrawerPage";
+        /// <summary>
+        /// 网格
+        /// </summary>
+        public static string GridPage { get; } = "GridPage";
     }
 }

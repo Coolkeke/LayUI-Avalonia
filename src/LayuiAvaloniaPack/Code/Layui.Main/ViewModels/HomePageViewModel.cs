@@ -99,6 +99,7 @@ namespace Layui.Main.ViewModels
                 new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.LegendPage, Title = "Legend" },
                 new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.BadgePage, Title = "Badge" },
                 new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.DrawerPage, Title = "Drawer" },
+                new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.GridPage, Title = "Grids" },
             };
             return menus;
         }

@@ -69,10 +69,10 @@
             Height="1"
             Margin="0,5"
             Background="{DynamicResource Cyan}" />
-        <lay:LayButtonGroup Orientation="Horizontal" Type="Default">
-            <lay:LayButton Content="按钮组" />
-            <lay:LayButton Content="按钮组" />
-            <lay:LayButton Content="按钮组" />
+        <lay:LayButtonGroup CornerRadius="10">
+            <Button Content="按钮组" CornerRadius="0" />
+            <Button Content="按钮组" CornerRadius="0" />
+            <Button Content="按钮组" CornerRadius="0" />
         </lay:LayButtonGroup>
     </StackPanel>
 </UserControl>

@@ -60,4 +60,8 @@
     <Folder Include="Fonts\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\GridPage.axaml" />
+  </ItemGroup>
+
 </Project>
