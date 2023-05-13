@@ -44,20 +44,26 @@
                                     </ControlTemplate>
                                 </lay:LayButton.Template>
                             </lay:LayButton>
-                            <ContentPresenter
-                                Name="PART_ContentPresenter"
-                                Padding="{TemplateBinding Padding}"
-                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Content="{TemplateBinding Content}"
-                                ContentTemplate="{TemplateBinding ContentTemplate}"
-                                UseLayoutRounding="True">
-                                <ContentPresenter.Transitions>
+                            <lay:LayCard
+                                Name="PART_Card"
+                                Background="Transparent"
+                                Blur="150"
+                                CornerRadius="0"
+                                ShadowColor="{DynamicResource LightBlack}">
+                                <lay:LayCard.Transitions>
                                     <Transitions>
                                         <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2" />
                                     </Transitions>
-                                </ContentPresenter.Transitions>
-                            </ContentPresenter>
+                                </lay:LayCard.Transitions>
+                                <ContentPresenter
+                                    Name="PART_ContentPresenter"
+                                    Padding="{TemplateBinding Padding}"
+                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                    UseLayoutRounding="True" />
+                            </lay:LayCard>
                         </Grid>
                     </Border>
                 </ControlTemplate>
@@ -79,22 +85,22 @@
     <Style Selector="lay|LayDrawer[IsOpen=true]">
         <Setter Property="Opacity" Value="1" />
     </Style>
-    <Style Selector="lay|LayDrawer[IsOpen=true] /template/ ContentPresenter#PART_ContentPresenter">
+    <Style Selector="lay|LayDrawer[IsOpen=true] /template/ lay|LayCard#PART_Card">
         <Setter Property="RenderTransform" Value="translateX(0px)" />
     </Style>
-    <Style Selector="lay|LayDrawer[Type=Right] /template/ ContentPresenter#PART_ContentPresenter">
+    <Style Selector="lay|LayDrawer[Type=Right] /template/ lay|LayCard#PART_Card">
         <Setter Property="HorizontalAlignment" Value="Right" />
     </Style>
-    <Style Selector="lay|LayDrawer[Type=Left] /template/ ContentPresenter#PART_ContentPresenter">
+    <Style Selector="lay|LayDrawer[Type=Left] /template/ lay|LayCard#PART_Card">
         <Setter Property="HorizontalAlignment" Value="Left" />
     </Style>
-    <Style Selector="lay|LayDrawer[Type=Top] /template/ ContentPresenter#PART_ContentPresenter">
+    <Style Selector="lay|LayDrawer[Type=Top] /template/ lay|LayCard#PART_Card">
         <Setter Property="VerticalAlignment" Value="Top" />
     </Style>
-    <Style Selector="lay|LayDrawer[Type=Bottom] /template/ ContentPresenter#PART_ContentPresenter">
+    <Style Selector="lay|LayDrawer[Type=Bottom] /template/ lay|LayCard#PART_Card">
         <Setter Property="VerticalAlignment" Value="Bottom" />
     </Style>
-    <Style Selector="lay|LayDrawer[IsOpen=false][Type=Right] /template/ ContentPresenter#PART_ContentPresenter">
+    <Style Selector="lay|LayDrawer[IsOpen=false][Type=Right] /template/ lay|LayCard#PART_Card">
         <Style.Resources>
             <layCv:DrawerTranslateConverter
                 x:Key="TranslateX"
@@ -103,7 +109,7 @@
         </Style.Resources>
         <Setter Property="RenderTransform" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Bounds.Width, Converter={StaticResource TranslateX}}" />
     </Style>
-    <Style Selector="lay|LayDrawer[IsOpen=false][Type=Left] /template/ ContentPresenter#PART_ContentPresenter">
+    <Style Selector="lay|LayDrawer[IsOpen=false][Type=Left] /template/ lay|LayCard#PART_Card">
         <Style.Resources>
             <layCv:DrawerTranslateConverter
                 x:Key="TranslateX"
@@ -112,7 +118,7 @@
         </Style.Resources>
         <Setter Property="RenderTransform" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Bounds.Width, Converter={StaticResource TranslateX}}" />
     </Style>
-    <Style Selector="lay|LayDrawer[IsOpen=false][Type=Top] /template/ ContentPresenter#PART_ContentPresenter">
+    <Style Selector="lay|LayDrawer[IsOpen=false][Type=Top] /template/ lay|LayCard#PART_Card">
         <Style.Resources>
             <layCv:DrawerTranslateConverter
                 x:Key="TranslateY"
@@ -121,7 +127,7 @@
         </Style.Resources>
         <Setter Property="RenderTransform" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Bounds.Height, Converter={StaticResource TranslateY}}" />
     </Style>
-    <Style Selector="lay|LayDrawer[IsOpen=false][Type=Bottom] /template/ ContentPresenter#PART_ContentPresenter">
+    <Style Selector="lay|LayDrawer[IsOpen=false][Type=Bottom] /template/ lay|LayCard#PART_Card">
         <Style.Resources>
             <layCv:DrawerTranslateConverter
                 x:Key="TranslateY"

@@ -16,6 +16,9 @@ using Layui.Core.Resources;
 using Prism.Regions;
 using Avalonia.Controls.ApplicationLifetimes;
 using Prism.Commands;
+using Avalonia.Controls.Primitives;
+using LayUI.Avalonia.Controls;
+using Layui.Tools.Adapters;
 
 namespace Layui.Main
 {
@@ -98,6 +101,11 @@ namespace Layui.Main
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             Container.Resolve<ILayLogger>().Info("ÕýÔÚ×¢²áÄ£¿é...");
+        }
+        protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
+        {
+            base.ConfigureRegionAdapterMappings(regionAdapterMappings);
+            regionAdapterMappings.RegisterMapping(typeof(LayContentControl), Container.Resolve<LayContentControlRegionAdapter>());
         }
     }
 }

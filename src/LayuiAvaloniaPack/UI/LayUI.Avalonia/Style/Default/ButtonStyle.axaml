@@ -50,7 +50,7 @@
                     Content="超链接"
                     Uri="https://space.bilibili.com/48808444" />
             </StackPanel>
-            <lay:LayButtonGroup Orientation="Horizontal" Type="Default">
+            <lay:LayButtonGroup Orientation="Horizontal">
                 <lay:LayButton Content="这是超链接" />
                 <lay:LayButton Content="这是超链接" />
                 <lay:LayButton Content="这是超链接" />

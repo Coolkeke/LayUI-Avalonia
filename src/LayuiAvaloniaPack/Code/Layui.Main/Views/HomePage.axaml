@@ -189,7 +189,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{Binding Source={x:Static res:SystemResource.Nav_HomeContent}}" />
+            <lay:LayContentControl Grid.Column="1" prism:RegionManager.RegionName="{Binding Source={x:Static res:SystemResource.Nav_HomeContent}}" />
         </Grid>
         <lay:LayDrawer
             Grid.RowSpan="2"

@@ -1,94 +1,100 @@
 ﻿<Style xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
-        <StackPanel Orientation="Horizontal">
-            <Border
-                Margin="2"
-                Padding="20"
-                Background="{DynamicResource Green}" />
-            <Border
-                Margin="2"
-                Padding="20"
-                Background="{DynamicResource LightGreen}" />
-            <Border
-                Margin="2"
-                Padding="20"
-                Background="{DynamicResource Blue}" />
-            <Border
-                Margin="2"
-                Padding="20"
-                Background="{DynamicResource LightBlue}" />
-            <Border
-                Margin="2"
-                Padding="20"
-                Background="{DynamicResource CyanGreen}" />
-            <Border
-                Margin="2"
-                Padding="20"
-                Background="{DynamicResource Orange}" />
-            <Border
-                Margin="2"
-                Padding="20"
-                Background="{DynamicResource LightOrange}" />
-            <Border
-                Margin="2"
-                Padding="20"
-                Background="{DynamicResource Red}" />
-            <Border
-                Margin="2"
-                Padding="20"
-                Background="{DynamicResource LightRed}" />
-            <Border
-                Margin="2"
-                Padding="20"
-                Background="{DynamicResource Cyan}" />
-            <Border
-                Margin="2"
-                Padding="20"
-                Background="{DynamicResource Black}" />
-            <Border
-                Margin="2"
-                Padding="20"
-                Background="{DynamicResource LightBlack}" />
-            <Border
-                Margin="2"
-                Padding="20"
-                Background="{DynamicResource Gray}" />
-            <Border
-                Margin="2"
-                Padding="20"
-                Background="{DynamicResource SilverGray}" />
-            <Border
-                Margin="2"
-                Padding="20"
-                Background="{DynamicResource LighGray}" />
-            <Border
-                Margin="2"
-                Padding="20"
-                Background="{DynamicResource Gradient}" />
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Border
+                    Margin="2"
+                    Padding="20"
+                    Background="{DynamicResource Green}" />
+                <Border
+                    Margin="2"
+                    Padding="20"
+                    Background="{DynamicResource LightGreen}" />
+                <Border
+                    Margin="2"
+                    Padding="20"
+                    Background="{DynamicResource Blue}" />
+                <Border
+                    Margin="2"
+                    Padding="20"
+                    Background="{DynamicResource LightBlue}" />
+                <Border
+                    Margin="2"
+                    Padding="20"
+                    Background="{DynamicResource CyanGreen}" />
+                <Border
+                    Margin="2"
+                    Padding="20"
+                    Background="{DynamicResource Orange}" />
+                <Border
+                    Margin="2"
+                    Padding="20"
+                    Background="{DynamicResource LightOrange}" />
+                <Border
+                    Margin="2"
+                    Padding="20"
+                    Background="{DynamicResource Red}" />
+                <Border
+                    Margin="2"
+                    Padding="20"
+                    Background="{DynamicResource LightRed}" />
+                <Border
+                    Margin="2"
+                    Padding="20"
+                    Background="{DynamicResource Cyan}" />
+                <Border
+                    Margin="2"
+                    Padding="20"
+                    Background="{DynamicResource Black}" />
+                <Border
+                    Margin="2"
+                    Padding="20"
+                    Background="{DynamicResource LightBlack}" />
+                <Border
+                    Margin="2"
+                    Padding="20"
+                    Background="{DynamicResource Gray}" />
+                <Border
+                    Margin="2"
+                    Padding="20"
+                    Background="{DynamicResource SilverGray}" />
+                <Border
+                    Margin="2"
+                    Padding="20"
+                    Background="{DynamicResource LighGray}" />
+                <Border
+                    Margin="2"
+                    Padding="20"
+                    Background="{DynamicResource Gradient}" />
+            </StackPanel>
+            <StackPanel Margin="2">
+                <Border Padding="20" Background="{DynamicResource Red}" />
+                <Border Padding="20" Background="{DynamicResource Orange}" />
+                <Border Padding="20" Background="{DynamicResource Green}" />
+                <Border Padding="20" Background="{DynamicResource Blue}" />
+                <Border Padding="20" Background="{DynamicResource Purple}" />
+                <Border Padding="20" Background="{DynamicResource Deep}" />
+            </StackPanel>
         </StackPanel>
     </Design.PreviewWith>
     <Style.Resources>
         <!--  主色  -->
         <Color x:Key="GreenEffect">#009688</Color>
         <Color x:Key="LightGreenEffect">#33ABA0</Color>
-        <SolidColorBrush x:Key="Green" Color="{StaticResource GreenEffect}" />
         <SolidColorBrush x:Key="LightGreen" Color="{StaticResource LightGreenEffect}" />
         <!--  百搭  -->
         <Color x:Key="BlueEffect">#1E9FFF</Color>
         <Color x:Key="LightBlueEffect">#4BB2FF</Color>
         <Color x:Key="CyanGreenEffect">#5FB878</Color>
-        <SolidColorBrush x:Key="Blue" Color="{StaticResource BlueEffect}" />
         <SolidColorBrush x:Key="LightBlue" Color="{StaticResource LightBlueEffect}" />
         <SolidColorBrush x:Key="CyanGreen" Color="{StaticResource CyanGreenEffect}" />
         <!--  暖色  -->
         <Color x:Key="OrangeEffect">#FFB800</Color>
         <Color x:Key="LightOrangeEffect">#FFC633</Color>
-        <SolidColorBrush x:Key="Orange" Color="{StaticResource OrangeEffect}" />
         <SolidColorBrush x:Key="LightOrange" Color="{StaticResource LightOrangeEffect}" />
         <!--  警告  -->
         <Color x:Key="RedEffect">#FF5722</Color>
         <Color x:Key="LightRedEffect">#FF794E</Color>
-        <SolidColorBrush x:Key="Red" Color="{StaticResource RedEffect}" />
         <SolidColorBrush x:Key="LightRed" Color="{StaticResource LightRedEffect}" />
         <!--  深色  -->
         <Color x:Key="BlackEffect">#61646D</Color>
@@ -115,6 +121,19 @@
                 <GradientStop Offset="1" Color="#25D8AB" />
             </LinearGradientBrush.GradientStops>
         </LinearGradientBrush>
+        <!--  用于主题色 Start  -->
+        <SolidColorBrush x:Key="Warning" Color="#ffb800" />
+        <SolidColorBrush x:Key="Danger" Color="#ff5722" />
+        <SolidColorBrush x:Key="Success" Color="#16b777" />
+        <SolidColorBrush x:Key="Info" Color="#31bdec" />
+        <!--  用于主题色 End  -->
+        <!--  七色调 Start  -->
+        <SolidColorBrush x:Key="Red" Color="{StaticResource RedEffect}" />
+        <SolidColorBrush x:Key="Orange" Color="{StaticResource OrangeEffect}" />
+        <SolidColorBrush x:Key="Green" Color="{StaticResource GreenEffect}" />
+        <SolidColorBrush x:Key="Blue" Color="{StaticResource BlueEffect}" />
+        <SolidColorBrush x:Key="Purple" Color="#a233c6" />
+        <SolidColorBrush x:Key="Deep" Color="#2f363c" />
+        <!--  七色调 End  -->
     </Style.Resources>
-
 </Style>
