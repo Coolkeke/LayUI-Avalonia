@@ -18,7 +18,6 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Prism.Commands;
 using Avalonia.Controls.Primitives;
 using LayUI.Avalonia.Controls;
-using Layui.Tools.Adapters;
 
 namespace Layui.Main
 {
@@ -95,17 +94,13 @@ namespace Layui.Main
             containerRegistry.RegisterForNavigation<BadgePage>(SystemResource.BadgePage); 
             containerRegistry.RegisterForNavigation<DrawerPage>(SystemResource.DrawerPage); 
             containerRegistry.RegisterForNavigation<GridPage>(SystemResource.GridPage); 
+            containerRegistry.RegisterForNavigation<MenuPage>(SystemResource.MenuPage); 
             var layDialog = Container.Resolve<ILayDialogService>();
             layDialog.RegisterDialog<Message>(nameof(Message));
         } 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             Container.Resolve<ILayLogger>().Info("ÕýÔÚ×¢²áÄ£¿é...");
-        }
-        protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
-        {
-            base.ConfigureRegionAdapterMappings(regionAdapterMappings);
-            regionAdapterMappings.RegisterMapping(typeof(LayContentControl), Container.Resolve<LayContentControlRegionAdapter>());
         }
     }
 }

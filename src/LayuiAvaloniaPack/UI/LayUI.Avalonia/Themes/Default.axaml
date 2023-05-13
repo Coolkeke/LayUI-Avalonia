@@ -46,4 +46,8 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/LegendStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/BadgeStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/AutoCompleteBoxStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ContextMenuStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/MenuStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/MenuItemStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/NativeMenuBarStyle.axaml" />
 </Styles>

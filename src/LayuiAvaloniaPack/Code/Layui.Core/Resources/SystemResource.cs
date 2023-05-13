@@ -103,6 +103,10 @@ namespace Layui.Core.Resources
         /// <summary>
         /// 网格
         /// </summary>
-        public static string GridPage { get; } = "GridPage";
+        public static string GridPage { get; } = "GridPage"; 
+        /// <summary>
+        /// 菜单
+        /// </summary>
+        public static string MenuPage { get; } = "MenuPage"; 
     }
 }

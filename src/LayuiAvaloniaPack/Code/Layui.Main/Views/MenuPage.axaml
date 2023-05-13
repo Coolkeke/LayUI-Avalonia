@@ -1,0 +1,82 @@
+<UserControl
+    x:Class="Layui.Main.Views.MenuPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <StackPanel>
+        <lay:LayMenu VerticalAlignment="Top">
+            <lay:LayMenuItem Header="菜单">
+                <lay:LayMenuItem Header="LayUI-Avalonia">
+                    <lay:LayMenuItem.Icon>
+                        <Image Source="avares://LayuiApp.Desktop/Assets/AvaloniaLogo.png" />
+                    </lay:LayMenuItem.Icon>
+                </lay:LayMenuItem>
+                <lay:LayMenuItem Header="LayUI-Avalonia">
+                    <lay:LayMenuItem.Icon>
+                        <Image Source="avares://LayuiApp.Desktop/Assets/AvaloniaLogo.png" />
+                    </lay:LayMenuItem.Icon>
+                </lay:LayMenuItem>
+                <lay:LayMenuItem Header="menu item">
+                    <lay:LayMenuItem.Icon>
+                        <Image Source="avares://LayuiApp.Desktop/Assets/AvaloniaLogo.png" />
+                    </lay:LayMenuItem.Icon>
+                    <lay:LayMenuItem Header="LayUI-Avalonia">
+                        <lay:LayMenuItem.Icon>
+                            <Image Source="avares://LayuiApp.Desktop/Assets/AvaloniaLogo.png" />
+                        </lay:LayMenuItem.Icon>
+                    </lay:LayMenuItem>
+                    <lay:LayMenuItem Header="LayUI-Avalonia">
+                        <lay:LayMenuItem.Icon>
+                            <Image Source="avares://LayuiApp.Desktop/Assets/AvaloniaLogo.png" />
+                        </lay:LayMenuItem.Icon>
+                    </lay:LayMenuItem>
+                    <lay:LayMenuItem Header="LayUI-Avalonia">
+                        <lay:LayMenuItem.Icon>
+                            <Image Source="avares://LayuiApp.Desktop/Assets/AvaloniaLogo.png" />
+                        </lay:LayMenuItem.Icon>
+                    </lay:LayMenuItem>
+                </lay:LayMenuItem>
+            </lay:LayMenuItem>
+        </lay:LayMenu>
+        <Border
+            Height="150"
+            Padding="3"
+            Background="Transparent">
+            <Border.ContextMenu>
+                <ContextMenu>
+                    <lay:LayMenuItem Header="Standard _Menu Item" InputGesture="Ctrl+A" />
+                    <lay:LayMenuItem
+                        Header="_Disabled Menu Item"
+                        InputGesture="Ctrl+D"
+                        IsEnabled="False" />
+                    <lay:LayMenuItem Header="Menu with _Submenu">
+                        <lay:LayMenuItem Header="Submenu _1" />
+                        <lay:LayMenuItem Header="Submenu _2" />
+                    </lay:LayMenuItem>
+                    <lay:LayMenuItem Header="Menu Item with _Icon" InputGesture="Ctrl+Shift+B" />
+                    <lay:LayMenuItem Padding="0" Header="Menu Item with _Checkbox">
+                        <lay:LayMenuItem.Icon>
+                            <lay:LayCheckBox IsChecked="True" IsHitTestVisible="False" />
+                        </lay:LayMenuItem.Icon>
+                    </lay:LayMenuItem>
+                </ContextMenu>
+            </Border.ContextMenu>
+            <Grid>
+                <Rectangle
+                    Opacity="0.3"
+                    Stroke="Black"
+                    StrokeDashArray="4,3"
+                    StrokeThickness="2" />
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="右键菜单" />
+            </Grid>
+        </Border>
+    </StackPanel>
+</UserControl>

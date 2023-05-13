@@ -1,0 +1,29 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!--  Add Controls for Previewer Here  -->
+        </Border>
+    </Design.PreviewWith>
+    <Style Selector="NativeMenuBar">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <lay:LayMenu Items="{Binding $parent[TopLevel].(NativeMenu.Menu).Items}">
+                    <lay:LayMenu.Styles>
+                        <Style Selector="lay|LayMenuItem">
+                            <Setter Property="Header" Value="{Binding Header}" />
+                            <Setter Property="InputGesture" Value="{Binding Gesture}" />
+                            <Setter Property="Items" Value="{Binding Menu.Items}" />
+                            <Setter Property="Command" Value="{Binding Command}" />
+                            <Setter Property="CommandParameter" Value="{Binding CommandParameter}" />
+                            <Setter Property="(NativeMenuBar.EnableMenuItemClickForwarding)" Value="True" />
+                        </Style>
+                    </lay:LayMenu.Styles>
+                </lay:LayMenu>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+</Styles>
