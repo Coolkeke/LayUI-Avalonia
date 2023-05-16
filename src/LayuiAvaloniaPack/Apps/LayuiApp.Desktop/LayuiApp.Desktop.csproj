@@ -22,15 +22,19 @@
     <None Remove="Assets\2.jpg" />
     <None Remove="Assets\AvaloniaLogo.png" />
     <None Remove="Assets\Fonts\iconfont.ttf" />
-    <None Remove="Assets\动图.gif" />
+    <None Remove="Assets\Test.gif" />
+    <None Remove="Assets\Test2.gif" />
   </ItemGroup>
   <ItemGroup>
     <AvaloniaResource Include="Assets\2.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AvaloniaResource>
     <AvaloniaResource Include="Assets\AvaloniaLogo.png" />
+    <Content Include="Assets\Test2.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Assets\Fonts\iconfont.ttf" />
-    <AvaloniaResource Include="Assets\动图.gif">
+    <AvaloniaResource Include="Assets\Test.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AvaloniaResource>
   </ItemGroup>

@@ -6,7 +6,6 @@
     xmlns:ext="using:LayUI.Avalonia.Extends"
     xmlns:lay="using:LayUI.Avalonia.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <ScrollViewer>
@@ -111,6 +110,16 @@
                     </DrawingImage>
                 </Image.Source>
             </Image>
+            <TextBlock
+                HorizontalAlignment="Center"
+                FontSize="20"
+                Text="读取当前程序文件加下面GIF图片" />
+            <lay:LayGifImage SourceUri="assembly://Assets/Test2.gif" />
+            <TextBlock
+                HorizontalAlignment="Center"
+                FontSize="20"
+                Text="读取程序内嵌GIF图片" />
+            <lay:LayGifImage SourceUri="avares://LayuiApp.Desktop/Assets/Test.gif" />
         </StackPanel>
     </ScrollViewer>
 

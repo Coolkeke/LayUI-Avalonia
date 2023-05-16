@@ -6,13 +6,10 @@ using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using Avalonia.Threading;
 using LayUI.Avalonia.Controls.GIF;
-using LayUI.Avalonia.Controls.GIF.Decoding;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using System.Net;
-using System.Text;
-using static Avalonia.Markup.Xaml.AvaloniaXamlLoader;
 
 namespace LayUI.Avalonia.Controls
 {
@@ -23,222 +20,219 @@ namespace LayUI.Avalonia.Controls
     /// 借鉴开源项目 https://github.com/jmacato/AvaloniaGif/tree/skia-rendering
     public class LayGifImage : Control
     {
-        public Image TargetControl { get; set; }
-        public Stream Stream { get; private set; }
-        public IterationCount IterationCount { get; private set; }
-        public bool AutoStart { get; private set; } = true;
-        public Progress<int> Progress { get; private set; }
-        bool _streamCanDispose;
-        private GifDecoder _gifDecoder;
-        private GifBackgroundWorker _bgWorker;
-        private WriteableBitmap _targetBitmap;
-        private volatile bool _hasNewFrame;
-        private bool _isDisposed;
-        private readonly object _bitmapSync = new object();
-        private static readonly object _globalUIThreadUpdateLock = new object();
+        public static readonly StyledProperty<string> SourceUriRawProperty =
+            AvaloniaProperty.Register<LayGifImage, string>("SourceUriRaw");
 
-        /// <summary>
-        /// Defines the <see cref="Source"/> property.
-        /// </summary>
-        public static readonly StyledProperty<Uri> SourceProperty =
-            AvaloniaProperty.Register<LayGifImage, Uri>(nameof(Source));
+        public static readonly StyledProperty<Uri> SourceUriProperty =
+            AvaloniaProperty.Register<LayGifImage, Uri>("SourceUri");
 
-        /// <summary>
-        /// Defines the <see cref="Stretch"/> property.
-        /// </summary>
+        public static readonly StyledProperty<Stream> SourceStreamProperty =
+            AvaloniaProperty.Register<LayGifImage, Stream>("SourceStream");
+
+        public static readonly StyledProperty<IterationCount> IterationCountProperty =
+            AvaloniaProperty.Register<LayGifImage, IterationCount>("IterationCount", IterationCount.Infinite);
+
+        private GifInstance gifInstance;
+
+        public static readonly StyledProperty<bool> AutoStartProperty =
+            AvaloniaProperty.Register<LayGifImage, bool>("AutoStart");
+
+        public static readonly StyledProperty<StretchDirection> StretchDirectionProperty =
+            AvaloniaProperty.Register<LayGifImage, StretchDirection>("StretchDirection");
+
         public static readonly StyledProperty<Stretch> StretchProperty =
-            AvaloniaProperty.Register<LayGifImage, Stretch>(nameof(Stretch), Stretch.Uniform);
+            AvaloniaProperty.Register<LayGifImage, Stretch>("Stretch");
+
+        private RenderTargetBitmap backingRTB;
+        private bool _hasNewSource;
+        private object? _newSource;
+        private Stopwatch _stopwatch;
 
         static LayGifImage()
         {
-            AffectsRender<LayGifImage>(SourceProperty, StretchProperty);
-            AffectsMeasure<LayGifImage>(SourceProperty, StretchProperty);
-            SourceProperty.Changed.AddClassHandler<LayGifImage>(SourceChanged);
+            SourceUriRawProperty.Changed.Subscribe(SourceChanged);
+            SourceUriProperty.Changed.Subscribe(SourceChanged);
+            SourceStreamProperty.Changed.Subscribe(SourceChanged);
+            IterationCountProperty.Changed.Subscribe(IterationCountChanged);
+            AutoStartProperty.Changed.Subscribe(AutoStartChanged);
+            AffectsRender<LayGifImage>(SourceStreamProperty, SourceUriProperty, SourceUriRawProperty, StretchProperty);
+            AffectsArrange<LayGifImage>(SourceStreamProperty, SourceUriProperty, SourceUriRawProperty, StretchProperty);
+            AffectsMeasure<LayGifImage>(SourceStreamProperty, SourceUriProperty, SourceUriRawProperty, StretchProperty);
         }
 
-        /// <summary>
-        /// 图片地址
-        /// </summary>
-        public Uri Source
+        public string SourceUriRaw
         {
-            get { return GetValue(SourceProperty); }
-            set { SetValue(SourceProperty, value); }
+            get => GetValue(SourceUriRawProperty);
+            set => SetValue(SourceUriRawProperty, value);
         }
 
-        /// <summary>
-        /// 获取或设置一个值，该值控制图像的拉伸方式。
-        /// </summary>
+        public Uri SourceUri
+        {
+            get => GetValue(SourceUriProperty);
+            set => SetValue(SourceUriProperty, value);
+        }
+
+        public Stream SourceStream
+        {
+            get => GetValue(SourceStreamProperty);
+            set => SetValue(SourceStreamProperty, value);
+        }
+
+        public IterationCount IterationCount
+        {
+            get => GetValue(IterationCountProperty);
+            set => SetValue(IterationCountProperty, value);
+        }
+
+        public bool AutoStart
+        {
+            get => GetValue(AutoStartProperty);
+            set => SetValue(AutoStartProperty, value);
+        }
+
+        public StretchDirection StretchDirection
+        {
+            get => GetValue(StretchDirectionProperty);
+            set => SetValue(StretchDirectionProperty, value);
+        }
+
         public Stretch Stretch
         {
-            get { return (Stretch)GetValue(StretchProperty); }
-            set { SetValue(StretchProperty, value); }
+            get => GetValue(StretchProperty);
+            set => SetValue(StretchProperty, value);
         }
 
-        /// <summary>
-        /// 渲染控件。
-        /// </summary>
-        /// <param name="context">The drawing context.</param>
+        private static void AutoStartChanged(AvaloniaPropertyChangedEventArgs e)
+        {
+            var image = e.Sender as LayGifImage;
+            if (image == null)
+                return;
+        }
+
+        private static void IterationCountChanged(AvaloniaPropertyChangedEventArgs e)
+        {
+            var image = e.Sender as LayGifImage;
+            if (image is null || e.NewValue is not IterationCount iterationCount)
+                return;
+
+            image.IterationCount = iterationCount;
+        }
+
         public override void Render(DrawingContext context)
         {
-            var source = _targetBitmap;
+            Dispatcher.UIThread.Post(InvalidateMeasure, DispatcherPriority.Background);
+            Dispatcher.UIThread.Post(InvalidateVisual, DispatcherPriority.Background);
 
-            if (source != null)
+            if (_hasNewSource)
             {
-                if (_hasNewFrame)
-                {
-                    using (var lockedBitmap = _targetBitmap?.Lock())
-                        _gifDecoder?.WriteBackBufToFb(lockedBitmap.Address);
-                    _hasNewFrame = false;
-                }
+                StopAndDispose();
+                gifInstance = new GifInstance(_newSource);
+                gifInstance.IterationCount = IterationCount;
+                backingRTB = new RenderTargetBitmap(gifInstance.GifPixelSize, new Vector(96, 96));
+                _hasNewSource = false;
 
-                Rect viewPort = new Rect(Bounds.Size);
-                Size sourceSize = new Size(source.PixelSize.Width, source.PixelSize.Height);
-                Vector scale = Stretch.CalculateScaling(Bounds.Size, sourceSize);
-                Size scaledSize = sourceSize * scale;
-                Rect destRect = viewPort
+                _stopwatch ??= new Stopwatch();
+                _stopwatch.Reset();
+
+
+                return;
+            }
+
+            if (gifInstance is null || (gifInstance.CurrentCts?.IsCancellationRequested ?? true))
+            {
+                return;
+            }
+
+            if (!_stopwatch.IsRunning)
+            {
+                _stopwatch.Start();
+            }
+
+            var currentFrame = gifInstance.ProcessFrameTime(_stopwatch.Elapsed);
+
+            if (currentFrame is { } source && backingRTB is { })
+            {
+                using var ctx = backingRTB.CreateDrawingContext(null);
+                var ts = new Rect(source.Size);
+                ctx.DrawBitmap(source.PlatformImpl, 1, ts, ts);
+            }
+
+            if (backingRTB is not null && Bounds.Width > 0 && Bounds.Height > 0)
+            {
+                var viewPort = new Rect(Bounds.Size);
+                var sourceSize = backingRTB.Size;
+
+                var scale = Stretch.CalculateScaling(Bounds.Size, sourceSize, StretchDirection);
+                var scaledSize = sourceSize * scale;
+                var destRect = viewPort
                     .CenterRect(new Rect(scaledSize))
                     .Intersect(viewPort);
-                Rect sourceRect = new Rect(sourceSize)
+
+                var sourceRect = new Rect(sourceSize)
                     .CenterRect(new Rect(destRect.Size / scale));
 
                 var interpolationMode = RenderOptions.GetBitmapInterpolationMode(this);
 
-                context.DrawImage(source, sourceRect, destRect, interpolationMode);
+                context.DrawImage(backingRTB, sourceRect, destRect, interpolationMode);
             }
         }
 
         /// <summary>
-        /// 测量控制。
+        /// Measures the control.
         /// </summary>
-        /// <param name="availableSize">可用大小。</param>
-        /// <returns>控件的所需大小。</returns>
+        /// <param name="availableSize">The available size.</param>
+        /// <returns>The desired size of the control.</returns>
         protected override Size MeasureOverride(Size availableSize)
         {
-            var source = _targetBitmap;
+            var source = backingRTB;
+            var result = new Size();
 
             if (source != null)
             {
-                Size sourceSize = new Size(source.PixelSize.Width, source.PixelSize.Height);
-                if (double.IsInfinity(availableSize.Width) || double.IsInfinity(availableSize.Height))
-                {
-                    return sourceSize;
-                }
-                else
-                {
-                    return Stretch.CalculateSize(availableSize, sourceSize);
-                }
+                result = Stretch.CalculateSize(availableSize, source.Size, StretchDirection);
             }
-            else
-            {
-                return new Size();
-            }
+
+            return result;
         }
 
         /// <inheritdoc/>
         protected override Size ArrangeOverride(Size finalSize)
         {
-            var source = _targetBitmap;
+            var source = backingRTB;
 
             if (source != null)
             {
-                var sourceSize = new Size(source.PixelSize.Width, source.PixelSize.Height);
+                var sourceSize = source.Size;
                 var result = Stretch.CalculateSize(finalSize, sourceSize);
                 return result;
             }
-            else
+
+            return new Size();
+        }
+
+        public void StopAndDispose()
+        {
+            gifInstance?.Dispose();
+            backingRTB?.Dispose();
+        }
+
+        private static void SourceChanged(AvaloniaPropertyChangedEventArgs e)
+        {
+            var image = e.Sender as LayGifImage;
+
+            if (image == null)
+                return; 
+            if (e.NewValue is null)
             {
-                return new Size();
+                return;
             }
-        }
-
-        private static void SourceChanged(LayGifImage arg1, AvaloniaPropertyChangedEventArgs _)
-        {
-            arg1.SetSource(_.NewValue);
-        }
-
-        private async void SetSource(object newValue)
-        {
-            var sourceUri = newValue as Uri;
-            var sourceStr = newValue as Stream;
-
-            _bgWorker?.SendCommand(BgWorkerCommand.Dispose);
-            _gifDecoder?.Dispose();
-
-            Stream stream = null;
-
-            if (sourceUri != null)
+            if (Design.IsDesignMode && e.NewValue is Uri uri&& uri.OriginalString.StartsWith("assembly://"))
             {
-                _streamCanDispose = true;
-                this.Progress = new Progress<int>();
-
-                if (sourceUri.OriginalString.Trim().StartsWith("resm"))
-                {
-                    var assetLocator = AvaloniaLocator.Current.GetService<IAssetLoader>();
-                    stream = assetLocator.Open(sourceUri);
-                }
-                else if (sourceUri.OriginalString.Trim().StartsWith("avares"))
-                {
-                    var assetLocator = AvaloniaLocator.Current.GetService<IAssetLoader>();
-                    var data = assetLocator.GetAssembly(sourceUri);
-                    //stream = ;
-                }
-                else
-                {
-                    stream = (await WebRequest.Create(sourceUri).GetResponseAsync()).GetResponseStream();
-                }
-
+                return;
             }
-            else if (sourceStr != null)
-            {
-                stream = sourceStr;
-            }
-            else
-            {
-                throw new InvalidDataException("Missing valid URI or Stream.");
-            }
-
-            Stream = stream;
-            this._gifDecoder = new GifDecoder(Stream);
-            this._bgWorker = new GifBackgroundWorker(_gifDecoder);
-            var pixSize = new PixelSize(_gifDecoder.Header.Dimensions.Width, _gifDecoder.Header.Dimensions.Height);
-            this._targetBitmap = new WriteableBitmap(pixSize, new Vector(96, 96), PixelFormat.Bgra8888);
-
-            _bgWorker.CurrentFrameChanged += FrameChanged;
-
-            Run();
-        }
-
-        private void FrameChanged()
-        {
-            _hasNewFrame = true;
-            Dispatcher.UIThread.InvokeAsync(InvalidateVisual, DispatcherPriority.Background);
-        }
-
-        private void Run()
-        {
-            if (!Stream.CanSeek)
-                throw new ArgumentException("The stream is not seekable");
-
-            this._bgWorker?.SendCommand(BgWorkerCommand.Play);
-            InvalidateVisual();
-        }
-
-        public void IterationCountChanged(AvaloniaPropertyChangedEventArgs e)
-        {
-            var newVal = (IterationCount)e.NewValue;
-            this.IterationCount = newVal;
-        }
-
-        public void AutoStartChanged(AvaloniaPropertyChangedEventArgs e)
-        {
-            var newVal = (bool)e.NewValue;
-            this.AutoStart = newVal;
-        }
-        public void Dispose()
-        {
-            _isDisposed = true;
-            this._bgWorker?.SendCommand(BgWorkerCommand.Dispose);
-            _targetBitmap?.Dispose();
+            image._hasNewSource = true;
+            image._newSource = e.NewValue;
+            Dispatcher.UIThread.Post(image.InvalidateVisual, DispatcherPriority.Background);
         }
     }
 }

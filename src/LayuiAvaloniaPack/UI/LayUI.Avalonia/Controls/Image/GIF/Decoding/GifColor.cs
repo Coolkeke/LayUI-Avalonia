@@ -13,7 +13,7 @@ namespace LayUI.Avalonia.Controls.GIF
 
         [FieldOffset(1)]
         public readonly byte G;
-        
+
         [FieldOffset(0)]
         public readonly byte B;
 
@@ -27,10 +27,10 @@ namespace LayUI.Avalonia.Controls.GIF
         /// <param name="a">Alpha</param>
         public GifColor(byte r, byte g, byte b, byte a = byte.MaxValue)
         {
-            this.A = a;
-            this.R = r;
-            this.G = g;
-            this.B = b;
+            A = a;
+            R = r;
+            G = g;
+            B = b;
         }
     }
 }

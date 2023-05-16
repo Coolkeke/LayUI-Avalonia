@@ -1,3 +1,4 @@
+
 using System;
 
 namespace LayUI.Avalonia.Controls.GIF.Decoding
@@ -10,8 +11,8 @@ namespace LayUI.Avalonia.Controls.GIF.Decoding
         public long LZWStreamPosition;
         public TimeSpan FrameDelay;
         public FrameDisposal FrameDisposalMethod;
-        public ulong LocalColorTableCacheID;
         public bool ShouldBackup;
         public GifRect Dimensions;
+        public GifColor[] LocalColorTable;
     }
 }
