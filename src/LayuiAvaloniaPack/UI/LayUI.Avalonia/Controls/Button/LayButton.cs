@@ -1,11 +1,9 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Interactivity;
 using LayUI.Avalonia.Enums;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
+using System.Runtime.InteropServices;
 
 namespace LayUI.Avalonia.Controls
 {
@@ -18,7 +16,7 @@ namespace LayUI.Avalonia.Controls
         /// Defines the <see cref="Type"/> property.
         /// </summary>
         public static readonly StyledProperty<ButtonType> TypeProperty =
-            AvaloniaProperty.Register<Control, ButtonType>(nameof(Type));
+            AvaloniaProperty.Register<LayButton, ButtonType>(nameof(Type));
 
         /// <summary>
         /// 按钮类型
@@ -29,12 +27,12 @@ namespace LayUI.Avalonia.Controls
             set { SetValue(TypeProperty, value); }
         }
 
-        public static readonly StyledProperty<string> UriProperty =
-            AvaloniaProperty.Register<Control, string>(nameof(Uri));
+        public static readonly StyledProperty<Uri> UriProperty =
+            AvaloniaProperty.Register<LayButton, Uri>(nameof(Uri));
         /// <summary>
         /// 用于打开外部链接或者程序
         /// </summary>
-        public string Uri
+        public Uri Uri
         {
             get { return GetValue(UriProperty); }
             set { SetValue(UriProperty, value); }
@@ -42,14 +40,21 @@ namespace LayUI.Avalonia.Controls
         protected override void OnClick()
         {
             base.OnClick();
-            if (!string.IsNullOrEmpty(Uri))
+            if (Uri.Scheme == Uri.UriSchemeHttp || Uri.Scheme == Uri.UriSchemeHttps)
             {
-                //点击调整网址
-                Process.Start(new ProcessStartInfo
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
-                    FileName = Uri,
-                    UseShellExecute = true
-                });
+                    var proc = new Process { StartInfo = { UseShellExecute = true, FileName = Uri.ToString() } };
+                    proc.Start();
+                } 
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                {
+                    Process.Start("x-www-browser", Uri.ToString());
+                } 
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    Process.Start("open", Uri.ToString());
+                }
             }
 
         }
