@@ -40,23 +40,25 @@ namespace LayUI.Avalonia.Controls
         protected override void OnClick()
         {
             base.OnClick();
-            if (Uri.Scheme == Uri.UriSchemeHttp || Uri.Scheme == Uri.UriSchemeHttps)
+            if (Uri != null)
             {
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                if (Uri.Scheme == Uri.UriSchemeHttp || Uri.Scheme == Uri.UriSchemeHttps)
                 {
-                    var proc = new Process { StartInfo = { UseShellExecute = true, FileName = Uri.ToString() } };
-                    proc.Start();
-                } 
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                {
-                    Process.Start("x-www-browser", Uri.ToString());
-                } 
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                {
-                    Process.Start("open", Uri.ToString());
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                    {
+                        var proc = new Process { StartInfo = { UseShellExecute = true, FileName = Uri.ToString() } };
+                        proc.Start();
+                    }
+                    else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                    {
+                        Process.Start("x-www-browser", Uri.ToString());
+                    }
+                    else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                    {
+                        Process.Start("open", Uri.ToString());
+                    }
                 }
             }
-
         }
     }
 }
