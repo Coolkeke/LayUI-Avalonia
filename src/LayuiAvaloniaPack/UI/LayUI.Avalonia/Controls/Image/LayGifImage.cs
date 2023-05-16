@@ -59,43 +59,57 @@ namespace LayUI.Avalonia.Controls
             AffectsArrange<LayGifImage>(SourceStreamProperty, SourceUriProperty, SourceUriRawProperty, StretchProperty);
             AffectsMeasure<LayGifImage>(SourceStreamProperty, SourceUriProperty, SourceUriRawProperty, StretchProperty);
         }
-
+        /// <summary>
+        /// 图片原始地址
+        /// </summary>
         public string SourceUriRaw
         {
             get => GetValue(SourceUriRawProperty);
             set => SetValue(SourceUriRawProperty, value);
         }
-
+        /// <summary>
+        /// 图片路径
+        /// </summary>
         public Uri SourceUri
         {
             get => GetValue(SourceUriProperty);
             set => SetValue(SourceUriProperty, value);
         }
-
+        /// <summary>
+        /// 图片文件刘
+        /// </summary>
         public Stream SourceStream
         {
             get => GetValue(SourceStreamProperty);
             set => SetValue(SourceStreamProperty, value);
         }
-
+        /// <summary>
+        /// 迭代次数
+        /// </summary>
         public IterationCount IterationCount
         {
             get => GetValue(IterationCountProperty);
             set => SetValue(IterationCountProperty, value);
         }
-
+        /// <summary>
+        /// 自动启动
+        /// </summary>
         public bool AutoStart
         {
             get => GetValue(AutoStartProperty);
             set => SetValue(AutoStartProperty, value);
         }
-
+        /// <summary>
+        /// 拉伸方向
+        /// </summary>
         public StretchDirection StretchDirection
         {
             get => GetValue(StretchDirectionProperty);
             set => SetValue(StretchDirectionProperty, value);
         }
-
+        /// <summary>
+        /// 图片填充
+        /// </summary>
         public Stretch Stretch
         {
             get => GetValue(StretchProperty);
