@@ -94,7 +94,8 @@ namespace Layui.Main
             containerRegistry.RegisterForNavigation<BadgePage>(SystemResource.BadgePage); 
             containerRegistry.RegisterForNavigation<DrawerPage>(SystemResource.DrawerPage); 
             containerRegistry.RegisterForNavigation<GridPage>(SystemResource.GridPage); 
-            containerRegistry.RegisterForNavigation<MenuPage>(SystemResource.MenuPage); 
+            containerRegistry.RegisterForNavigation<MenuPage>(SystemResource.MenuPage);
+            containerRegistry.RegisterForNavigation<ListPage>(SystemResource.ListPage);
             var layDialog = Container.Resolve<ILayDialogService>();
             layDialog.RegisterDialog<Message>(nameof(Message));
         } 

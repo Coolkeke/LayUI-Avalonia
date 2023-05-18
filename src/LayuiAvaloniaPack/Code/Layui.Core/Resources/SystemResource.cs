@@ -108,5 +108,9 @@ namespace Layui.Core.Resources
         /// 菜单
         /// </summary>
         public static string MenuPage { get; } = "MenuPage"; 
+        /// <summary>
+        /// 集合列表
+        /// </summary>
+        public static string ListPage { get; } = "ListPage"; 
     }
 }

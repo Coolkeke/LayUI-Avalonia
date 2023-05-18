@@ -101,6 +101,7 @@ namespace Layui.Main.ViewModels
                 new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.DrawerPage, Title = "Drawer" },
                 //new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.GridPage, Title = "Grids" },
                 new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.MenuPage, Title = "Menu" },
+                new MenuInfo() { FontIcon = "\xfab9", PageKey = SystemResource.ListPage, Title = "List" },
             };
             return menus;
         }

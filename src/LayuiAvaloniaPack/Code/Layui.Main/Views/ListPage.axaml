@@ -1,0 +1,38 @@
+<UserControl
+    x:Class="Layui.Main.Views.ListPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:layCv="using:LayUI.Avalonia.Converters"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <layCv:ItemsControlToIndexConverter x:Key="Index" />
+    </UserControl.Resources>
+    <ListBox Items="{Binding Datas}">
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <Grid ColumnDefinitions="*,auto">
+                    <ContentControl Foreground="Black">
+                        <ContentControl.Content>
+                            <MultiBinding Converter="{StaticResource Index}">
+                                <Binding Path="." />
+                                <Binding Path="Items" RelativeSource="{RelativeSource AncestorType=ListBox}" />
+                                <Binding Path="Items.Count" RelativeSource="{RelativeSource AncestorType=ListBox}" />
+                            </MultiBinding>
+                        </ContentControl.Content>
+                    </ContentControl>
+                    <Button
+                        Grid.Column="1"
+                        Width="80"
+                        Height="30"
+                        Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.DeleteCommand}"
+                        CommandParameter="{Binding}"
+                        Content="删除" />
+                </Grid>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
+</UserControl>
