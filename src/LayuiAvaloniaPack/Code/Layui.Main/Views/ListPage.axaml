@@ -8,31 +8,52 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <UserControl.Resources>
-        <layCv:ItemsControlToIndexConverter x:Key="Index" />
-    </UserControl.Resources>
-    <ListBox Items="{Binding Datas}">
-        <ListBox.ItemTemplate>
-            <DataTemplate>
-                <Grid ColumnDefinitions="*,auto">
-                    <ContentControl Foreground="Black">
-                        <ContentControl.Content>
-                            <MultiBinding Converter="{StaticResource Index}">
-                                <Binding Path="." />
-                                <Binding Path="Items" RelativeSource="{RelativeSource AncestorType=ListBox}" />
-                                <Binding Path="Items.Count" RelativeSource="{RelativeSource AncestorType=ListBox}" />
-                            </MultiBinding>
-                        </ContentControl.Content>
-                    </ContentControl>
-                    <Button
-                        Grid.Column="1"
-                        Width="80"
-                        Height="30"
-                        Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.DeleteCommand}"
-                        CommandParameter="{Binding}"
-                        Content="删除" />
-                </Grid>
-            </DataTemplate>
-        </ListBox.ItemTemplate>
-    </ListBox>
+    <UniformGrid Columns="1">
+        <ListBox Items="{Binding Datas}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="*,auto">
+                        <ContentControl Foreground="Black">
+                            <ContentControl.Content>
+                                <MultiBinding Converter="{x:Static layCv:ItemsControlToIndexConverter.Instance}">
+                                    <Binding Path="." />
+                                    <Binding Path="Items" RelativeSource="{RelativeSource AncestorType=ListBox}" />
+                                    <Binding Path="Items.Count" RelativeSource="{RelativeSource AncestorType=ListBox}" />
+                                </MultiBinding>
+                            </ContentControl.Content>
+                        </ContentControl>
+                        <Button
+                            Grid.Column="1"
+                            Width="80"
+                            Height="30"
+                            Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.DeleteCommand}"
+                            CommandParameter="{Binding}"
+                            Content="删除" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <DataGrid IsReadOnly="True" Items="{Binding Datas}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.Header>
+                        <TextBlock Text="序号" />
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ContentControl Foreground="Black">
+                                <ContentControl.Content>
+                                    <MultiBinding Converter="{x:Static layCv:ItemsControlToIndexConverter.Instance}">
+                                        <Binding Path="." />
+                                        <Binding Path="Items" RelativeSource="{RelativeSource AncestorType=DataGrid}" />
+                                        <Binding Path="Items.Count" RelativeSource="{RelativeSource AncestorType=DataGrid}" />
+                                    </MultiBinding>
+                                </ContentControl.Content>
+                            </ContentControl>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </UniformGrid>
 </UserControl>
