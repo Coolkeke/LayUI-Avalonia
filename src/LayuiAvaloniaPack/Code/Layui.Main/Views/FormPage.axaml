@@ -86,7 +86,6 @@
                 </StackPanel>
                 <lay:LayNumericUpDown Margin="0,5" />
             </StackPanel>
-
         </StackPanel>
     </ScrollViewer>
 </UserControl>

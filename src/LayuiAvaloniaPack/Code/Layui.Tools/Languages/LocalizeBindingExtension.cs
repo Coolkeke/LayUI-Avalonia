@@ -13,63 +13,53 @@ using Avalonia.Controls;
 using System.ComponentModel;
 using System.Drawing;
 using DryIoc;
+using System.Reactive;
+using System.Reactive.Subjects;
+using Avalonia.Threading;
+using static ImTools.ImMap;
 
 namespace Layui.Tools.Languages
 {
+
     /// <summary>
     /// 待测试
     /// </summary>
     public class LocalizeBindingExtension : AvaloniaObject
-    { 
-        public LocalizeBindingExtension(IBinding binding)
+    {
+        static LocalizeBindingExtension() {
+            PathProperty.Changed.AddClassHandler<LocalizeBindingExtension>((o, e) =>
+            {
+                if (o is null)
+                    return; 
+            });
+        }
+        /// <summary>
+        /// Comment
+        /// </summary>
+        private IBinding Binding { get; set; }
+        private object Source { get; set; }
+        public LocalizeBindingExtension(IBinding binding) 
         {
+            Source = LanguageManager.Instance;
             Binding = binding;
-        }
-        static LocalizeBindingExtension(){
-            BindingProperty.Changed.AddClassHandler<LocalizeBindingExtension>((o, e) => o.OnBindingChanged());
-        }
-
-        private void OnBindingChanged()
-        {
-           
-        }
-        private BindingPriority _priority;
-        /// <summary>
-        /// 这是依赖属性名称
-        /// </summary>
-        public IBinding Binding
-        {
-            get { return GetValue(BindingProperty); }
-            set { SetValue(BindingProperty, value); }
+            this.Bind(PathProperty, binding); 
         }
         /// <summary>
-        /// 定义<see cref="IBinding"/>属性
+        /// Defines the <see cref="Path"/> property.
         /// </summary>
-        public static readonly StyledProperty<IBinding> BindingProperty =
-       AvaloniaProperty.Register<LocalizeBindingExtension, IBinding>(nameof(Binding), null);
-
-        public object ProvideValue(IServiceProvider serviceProvider)
+        internal static readonly StyledProperty<string> PathProperty =
+            AvaloniaProperty.Register<LocalizeBindingExtension, string>(nameof(Path), string.Empty); 
+        /// <summary>
+        /// Comment
+        /// </summary>
+        internal string Path
+        {
+            get { return GetValue(PathProperty); }
+            set { SetValue(PathProperty, value); }
+        } 
+        public object ProvideValue()
         { 
-            if (Binding is Binding bind)
-            { 
-                if (serviceProvider.GetService(typeof(IProvideValueTarget)) is IProvideValueTarget provideValueTarget &&
-                provideValueTarget.TargetObject is AvaloniaObject targetObject &&
-                provideValueTarget.TargetProperty is AvaloniaProperty targetProperty)
-                {  
-                    if (targetObject.GetValue(targetProperty) is object value)
-                    {
-                        var binding = new ReflectionBindingExtension($"[{value}]")
-                        {
-                            Source = LanguageManager.Instance,
-                            Mode = BindingMode.OneWay,
-
-                        };
-                        return binding.ProvideValue(serviceProvider);
-                    } 
-                }
-                
-            }
-            return AvaloniaProperty.UnsetValue;
+            return Binding; 
         }
     }
 }

@@ -76,14 +76,8 @@ namespace Layui.Tools.Languages
                         }
                     case Binding keyBinding when targetObject is StyledElement element:
                         {
-                            if (element.DataContext != null)
-                            {
-                                var binding = SetLangBinding(element, targetProperty, keyBinding.Path, element.DataContext);
-                                return binding.ProvideValue(serviceProvider);
-                            }
-                            SetTargetProperty(element, targetProperty);
-                            element.DataContextChanged += LangExtension_DataContextChanged;
-                            break;
+                            element.DataContextChanged += Element_DataContextChanged;
+                            return keyBinding; 
                         }
                 }
             }
@@ -95,43 +89,9 @@ namespace Layui.Tools.Languages
             return string.Empty;
         }
 
-        private void LangExtension_DataContextChanged(object? sender, EventArgs e)
+        private void Element_DataContextChanged(object? sender, EventArgs e)
         {
-            try
-            {
-                switch (sender)
-                {
-                    case StyledElement element:
-                        {
-                            element.DataContextChanged -= LangExtension_DataContextChanged;
-                            if (!(Key is Binding keyBinding)) return;
-                            var targetProperty = GetTargetProperty(element);
-                            element.Bind(targetProperty, keyBinding);
-                            break;
-                        }
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.TryGet(LogEventLevel.Error, "LayUI-Avalonia")
-                    ?.Log("LangExtension_DataContextChanged", "", ex);
-            }
+            
         }
-
-        private ReflectionBindingExtension SetLangBinding(StyledElement targetObject, AvaloniaProperty targetProperty, string path, object dataContext)
-        {
-            if (targetProperty == null) return null;
-            var key = targetObject.GetValue(targetProperty) as string;
-            var binding = CreateLangBinding(key);
-            return binding;
-        }
-
-        private ReflectionBindingExtension CreateLangBinding(string key) => new ReflectionBindingExtension($"[{Key}]")
-        {
-            Converter = Converter,
-            ConverterParameter = ConverterParameter,
-            Source = Source,
-            Mode = BindingMode.OneWay
-        };
     }
 }

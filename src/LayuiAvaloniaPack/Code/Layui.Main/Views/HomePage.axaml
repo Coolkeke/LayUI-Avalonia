@@ -183,7 +183,7 @@
                                     VerticalAlignment="Center"
                                     FontSize="20"
                                     Foreground="White"
-                                    Text="{lang:LocalizeBinding {Binding Title}}" />
+                                    Text="{lang:Localize {Binding Title}}" />
                             </Grid>
                         </RadioButton>
                     </DataTemplate>
