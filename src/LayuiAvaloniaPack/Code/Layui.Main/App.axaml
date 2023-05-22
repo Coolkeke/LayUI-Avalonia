@@ -20,6 +20,7 @@
     </TrayIcon.Icons>
     <Application.Styles>
         <FluentTheme Mode="Light" />
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
         <StyleInclude Source="avares://LayUI.Avalonia/Themes/Default.axaml" />
     </Application.Styles>
 </prism:PrismApplication>
