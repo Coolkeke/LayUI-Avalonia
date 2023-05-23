@@ -54,7 +54,10 @@
                                                 <ColumnDefinition Width="auto" />
                                             </Grid.ColumnDefinitions>
                                             <ContentPresenter Background="{x:Null}" Content="{TemplateBinding HeaderContent}" />
-                                            <Grid Name="PART_WindowButtonGrid" Grid.Column="1">
+                                            <Grid
+                                                Name="PART_WindowButtonGrid"
+                                                Grid.Column="1"
+                                                IsVisible="{TemplateBinding IsWindowToolsVisible}">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="auto" />
                                                     <ColumnDefinition Width="auto" />

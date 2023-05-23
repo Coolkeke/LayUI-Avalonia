@@ -87,6 +87,21 @@ namespace LayUI.Avalonia.Controls
             get { return GetValue(HeaderContentProperty); }
             set { SetValue(HeaderContentProperty, value); }
         }
+
+        /// <summary>
+        /// Defines the <see cref="IsWindowToolsVisible"/> property.
+        /// </summary>
+        public static readonly StyledProperty<bool> IsWindowToolsVisibleProperty =
+            AvaloniaProperty.Register<LayTitleBar, bool>(nameof(IsWindowToolsVisible), true);
+
+        /// <summary>
+        /// 工具栏可见
+        /// </summary>
+        public bool IsWindowToolsVisible
+        {
+            get { return GetValue(IsWindowToolsVisibleProperty); }
+            set { SetValue(IsWindowToolsVisibleProperty, value); }
+        }
         protected override void OnPointerPressed(PointerPressedEventArgs e)
         {
             base.OnPointerPressed(e);
@@ -102,7 +117,6 @@ namespace LayUI.Avalonia.Controls
             }
 
         }
-
         /// <summary>
         /// 这是依赖属性名称
         /// </summary>

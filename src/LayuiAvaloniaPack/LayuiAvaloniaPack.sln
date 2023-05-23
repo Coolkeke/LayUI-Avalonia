@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Layui.Tools", "Code\Layui.T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LayUI.Avalonia", "UI\LayUI.Avalonia\LayUI.Avalonia.csproj", "{1BB1986C-B421-4245-9B5A-28E7A51DC52A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayuiApp.Android", "Apps\LayuiApp.Android\LayuiApp.Android.csproj", "{63D820E9-73C0-4AB7-AC54-02F1E006618A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LayuiApp.Android", "Apps\LayuiApp.Android\LayuiApp.Android.csproj", "{63D820E9-73C0-4AB7-AC54-02F1E006618A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessApp.Desktop", "Apps\BusinessApp.Desktop\BusinessApp.Desktop.csproj", "{9588BB2E-8F6D-4547-84C6-BC582A579875}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{63D820E9-73C0-4AB7-AC54-02F1E006618A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63D820E9-73C0-4AB7-AC54-02F1E006618A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63D820E9-73C0-4AB7-AC54-02F1E006618A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9588BB2E-8F6D-4547-84C6-BC582A579875}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9588BB2E-8F6D-4547-84C6-BC582A579875}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9588BB2E-8F6D-4547-84C6-BC582A579875}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9588BB2E-8F6D-4547-84C6-BC582A579875}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{EC621FCA-327D-46B4-8EDC-750C49675ED2} = {FD262EAD-2F34-4C45-8049-094FBF826BD4}
 		{1BB1986C-B421-4245-9B5A-28E7A51DC52A} = {57D914AB-5B75-4932-996C-1A21A05F9003}
 		{63D820E9-73C0-4AB7-AC54-02F1E006618A} = {D950B4DB-F82C-4600-BB53-3CEE54044147}
+		{9588BB2E-8F6D-4547-84C6-BC582A579875} = {D950B4DB-F82C-4600-BB53-3CEE54044147}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F7755A43-FC53-4E0C-9BBF-B50865FBE6CB}

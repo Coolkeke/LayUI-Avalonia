@@ -1,0 +1,48 @@
+<Window
+    x:Class="BusinessApp.Desktop.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="BusinessApp.Desktop"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Background="Transparent"
+    FontFamily="SourceHanSans"
+    SystemDecorations="None"
+    TransparencyBackgroundFallback="Transparent"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <lay:LayTitleBar
+        CornerRadius="0"
+        HeaderHeight="0"
+        HeaderVisible="False">
+        <Grid Background="#252525" RowDefinitions="auto,*">
+            <Grid
+                Name="Header"
+                Height="35"
+                Background="Transparent">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontWeight="Bold"
+                    Foreground="#5E5E5E"
+                    Text="LayUI-Avalonia" />
+            </Grid>
+            <Border
+                Grid.Row="1"
+                Margin="8,0,8,8"
+                Background="#141414"
+                BorderBrush="#020202"
+                BorderThickness="0,1,0,0">
+                <Grid ClipToBounds="True" RowDefinitions="auto,*">
+                    <Border
+                        Height="45"
+                        Background="#191919"
+                        BoxShadow="0 3 4 #000" />
+                </Grid>
+            </Border>
+        </Grid>
+    </lay:LayTitleBar>
+</Window>
