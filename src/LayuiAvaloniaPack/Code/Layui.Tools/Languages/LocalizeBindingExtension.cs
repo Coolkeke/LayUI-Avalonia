@@ -1,65 +1,58 @@
 ﻿using Avalonia;
-using Avalonia.Data;
-using Avalonia.Data.Converters;
-using Avalonia.Logging;
-using Avalonia.Markup.Xaml.MarkupExtensions;
-using Avalonia.Markup.Xaml;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Avalonia.Controls;
-using System.ComponentModel;
-using System.Drawing;
-using DryIoc;
-using System.Reactive;
+using Avalonia.Data; 
 using System.Reactive.Subjects;
-using Avalonia.Threading;
-using static ImTools.ImMap;
+using Avalonia.Threading; 
 
 namespace Layui.Tools.Languages
 {
 
     /// <summary>
-    /// 待测试
+    /// 绑定翻译
     /// </summary>
     public class LocalizeBindingExtension : AvaloniaObject
     {
-        static LocalizeBindingExtension() {
-            PathProperty.Changed.AddClassHandler<LocalizeBindingExtension>((o, e) =>
-            {
-                if (o is null)
-                    return; 
-            });
-        }
-        /// <summary>
-        /// Comment
-        /// </summary>
-        private IBinding Binding { get; set; }
-        private object Source { get; set; }
-        public LocalizeBindingExtension(IBinding binding) 
+        static LocalizeBindingExtension()
         {
-            Source = LanguageManager.Instance;
-            Binding = binding;
-            this.Bind(PathProperty, binding); 
+            PathProperty.Changed.AddClassHandler<LocalizeBindingExtension>((o, e) => o.UpdateLanguage());
         }
         /// <summary>
-        /// Defines the <see cref="Path"/> property.
+        /// 修改翻译
         /// </summary>
+        private void UpdateLanguage()
+        {
+            Dispatcher.UIThread.InvokeAsync(() => Subject?.OnNext(LanguageManager.Instance[Path]));
+        }
+
+        public LocalizeBindingExtension(IBinding binding)
+        {
+            this.Bind(PathProperty, binding);
+        }
+         
         internal static readonly StyledProperty<string> PathProperty =
             AvaloniaProperty.Register<LocalizeBindingExtension, string>(nameof(Path), string.Empty); 
         /// <summary>
-        /// Comment
+        /// 翻译Key
         /// </summary>
         internal string Path
         {
             get { return GetValue(PathProperty); }
             set { SetValue(PathProperty, value); }
-        } 
+        }
+        private BehaviorSubject<object>? Subject { get; set; }
         public object ProvideValue()
-        { 
-            return Binding; 
+        {
+            Subject = new BehaviorSubject<object>(string.Empty);
+            LanguageManager.Instance.UpdateLanguageChanged +=() =>
+            {
+                Dispatcher.UIThread.InvokeAsync(() => Subject?.OnNext(LanguageManager.Instance[Path]));
+            };
+            var binding = new Binding
+            {
+                Mode = BindingMode.OneWay,
+                Path = $"Subject^",
+                Source = this,
+            };
+            return binding;
         }
     }
 }
