@@ -15,4 +15,19 @@
     <sys:String x:Key="Message-Problem">希望了解我更多吗？</sys:String>
     <sys:String x:Key="Message-Go">火速围观</sys:String>
     <sys:String x:Key="Message-Close">我拒绝</sys:String>
+    <sys:String x:Key="Card">卡片</sys:String>
+    <sys:String x:Key="Message">信息</sys:String>
+    <sys:String x:Key="Notification">通知</sys:String>
+    <sys:String x:Key="TabControl">选项卡</sys:String>
+    <sys:String x:Key="StepBar">步骤条</sys:String>
+    <sys:String x:Key="Carousel">轮播</sys:String>
+    <sys:String x:Key="Expander">折叠板</sys:String>
+    <sys:String x:Key="GroupBox">面板</sys:String>
+    <sys:String x:Key="TreeView">树形图</sys:String>
+    <sys:String x:Key="Legend">分割线</sys:String>
+    <sys:String x:Key="Badge">标记</sys:String>
+    <sys:String x:Key="Drawer">抽屉</sys:String>
+    <sys:String x:Key="Menu">菜单</sys:String>
+    <sys:String x:Key="List">列表</sys:String>
+    <sys:String x:Key="Loading">加载动画</sys:String>
 </ResourceDictionary>

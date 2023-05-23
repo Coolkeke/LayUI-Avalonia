@@ -111,6 +111,11 @@
                 BorderThickness="0"
                 Items="{Binding Menus}"
                 SelectedItem="{Binding MenuInfo}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
                 <ListBox.Styles>
                     <Style Selector="ListBoxItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch" />

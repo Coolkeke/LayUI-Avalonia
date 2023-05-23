@@ -21,7 +21,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Grid >
+                    <Grid>
                         <lay:LayCard
                             Background="{TemplateBinding Background}"
                             Blur="7"
@@ -154,6 +154,7 @@
                         </lay:LayCard>
                         <Grid
                             Name="PART_BeginResizeDrag"
+                            Margin="-3"
                             Background="{x:Null}"
                             ColumnDefinitions="5,*,5"
                             RowDefinitions="5,*,5">

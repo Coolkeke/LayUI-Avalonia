@@ -8,11 +8,25 @@
     <sys:String x:Key="Image">Image</sys:String>
     <sys:String x:Key="ProgressBar">ProgressBar</sys:String>
     <sys:String x:Key="Keyboard">Keyboard</sys:String>
-    <sys:String x:Key="Form">Form</sys:String>
     <sys:String x:Key="Dialog">Dialog</sys:String>
     <sys:String x:Key="Message-Title">You know what? dear!</sys:String>
     <sys:String x:Key="Message-Content">This is a dialog box developed with the cross-platform framework developed by Avalonia</sys:String>
     <sys:String x:Key="Message-Problem">Want to know more about me?</sys:String>
     <sys:String x:Key="Message-Go">Go</sys:String>
     <sys:String x:Key="Message-Close">No</sys:String>
+    <sys:String x:Key="Card">Card</sys:String>
+    <sys:String x:Key="Message">Message</sys:String>
+    <sys:String x:Key="Notification">Notification</sys:String>
+    <sys:String x:Key="TabControl">TabControl</sys:String>
+    <sys:String x:Key="StepBar">StepBar</sys:String>
+    <sys:String x:Key="Carousel">Carousel</sys:String>
+    <sys:String x:Key="Expander">Expander</sys:String>
+    <sys:String x:Key="GroupBox">GroupBox</sys:String>
+    <sys:String x:Key="TreeView">TreeView</sys:String>
+    <sys:String x:Key="Legend">Legend</sys:String>
+    <sys:String x:Key="Badge">Badge</sys:String>
+    <sys:String x:Key="Drawer">Drawer</sys:String>
+    <sys:String x:Key="Menu">Menu</sys:String>
+    <sys:String x:Key="List">Items</sys:String>
+    <sys:String x:Key="Loading">Loading</sys:String>
 </ResourceDictionary>

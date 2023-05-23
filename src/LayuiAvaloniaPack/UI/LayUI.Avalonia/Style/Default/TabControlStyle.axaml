@@ -1,7 +1,14 @@
 ﻿<Styles
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls"
+    xmlns:layCv="clr-namespace:LayUI.Avalonia.Converters;assembly=LayUI.Avalonia">
+    <Styles.Resources>
+        <layCv:DoubleToThicknessConverter x:Key="Left" Filter="Left" />
+        <layCv:DoubleToThicknessConverter x:Key="Right" Filter="Right" />
+        <layCv:DoubleToThicknessConverter x:Key="Up" Filter="Up" />
+        <layCv:DoubleToThicknessConverter x:Key="Down" Filter="Down" />
+    </Styles.Resources>
     <Design.PreviewWith>
         <Border Padding="20">
             <lay:LayTabControl Width="500" Height="300">
@@ -20,6 +27,7 @@
     </Design.PreviewWith>
     <Style Selector="lay|LayTabControl">
         <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Line" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
         <Setter Property="LineClolor" Value="{DynamicResource Gray}" />
         <Setter Property="Template">
@@ -37,27 +45,76 @@
                             ItemTemplate="{TemplateBinding ItemTemplate}"
                             Items="{TemplateBinding Items}"
                             ItemsPanel="{TemplateBinding ItemsPanel}" />
-                        <Border
-                            Name="PART_BorderContentHost"
-                            BorderBrush="{TemplateBinding LineClolor}"
-                            BorderThickness="{TemplateBinding LineThickness}">
-                            <ContentPresenter
-                                Name="PART_SelectedContentHost"
-                                Margin="{TemplateBinding Padding}"
-                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Content="{TemplateBinding SelectedContent}"
-                                ContentTemplate="{TemplateBinding SelectedContentTemplate}"
-                                UseLayoutRounding="True" />
+                        <Border Name="PART_BorderContentHost">
+                            <Grid>
+                                <Grid
+                                    Name="PART_TopLine"
+                                    Height="{TemplateBinding Line}"
+                                    VerticalAlignment="Top"
+                                    Background="{TemplateBinding LineClolor}"
+                                    IsHitTestVisible="False" />
+                                <Grid
+                                    Name="PART_BottomLine"
+                                    Height="{TemplateBinding Line}"
+                                    VerticalAlignment="Bottom"
+                                    Background="{TemplateBinding LineClolor}"
+                                    IsHitTestVisible="False" />
+                                <Grid
+                                    Name="PART_LeftLine"
+                                    Width="{TemplateBinding Line}"
+                                    HorizontalAlignment="Left"
+                                    Background="{TemplateBinding LineClolor}"
+                                    IsHitTestVisible="False" />
+                                <Grid
+                                    Name="PART_RightLine"
+                                    Width="{TemplateBinding Line}"
+                                    HorizontalAlignment="Right"
+                                    Background="{TemplateBinding LineClolor}"
+                                    IsHitTestVisible="False" />
+                                <Grid Name="PART_ContentHost">
+                                    <ContentPresenter
+                                        Name="PART_SelectedContentHost"
+                                        Margin="{TemplateBinding Padding}"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        Content="{TemplateBinding SelectedContent}"
+                                        ContentTemplate="{TemplateBinding SelectedContentTemplate}"
+                                        UseLayoutRounding="True" />
+                                </Grid>
+
+                            </Grid>
                         </Border>
                     </DockPanel>
                 </Border>
             </ControlTemplate>
         </Setter>
     </Style>
-    <Style Selector="lay|LayTabControl[TabStripPlacement=Top]">
-        <Setter Property="Padding" Value="0 4 0 0" />
-        <Setter Property="LineThickness" Value="0 1 0 0" />
+    <Style Selector="lay|LayTabControl /template/ Grid#PART_TopLine">
+        <Setter Property="IsVisible" Value="false" />
+    </Style>
+    <Style Selector="lay|LayTabControl /template/ Grid#PART_BottomLine">
+        <Setter Property="IsVisible" Value="false" />
+    </Style>
+    <Style Selector="lay|LayTabControl /template/ Grid#PART_LeftLine">
+        <Setter Property="IsVisible" Value="false" />
+    </Style>
+    <Style Selector="lay|LayTabControl /template/ Grid#PART_RightLine">
+        <Setter Property="IsVisible" Value="false" />
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Top]/template/ Grid#PART_TopLine">
+        <Setter Property="IsVisible" Value="true" />
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Top]/template/ Grid#PART_ContentHost">
+        <Setter Property="Margin" Value="{Binding $parent[lay:LayTabControl].Line, Converter={StaticResource Up}}" />
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Bottom]/template/ Grid#PART_ContentHost">
+        <Setter Property="Margin" Value="{Binding $parent[lay:LayTabControl].Line, Converter={StaticResource Down}}" />
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Left]/template/ Grid#PART_ContentHost">
+        <Setter Property="Margin" Value="{Binding $parent[lay:LayTabControl].Line, Converter={StaticResource Left}}" />
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Right]/template/ Grid#PART_ContentHost">
+        <Setter Property="Margin" Value="{Binding $parent[lay:LayTabControl].Line, Converter={StaticResource Right}}" />
     </Style>
     <Style Selector="lay|LayTabControl[TabStripPlacement=Top] /template/ ItemsPresenter#PART_ItemsPresenter">
         <Setter Property="DockPanel.Dock" Value="Top" />
@@ -65,28 +122,25 @@
     <Style Selector="lay|LayTabControl[TabStripPlacement=Bottom] /template/ ItemsPresenter#PART_ItemsPresenter">
         <Setter Property="DockPanel.Dock" Value="Bottom" />
     </Style>
-    <Style Selector="lay|LayTabControl[TabStripPlacement=Bottom]">
-        <Setter Property="LineThickness" Value="0 0 0 1" />
-        <Setter Property="Padding" Value="0 0 0 4" />
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Bottom]/template/ Grid#PART_BottomLine">
+        <Setter Property="IsVisible" Value="true" />
     </Style>
     <Style Selector="lay|LayTabControl[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter">
         <Setter Property="DockPanel.Dock" Value="Left" />
     </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Left]/template/ Grid#PART_LeftLine">
+        <Setter Property="IsVisible" Value="true" />
+    </Style>
     <Style Selector="lay|LayTabControl[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
         <Setter Property="Orientation" Value="Vertical" />
-    </Style>
-    <Style Selector="lay|LayTabControl[TabStripPlacement=Left]">
-        <Setter Property="LineThickness" Value="1 0 0 0" />
-        <Setter Property="Padding" Value="4 0 0 0" />
     </Style>
     <Style Selector="lay|LayTabControl[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter">
         <Setter Property="DockPanel.Dock" Value="Right" />
     </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Right]/template/ Grid#PART_RightLine">
+        <Setter Property="IsVisible" Value="true" />
+    </Style>
     <Style Selector="lay|LayTabControl[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
         <Setter Property="Orientation" Value="Vertical" />
-    </Style>
-    <Style Selector="lay|LayTabControl[TabStripPlacement=Right]">
-        <Setter Property="LineThickness" Value="0 0 1 0" />
-        <Setter Property="Padding" Value="0 0 4 0" />
     </Style>
 </Styles>

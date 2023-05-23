@@ -6,17 +6,26 @@
     xmlns:lay="using:LayUI.Avalonia.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="450"
-    d:DesignWidth="800"
+    d:DesignWidth="500"
     mc:Ignorable="d">
     <UniformGrid Columns="1">
         <Grid RowDefinitions="auto,*">
             <TextBlock Margin="5" Text="这是默认" />
             <lay:LayTabControl Grid.Row="1">
                 <lay:LayTabItem Header="这是选卡一">
-                    <TextBlock Text="这是选卡一" />
+                    <TextBlock Text="这是选卡一这是选卡一这是选卡一这是选卡一这是选卡一这是选卡一这是选卡一" TextWrapping="Wrap" />
                 </lay:LayTabItem>
                 <lay:LayTabItem Header="这是选卡二">
                     <TextBlock Text="这是选卡二" />
+                </lay:LayTabItem>
+                <lay:LayTabItem Header="这是选卡三">
+                    <TextBlock Text="这是选卡三" />
+                </lay:LayTabItem>
+                <lay:LayTabItem Header="这是选卡三">
+                    <TextBlock Text="这是选卡三" />
+                </lay:LayTabItem>
+                <lay:LayTabItem Header="这是选卡三">
+                    <TextBlock Text="这是选卡三" />
                 </lay:LayTabItem>
                 <lay:LayTabItem Header="这是选卡三">
                     <TextBlock Text="这是选卡三" />

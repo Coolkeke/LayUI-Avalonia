@@ -18,7 +18,7 @@ namespace LayUI.Avalonia.Controls
         /// Defines the <see cref="LineClolor"/> property.
         /// </summary>
         public static readonly StyledProperty<IBrush> LineClolorProperty =
-            AvaloniaProperty.Register<Control, IBrush>(nameof(LineClolor));
+            AvaloniaProperty.Register<LayTabControl, IBrush>(nameof(LineClolor));
 
         /// <summary>
         /// 线颜色
@@ -30,18 +30,33 @@ namespace LayUI.Avalonia.Controls
         }
 
         /// <summary>
-        /// Defines the <see cref="LineThickness"/> property.
+        /// Defines the <see cref="Line"/> property.
         /// </summary>
-        public static readonly StyledProperty<Thickness> LineThicknessProperty =
-            AvaloniaProperty.Register<Control, Thickness>(nameof(LineThickness));
+        public static readonly StyledProperty<double> LineProperty =
+            AvaloniaProperty.Register<LayTabControl, double>(nameof(Line));
 
         /// <summary>
         /// 线粗细
         /// </summary>
-        public Thickness LineThickness
+        public double Line
         {
-            get { return GetValue(LineThicknessProperty); }
-            internal set { SetValue(LineThicknessProperty, value); }
+            get { return GetValue(LineProperty); }
+            set { SetValue(LineProperty, value); }
+        }
+
+        /// <summary>
+        /// Defines the <see cref="HeaderBackground"/> property.
+        /// </summary>
+        public static readonly StyledProperty<IBrush> HeaderBackgroundProperty =
+            AvaloniaProperty.Register<LayTabControl, IBrush>(nameof(HeaderBackground));
+
+        /// <summary>
+        /// 头部颜色
+        /// </summary>
+        public IBrush HeaderBackground
+        {
+            get { return GetValue(HeaderBackgroundProperty); }
+            set { SetValue(HeaderBackgroundProperty, value); }
         }
         /// <summary>
         /// 重写子项控件（LayTabItem）
