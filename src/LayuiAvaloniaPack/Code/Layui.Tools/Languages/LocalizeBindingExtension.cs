@@ -42,10 +42,8 @@ namespace Layui.Tools.Languages
         public object ProvideValue()
         {
             Subject = new BehaviorSubject<object>(string.Empty);
-            LanguageManager.Instance.UpdateLanguageChanged +=() =>
-            {
-                Dispatcher.UIThread.InvokeAsync(() => Subject?.OnNext(LanguageManager.Instance[Path]));
-            };
+            LanguageManager.Instance.UpdateLanguageChanged -= Instance_UpdateLanguageChanged;
+            LanguageManager.Instance.UpdateLanguageChanged += Instance_UpdateLanguageChanged;
             var binding = new Binding
             {
                 Mode = BindingMode.OneWay,
@@ -53,6 +51,11 @@ namespace Layui.Tools.Languages
                 Source = this,
             };
             return binding;
+        }
+
+        private void Instance_UpdateLanguageChanged()
+        {
+            Dispatcher.UIThread.InvokeAsync(() => Subject?.OnNext(LanguageManager.Instance[Path]));
         }
     }
 }
