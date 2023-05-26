@@ -11,6 +11,8 @@ using LayUI.Avalonia.Interface;
 using LayUI.Avalonia.Interface.Page;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -79,8 +81,7 @@ namespace LayUI.Avalonia.Global
         /// 获取唯一值
         /// </summary>
         public static readonly AttachedProperty<string> TokenProperty = AvaloniaProperty.RegisterAttached<IAvaloniaObject, IAvaloniaObject, string>(
-            "Token", null);
-
+            "Token", null); 
         public Task Show(string dialogName, ILayDialogParameter parameters, string token)
         {
             return Alert(dialogName, parameters, null, token);
@@ -111,6 +112,8 @@ namespace LayUI.Avalonia.Global
                     //抓取当前展示弹窗容器
                     LayDialogHost host = DialogHosts[token];
                     if (host.Items == null) throw new Exception($"当前{nameof(LayDialogHost)}元素尚未初始化完成");
+                    var count = host.Items.Children.Where(x => x is LayDialogWindow window && window.GroupName == dialogName&& window.GetDialogViewModel().isSingle)?.Count();
+                    if (count != null && count >= 1) return;
                     host.TaskCompletion = new TaskCompletionSource<object>();
                     //创建内容视图
                     var view = Activator.CreateInstance(DialogViews[dialogName]) as UserControl;
@@ -124,14 +127,15 @@ namespace LayUI.Avalonia.Global
                     LayDialogWindow dialogView = new LayDialogWindow(callback, host)
                     {
                         Content = view,
-                        DataContext = view.DataContext
+                        DataContext = view.DataContext,
+                        GroupName = dialogName
                     };
                     //抓取当前需要传递的参数并且传递给对应视图的ViewModel
                     if (!(view.DataContext is ILayDialogAware viewModel))
                         throw new NullReferenceException("对话框的 ViewModel 必须实现 IDialogAware 接口 ");
                     //给对应的ViewModel传值
-                    ViewAndViewModelAction<ILayDialogAware>(viewModel, d => d.OnDialogOpened(parameters));
-                    host.Items.Children.Add(dialogView); 
+                    ViewAndViewModelAction<ILayDialogAware>(viewModel, d => d.OnOpened(parameters));
+                    host.Items.Children.Add(dialogView);
                     await host.TaskCompletion.Task;
                 }
                 catch (Exception ex)

@@ -41,6 +41,8 @@ namespace Layui.Main.ViewModels
         public DelegateCommand GoCommand =>
             _GoCommand ?? (_GoCommand = new DelegateCommand(ExecuteGoCommand));
 
+        public bool isSingle => false;
+
         void ExecuteGoCommand()
         {
             Process.Start(new ProcessStartInfo
@@ -50,7 +52,12 @@ namespace Layui.Main.ViewModels
             });
             RequestClose?.Invoke(null);
         }
-        public void OnDialogOpened(ILayDialogParameter parameters)
+        public void OnOpened(ILayDialogParameter parameters)
+        {
+           
+        }
+
+        public void OnClosed()
         {
            
         }

@@ -32,7 +32,14 @@ namespace LayUI.Avalonia.Global
             RequestCloseHandler = GetRequestCloseHandler();
         }
         public ILayDialogResult Result { get; set; }
-
+        /// <summary>
+        /// 组名
+        /// </summary>
+        internal string GroupName { get; set; }
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        internal DateTime CreateTime { get; } = DateTime.Now;
         static LayDialogWindow()
         {
             IsOpenProperty.Changed.AddClassHandler<LayDialogWindow>((o, e) => o.OnOpenChanged());
@@ -68,7 +75,7 @@ namespace LayUI.Avalonia.Global
             requestCloseHandler = (o) =>
             {
                 Result = o;
-                IsOpen = false;
+                IsOpen = false; 
             };
             return requestCloseHandler;
         }
@@ -102,6 +109,7 @@ namespace LayUI.Avalonia.Global
         {
             base.OnDetachedFromLogicalTree(e);
             if (PART_Body != null) PART_Body.PointerPressed -= PART_Body_PointerPressed;
+            this.GetDialogViewModel().OnClosed();
             this.GetDialogViewModel().RequestClose -= RequestCloseHandler;
             //抓取回调后的数据并回传
             if (Result == null) Result = new LayDialogResult() { Result = ButtonResult.None };
