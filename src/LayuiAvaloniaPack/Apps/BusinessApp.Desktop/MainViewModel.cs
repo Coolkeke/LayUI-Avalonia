@@ -24,7 +24,7 @@ namespace BusinessApp.Desktop
         }
         public MainViewModel()
         {
-
+            ExecuteTestCommand();
         }
         private DelegateCommand _TestCommand;
         public DelegateCommand TestCommand =>
