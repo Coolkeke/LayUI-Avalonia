@@ -53,12 +53,13 @@
                     </Border>
                     <Border
                         Grid.Column="1"
-                        Padding="10,0"
+                        Padding="30,0"
                         BorderBrush="#6FAD02"
                         BorderThickness="0,0,0,1">
                         <TextBlock
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
+                            FontSize="16"
                             FontWeight="Bold"
                             Foreground="#5E5E5E"
                             Text="LayUI-Avalonia" />
@@ -100,16 +101,46 @@
                         <Border
                             Height="45"
                             Background="#191919"
-                            BoxShadow="0 3 4 #000" />
+                            BoxShadow="0 3 4 #000">
+                            <Grid>
+                                <lay:LayButtonBase
+                                    Margin="10,0"
+                                    HorizontalAlignment="Right"
+                                    Background="Transparent"
+                                    Command="{Binding TestCommand}"
+                                    Content="刷新"
+                                    Foreground="#6FAD02" />
+                            </Grid>
+                        </Border>
                         <Grid Grid.Row="1">
-                            <lay:LayButtonBase
-                                Width="150"
-                                Height="40"
-                                Background="#6FAD02"
-                                Command="{Binding TestCommand}"
-                                Content="刷新"
-                                Foreground="White"
-                                IsEnabled="{Binding !IsActive}" />
+                            <ScrollViewer>
+                                <ItemsControl
+                                    Margin="10"
+                                    VerticalAlignment="Top"
+                                    Items="{Binding List}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="5" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border
+                                                Height="150"
+                                                Margin="10"
+                                                Background="#252525"
+                                                BoxShadow="0 1 1 #000">
+                                                <TextBlock
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="30"
+                                                    Foreground="White"
+                                                    Text="{Binding}" />
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </ScrollViewer>
                         </Grid>
                     </Grid>
                 </Border>
