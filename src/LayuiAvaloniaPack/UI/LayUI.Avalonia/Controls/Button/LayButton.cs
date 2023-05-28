@@ -10,7 +10,7 @@ namespace LayUI.Avalonia.Controls
     /// <summary>
     /// 按钮
     /// </summary>
-    public class LayButton : Button
+    public class LayButton : LayButtonBase
     {
         /// <summary>
         /// Defines the <see cref="Type"/> property.

@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:lay="using:LayUI.Avalonia.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vn="using:BusinessApp.Desktop"
     Title="BusinessApp.Desktop"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -14,6 +15,9 @@
     TransparencyBackgroundFallback="Transparent"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <Window.DataContext>
+        <vn:MainViewModel />
+    </Window.DataContext>
     <lay:LayTitleBar
         CornerRadius="0"
         HeaderHeight="0"
@@ -23,26 +27,93 @@
                 Name="Header"
                 Height="35"
                 Background="Transparent">
-                <TextBlock
+                <Grid
+                    Margin="0,0,0,5"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    FontWeight="Bold"
-                    Foreground="#5E5E5E"
-                    Text="LayUI-Avalonia" />
+                    ColumnDefinitions="auto,*,auto">
+                    <Border Width="20" ZIndex="1">
+                        <Grid Width="1">
+                            <Grid.Background>
+                                <LinearGradientBrush StartPoint="50%,0%" EndPoint="50%,100%">
+                                    <LinearGradientBrush.GradientStops>
+                                        <GradientStop Offset="0" Color="#FF323232" />
+                                        <GradientStop Offset="1" Color="#6FAD02" />
+                                    </LinearGradientBrush.GradientStops>
+                                </LinearGradientBrush>
+                            </Grid.Background>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleY="1.14" />
+                                    <SkewTransform />
+                                    <RotateTransform Angle="-30" />
+                                    <TranslateTransform X="1.15" />
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                        </Grid>
+                    </Border>
+                    <Border
+                        Grid.Column="1"
+                        Padding="10,0"
+                        BorderBrush="#6FAD02"
+                        BorderThickness="0,0,0,1">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontWeight="Bold"
+                            Foreground="#5E5E5E"
+                            Text="LayUI-Avalonia" />
+
+                    </Border>
+                    <Border Grid.Column="2" Width="20">
+                        <Grid Width="1">
+                            <Grid.Background>
+                                <LinearGradientBrush StartPoint="50%,0%" EndPoint="50%,100%">
+                                    <LinearGradientBrush.GradientStops>
+                                        <GradientStop Offset="0" Color="#FF323232" />
+                                        <GradientStop Offset="1" Color="#6FAD02" />
+                                    </LinearGradientBrush.GradientStops>
+                                </LinearGradientBrush>
+                            </Grid.Background>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleY="1.14" />
+                                    <SkewTransform />
+                                    <RotateTransform Angle="30" />
+                                    <TranslateTransform X="-2.15" />
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                        </Grid>
+                    </Border>
+                </Grid>
             </Grid>
-            <Border
+            <lay:LayLoading
                 Grid.Row="1"
                 Margin="8,0,8,8"
-                Background="#141414"
-                BorderBrush="#020202"
-                BorderThickness="0,1,0,0">
-                <Grid ClipToBounds="True" RowDefinitions="auto,*">
-                    <Border
-                        Height="45"
-                        Background="#191919"
-                        BoxShadow="0 3 4 #000" />
-                </Grid>
-            </Border>
+                IsActive="{Binding IsActive}"
+                Type="Simple"
+                Color="#6FAD02">
+                <Border
+                    Background="#141414"
+                    BorderBrush="#020202"
+                    BorderThickness="0,1,0,0">
+                    <Grid ClipToBounds="True" RowDefinitions="auto,*">
+                        <Border
+                            Height="45"
+                            Background="#191919"
+                            BoxShadow="0 3 4 #000" />
+                        <Grid Grid.Row="1">
+                            <lay:LayButtonBase
+                                Width="150"
+                                Height="40"
+                                Background="#6FAD02"
+                                Command="{Binding TestCommand}"
+                                Content="刷新"
+                                Foreground="White"
+                                IsEnabled="{Binding !IsActive}" />
+                        </Grid>
+                    </Grid>
+                </Border>
+            </lay:LayLoading>
         </Grid>
     </lay:LayTitleBar>
 </Window>

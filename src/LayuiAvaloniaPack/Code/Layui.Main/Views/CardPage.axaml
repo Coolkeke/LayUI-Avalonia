@@ -6,11 +6,10 @@
     xmlns:lay="using:LayUI.Avalonia.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
-    d:DesignHeight="450"
     d:DesignWidth="800"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
-    <StackPanel>
+    <StackPanel Background="#f7f7f7">
         <lay:LayCard
             Height="100"
             Margin="10"
@@ -50,5 +49,18 @@
                 FontSize="50"
                 Text="卡片" />
         </lay:LayCard>
+        <Border
+            Height="100"
+            Margin="10"
+            Background="#f7f7f7"
+            BoxShadow=" 15 15 30 #c2c3c3, -15 -15 30 #ffffff"
+            CornerRadius="10" />
+        <Border
+            Height="100"
+            Margin="10"
+            Background="#f7f7f7"
+            BoxShadow="inset 15 15 30 #c3c3c3,inset -15 -15 30 #ffffff"
+            CornerRadius="10" />
+
     </StackPanel>
 </UserControl>

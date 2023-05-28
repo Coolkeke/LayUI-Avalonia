@@ -57,6 +57,54 @@
             </lay:LayButtonGroup>
         </StackPanel>
     </Design.PreviewWith>
+    <Style Selector="lay|LayButtonBase">
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border Name="PART_BorderBody" CornerRadius="{TemplateBinding CornerRadius}">
+                        <Grid>
+                            <Border
+                                Name="PART_Border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}" />
+                            <Border ClipToBounds="True" CornerRadius="{TemplateBinding CornerRadius}">
+                                <ContentPresenter
+                                    Name="PART_ContentPresenter"
+                                    Padding="{TemplateBinding Padding}"
+                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                    UseLayoutRounding="True" />
+                            </Border>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayButtonBase:disabled /template/ Border#PART_Border">
+        <Setter Property="Background" Value="{DynamicResource LighGray}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+    <Style Selector="lay|LayButtonBase:pointerover/template/ Border#PART_Border">
+        <Setter Property="Opacity" Value="0.6" />
+    </Style>
+    <Style Selector="lay|LayButtonBase:pressed/template/ Border#PART_Border">
+        <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="lay|LayButtonBase:disabled /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource Gray}" />
+    </Style>
     <Style Selector="lay|LayButton">
         <Setter Property="CornerRadius" Value="2" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />

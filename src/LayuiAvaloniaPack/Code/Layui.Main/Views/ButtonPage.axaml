@@ -5,7 +5,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:lay="using:LayUI.Avalonia.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <StackPanel>
@@ -74,5 +73,54 @@
             <Button Content="按钮组" CornerRadius="0" />
             <Button Content="按钮组" CornerRadius="0" />
         </lay:LayButtonGroup>
+        <lay:LayButtonBase
+            Height="40"
+            Margin="0,5"
+            Background="{DynamicResource Gradient}"
+            Content="七色调"
+            Foreground="White" />
+        <lay:LayButtonBase
+            Height="40"
+            Margin="0,5"
+            Background="{DynamicResource Red}"
+            Content="七色调"
+            Foreground="White" />
+        <lay:LayButtonBase
+            Height="40"
+            Margin="0,5"
+            Background="{DynamicResource Orange}"
+            Content="七色调"
+            Foreground="White" />
+        <lay:LayButtonBase
+            Height="40"
+            Margin="0,5"
+            Background="{DynamicResource Green}"
+            Content="七色调"
+            Foreground="White" />
+        <lay:LayButtonBase
+            Height="40"
+            Margin="0,5"
+            Background="{DynamicResource Blue}"
+            Content="七色调"
+            Foreground="White" />
+        <lay:LayButtonBase
+            Height="40"
+            Margin="0,5"
+            Background="{DynamicResource Purple}"
+            Content="七色调"
+            Foreground="White" />
+        <lay:LayButtonBase
+            Height="40"
+            Margin="0,5"
+            Background="{DynamicResource Deep}"
+            Content="七色调"
+            Foreground="White" />
+        <lay:LayButtonBase
+            Height="40"
+            Margin="0,5"
+            Background="{DynamicResource Deep}"
+            Content="七色调"
+            Foreground="White"
+            IsEnabled="False" />
     </StackPanel>
 </UserControl>
