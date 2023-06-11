@@ -8,7 +8,7 @@ namespace Layui.Tools.Fonts
     public class CustomFontManagerImpl : LayCustomFontManager
     {
         private readonly Typeface _emojiTypeface =
-            new Typeface("resm:LayuiApp.Desktop.Assets.Fonts.iconfont.ttf?assembly=LayuiApp.Desktop#iconfont");
+            new Typeface("resm:LayuiApp.Desktop.Assets.Fonts.iconfont.ttf?assembly=LayuiApp#iconfont");
         public override void InitFontFamiles()
         {
             AddFontFamily("Icon", _emojiTypeface);

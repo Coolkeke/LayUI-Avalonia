@@ -13,31 +13,31 @@
             <lay:LayMenuItem Header="菜单">
                 <lay:LayMenuItem Header="LayUI-Avalonia">
                     <lay:LayMenuItem.Icon>
-                        <Image Source="avares://LayuiApp.Desktop/Assets/AvaloniaLogo.png" />
+                        <Image Source="avares://LayuiApp/Assets/AvaloniaLogo.png" />
                     </lay:LayMenuItem.Icon>
                 </lay:LayMenuItem>
                 <lay:LayMenuItem Header="LayUI-Avalonia">
                     <lay:LayMenuItem.Icon>
-                        <Image Source="avares://LayuiApp.Desktop/Assets/AvaloniaLogo.png" />
+                        <Image Source="avares://LayuiApp/Assets/AvaloniaLogo.png" />
                     </lay:LayMenuItem.Icon>
                 </lay:LayMenuItem>
                 <lay:LayMenuItem Header="menu item">
                     <lay:LayMenuItem.Icon>
-                        <Image Source="avares://LayuiApp.Desktop/Assets/AvaloniaLogo.png" />
+                        <Image Source="avares://LayuiApp/Assets/AvaloniaLogo.png" />
                     </lay:LayMenuItem.Icon>
                     <lay:LayMenuItem Header="LayUI-Avalonia">
                         <lay:LayMenuItem.Icon>
-                            <Image Source="avares://LayuiApp.Desktop/Assets/AvaloniaLogo.png" />
+                            <Image Source="avares://LayuiApp/Assets/AvaloniaLogo.png" />
                         </lay:LayMenuItem.Icon>
                     </lay:LayMenuItem>
                     <lay:LayMenuItem Header="LayUI-Avalonia">
                         <lay:LayMenuItem.Icon>
-                            <Image Source="avares://LayuiApp.Desktop/Assets/AvaloniaLogo.png" />
+                            <Image Source="avares://LayuiApp/Assets/AvaloniaLogo.png" />
                         </lay:LayMenuItem.Icon>
                     </lay:LayMenuItem>
                     <lay:LayMenuItem Header="LayUI-Avalonia">
                         <lay:LayMenuItem.Icon>
-                            <Image Source="avares://LayuiApp.Desktop/Assets/AvaloniaLogo.png" />
+                            <Image Source="avares://LayuiApp/Assets/AvaloniaLogo.png" />
                         </lay:LayMenuItem.Icon>
                     </lay:LayMenuItem>
                 </lay:LayMenuItem>

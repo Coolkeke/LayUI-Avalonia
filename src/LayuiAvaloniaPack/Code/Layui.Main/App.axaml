@@ -9,7 +9,7 @@
     </prism:PrismApplication.DataContext>
     <TrayIcon.Icons>
         <TrayIcons>
-            <TrayIcon Icon="avares://LayuiApp.Desktop/Assets/AvaloniaLogo.png" ToolTipText="欢迎使用LayUI-Avalonia组件库">
+            <TrayIcon Icon="avares://LayuiApp/Assets/AvaloniaLogo.png" ToolTipText="欢迎使用LayUI-Avalonia组件库">
                 <TrayIcon.Menu>
                     <NativeMenu>
                         <NativeMenuItem Command="{Binding ExitCommand}" Header="退出" />

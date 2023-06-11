@@ -18,7 +18,7 @@
     d:DesignWidth="1920"
     Background="Transparent"
     FontFamily="SourceHanSans"
-    Icon="avares://LayuiApp.Desktop/Assets/AvaloniaLogo.png"
+    Icon="avares://LayuiApp/Assets/AvaloniaLogo.png"
     SystemDecorations="None"
     TransparencyBackgroundFallback="Transparent"
     WindowStartupLocation="CenterScreen"
@@ -30,7 +30,7 @@
                     Width="20"
                     Height="20"
                     Margin="5,0"
-                    Source="avares://LayuiApp.Desktop/Assets/AvaloniaLogo.png"
+                    Source="avares://LayuiApp/Assets/AvaloniaLogo.png"
                     Stretch="Fill" />
                 <TextBlock VerticalAlignment="Center" Text="{Binding #mainWindow.Title, Mode=OneWay}" />
             </StackPanel>

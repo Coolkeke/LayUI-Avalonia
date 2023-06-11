@@ -6,6 +6,8 @@
     xmlns:ext="using:LayUI.Avalonia.Extends"
     xmlns:lay="using:LayUI.Avalonia.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:scg="clr-namespace:System.Collections;assembly=netstandard"
+    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <ScrollViewer>
@@ -51,7 +53,7 @@
                 Text="读取程序内嵌图片" />
             <Image
                 Margin="5"
-                ext:ImageHelper.Source="avares://LayuiApp.Desktop/Assets/2.jpg"
+                ext:ImageHelper.Source="avares://LayuiApp/Assets/2.jpg"
                 Stretch="Fill" />
             <TextBlock
                 HorizontalAlignment="Center"
@@ -119,7 +121,8 @@
                 HorizontalAlignment="Center"
                 FontSize="20"
                 Text="读取程序内嵌GIF图片" />
-            <lay:LayGifImage SourceUri="avares://LayuiApp.Desktop/Assets/Test.gif" />
+            <lay:LayGifImage SourceUri="avares://LayuiApp/Assets/Test.gif" />
+            <lay:LayUpload Suffix="jpeg,jpg" />
         </StackPanel>
     </ScrollViewer>
 
