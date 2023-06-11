@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Avalonia.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,8 +29,10 @@ namespace Layui.Tools.File
                 pReadByte = r.ReadBytes((int)r.BaseStream.Length);
                 return pReadByte;
             }
-            catch
+            catch(Exception ex)
             {
+                Logger.TryGet(LogEventLevel.Error, "LayUI-Avalonia")
+                    ?.Log("ReadFileToByte", "", ex);
                 return pReadByte;
             }
             finally
@@ -52,8 +55,10 @@ namespace Layui.Tools.File
                 pFileStream = new FileStream(fileName, FileMode.OpenOrCreate);
                 pFileStream.Write(pReadByte, 0, pReadByte.Length);
             }
-            catch
+            catch (Exception ex)
             {
+                Logger.TryGet(LogEventLevel.Error, "LayUI-Avalonia")
+                    ?.Log("WriteByteToFile", "", ex);
                 return false;
             }
             finally
