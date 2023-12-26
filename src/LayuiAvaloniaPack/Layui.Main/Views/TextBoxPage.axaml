@@ -1,0 +1,56 @@
+<UserControl
+    x:Class="Layui.Main.Views.TextBoxPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <ScrollViewer>
+        <StackPanel>
+            <lay:LayTextBox
+                MinHeight="40"
+                Margin="5"
+                IsFocus="True"
+                Text="{Binding Value, Mode=TwoWay}"
+                Watermark="只能输入数字" />
+            <lay:LayTextBox
+                Height="40"
+                Margin="5"
+                InputType="Number"
+                Watermark="只能输入数字" />
+            <lay:LayTextBox
+                Height="40"
+                Margin="5"
+                InputType="Phone"
+                Watermark="输入电话">
+                <lay:LayTextBox.InnerLeftContent>
+                    <TextBlock
+                        Margin="5,0"
+                        VerticalAlignment="Center"
+                        FontFamily="{DynamicResource Icon}"
+                        Text="&#xe9d4;" />
+                </lay:LayTextBox.InnerLeftContent>
+            </lay:LayTextBox>
+            <lay:LayTextBox
+                Height="40"
+                Margin="5"
+                Watermark="这是文本框">
+                <lay:LayTextBox.InnerRightContent>
+                    <TextBlock
+                        Margin="5,0"
+                        VerticalAlignment="Center"
+                        FontFamily="{DynamicResource Icon}"
+                        Text="&#xedaf;" />
+                </lay:LayTextBox.InnerRightContent>
+            </lay:LayTextBox>
+            <lay:LayTextBox
+                Height="40"
+                Margin="5"
+                PasswordChar="*"
+                Watermark="这是密码框" />
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

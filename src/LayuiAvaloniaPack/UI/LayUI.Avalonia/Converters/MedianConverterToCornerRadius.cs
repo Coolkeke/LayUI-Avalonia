@@ -1,9 +1,6 @@
-﻿using Avalonia;
-using Avalonia.Data.Converters;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
+﻿using Avalonia.Data.Converters;
+using Avalonia; 
+using System.Globalization; 
 
 namespace LayUI.Avalonia.Converters
 {
@@ -14,8 +11,8 @@ namespace LayUI.Avalonia.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (double.TryParse(value.ToString(), out double result))
-            { 
-                return new CornerRadius((double)MedianConverter.Instance.Convert(result,null,null,null));
+            {
+                return new CornerRadius((double)MedianConverter.Instance.Convert(result, null, null, null));
             }
             else
                 return new CornerRadius(0);

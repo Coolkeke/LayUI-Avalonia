@@ -5,8 +5,7 @@ using Avalonia.Markup.Xaml.Templates;
 using Avalonia.Threading;
 using LayUI.Avalonia.Controls;
 using LayUI.Avalonia.Enums;
-using LayUI.Avalonia.Interface;
-using LayUI.Avalonia.Models;
+using LayUI.Avalonia.Interfaces; 
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -29,10 +28,10 @@ namespace LayUI.Avalonia.Global
         }
         static LayNotification()
         {
-            TokenProperty.Changed.Subscribe(OnTokenChanged);
+            TokenProperty.Changed.AddClassHandler<AvaloniaObject>((o,e)=> OnTokenChanged(e));
         }
 
-        private static void OnTokenChanged(AvaloniaPropertyChangedEventArgs<string> obj)
+        private static void OnTokenChanged(AvaloniaPropertyChangedEventArgs obj)
         {
             if (obj.Sender is LayNotificationHost host)
             {
@@ -62,31 +61,31 @@ namespace LayUI.Avalonia.Global
         /// <summary>
         /// 获取唯一值
         /// </summary>
-        public static readonly AttachedProperty<string> TokenProperty = AvaloniaProperty.RegisterAttached<IAvaloniaObject, IAvaloniaObject, string>(
+        public static readonly AttachedProperty<string> TokenProperty = AvaloniaProperty.RegisterAttached<AvaloniaObject, AvaloniaObject, string>(
             "Token", null);
-        public void Show(Information info, string token)
+        public void Show(string title, object content, string token)
         {
-            Show(info, token, TimeSpan.FromMilliseconds(2000));
+            Show(title, content, token, TimeSpan.FromMilliseconds(2000));
         }
-        public void Show(Information info, string token, TimeSpan time)
+        public void Show(string title, object content, string token, TimeSpan time)
         {
-            Show(info, NotificationType.Info, token, time);
+            Show(title, content, NotificationType.Info, token, time);
         }
-        public void Show(Information info, NotificationType type, string token)
+        public void Show(string title, object content, NotificationType type, string token)
         {
-            Show(info, type, token, TimeSpan.FromMilliseconds(2000));
-        }
-
-        public void Show(Information info, NotificationType type, string token, TimeSpan time)
-        {
-            Show(info, type, null, token, time);
+            Show(title, content, type, token, TimeSpan.FromMilliseconds(2000));
         }
 
-        public void Show(Information info, NotificationType type, Action<ButtonResult> callback, string token)
+        public void Show(string title, object content, NotificationType type, string token, TimeSpan time)
         {
-            Show( info,  type, callback,  token, TimeSpan.FromMilliseconds(2000));
+            Show(title,content, type, null, token, time);
         }
-        public void Show(Information info, NotificationType type, Action<ButtonResult> callback, string token, TimeSpan time)
+
+        public void Show(string title, object content, NotificationType type, Action<ButtonResult> callback, string token)
+        {
+            Show(title, content,  type, callback,  token, TimeSpan.FromMilliseconds(2000));
+        }
+        public void Show(string title, object content, NotificationType type, Action<ButtonResult> callback, string token, TimeSpan time)
         {
             Dispatcher.UIThread.InvokeAsync(() =>
             {
@@ -94,12 +93,13 @@ namespace LayUI.Avalonia.Global
                 {
                     if (!NotificationHosts.ContainsKey(token)) return;
                     var messageHost = NotificationHosts[token];
-                    var content = new LayNotificationControl(messageHost, time)
+                    var notificationControl = new LayNotificationControl(messageHost, time)
                     {
-                        DataContext = info,
+                        Title=title,
+                        Content = content,
                         Type = type
                     };
-                    messageHost?.Items?.Children?.Insert(0, content);
+                    messageHost?.Items?.Children?.Insert(0, notificationControl);
 
                 }
                 catch (Exception ex)

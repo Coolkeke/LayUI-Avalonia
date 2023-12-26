@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AvaloniaXaml Remove="Languages\ch-en.axaml" />
+    <AvaloniaXaml Remove="Languages\zh-cn.axaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Languages\ch-en.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Languages\zh-cn.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.0.6" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.0.6" />
+    <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="11.0.6" />
+    <PackageReference Include="Avalonia.Skia" Version="11.0.6" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.6" />
+    <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.6" />
+    <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.0.5" />
+    <PackageReference Include="log4net" Version="2.0.15" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Prism.Avalonia" Version="8.1.97.11000" />
+    <PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11000" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Layui.Core\Layui.Core.csproj" />
+    <ProjectReference Include="..\Layui.Main\Layui.Main.csproj" />
+    <ProjectReference Include="..\UI\LayUI.Avalonia\LayUI.Avalonia.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Update="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

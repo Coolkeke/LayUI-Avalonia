@@ -1,21 +1,9 @@
 ﻿using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Interactivity;
-using Avalonia.Logging;
-using Avalonia.LogicalTree;
-using Avalonia.Media;
+using Avalonia.Controls; 
+using Avalonia.Logging; 
 using Avalonia.Threading;
-using LayUI.Avalonia.Controls;
-using LayUI.Avalonia.Enums;
-using LayUI.Avalonia.Interface;
-using LayUI.Avalonia.Interface.Page;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+using LayUI.Avalonia.Controls; 
+using LayUI.Avalonia.Interfaces; 
 
 namespace LayUI.Avalonia.Global
 {
@@ -47,10 +35,10 @@ namespace LayUI.Avalonia.Global
         }
         static LayDialog()
         {
-            TokenProperty.Changed.Subscribe(OnTokenChanged);
+            TokenProperty.Changed.AddClassHandler<AvaloniaObject>((o,e)=> OnTokenChanged(e));
         }
 
-        private static void OnTokenChanged(AvaloniaPropertyChangedEventArgs<string> obj)
+        private static void OnTokenChanged(AvaloniaPropertyChangedEventArgs obj)
         {
             if (obj.Sender is LayDialogHost host)
             {
@@ -80,7 +68,7 @@ namespace LayUI.Avalonia.Global
         /// <summary>
         /// 获取唯一值
         /// </summary>
-        public static readonly AttachedProperty<string> TokenProperty = AvaloniaProperty.RegisterAttached<IAvaloniaObject, IAvaloniaObject, string>(
+        public static readonly AttachedProperty<string> TokenProperty = AvaloniaProperty.RegisterAttached<AvaloniaObject, AvaloniaObject, string>(
             "Token", null); 
         public Task Show(string dialogName, ILayDialogParameter parameters, string token)
         {

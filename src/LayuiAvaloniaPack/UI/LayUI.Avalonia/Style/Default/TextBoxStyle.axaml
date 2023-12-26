@@ -5,7 +5,7 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ColorStyle.axaml" />
     <Design.PreviewWith>
         <Border Padding="20">
-            <lay:LayTextBox Width="200" IsFocus="True" />
+            <lay:LayTextBox Width="200" />
         </Border>
     </Design.PreviewWith>
     <Style Selector="lay|LayTextBox">
