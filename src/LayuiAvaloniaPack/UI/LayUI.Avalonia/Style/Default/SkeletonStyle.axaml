@@ -1,0 +1,95 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Design.PreviewWith>
+        <StackPanel Orientation="Horizontal">
+            <lay:LaySkeleton Margin="20" IsActive="True">
+                <Button Width="100" Height="100" />
+            </lay:LaySkeleton>
+            <lay:LaySkeleton
+                Margin="20"
+                IsActive="True"
+                Type="Image">
+                <Button Width="100" Height="100" />
+            </lay:LaySkeleton>
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <Style Selector="lay|LaySkeleton">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="CornerRadius" Value="{DynamicResource LayCornerRadiusSmall}" />
+        <Setter Property="Padding" Value="4,2" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <Grid>
+                            <ContentPresenter
+                                x:Name="PART_ContentPresenter"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}" />
+                            <Border
+                                x:Name="PART_Border"
+                                IsHitTestVisible="{TemplateBinding IsActive}"
+                                IsVisible="{TemplateBinding IsActive}"
+                                RenderTransformOrigin="0.5,0.5">
+                                <TextBlock
+                                    x:Name="PART_Icon"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontFamily="{DynamicResource Icon}"
+                                    FontSize="50"
+                                    Text="&#xeda9;" />
+                            </Border>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LaySkeleton[IsActive=true] /template/ Border#PART_Border">
+        <Style.Animations>
+            <Animation
+                FillMode="None"
+                IterationCount="Infinite"
+                Duration="0:0:1.5">
+                <KeyFrame Cue="0%">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0%,100%" EndPoint="100%,100%">
+                                <GradientStop Offset="0" Color="{DynamicResource GrayEffect}" />
+                                <GradientStop Offset="0" Color="{DynamicResource SilverGrayEffect}" />
+                                <GradientStop Offset="1" Color="{DynamicResource GrayEffect}" />
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </KeyFrame>
+                <KeyFrame Cue="100%">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0%,100%" EndPoint="100%,100%">
+                                <GradientStop Offset="0" Color="{DynamicResource GrayEffect}" />
+                                <GradientStop Offset="1" Color="{DynamicResource SilverGrayEffect}" />
+                                <GradientStop Offset="1" Color="{DynamicResource GrayEffect}" />
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
+    </Style>
+    <Style Selector="lay|LaySkeleton[Type=Default] /template/ TextBlock#PART_Icon">
+        <Setter Property="IsVisible" Value="false" />
+    </Style>
+    <Style Selector="lay|LaySkeleton[Type=Image]  /template/ TextBlock#PART_Icon">
+        <Setter Property="IsVisible" Value="true" />
+    </Style>
+</Styles>

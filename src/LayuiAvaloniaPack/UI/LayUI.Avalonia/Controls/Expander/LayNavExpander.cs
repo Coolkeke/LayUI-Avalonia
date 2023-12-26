@@ -14,48 +14,26 @@ namespace LayUI.Avalonia.Controls
 {
     [PseudoClasses(new string[] { ":expanded", ":left", ":right" })]
     public class LayNavExpander : HeaderedContentControl
-    { 
-         public static readonly StyledProperty<NavExpanderStyle> TypeProperty = AvaloniaProperty.Register<LayNavExpander, NavExpanderStyle>("Type", NavExpanderStyle.Right);
-         
+    {
+        #region 保留原有的Expander逻辑
+        public static readonly StyledProperty<NavExpanderStyle> TypeProperty = AvaloniaProperty.Register<LayNavExpander, NavExpanderStyle>("Type", NavExpanderStyle.Right);
+
         public static readonly StyledProperty<bool> IsExpandedProperty = AvaloniaProperty.Register<LayNavExpander, bool>("IsExpanded", defaultValue: false, inherits: false, BindingMode.TwoWay, null, new Func<AvaloniaObject, bool, bool>(CoerceIsExpanded));
-         
+
         public static readonly RoutedEvent<RoutedEventArgs> CollapsedEvent = RoutedEvent.Register<LayNavExpander, RoutedEventArgs>("Collapsed", RoutingStrategies.Bubble);
-         
+
         public static readonly RoutedEvent<CancelRoutedEventArgs> CollapsingEvent = RoutedEvent.Register<LayNavExpander, CancelRoutedEventArgs>("Collapsing", RoutingStrategies.Bubble);
-         
+
         public static readonly RoutedEvent<RoutedEventArgs> ExpandedEvent = RoutedEvent.Register<LayNavExpander, RoutedEventArgs>("Expanded", RoutingStrategies.Bubble);
-         
+
         public static readonly RoutedEvent<CancelRoutedEventArgs> ExpandingEvent = RoutedEvent.Register<LayNavExpander, CancelRoutedEventArgs>("Expanding", RoutingStrategies.Bubble);
 
-        private bool _ignorePropertyChanged; 
-          
-        public NavExpanderStyle Type
-        {
-            get
-            {
-                return GetValue(TypeProperty);
-            }
-            set
-            {
-                SetValue(TypeProperty, value);
-            }
-        }
-
-        /// <summary>
-        /// Defines the <see cref="HeaderBackground"/> property.
-        /// </summary>
-        public static readonly StyledProperty<IBrush> HeaderBackgroundProperty =
-            AvaloniaProperty.Register<Control, IBrush>(nameof(HeaderBackground)); 
-        public IBrush HeaderBackground
-        {
-            get { return GetValue(HeaderBackgroundProperty); }
-            set { SetValue(HeaderBackgroundProperty, value); }
-        } 
+        private bool _ignorePropertyChanged;
         public bool IsExpanded
         {
             get { return GetValue(IsExpandedProperty); }
             set { SetValue(IsExpandedProperty, value); }
-        } 
+        }
         public event EventHandler<RoutedEventArgs>? Collapsed
         {
             add
@@ -66,7 +44,7 @@ namespace LayUI.Avalonia.Controls
             {
                 RemoveHandler(CollapsedEvent, value);
             }
-        } 
+        }
         public event EventHandler<CancelRoutedEventArgs>? Collapsing
         {
             add
@@ -77,7 +55,7 @@ namespace LayUI.Avalonia.Controls
             {
                 RemoveHandler(CollapsingEvent, value);
             }
-        } 
+        }
         public event EventHandler<RoutedEventArgs>? Expanded
         {
             add
@@ -88,7 +66,7 @@ namespace LayUI.Avalonia.Controls
             {
                 RemoveHandler(ExpandedEvent, value);
             }
-        } 
+        }
         public event EventHandler<CancelRoutedEventArgs>? Expanding
         {
             add
@@ -99,29 +77,29 @@ namespace LayUI.Avalonia.Controls
             {
                 RemoveHandler(ExpandingEvent, value);
             }
-        } 
+        }
         public LayNavExpander()
         {
             UpdatePseudoClasses();
-        } 
+        }
         protected virtual void OnCollapsed(RoutedEventArgs eventArgs)
         {
             RaiseEvent(eventArgs);
-        } 
+        }
         protected virtual void OnCollapsing(CancelRoutedEventArgs eventArgs)
         {
             RaiseEvent(eventArgs);
-        } 
+        }
         protected virtual void OnExpanded(RoutedEventArgs eventArgs)
         {
             RaiseEvent(eventArgs);
-        } 
+        }
         protected virtual void OnExpanding(CancelRoutedEventArgs eventArgs)
         {
             RaiseEvent(eventArgs);
-        } 
+        }
         private void StartContentTransition()
-        { 
+        {
             Dispatcher.UIThread.Post(delegate
             {
                 if (IsExpanded)
@@ -150,14 +128,14 @@ namespace LayUI.Avalonia.Controls
                     UpdatePseudoClasses();
                 }
             }
-        } 
+        }
         private void UpdatePseudoClasses()
         {
-            NavExpanderStyle type = Type; 
+            NavExpanderStyle type = Type;
             base.PseudoClasses.Set(":left", type == NavExpanderStyle.Left);
             base.PseudoClasses.Set(":right", type == NavExpanderStyle.Right);
             base.PseudoClasses.Set(":expanded", IsExpanded);
-        } 
+        }
         protected virtual bool OnCoerceIsExpanded(bool value)
         {
             CancelRoutedEventArgs cancelRoutedEventArgs;
@@ -187,6 +165,30 @@ namespace LayUI.Avalonia.Controls
         {
             return (instance as LayNavExpander)?.OnCoerceIsExpanded(value) ?? value;
         }
+        #endregion 
+        public NavExpanderStyle Type
+        {
+            get
+            {
+                return GetValue(TypeProperty);
+            }
+            set
+            {
+                SetValue(TypeProperty, value);
+            }
+        }
+
+        /// <summary>
+        /// Defines the <see cref="HeaderBackground"/> property.
+        /// </summary>
+        public static readonly StyledProperty<IBrush> HeaderBackgroundProperty =
+            AvaloniaProperty.Register<Control, IBrush>(nameof(HeaderBackground)); 
+        public IBrush HeaderBackground
+        {
+            get { return GetValue(HeaderBackgroundProperty); }
+            set { SetValue(HeaderBackgroundProperty, value); }
+        } 
+        
         /// <summary>
         /// Defines the <see cref="HeaderPadding"/> property.
         /// </summary>

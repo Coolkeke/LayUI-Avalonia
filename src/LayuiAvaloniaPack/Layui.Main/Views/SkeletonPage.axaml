@@ -1,0 +1,149 @@
+<UserControl
+    x:Class="Layui.Main.Views.SkeletonPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <ScrollViewer>
+        <StackPanel Margin="10">
+            <CheckBox x:Name="Switch" IsChecked="True" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <lay:LaySkeleton
+                    Width="100"
+                    Margin="0,5,10,5"
+                    IsActive="{Binding ElementName=Switch, Path=IsChecked}"
+                    Type="Image">
+                    <Image Source="/Assets/avalonia-logo.ico" />
+                </lay:LaySkeleton>
+                <UniformGrid
+                    Grid.Column="1"
+                    Columns="1"
+                    Rows="3">
+                    <lay:LaySkeleton
+                        Margin="0,5,250,5"
+                        VerticalAlignment="Center"
+                        IsActive="{Binding ElementName=Switch, Path=IsChecked}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                Margin="10,0"
+                                VerticalAlignment="Center"
+                                FontFamily="{DynamicResource Icon}"
+                                Foreground="{DynamicResource Gradient}"
+                                Text="&#xec26;" />
+                            <TextBlock VerticalAlignment="Center" Text="看山不是山，看水不是水，看山还是山，看水还是水" />
+                        </StackPanel>
+                    </lay:LaySkeleton>
+                    <lay:LaySkeleton
+                        Margin="0,5,100,5"
+                        VerticalAlignment="Center"
+                        IsActive="{Binding ElementName=Switch, Path=IsChecked}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                Margin="10,0"
+                                VerticalAlignment="Center"
+                                FontFamily="{DynamicResource Icon}"
+                                Foreground="{DynamicResource Gradient}"
+                                Text="&#xec26;" />
+                            <TextBlock VerticalAlignment="Center" Text="看山不是山，看水不是水，看山还是山，看水还是水" />
+                        </StackPanel>
+                    </lay:LaySkeleton>
+                    <lay:LaySkeleton
+                        Margin="0,5"
+                        VerticalAlignment="Center"
+                        IsActive="{Binding ElementName=Switch, Path=IsChecked}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                Margin="10,0"
+                                VerticalAlignment="Center"
+                                FontFamily="{DynamicResource Icon}"
+                                Foreground="{DynamicResource Gradient}"
+                                Text="&#xec26;" />
+                            <TextBlock VerticalAlignment="Center" Text="看山不是山，看水不是水，看山还是山，看水还是水" />
+                        </StackPanel>
+                    </lay:LaySkeleton>
+                </UniformGrid>
+            </Grid>
+            <lay:LayButton
+                Margin="0,5"
+                Command="{Binding TestCommand}"
+                Content="刷新"
+                Type="Default" />
+            <ListBox Height="500" ItemsSource="{Binding Items}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <lay:LaySkeleton
+                                Width="100"
+                                Margin="0,5,10,5"
+                                IsActive="{Binding ., Mode=OneWay}"
+                                Type="Image">
+                                <Image Source="/Assets/avalonia-logo.ico" />
+                            </lay:LaySkeleton>
+                            <UniformGrid
+                                Grid.Column="1"
+                                Columns="1"
+                                Rows="3">
+                                <lay:LaySkeleton
+                                    Margin="0,5,250,5"
+                                    VerticalAlignment="Center"
+                                    IsActive="{Binding ., Mode=OneWay}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                            Margin="10,0"
+                                            VerticalAlignment="Center"
+                                            FontFamily="{DynamicResource Icon}"
+                                            Foreground="{DynamicResource Gradient}"
+                                            Text="&#xec26;" />
+                                        <TextBlock VerticalAlignment="Center" Text="看山不是山，看水不是水，看山还是山，看水还是水" />
+                                    </StackPanel>
+                                </lay:LaySkeleton>
+                                <lay:LaySkeleton
+                                    Margin="0,5,100,5"
+                                    VerticalAlignment="Center"
+                                    IsActive="{Binding ., Mode=OneWay}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                            Margin="10,0"
+                                            VerticalAlignment="Center"
+                                            FontFamily="{DynamicResource Icon}"
+                                            Foreground="{DynamicResource Gradient}"
+                                            Text="&#xec26;" />
+                                        <TextBlock VerticalAlignment="Center" Text="看山不是山，看水不是水，看山还是山，看水还是水" />
+                                    </StackPanel>
+                                </lay:LaySkeleton>
+                                <lay:LaySkeleton
+                                    Margin="0,5"
+                                    VerticalAlignment="Center"
+                                    IsActive="{Binding ., Mode=OneWay}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                            Margin="10,0"
+                                            VerticalAlignment="Center"
+                                            FontFamily="{DynamicResource Icon}"
+                                            Foreground="{DynamicResource Gradient}"
+                                            Text="&#xec26;" />
+                                        <TextBlock VerticalAlignment="Center" Text="看山不是山，看水不是水，看山还是山，看水还是水" />
+                                    </StackPanel>
+                                </lay:LaySkeleton>
+                            </UniformGrid>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

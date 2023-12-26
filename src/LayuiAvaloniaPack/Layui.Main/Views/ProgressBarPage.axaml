@@ -11,33 +11,30 @@
     <StackPanel>
         <lay:LayProgressBar
             Margin="5"
-            Classes="Primary"
             ProgressTextFormat="\{1\}"
             ShowProgressText="True"
             Value="50" />
-        <ProgressBar
+        <lay:LayProgressBar
             Margin="5"
             Classes="Primary"
             IsIndeterminate="True" />
-        <ProgressBar
+        <lay:LayProgressBar
             Margin="5"
             Classes="Primary"
-            ProgressTextFormat="\{1\}"
-            ShowProgressText="True"
             Value="50" />
-        <ProgressBar
+        <lay:LayProgressBar
             Margin="5"
             Classes="Default"
             Value="50" />
-        <ProgressBar
+        <lay:LayProgressBar
             Margin="5"
             Classes="Normal"
             Value="50" />
-        <ProgressBar
+        <lay:LayProgressBar
             Margin="5"
             Classes="Danger"
             Value="50" />
-        <ProgressBar
+        <lay:LayProgressBar
             Margin="5"
             Classes="Steady"
             Value="50" />

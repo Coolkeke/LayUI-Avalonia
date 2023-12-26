@@ -66,6 +66,7 @@ namespace Layui.Main.ViewModels
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.TreeViewPage, Title = "TreeView" },
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.LegendPage, Title = "Legend" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.BadgePage, Title = "Badge" },
+                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.SkeletonPage, Title = "Skeleton" },
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.DrawerPage, Title = "Drawer" }, 
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.MenuPage, Title = "Menu" },
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ListPage, Title = "List" },

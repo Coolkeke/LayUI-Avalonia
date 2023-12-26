@@ -12,9 +12,9 @@
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
     <StackPanel>
-        <lay:LayLegend Content="Radio 单选框" FontSize="{DynamicResource Large}" />
+        <lay:LayLegend Content="Radio 单选框" FontSize="{DynamicResource LayFontSizeLarge}" />
         <StackPanel Margin="10">
-            <lay:LayLegend Content="基础用法" FontSize="{DynamicResource Base}" />
+            <lay:LayLegend Content="基础用法" FontSize="{DynamicResource LayFontSizeBase}" />
             <StackPanel Margin="0,5" Orientation="Horizontal">
                 <lay:LayRadioButton
                     Content="男"
@@ -28,7 +28,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="10">
-            <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource Base}" />
+            <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource LayFontSizeBase}" />
             <StackPanel Margin="0,5" Orientation="Horizontal">
                 <lay:LayRadioButton
                     Content="男"
@@ -44,7 +44,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="10">
-            <lay:LayLegend Content="带有边框" FontSize="{DynamicResource Base}" />
+            <lay:LayLegend Content="带有边框" FontSize="{DynamicResource LayFontSizeBase}" />
             <StackPanel Margin="0,5" Orientation="Horizontal">
                 <lay:LayRadioButton
                     Margin="5,0"
@@ -62,7 +62,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="10">
-            <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource Base}" />
+            <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource LayFontSizeBase}" />
             <StackPanel Margin="0,5" Orientation="Horizontal">
                 <lay:LayRadioButton
                     Margin="5,0"
@@ -83,7 +83,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="10">
-            <lay:LayLegend Content="按钮组" FontSize="{DynamicResource Base}" />
+            <lay:LayLegend Content="按钮组" FontSize="{DynamicResource LayFontSizeBase}" />
             <Border
                 Margin="0,5"
                 HorizontalAlignment="Left"
@@ -105,7 +105,7 @@
             </Border>
         </StackPanel>
         <StackPanel Margin="10">
-            <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource Base}" />
+            <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource LayFontSizeBase}" />
             <Border
                 Margin="0,5"
                 HorizontalAlignment="Left"
