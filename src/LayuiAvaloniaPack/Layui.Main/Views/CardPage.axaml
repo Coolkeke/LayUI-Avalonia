@@ -1,0 +1,65 @@
+<UserControl
+    x:Class="Layui.Main.Views.CardPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <StackPanel Background="#f7f7f7">
+        <lay:LayCard
+            Height="100"
+            Margin="10"
+            Blur="10">
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="50"
+                Text="卡片" />
+        </lay:LayCard>
+        <lay:LayCard
+            Height="100"
+            Margin="10"
+            Blur="10"
+            BorderBrush="{DynamicResource SilverGray}"
+            BorderThickness="1"
+            Type="Hover">
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="50"
+                Text="卡片" />
+        </lay:LayCard>
+        <lay:LayCard
+            Height="100"
+            Margin="10"
+            Blur="10"
+            BorderBrush="{DynamicResource SilverGray}"
+            BorderThickness="1"
+            IsInset="True"
+            OffsetX="0"
+            OffsetY="0"
+            Spread="4">
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="50"
+                Text="卡片" />
+        </lay:LayCard>
+        <Border
+            Height="100"
+            Margin="10"
+            Background="#f7f7f7"
+            BoxShadow=" 15 15 30 #c2c3c3, -15 -15 30 #ffffff"
+            CornerRadius="10" />
+        <Border
+            Height="100"
+            Margin="10"
+            Background="#f7f7f7"
+            BoxShadow="inset 15 15 30 #c3c3c3,inset -15 -15 30 #ffffff"
+            CornerRadius="10" />
+
+    </StackPanel>
+</UserControl>

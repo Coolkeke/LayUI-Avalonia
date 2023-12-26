@@ -1,53 +1,32 @@
-﻿<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://LayUI.Avalonia/Style/Default/CornerRadiusStyle.axaml" />
+                <ResourceInclude Source="avares://LayUI.Avalonia/Style/Default/FontSizeStyle.axaml" />
+                <ResourceInclude Source="avares://LayUI.Avalonia/Style/Default/FontsStyle.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Styles.Resources>
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ColorStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TextBlockStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ContentControlStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/UserControlStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ControlsBaseStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/LoadingStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/WindowStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TitleBarStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TransitionsStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/FocusAdornerStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CardStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/BaseStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ButtonStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ButtonGroupStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/BadgeStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CheckBoxStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/LoadingStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CardStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TextBoxStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ToggleButtonStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ToggleSwitchStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/NumericUpDownStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/RadioButtonStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ComboBoxStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ComboBoxItemStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ProgressBarStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CheckBoxStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/KeyboardStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DialogHostStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/MessageControlStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/MessageHostStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/NotificationControlStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/NotificationHostStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DialogWindowStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TabControlStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TabItemStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TransitionsStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DrawerStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/StepBarStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/StepBarItemStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CarouselStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CarouselItemStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ExpanderStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ProgressBarStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/GroupBoxStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TreeViewStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TreeViewItemStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ScrollViewerStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ScrollBarStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/RadioButtonStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/LegendStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/BadgeStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/AutoCompleteBoxStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ContextMenuStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/MenuStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/MenuItemStyle.axaml" />
-    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/NativeMenuBarStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ToggleButtonStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ExpanderStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/NoticeBarStyle.axaml" />
 </Styles>

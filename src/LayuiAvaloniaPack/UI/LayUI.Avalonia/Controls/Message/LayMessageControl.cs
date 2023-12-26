@@ -1,13 +1,8 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
-using Avalonia.LogicalTree;
-using Avalonia.Markup.Xaml.Templates;
-using Avalonia.Media;
+using Avalonia.LogicalTree; 
 using Avalonia.Threading;
-using LayUI.Avalonia.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using LayUI.Avalonia.Enums; 
 
 namespace LayUI.Avalonia.Controls
 {

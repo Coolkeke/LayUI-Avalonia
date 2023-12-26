@@ -1,10 +1,6 @@
-﻿using Avalonia;
-using Avalonia.Data;
+﻿using Avalonia.Data;
 using Avalonia.Data.Converters;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 
 namespace LayUI.Avalonia.Converters
 {
@@ -47,11 +43,11 @@ namespace LayUI.Avalonia.Converters
                 }
                 return value;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new BindingNotification(new InvalidCastException(ex.Message), BindingErrorType.Error);
             }
-            
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

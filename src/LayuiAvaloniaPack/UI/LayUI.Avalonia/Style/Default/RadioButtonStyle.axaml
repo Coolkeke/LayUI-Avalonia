@@ -2,79 +2,218 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Styles.Resources>
+        <ControlTemplate x:Key="Default" TargetType="{x:Type lay:LayRadioButton}">
+            <Grid Background="{TemplateBinding Background}">
+                <Grid Background="Transparent">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Viewbox Width="{TemplateBinding Size}" Height="{TemplateBinding Size}">
+                        <Grid>
+                            <Ellipse
+                                Width="30"
+                                Height="30"
+                                Stroke="{TemplateBinding BorderBrush}"
+                                StrokeThickness="2" />
+                            <Ellipse
+                                Name="PART_Icon"
+                                Margin="7"
+                                Fill="{TemplateBinding BorderBrush}"
+                                StrokeThickness="2" />
+                        </Grid>
+                    </Viewbox>
+                    <ContentPresenter
+                        Name="PART_ContentPresenter"
+                        Grid.Column="1"
+                        Padding="{TemplateBinding Padding}"
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}" />
+                </Grid>
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="Button" TargetType="{x:Type lay:LayRadioButton}">
+            <Border
+                Padding="{TemplateBinding Padding}"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="{TemplateBinding CornerRadius}">
+                <Grid>
+                    <Grid Background="Transparent">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Viewbox Width="{TemplateBinding Size}" Height="{TemplateBinding Size}">
+                            <Grid>
+                                <Ellipse
+                                    Width="30"
+                                    Height="30"
+                                    Stroke="{TemplateBinding BorderBrush}"
+                                    StrokeThickness="2" />
+                                <Ellipse
+                                    Name="PART_Icon"
+                                    Margin="7"
+                                    Fill="{TemplateBinding BorderBrush}"
+                                    StrokeThickness="2" />
+                            </Grid>
+                        </Viewbox>
+                        <ContentPresenter
+                            Name="PART_ContentPresenter"
+                            Grid.Column="1"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}" />
+                    </Grid>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+        <ControlTemplate x:Key="Group" TargetType="{x:Type lay:LayRadioButton}">
+            <Border
+                Padding="{TemplateBinding Padding}"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="{TemplateBinding CornerRadius}">
+                <Grid Background="Transparent">
+                    <ContentPresenter
+                        Name="PART_ContentPresenter"
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}" />
+                </Grid>
+            </Border>
+        </ControlTemplate>
+    </Styles.Resources>
     <Design.PreviewWith>
         <StackPanel>
-            <lay:LayRadioButton
-                Content="123"
-                GroupName="sez"
-                IsChecked="{x:Null}" />
-            <lay:LayRadioButton Content="123" GroupName="sez" />
-            <lay:LayRadioButton Content="123" GroupName="sez" />
+            <StackPanel Orientation="Horizontal">
+                <lay:LayRadioButton
+                    Content="123"
+                    GroupName="sez"
+                    IsChecked="{x:Null}" />
+                <lay:LayRadioButton
+                    Content="123"
+                    GroupName="sez"
+                    IsChecked="true" />
+                <lay:LayRadioButton
+                    Content="123"
+                    GroupName="sez"
+                    IsChecked="false" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <lay:LayRadioButton
+                    Content="123"
+                    GroupName="sez"
+                    IsChecked="{x:Null}"
+                    Type="Button" />
+                <lay:LayRadioButton
+                    Content="123"
+                    GroupName="sez"
+                    IsChecked="true"
+                    IsEnabled="False"
+                    Type="Button" />
+                <lay:LayRadioButton
+                    Content="123"
+                    GroupName="sez"
+                    IsChecked="false"
+                    Type="Button" />
+            </StackPanel>
+            <Border
+                HorizontalAlignment="Left"
+                BorderBrush="{DynamicResource CyanGreen}"
+                BorderThickness="1"
+                CornerRadius="2">
+                <StackPanel Orientation="Horizontal">
+                    <lay:LayRadioButton
+                        Content="123"
+                        GroupName="sez"
+                        IsChecked="{x:Null}"
+                        Type="Group" />
+                    <lay:LayRadioButton
+                        GroupName="sez"
+                        IsChecked="true"
+                        Type="Group">
+                        <TextBlock Text="123" />
+                    </lay:LayRadioButton>
+                    <lay:LayRadioButton
+                        Content="123"
+                        GroupName="sez"
+                        IsChecked="false"
+                        Type="Group" />
+                </StackPanel>
+            </Border>
         </StackPanel>
     </Design.PreviewWith>
     <Style Selector="lay|LayRadioButton">
         <Setter Property="Padding" Value="5 0" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Grid Background="{TemplateBinding Background}">
-                        <Grid Background="Transparent">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Viewbox Width="{TemplateBinding Size}" Height="{TemplateBinding Size}">
-                                <Grid>
-                                    <Ellipse
-                                        Width="30"
-                                        Height="30"
-                                        Stroke="{TemplateBinding BorderBrush}"
-                                        StrokeThickness="2" />
-                                    <Ellipse
-                                        Name="PART_Icon"
-                                        Margin="7"
-                                        Fill="{TemplateBinding BorderBrush}"
-                                        StrokeThickness="2" />
-                                </Grid>
-                            </Viewbox>
-                            <ContentPresenter
-                                Name="PART_ContentPresenter"
-                                Grid.Column="1"
-                                Padding="{TemplateBinding Padding}"
-                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Content="{TemplateBinding Content}"
-                                ContentTemplate="{TemplateBinding ContentTemplate}" />
-                        </Grid>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <Style Selector="lay|LayRadioButton:unchecked">
-        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
-    </Style>
-    <Style Selector="lay|LayRadioButton:unchecked /template/ Ellipse#PART_Icon">
-        <Setter Property="Opacity" Value="0" />
-    </Style>
-    <Style Selector="lay|LayRadioButton:unchecked:pointerover">
-        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
-    </Style>
-    <Style Selector="lay|LayRadioButton:indeterminate">
-        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
-    </Style>
-    <Style Selector="lay|LayRadioButton:indeterminate:pointerover">
-        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
     </Style>
     <Style Selector="lay|LayRadioButton:indeterminate /template/ Ellipse#PART_Icon">
         <Setter Property="Opacity" Value="0" />
     </Style>
-    <Style Selector="lay|LayRadioButton:checked">
+    <Style Selector="lay|LayRadioButton[Type=Default]">
+        <Setter Property="Template" Value="{DynamicResource Default}" />
+    </Style>
+    <Style Selector="lay|LayRadioButton[Type=Default]:unchecked">
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+    </Style>
+    <Style Selector="lay|LayRadioButton[Type=Default]:unchecked /template/ Ellipse#PART_Icon">
+        <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="lay|LayRadioButton[Type=Default]:unchecked:pointerover">
         <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
     </Style>
-    <Style Selector="lay|LayRadioButton:checked /template/ Ellipse#PART_Icon">
+    <Style Selector="lay|LayRadioButton[Type=Default]:indeterminate">
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+    </Style>
+    <Style Selector="lay|LayRadioButton[Type=Default]:indeterminate:pointerover">
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
+    </Style>
+    <Style Selector="lay|LayRadioButton[Type=Default]:checked">
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
+    </Style>
+    <Style Selector="lay|LayRadioButton[Type=Default]:checked /template/ Ellipse#PART_Icon">
         <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="lay|LayRadioButton[Type=Button]">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="Height" Value="36" />
+        <Setter Property="Template" Value="{DynamicResource Button}" />
+    </Style>
+    <Style Selector="lay|LayRadioButton[Type=Button]:indeterminate">
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+    </Style>
+    <Style Selector="lay|LayRadioButton[Type=Button]:checked">
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
+    </Style>
+    <Style Selector="lay|LayRadioButton[Type=Group]">
+        <Setter Property="Height" Value="36" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
+        <Setter Property="Template" Value="{DynamicResource Group}" />
+    </Style>
+    <Style Selector="lay|LayRadioButton[Type=Group]:checked">
+        <Setter Property="Background" Value="{DynamicResource CyanGreen}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    <Style Selector="lay|LayRadioButton[Type=Group] TextBlock:checked">
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+    <Style Selector="lay|LayRadioButton[IsEnabled=false]">
+        <Setter Property="Opacity" Value="0.5" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
     </Style>
 </Styles>

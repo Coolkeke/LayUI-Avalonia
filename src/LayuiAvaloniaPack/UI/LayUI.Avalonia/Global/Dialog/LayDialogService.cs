@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Logging;
-using LayUI.Avalonia.Interface;
+using LayUI.Avalonia.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;

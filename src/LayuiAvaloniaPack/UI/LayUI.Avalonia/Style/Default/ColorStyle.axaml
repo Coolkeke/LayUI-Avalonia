@@ -73,7 +73,7 @@
                 <Border Padding="20" Background="{DynamicResource Green}" />
                 <Border Padding="20" Background="{DynamicResource Blue}" />
                 <Border Padding="20" Background="{DynamicResource Purple}" />
-                <Border Padding="20" Background="{DynamicResource Deep}" />
+                <Border Padding="20" Background="{DynamicResource Deep}" />   
             </StackPanel>
         </StackPanel>
     </Design.PreviewWith>
@@ -113,6 +113,8 @@
         <!--  青色  -->
         <Color x:Key="CyanEffect">#2F4056</Color>
         <SolidColorBrush x:Key="Cyan" Color="{StaticResource CyanEffect}" />
+        <Color x:Key="LighCyanEffect">#393D49</Color>
+        <SolidColorBrush x:Key="LighCyan" Color="{StaticResource LighCyanEffect}" />
         <!--  渐变色  -->
         <LinearGradientBrush x:Key="Gradient" StartPoint="0%,0%" EndPoint="100%,100%">
             <LinearGradientBrush.GradientStops>

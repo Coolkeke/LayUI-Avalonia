@@ -1,0 +1,69 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls"
+    xmlns:layCv="clr-namespace:LayUI.Avalonia.Converters;assembly=LayUI.Avalonia"
+    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <lay:LayNoticeBar Width="700" Content="看山不是山，看水不是水，看山还是山，看水还是水">
+                <lay:LayNoticeBar.InnerLeftContent>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontFamily="{DynamicResource Icon}"
+                        Text="&#xe9d0;" />
+                </lay:LayNoticeBar.InnerLeftContent>
+                <lay:LayNoticeBar.InnerRightContent>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontFamily="{DynamicResource Icon}"
+                        Text="&#xe9d0;" />
+                </lay:LayNoticeBar.InnerRightContent>
+            </lay:LayNoticeBar>
+        </Border>
+    </Design.PreviewWith>
+    <Style Selector="lay|LayNoticeBar">
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="Duration" Value="5" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <Grid Margin="{TemplateBinding Padding}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <ContentPresenter Content="{TemplateBinding InnerLeftContent}" />
+                            <Grid
+                                x:Name="PART_Grid"
+                                Grid.Column="1"
+                                ClipToBounds="true">
+                                <StackPanel
+                                    x:Name="PART_StackPanel"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Orientation="Horizontal">
+                                    <ContentPresenter
+                                        x:Name="PART_ContentPresenter"
+                                        Content="{TemplateBinding Content}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        RenderTransformOrigin="0.5,0.5" />
+                                </StackPanel>
+                            </Grid>
+                            <ContentPresenter Grid.Column="2" Content="{TemplateBinding InnerRightContent}" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--  Add Styles Here  -->
+</Styles>

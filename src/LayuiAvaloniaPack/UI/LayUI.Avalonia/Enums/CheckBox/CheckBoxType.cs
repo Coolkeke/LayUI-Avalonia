@@ -16,6 +16,14 @@ namespace LayUI.Avalonia.Enums
         /// <summary>
         /// 默认
         /// </summary>
-        Default,
+        Default, 
+        /// <summary>
+        /// 按钮
+        /// </summary>
+        Button,
+        /// <summary>
+        /// 按钮组
+        /// </summary>
+        Group,
     }
 }

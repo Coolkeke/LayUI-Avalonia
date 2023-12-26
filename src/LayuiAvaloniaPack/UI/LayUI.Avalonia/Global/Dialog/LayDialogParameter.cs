@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LayUI.Avalonia.Interface;
+using LayUI.Avalonia.Interfaces;
 
 namespace LayUI.Avalonia.Global
 {

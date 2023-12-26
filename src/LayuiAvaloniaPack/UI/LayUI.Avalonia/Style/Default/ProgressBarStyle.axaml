@@ -1,53 +1,127 @@
-﻿<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:avaCv="using:Avalonia.Controls.Converters"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Styles.Resources>
+        <avaCv:StringFormatConverter x:Key="StringFormatConverter" />
+    </Styles.Resources>
     <Design.PreviewWith>
-        <StackPanel>
-            <ProgressBar
+        <StackPanel Width="300">
+            <lay:LayProgressBar
                 Margin="5"
                 Classes="Primary"
+                ProgressTextFormat="\{1\}"
+                ShowProgressText="True"
                 Value="50" />
-            <ProgressBar
+            <lay:LayProgressBar
                 Margin="5"
                 Classes="Default"
                 Value="50" />
-            <ProgressBar
+            <lay:LayProgressBar
                 Margin="5"
                 Classes="Normal"
                 Value="50" />
-            <ProgressBar
+            <lay:LayProgressBar
                 Margin="5"
                 Classes="Danger"
                 Value="50" />
-            <ProgressBar
+            <lay:LayProgressBar
                 Margin="5"
                 Classes="Steady"
                 Value="50" />
         </StackPanel>
     </Design.PreviewWith>
-    <Style Selector="ProgressBar.Primary">
+    <Style Selector="lay|LayProgressBar">
+        <Setter Property="MinHeight" Value="10" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="lay:LayProgressBar">
+                    <Border
+                        x:Name="ProgressBarRoot"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="True"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <Panel>
+                            <Panel x:Name="DeterminateRoot" Opacity="1">
+                                <Panel.Transitions>
+                                    <Transitions>
+                                        <DoubleTransition Property="Opacity" Duration="0:0:0.197" />
+                                    </Transitions>
+                                </Panel.Transitions>
+                                <Border
+                                    x:Name="PART_Indicator"
+                                    Margin="{TemplateBinding Padding}"
+                                    Background="{TemplateBinding Foreground}"
+                                    CornerRadius="{TemplateBinding CornerRadius}" />
+                            </Panel>
+                            <Panel x:Name="IndeterminateRoot" Opacity="0">
+                                <Panel.Transitions>
+                                    <Transitions>
+                                        <DoubleTransition Property="Opacity" Duration="0:0:0.197" />
+                                    </Transitions>
+                                </Panel.Transitions>
+                                <Border
+                                    x:Name="IndeterminateProgressBarIndicator"
+                                    Margin="{TemplateBinding Padding}"
+                                    Background="{TemplateBinding Foreground}"
+                                    CornerRadius="{TemplateBinding CornerRadius}" />
+                                <Border
+                                    x:Name="IndeterminateProgressBarIndicator2"
+                                    Margin="{TemplateBinding Padding}"
+                                    Background="{TemplateBinding Foreground}"
+                                    CornerRadius="{TemplateBinding CornerRadius}" />
+                            </Panel>
+                            <LayoutTransformControl
+                                x:Name="PART_LayoutTransformControl"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                IsVisible="{TemplateBinding ShowProgressText}">
+                                <TextBlock Foreground="Red">
+                                    <TextBlock.Text>
+                                        <MultiBinding Converter="{StaticResource StringFormatConverter}">
+                                            <TemplateBinding Property="ProgressTextFormat" />
+                                            <Binding Path="Value" RelativeSource="{RelativeSource TemplatedParent}" />
+                                            <TemplateBinding Property="Percentage" />
+                                            <TemplateBinding Property="Minimum" />
+                                            <TemplateBinding Property="Maximum" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </LayoutTransformControl>
+                        </Panel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayProgressBar.Primary">
         <Setter Property="Background" Value="{DynamicResource SilverGray}" />
         <Setter Property="Foreground" Value="{DynamicResource Blue}" />
         <Setter Property="Height" Value="6" />
         <Setter Property="CornerRadius" Value="3" />
     </Style>
-    <Style Selector="ProgressBar.Default">
+    <Style Selector="lay|LayProgressBar.Default">
         <Setter Property="Background" Value="{DynamicResource SilverGray}" />
         <Setter Property="Foreground" Value="{DynamicResource Green}" />
         <Setter Property="Height" Value="6" />
         <Setter Property="CornerRadius" Value="3" />
     </Style>
-    <Style Selector="ProgressBar.Normal">
+    <Style Selector="lay|LayProgressBar.Normal">
         <Setter Property="Background" Value="{DynamicResource SilverGray}" />
         <Setter Property="Foreground" Value="{DynamicResource Orange}" />
         <Setter Property="Height" Value="6" />
         <Setter Property="CornerRadius" Value="3" />
     </Style>
-    <Style Selector="ProgressBar.Danger">
+    <Style Selector="lay|LayProgressBar.Danger">
         <Setter Property="Background" Value="{DynamicResource SilverGray}" />
         <Setter Property="Foreground" Value="{DynamicResource Red}" />
         <Setter Property="Height" Value="6" />
         <Setter Property="CornerRadius" Value="3" />
     </Style>
-    <Style Selector="ProgressBar.Steady">
+    <Style Selector="lay|LayProgressBar.Steady">
         <Setter Property="Background" Value="{DynamicResource SilverGray}" />
         <Setter Property="Foreground" Value="{DynamicResource Cyan}" />
         <Setter Property="Height" Value="6" />

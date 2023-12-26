@@ -40,7 +40,8 @@ namespace LayUI.Avalonia.Controls
         protected override void OnClick()
         {
             base.OnClick();
-            if (Uri != null)
+
+            if (!Design.IsDesignMode && Uri != null)
             {
                 if (Uri.Scheme == Uri.UriSchemeHttp || Uri.Scheme == Uri.UriSchemeHttps)
                 {
