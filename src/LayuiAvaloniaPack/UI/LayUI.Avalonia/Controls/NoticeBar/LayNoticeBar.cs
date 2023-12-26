@@ -15,7 +15,7 @@ namespace LayUI.Avalonia.Controls
     /// </summary>
     [TemplatePart(Name = nameof(PART_ContentPresenter), Type = typeof(ContentPresenter))]
     [TemplatePart(Name = nameof(PART_Grid), Type = typeof(Grid))]
-    public class LayNoticeBar : ContentControl
+    public class LayNoticeBar : ContentControl, ILayControl
     {
         public LayNoticeBar()
         {

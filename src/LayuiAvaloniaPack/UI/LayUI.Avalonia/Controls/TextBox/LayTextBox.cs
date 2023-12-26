@@ -17,7 +17,7 @@ namespace LayUI.Avalonia.Controls
     /// <summary>
     /// 输入框
     /// </summary>
-    public class LayTextBox : TextBox
+    public class LayTextBox : TextBox, ILayControl
     { 
         /// <summary>
         /// 是否聚焦

@@ -12,7 +12,7 @@ namespace LayUI.Avalonia.Controls
     /// <summary>
     /// 骨架
     /// </summary>
-    public class LaySkeleton : ContentControl
+    public class LaySkeleton : ContentControl, ILayControl
     { 
         /// <summary>
         /// Defines the <see cref="IsActive"/> property.

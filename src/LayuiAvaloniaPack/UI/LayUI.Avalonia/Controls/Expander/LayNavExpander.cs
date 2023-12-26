@@ -13,7 +13,7 @@ using LayUI.Avalonia.Enums;
 namespace LayUI.Avalonia.Controls
 {
     [PseudoClasses(new string[] { ":expanded", ":left", ":right" })]
-    public class LayNavExpander : HeaderedContentControl
+    public class LayNavExpander : HeaderedContentControl, ILayControl
     {
         #region 保留原有的Expander逻辑
         public static readonly StyledProperty<NavExpanderStyle> TypeProperty = AvaloniaProperty.Register<LayNavExpander, NavExpanderStyle>("Type", NavExpanderStyle.Right);
