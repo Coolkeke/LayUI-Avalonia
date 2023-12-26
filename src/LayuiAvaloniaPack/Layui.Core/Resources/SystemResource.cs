@@ -127,7 +127,11 @@ namespace Layui.Core
         /// <summary>
         /// 通知栏
         /// </summary>
-        public static string NoticeBarPage { get; } = nameof(NoticeBarPage); 
+        public static string NoticeBarPage { get; } = nameof(NoticeBarPage);
+        /// <summary>
+        /// 骨架
+        /// </summary>
+        public static string SkeletonPage { get; } = nameof(SkeletonPage); 
     }
     
 }

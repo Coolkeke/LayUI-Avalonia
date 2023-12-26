@@ -65,6 +65,7 @@ namespace Layui.Main
             containerRegistry.RegisterForNavigation<CheckBoxPage>(SystemResource.CheckBoxPage);
             containerRegistry.RegisterForNavigation<NoticeBarPage>(SystemResource.NoticeBarPage);
             containerRegistry.RegisterForNavigation<ProgressBarPage>(SystemResource.ProgressBarPage);
+            containerRegistry.RegisterForNavigation<SkeletonPage>(SystemResource.SkeletonPage);
             var layDialog = Container.Resolve<ILayDialogService>();
             layDialog.RegisterDialog<Message>(nameof(Message));
         }

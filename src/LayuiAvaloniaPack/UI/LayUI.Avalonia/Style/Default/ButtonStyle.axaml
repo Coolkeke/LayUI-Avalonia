@@ -69,6 +69,7 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
+                                ClipToBounds="{TemplateBinding ClipToBounds}"
                                 CornerRadius="{TemplateBinding CornerRadius}" />
                             <Border ClipToBounds="True" CornerRadius="{TemplateBinding CornerRadius}">
                                 <ContentPresenter
@@ -101,7 +102,7 @@
         <Setter Property="TextBlock.Foreground" Value="{DynamicResource Gray}" />
     </Style>
     <Style Selector="lay|LayButton">
-        <Setter Property="CornerRadius" Value="{DynamicResource Small}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource LayCornerRadiusSmall}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Stretch" />

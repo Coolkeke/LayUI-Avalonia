@@ -13,9 +13,9 @@
     mc:Ignorable="d">
 
     <StackPanel>
-        <lay:LayLegend Content="CheckBox" FontSize="{DynamicResource Large}" />
+        <lay:LayLegend Content="CheckBox" FontSize="{DynamicResource LayFontSizeLarge}" />
         <StackPanel Margin="10">
-            <lay:LayLegend Content="基础用法" FontSize="{DynamicResource Base}" />
+            <lay:LayLegend Content="基础用法" FontSize="{DynamicResource LayFontSizeBase}" />
             <StackPanel Margin="0,5" Orientation="Horizontal">
                 <lay:LayCheckBox
                     Content="男"
@@ -25,7 +25,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="10">
-            <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource Base}" />
+            <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource LayFontSizeBase}" />
             <StackPanel Margin="0,5" Orientation="Horizontal">
                 <lay:LayCheckBox
                     Content="男"
@@ -39,7 +39,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="10">
-            <lay:LayLegend Content="带有边框" FontSize="{DynamicResource Base}" />
+            <lay:LayLegend Content="带有边框" FontSize="{DynamicResource LayFontSizeBase}" />
             <StackPanel Margin="0,5" Orientation="Horizontal">
                 <lay:LayCheckBox Margin="5,0" IsChecked="true">
                     <TextBlock Margin="5,0" Text="男" />
@@ -50,7 +50,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="10">
-            <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource Base}" />
+            <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource LayFontSizeBase}" />
             <StackPanel Margin="0,5" Orientation="Horizontal">
                 <lay:LayCheckBox
                     Margin="5,0"
@@ -67,7 +67,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="10">
-            <lay:LayLegend Content="按钮组" FontSize="{DynamicResource Base}" />
+            <lay:LayLegend Content="按钮组" FontSize="{DynamicResource LayFontSizeBase}" />
             <Border
                 Margin="0,5"
                 HorizontalAlignment="Left"
@@ -86,7 +86,7 @@
             </Border>
         </StackPanel>
         <StackPanel Margin="10">
-            <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource Base}" />
+            <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource LayFontSizeBase}" />
             <Border
                 Margin="0,5"
                 HorizontalAlignment="Left"
