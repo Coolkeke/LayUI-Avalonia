@@ -42,7 +42,7 @@ namespace LayUI.Avalonia
         /// </summary>
         /// <param name="fontName"></param>
         /// <returns></returns>
-        public static Dictionary<string, string> GetIconFontUnicode(string fontName)
+        private static Dictionary<string, string> GetIconFontUnicode(string fontName)
         {
             var items = new Dictionary<string, string>();
             var font = Fonts[fontName] as FontFamily;

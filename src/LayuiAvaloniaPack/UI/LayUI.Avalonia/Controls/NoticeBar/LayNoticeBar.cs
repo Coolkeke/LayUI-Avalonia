@@ -1,12 +1,13 @@
 ﻿using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Presenters;
-using Avalonia.Controls; 
+using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
-using Avalonia.Animation; 
+using Avalonia.Animation;
 using Avalonia;
 using Avalonia.Styling;
-using Avalonia.Media; 
+using Avalonia.Media;
 using Avalonia.Interactivity;
+using LayUI.Avalonia.Tools;
 
 namespace LayUI.Avalonia.Controls
 {
@@ -78,7 +79,7 @@ namespace LayUI.Avalonia.Controls
                 PART_Grid.Loaded -= PART_Grid_Loaded;
                 PART_Grid.Loaded += PART_Grid_Loaded;
             }
-        } 
+        }
         private void PART_Grid_Loaded(object? sender, RoutedEventArgs e)
         {
             if (PART_Grid != null)
@@ -96,29 +97,16 @@ namespace LayUI.Avalonia.Controls
             if (Content == null) return;
             if (PART_Grid == null) return;
             if (PART_ContentPresenter == null) return;
-            var startKeyFrame = new KeyFrame()
+            LayAnimationHelper.ExecuteAnimation(LayAnimationHelper.CreateAnimation(new KeyFrames
             {
-                Setters = { new Setter(TranslateTransform.XProperty, PART_Grid?.Bounds.Width), },
-                Cue = new Cue(0.0d)
-            };
-            var endKeyFrame = new KeyFrame()
-            {
-                Setters = { new Setter(TranslateTransform.XProperty, -PART_ContentPresenter?.Bounds.Width), },
-                Cue = new Cue(1.0d)
-            };
-            var animation = new Animation()
-            {
-                Duration = TimeSpan.FromSeconds(Duration),
-                FillMode = FillMode.None,
-                IterationCount = IterationCount.Infinite,
-                Children = { startKeyFrame, endKeyFrame }
-            };
-            animation.RunAsync(PART_ContentPresenter);
+                LayAnimationHelper.CreateKeyFrame(new Cue(0.0d), TranslateTransform.XProperty, PART_Grid?.Bounds.Width),
+                LayAnimationHelper.CreateKeyFrame(new Cue(1.0d), TranslateTransform.XProperty, -PART_ContentPresenter?.Bounds.Width)
+            }, Duration, IterationCount.Infinite), PART_ContentPresenter);
         }
         protected override void OnSizeChanged(SizeChangedEventArgs e)
         {
             base.OnSizeChanged(e);
             InitAnimation();
-        } 
+        }
     }
 }
