@@ -6,7 +6,7 @@ using LayUI.Avalonia.Enums;
 
 namespace LayUI.Avalonia.Controls
 {
-    public class LayMessageControl : ContentControl
+    public class LayMessageControl : ContentControl, ILayControl
     {
         private LayMessageHost Host;
         private DispatcherTimer timer;

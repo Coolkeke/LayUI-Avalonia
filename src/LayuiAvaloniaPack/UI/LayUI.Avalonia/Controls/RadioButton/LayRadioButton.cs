@@ -4,7 +4,7 @@ using LayUI.Avalonia.Enums;
 
 namespace LayUI.Avalonia.Controls
 {
-    public class LayRadioButton: RadioButton
+    public class LayRadioButton: RadioButton, ILayControl
     {
         /// <summary>
         /// Defines the <see cref="Size"/> property.

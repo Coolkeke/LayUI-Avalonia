@@ -4,7 +4,7 @@ using Avalonia.Controls.Primitives;
 
 namespace LayUI.Avalonia.Controls
 {
-    public class LayMessageHost : ContentControl
+    public class LayMessageHost : ContentControl, ILayControl
     {
         /// <summary>
         /// 存储对话视图容器

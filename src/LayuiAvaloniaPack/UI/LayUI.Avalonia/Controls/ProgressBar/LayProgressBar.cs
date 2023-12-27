@@ -12,7 +12,7 @@ namespace LayUI.Avalonia.Controls
     /// <summary>
     /// 进度条
     /// </summary>
-    public class LayProgressBar: ProgressBar
+    public class LayProgressBar: ProgressBar, ILayControl
     {
 
         /// <summary>

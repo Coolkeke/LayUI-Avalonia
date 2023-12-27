@@ -10,7 +10,7 @@ namespace LayUI.Avalonia.Controls
     /// <summary>
     /// 复选框
     /// </summary>
-    public class LayCheckBox: CheckBox
+    public class LayCheckBox: CheckBox, ILayControl
     {
 
         /// <summary>

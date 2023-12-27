@@ -11,7 +11,7 @@ namespace LayUI.Avalonia.Controls
     /// <summary>
     /// 徽章
     /// </summary>
-    public class LayBadge : ContentControl
+    public class LayBadge : ContentControl, ILayControl
     {
         static LayBadge()
         {

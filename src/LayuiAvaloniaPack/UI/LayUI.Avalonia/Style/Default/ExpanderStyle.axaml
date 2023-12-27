@@ -65,7 +65,7 @@
                                             FontFamily="{DynamicResource Icon}"
                                             FontSize="20"
                                             RenderTransformOrigin="50%,50%"
-                                            Text="&#xefad;">
+                                            Text="&#xeb68;">
                                             <TextBlock.RenderTransform>
                                                 <RotateTransform />
                                             </TextBlock.RenderTransform>
@@ -97,7 +97,7 @@
                     <Setter Property="RotateTransform.Angle" Value="0" />
                 </KeyFrame>
                 <KeyFrame Cue="100%">
-                    <Setter Property="RotateTransform.Angle" Value="-180" />
+                    <Setter Property="RotateTransform.Angle" Value="180" />
                 </KeyFrame>
             </Animation>
         </Style.Animations>
@@ -106,7 +106,7 @@
         <Style.Animations>
             <Animation FillMode="Both" Duration="0:0:00.25">
                 <KeyFrame Cue="0%">
-                    <Setter Property="RotateTransform.Angle" Value="-180" />
+                    <Setter Property="RotateTransform.Angle" Value="180" />
                 </KeyFrame>
                 <KeyFrame Cue="100%">
                     <Setter Property="RotateTransform.Angle" Value="0" />
@@ -124,7 +124,7 @@
                     <Setter Property="RotateTransform.Angle" Value="0" />
                 </KeyFrame>
                 <KeyFrame Cue="100%">
-                    <Setter Property="RotateTransform.Angle" Value="180" />
+                    <Setter Property="RotateTransform.Angle" Value="-180" />
                 </KeyFrame>
             </Animation>
         </Style.Animations>
@@ -133,7 +133,7 @@
         <Style.Animations>
             <Animation FillMode="Both" Duration="0:0:00.25">
                 <KeyFrame Cue="0%">
-                    <Setter Property="RotateTransform.Angle" Value="180" />
+                    <Setter Property="RotateTransform.Angle" Value="-180" />
                 </KeyFrame>
                 <KeyFrame Cue="100%">
                     <Setter Property="RotateTransform.Angle" Value="0" />

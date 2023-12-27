@@ -12,7 +12,7 @@ namespace LayUI.Avalonia.Controls
     /// <summary>
     /// 加载动画
     /// </summary> 
-    public class LayLoading:ContentControl
+    public class LayLoading:ContentControl, ILayControl
     {
 
         /// <summary>

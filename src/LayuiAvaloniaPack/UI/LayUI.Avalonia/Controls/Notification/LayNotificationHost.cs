@@ -8,7 +8,7 @@ using System.Text;
 
 namespace LayUI.Avalonia.Controls
 {
-    public class LayNotificationHost : ContentControl
+    public class LayNotificationHost : ContentControl, ILayControl
     {
         /// <summary>
         /// 存储对话视图容器

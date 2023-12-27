@@ -1,5 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
+using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
 using Avalonia.Interactivity;
@@ -16,10 +18,9 @@ using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Controls
 {
-    public class LayNotificationControl : TemplatedControl
-    {
-
-
+    [TemplatePart(Name = nameof(CloseButton), Type = typeof(Button))] 
+    public class LayNotificationControl : TemplatedControl, ILayControl
+    { 
         /// <summary>
         /// 关闭通知信息按钮
         /// </summary>

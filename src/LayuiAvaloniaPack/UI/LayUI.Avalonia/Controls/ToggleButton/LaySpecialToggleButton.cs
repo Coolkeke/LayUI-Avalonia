@@ -15,7 +15,7 @@ namespace LayUI.Avalonia.Controls
     /// <para>唯一区别是IsChecked属性不在为Null</para>
     /// </summary>
     [PseudoClasses(":checked", ":unchecked")]
-    public class LaySpecialToggleButton : Button
+    public class LaySpecialToggleButton : Button, ILayControl
     {
         /// <summary>
         /// Defines the <see cref="IsChecked"/> property.

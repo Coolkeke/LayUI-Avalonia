@@ -11,7 +11,7 @@ namespace LayUI.Avalonia.Controls
     /// <summary>
     /// 面板
     /// </summary>
-    public class LayGroupBox : HeaderedContentControl
+    public class LayGroupBox : HeaderedContentControl, ILayControl
     {
 
         /// <summary>

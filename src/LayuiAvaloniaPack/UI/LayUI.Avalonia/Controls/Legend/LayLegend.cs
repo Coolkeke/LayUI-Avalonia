@@ -15,7 +15,7 @@ namespace LayUI.Avalonia.Controls
     /// <summary>
     /// 标题水平线
     /// </summary>
-    public class LayLegend : TemplatedControl
+    public class LayLegend : TemplatedControl, ILayControl
     {
         static LayLegend()
         {

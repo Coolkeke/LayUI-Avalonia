@@ -11,7 +11,7 @@ namespace LayUI.Avalonia.Controls
     /// <summary>
     /// 卡片
     /// </summary>
-    public class LayCard : ContentControl
+    public class LayCard : ContentControl, ILayControl
     {
         static LayCard()
         {
