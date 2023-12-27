@@ -1,13 +1,10 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Controls.Primitives;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Avalonia.Controls.Primitives; 
 
 namespace LayUI.Avalonia.Controls
 {
-    public class LayMessageHost : ContentControl
+    public class LayMessageHost : ContentControl, ILayControl
     {
         /// <summary>
         /// 存储对话视图容器

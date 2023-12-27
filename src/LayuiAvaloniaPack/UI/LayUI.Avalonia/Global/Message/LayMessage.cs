@@ -3,8 +3,7 @@ using Avalonia.Logging;
 using Avalonia.Threading;
 using LayUI.Avalonia.Controls;
 using LayUI.Avalonia.Enums;
-using LayUI.Avalonia.Interface;
-using LayUI.Avalonia.Models;
+using LayUI.Avalonia.Interfaces; 
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -27,10 +26,10 @@ namespace LayUI.Avalonia.Global
         }
         static LayMessage()
         {
-            TokenProperty.Changed.Subscribe(OnTokenChanged);
+            TokenProperty.Changed.AddClassHandler<AvaloniaObject>((o,e)=> OnTokenChanged(e));
         }
 
-        private static void OnTokenChanged(AvaloniaPropertyChangedEventArgs<string> obj)
+        private static void OnTokenChanged(AvaloniaPropertyChangedEventArgs obj)
         {
             if (obj.Sender is LayMessageHost host)
             {
@@ -60,7 +59,7 @@ namespace LayUI.Avalonia.Global
         /// <summary>
         /// 获取唯一值
         /// </summary>
-        public static readonly AttachedProperty<string> TokenProperty = AvaloniaProperty.RegisterAttached<IAvaloniaObject, IAvaloniaObject, string>(
+        public static readonly AttachedProperty<string> TokenProperty = AvaloniaProperty.RegisterAttached<AvaloniaObject, AvaloniaObject, string>(
             "Token", null);
         public void Show(string message, string token)
         {

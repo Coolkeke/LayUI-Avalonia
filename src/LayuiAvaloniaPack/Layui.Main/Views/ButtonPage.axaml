@@ -1,0 +1,125 @@
+<UserControl
+    x:Class="Layui.Main.Views.ButtonPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:res="using:Layui.Core"
+    d:DesignHeight="1050"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <lay:LayButton
+                Margin="2"
+                Content="默认按钮"
+                Type="Default" />
+            <lay:LayButton
+                Margin="2"
+                Content="百搭按钮"
+                Type="Normal" />
+            <lay:LayButton
+                Margin="2"
+                Content="暖色按钮"
+                Type="Warm" />
+            <lay:LayButton
+                Margin="2"
+                Content="警告按钮"
+                Type="Danger" />
+            <lay:LayButton
+                Margin="2"
+                Content="禁用按钮"
+                IsEnabled="False" />
+        </StackPanel>
+        <Grid
+            Height="1"
+            Margin="0,5"
+            Background="{DynamicResource Cyan}" />
+        <StackPanel Orientation="Horizontal">
+            <lay:LayButton Margin="2" Content="原始按钮" />
+            <lay:LayButton
+                Margin="2"
+                Classes="Default"
+                Content="主色按钮" />
+            <lay:LayButton
+                Margin="2"
+                Classes="Normal"
+                Content="百搭按钮" />
+            <lay:LayButton
+                Margin="2"
+                Classes="Warm"
+                Content="暖色按钮" />
+            <lay:LayButton
+                Margin="2"
+                Classes="Danger"
+                Content="警告按钮" />
+        </StackPanel>
+        <Grid
+            Height="1"
+            Margin="0,5"
+            Background="{DynamicResource Cyan}" />
+        <StackPanel Orientation="Horizontal">
+            <lay:LayButton
+                Margin="2"
+                Content="这是超链接"
+                Type="Link"
+                Uri="https://space.bilibili.com/48808444" />
+        </StackPanel>
+        <Grid
+            Height="1"
+            Margin="0,5"
+            Background="{DynamicResource Cyan}" />
+        <lay:LayButtonBase
+            Height="40"
+            Margin="0,5"
+            Background="{DynamicResource Gradient}"
+            Content="七色调"
+            Foreground="White" />
+        <lay:LayButtonBase
+            Height="40"
+            Margin="0,5"
+            Background="{DynamicResource Red}"
+            Content="七色调"
+            Foreground="White" />
+        <lay:LayButtonBase
+            Height="40"
+            Margin="0,5"
+            Background="{DynamicResource Orange}"
+            Content="七色调"
+            Foreground="White" />
+        <lay:LayButtonBase
+            Height="40"
+            Margin="0,5"
+            Background="{DynamicResource Green}"
+            Content="七色调"
+            Foreground="White" />
+        <lay:LayButtonBase
+            Height="40"
+            Margin="0,5"
+            Background="{DynamicResource Blue}"
+            Content="七色调"
+            Foreground="White" />
+        <lay:LayButtonBase
+            Height="40"
+            Margin="0,5"
+            Background="{DynamicResource Purple}"
+            Content="七色调"
+            Foreground="White" />
+        <lay:LayButtonBase
+            Height="40"
+            Margin="0,5"
+            Background="{DynamicResource Deep}"
+            Content="七色调"
+            Foreground="White" />
+        <lay:LayButtonBase
+            Height="40"
+            Margin="0,5"
+            Background="{DynamicResource Deep}"
+            Content="七色调"
+            Foreground="White"
+            IsEnabled="False" />
+    </StackPanel>
+</UserControl>

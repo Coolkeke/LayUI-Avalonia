@@ -1,0 +1,134 @@
+<UserControl
+    x:Class="Layui.Main.Views.RadioButtonPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:res="using:Layui.Core"
+    d:DesignHeight="800"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <StackPanel>
+        <lay:LayLegend Content="Radio 单选框" FontSize="{DynamicResource LayFontSizeLarge}" />
+        <StackPanel Margin="10">
+            <lay:LayLegend Content="基础用法" FontSize="{DynamicResource LayFontSizeBase}" />
+            <StackPanel Margin="0,5" Orientation="Horizontal">
+                <lay:LayRadioButton
+                    Content="男"
+                    GroupName="sex1"
+                    IsChecked="true"
+                    Size="30" />
+                <lay:LayRadioButton
+                    Content="女"
+                    GroupName="sex1"
+                    Size="30" />
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="10">
+            <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource LayFontSizeBase}" />
+            <StackPanel Margin="0,5" Orientation="Horizontal">
+                <lay:LayRadioButton
+                    Content="男"
+                    GroupName="sex2"
+                    IsChecked="true"
+                    IsEnabled="False"
+                    Size="30" />
+                <lay:LayRadioButton
+                    Content="女"
+                    GroupName="sex2"
+                    IsEnabled="False"
+                    Size="30" />
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="10">
+            <lay:LayLegend Content="带有边框" FontSize="{DynamicResource LayFontSizeBase}" />
+            <StackPanel Margin="0,5" Orientation="Horizontal">
+                <lay:LayRadioButton
+                    Margin="5,0"
+                    GroupName="sex3"
+                    IsChecked="true"
+                    Type="Button">
+                    <TextBlock Margin="5,0" Text="男" />
+                </lay:LayRadioButton>
+                <lay:LayRadioButton
+                    Margin="5,0"
+                    GroupName="sex3"
+                    Type="Button">
+                    <TextBlock Margin="5,0" Text="女" />
+                </lay:LayRadioButton>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="10">
+            <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource LayFontSizeBase}" />
+            <StackPanel Margin="0,5" Orientation="Horizontal">
+                <lay:LayRadioButton
+                    Margin="5,0"
+                    GroupName="sex4"
+                    IsChecked="true"
+                    IsEnabled="False"
+                    Type="Button">
+                    <TextBlock Margin="5,0" Text="男" />
+                </lay:LayRadioButton>
+                <lay:LayRadioButton
+                    Margin="5,0"
+                    GroupName="sex4"
+                    IsChecked="false"
+                    IsEnabled="False"
+                    Type="Button">
+                    <TextBlock Margin="5,0" Text="女" />
+                </lay:LayRadioButton>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="10">
+            <lay:LayLegend Content="按钮组" FontSize="{DynamicResource LayFontSizeBase}" />
+            <Border
+                Margin="0,5"
+                HorizontalAlignment="Left"
+                BorderBrush="{DynamicResource CyanGreen}"
+                BorderThickness="1"
+                ClipToBounds="True"
+                CornerRadius="4">
+                <StackPanel Orientation="Horizontal">
+                    <lay:LayRadioButton
+                        GroupName="sex5"
+                        IsChecked="true"
+                        Type="Group">
+                        <TextBlock Margin="5,0" Text="男" />
+                    </lay:LayRadioButton>
+                    <lay:LayRadioButton GroupName="sex5" Type="Group">
+                        <TextBlock Margin="5,0" Text="女" />
+                    </lay:LayRadioButton>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+        <StackPanel Margin="10">
+            <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource LayFontSizeBase}" />
+            <Border
+                Margin="0,5"
+                HorizontalAlignment="Left"
+                BorderBrush="{DynamicResource CyanGreen}"
+                BorderThickness="1"
+                ClipToBounds="True"
+                CornerRadius="4">
+                <StackPanel Orientation="Horizontal">
+                    <lay:LayRadioButton
+                        GroupName="sex6"
+                        IsChecked="true"
+                        IsEnabled="False"
+                        Type="Group">
+                        <TextBlock Margin="5,0" Text="男" />
+                    </lay:LayRadioButton>
+                    <lay:LayRadioButton
+                        GroupName="sex6"
+                        IsEnabled="False"
+                        Type="Group">
+                        <TextBlock Margin="5,0" Text="女" />
+                    </lay:LayRadioButton>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

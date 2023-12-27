@@ -84,7 +84,7 @@ namespace LayUI.Avalonia.Controls
             set => SetValue(SourceStreamProperty, value);
         }
         /// <summary>
-        /// 循环次数
+        /// 迭代次数
         /// </summary>
         public IterationCount IterationCount
         {

@@ -1,0 +1,17 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="using:System">
+    <!--  辅助文字  -->
+    <sys:Double x:Key="LayFontSizeExtraSmall">12</sys:Double>
+    <!--  正文（小）  -->
+    <sys:Double x:Key="LayFontSizeSmall">13</sys:Double>
+    <!--  正文  -->
+    <sys:Double x:Key="LayFontSizeBase">14</sys:Double>
+    <!--  小标题  -->
+    <sys:Double x:Key="LayFontSizeMedium">16</sys:Double>
+    <!--  标题  -->
+    <sys:Double x:Key="LayFontSizeLarge">18</sys:Double>
+    <!--  主标题  -->
+    <sys:Double x:Key="LayFontSizeExtraLarge">20</sys:Double>
+</ResourceDictionary>

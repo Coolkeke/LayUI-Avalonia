@@ -1,12 +1,10 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using LayUI.Avalonia.Enums;
 
 namespace LayUI.Avalonia.Controls
 {
-    public class LayRadioButton: RadioButton
+    public class LayRadioButton: RadioButton, ILayControl
     {
         /// <summary>
         /// Defines the <see cref="Size"/> property.
@@ -21,6 +19,21 @@ namespace LayUI.Avalonia.Controls
         {
             get { return GetValue(SizeProperty); }
             set { SetValue(SizeProperty, value); }
+        }
+
+        /// <summary>
+        /// Defines the <see cref="Type"/> property.
+        /// </summary>
+        public static readonly StyledProperty<RadioButtonType> TypeProperty =
+            AvaloniaProperty.Register<Control, RadioButtonType>(nameof(Type), RadioButtonType.Default);
+
+        /// <summary>
+        /// 类型
+        /// </summary>
+        public RadioButtonType Type
+        {
+            get { return GetValue(TypeProperty); }
+            set { SetValue(TypeProperty, value); }
         }
     }
 }

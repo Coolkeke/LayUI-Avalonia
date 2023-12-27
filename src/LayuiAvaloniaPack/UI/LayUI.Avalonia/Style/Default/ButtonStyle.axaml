@@ -50,11 +50,6 @@
                     Content="超链接"
                     Uri="https://space.bilibili.com/48808444" />
             </StackPanel>
-            <lay:LayButtonGroup Orientation="Horizontal">
-                <lay:LayButton Content="这是超链接" />
-                <lay:LayButton Content="这是超链接" />
-                <lay:LayButton Content="这是超链接" />
-            </lay:LayButtonGroup>
         </StackPanel>
     </Design.PreviewWith>
     <Style Selector="lay|LayButtonBase">
@@ -74,6 +69,7 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
+                                ClipToBounds="{TemplateBinding ClipToBounds}"
                                 CornerRadius="{TemplateBinding CornerRadius}" />
                             <Border ClipToBounds="True" CornerRadius="{TemplateBinding CornerRadius}">
                                 <ContentPresenter
@@ -106,7 +102,7 @@
         <Setter Property="TextBlock.Foreground" Value="{DynamicResource Gray}" />
     </Style>
     <Style Selector="lay|LayButton">
-        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="CornerRadius" Value="{DynamicResource LayCornerRadiusSmall}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Stretch" />

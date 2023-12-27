@@ -1,0 +1,113 @@
+<UserControl
+    x:Class="Layui.Main.Views.NoticeBarPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:res="using:Layui.Core"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <StackPanel>
+        <lay:LayNoticeBar
+            Margin="50,10"
+            Padding="10"
+            VerticalAlignment="Top"
+            BorderBrush="{DynamicResource Gradient}"
+            BorderThickness="1"
+            Content="欢迎使用LayUI">
+            <lay:LayNoticeBar.InnerLeftContent>
+                <Grid>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontFamily="{DynamicResource Icon}"
+                        FontSize="20"
+                        Text="&#xeff0;" />
+                </Grid>
+            </lay:LayNoticeBar.InnerLeftContent>
+        </lay:LayNoticeBar>
+        <lay:LayNoticeBar
+            Margin="50,10"
+            Padding="10"
+            VerticalAlignment="Top"
+            BorderBrush="{DynamicResource Gradient}"
+            BorderThickness="1">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontFamily="{DynamicResource Icon}"
+                    FontSize="20"
+                    Foreground="Red"
+                    Text="&#xeb93;" />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Foreground="{DynamicResource Gradient}"
+                    Text="以一颗冷静思辨的态度去看待这个物质浮躁的新时代，大环境，恰当处理自身与外界环境的矛盾，如何身心健康，自在的成为自己。" />
+            </StackPanel>
+            <lay:LayNoticeBar.InnerLeftContent>
+                <Grid>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontFamily="{DynamicResource Icon}"
+                        FontSize="20"
+                        Text="&#xeff0;" />
+                </Grid>
+            </lay:LayNoticeBar.InnerLeftContent>
+        </lay:LayNoticeBar>
+        <lay:LayNoticeBar
+            Margin="50,10"
+            Padding="10"
+            VerticalAlignment="Top"
+            BorderBrush="{DynamicResource Gradient}"
+            BorderThickness="1">
+            <StackPanel Orientation="Horizontal">
+                <lay:LayButton
+                    Background="Transparent"
+                    Content="我是超链接，点击我立即跳转"
+                    Foreground="{DynamicResource Gradient}"
+                    Type="Customize"
+                    Uri="https://github.com/Layui-WPF-Team/Layui-WPF" />
+            </StackPanel>
+            <lay:LayNoticeBar.InnerLeftContent>
+                <Grid>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontFamily="{DynamicResource Icon}"
+                        FontSize="20"
+                        Text="&#xeff0;" />
+                </Grid>
+            </lay:LayNoticeBar.InnerLeftContent>
+        </lay:LayNoticeBar>
+        <lay:LayNoticeBar
+            Margin="50,10"
+            Padding="10"
+            VerticalAlignment="Top"
+            BorderBrush="{DynamicResource Gradient}"
+            BorderThickness="1">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontFamily="{DynamicResource Icon}"
+                    FontSize="20"
+                    Foreground="Red"
+                    Text="&#xeb93;" />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Foreground="{DynamicResource Gradient}"
+                    Text="以一颗冷静思辨的态度去看待这个物质浮躁的新时代，大环境，恰当处理自身与外界环境的矛盾，如何身心健康，自在的成为自己。" />
+            </StackPanel>
+            <lay:LayNoticeBar.InnerLeftContent>
+                <Grid>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontFamily="{DynamicResource Icon}"
+                        FontSize="20"
+                        Text="&#xeff0;" />
+                </Grid>
+            </lay:LayNoticeBar.InnerLeftContent>
+        </lay:LayNoticeBar>
+    </StackPanel>
+</UserControl>

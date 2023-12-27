@@ -5,7 +5,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:lay="using:LayUI.Avalonia.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:temp="using:BusinessApp.Desktop.DataTemplateSelector"
     xmlns:vn="using:BusinessApp.Desktop"
     Title="BusinessApp.Desktop"
     d:DesignHeight="450"
@@ -126,46 +125,18 @@
                                     </ItemsControl.ItemsPanel>
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <ContentControl Name="Item" Content="{Binding Type}">
-                                                <ContentControl.ContentTemplate>
-                                                    <temp:ColorDataTemplateSelector>
-                                                        <temp:ColorDataTemplateSelector.Blue_DataTemplate>
-                                                            <DataTemplate>
-                                                                <Border
-                                                                    Height="150"
-                                                                    Margin="10"
-                                                                    Background="{DynamicResource Blue}"
-                                                                    BoxShadow="0 1 1 #000"
-                                                                    DataContext="{Binding #Item.DataContext}">
-                                                                    <TextBlock
-                                                                        HorizontalAlignment="Center"
-                                                                        VerticalAlignment="Center"
-                                                                        FontSize="30"
-                                                                        Foreground="White"
-                                                                        Text="{Binding Number}" />
-                                                                </Border>
-                                                            </DataTemplate>
-                                                        </temp:ColorDataTemplateSelector.Blue_DataTemplate>
-                                                        <temp:ColorDataTemplateSelector.Block_DataTemplate>
-                                                            <DataTemplate>
-                                                                <Border
-                                                                    Height="150"
-                                                                    Margin="10"
-                                                                    Background="#252525"
-                                                                    BoxShadow="0 1 1 #000"
-                                                                    DataContext="{Binding #Item.DataContext}">
-                                                                    <TextBlock
-                                                                        HorizontalAlignment="Center"
-                                                                        VerticalAlignment="Center"
-                                                                        FontSize="30"
-                                                                        Foreground="White"
-                                                                        Text="{Binding Number}" />
-                                                                </Border>
-                                                            </DataTemplate>
-                                                        </temp:ColorDataTemplateSelector.Block_DataTemplate>
-                                                    </temp:ColorDataTemplateSelector>
-                                                </ContentControl.ContentTemplate>
-                                            </ContentControl>
+                                            <Border
+                                                Height="150"
+                                                Margin="10"
+                                                Background="#252525"
+                                                BoxShadow="0 1 1 #000">
+                                                <TextBlock
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="30"
+                                                    Foreground="White"
+                                                    Text="{Binding}" />
+                                            </Border>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>

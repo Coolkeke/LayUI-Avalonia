@@ -1,0 +1,15 @@
+<Window
+    x:Class="Layui.Main.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:view="using:Layui.Main.Views"
+    Title="{Binding Title}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    DataContext="{Binding ElementName=Main, Path=DataContext}"
+    Icon="/Assets/avalonia-logo.ico"
+    mc:Ignorable="d">
+    <view:MainPage x:Name="Main" />
+</Window>

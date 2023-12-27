@@ -1,5 +1,5 @@
 ﻿using LayUI.Avalonia.Enums;
-using LayUI.Avalonia.Interface;
+using LayUI.Avalonia.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -10,8 +10,8 @@ namespace BusinessApp.Desktop
 {
     public class MainViewModel : BindableBase
     {
-        private ObservableCollection<object> _List=new ObservableCollection<object>();
-        public ObservableCollection<object> List
+        private ObservableCollection<string> _List=new ObservableCollection<string>();
+        public ObservableCollection<string> List
         {
             get { return _List; }
             set { SetProperty(ref _List, value); }
@@ -39,8 +39,7 @@ namespace BusinessApp.Desktop
             List.Clear();
             for (int i = 0; i < count; i++)
             {
-                var num = ran.Next(1, 100);
-                List.Add(new { Number= $"{num}",Type= (num%2)==0 });
+                List.Add($"{ran.Next(1, 100)}");
             }
             IsActive = false;
         }

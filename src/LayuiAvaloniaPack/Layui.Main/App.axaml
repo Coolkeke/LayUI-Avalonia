@@ -1,0 +1,14 @@
+<prism:PrismApplication
+    x:Class="Layui.Main.App"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Layui.Main"
+    xmlns:prism="http://prismlibrary.com/"
+    RequestedThemeVariant="Default">
+    <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
+
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="avares://LayUI.Avalonia/Themes/Default.axaml" />
+    </Application.Styles>
+</prism:PrismApplication>                                                             

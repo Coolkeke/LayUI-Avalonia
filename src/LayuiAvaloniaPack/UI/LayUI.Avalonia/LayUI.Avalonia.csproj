@@ -1,44 +1,23 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-	  <LangVersion>latest</LangVersion>
-	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <AvaloniaXaml Remove="Extends\GIF\**" />
-    <Compile Remove="Extends\GIF\**" />
-    <EmbeddedResource Remove="Extends\GIF\**" />
-    <None Remove="Extends\GIF\**" />
+    <None Remove="Fonts\iconfont.ttf" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Fonts\SourceHanSansCN-Regular.ttf" />
+    <AvaloniaResource Include="Fonts\iconfont.ttf" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.10.13" />
-    <PackageReference Include="Avalonia.Skia" Version="0.10.13" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controls\Switch\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Style\Default\ToggleSwitchStyle.axaml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Fonts\SourceHanSansCN-Regular.ttf" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AvaloniaXaml Update="Style\Default\ColorStyle.axaml">
-      <Generator>MSBuild:Compile</Generator>
-    </AvaloniaXaml>
+    <PackageReference Include="Avalonia" Version="11.0.6" />
+    <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="11.0.6" />
+    <PackageReference Include="Avalonia.Skia" Version="11.0.6" />
   </ItemGroup>
 
 </Project>

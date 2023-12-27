@@ -12,7 +12,7 @@ namespace LayUI.Avalonia.Controls
     /// <summary>
     /// 对话框容器
     /// </summary>
-    public class LayDialogHost : ContentControl
+    public class LayDialogHost : ContentControl, ILayControl
     {
 
         internal TaskCompletionSource<object> TaskCompletion ;

@@ -1,5 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
+using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
 using Avalonia.Interactivity;
@@ -16,10 +18,9 @@ using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Controls
 {
-    public class LayNotificationControl : TemplatedControl
-    {
-
-
+    [TemplatePart(Name = nameof(CloseButton), Type = typeof(Button))] 
+    public class LayNotificationControl : TemplatedControl, ILayControl
+    { 
         /// <summary>
         /// 关闭通知信息按钮
         /// </summary>
@@ -72,6 +73,36 @@ namespace LayUI.Avalonia.Controls
         public static readonly StyledProperty<NotificationType> TypeProperty =
             AvaloniaProperty.Register<LayNotificationControl, NotificationType>(nameof(Type), NotificationType.Info);
 
+
+        /// <summary>
+        /// Defines the <see cref="Title"/> property.
+        /// </summary>
+        public static readonly StyledProperty<string> TitleProperty =
+            AvaloniaProperty.Register<Control, string>(nameof(Title), string.Empty);
+
+        /// <summary>
+        /// 标题
+        /// </summary>
+        public string Title
+        {
+            get { return GetValue(TitleProperty); }
+            set { SetValue(TitleProperty, value); }
+        }
+
+        /// <summary>
+        /// Defines the <see cref="Content"/> property.
+        /// </summary>
+        public static readonly StyledProperty<object> ContentProperty =
+            AvaloniaProperty.Register<Control, object>(nameof(Content), null);
+
+        /// <summary>
+        /// 内容
+        /// </summary>
+        public object Content
+        {
+            get { return GetValue(ContentProperty); }
+            set { SetValue(ContentProperty, value); }
+        }
         /// <summary>
         /// Comment
         /// </summary>

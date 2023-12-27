@@ -1,15 +1,17 @@
-﻿using Avalonia;
-using Avalonia.Controls.Primitives;
+﻿using Avalonia.Controls.Primitives;
+using Avalonia;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Controls
 {
     /// <summary>
     /// 面板
     /// </summary>
-    public class LayGroupBox:HeaderedContentControl
+    public class LayGroupBox : HeaderedContentControl, ILayControl
     {
 
         /// <summary>

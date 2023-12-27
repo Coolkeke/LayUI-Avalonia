@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LayUI.Avalonia.Controls
 {
-    public class LayToggleButton: ToggleButton
+    public class LayToggleButton: ToggleButton, ILayControl
     {
     }
 }
