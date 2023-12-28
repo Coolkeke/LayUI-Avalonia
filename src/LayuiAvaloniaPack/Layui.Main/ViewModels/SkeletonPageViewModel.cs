@@ -1,4 +1,5 @@
 ﻿using Layui.Core;
+using Layui.Main.Models;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -15,8 +16,8 @@ namespace Layui.Main.ViewModels
         {
         }
 
-        private ObservableCollection<bool> _Items;
-        public ObservableCollection<bool> Items
+        private ObservableCollection<Data> _Items;
+        public ObservableCollection<Data> Items
         {
             get { return _Items; }
             set { SetProperty(ref _Items, value); }
@@ -27,28 +28,30 @@ namespace Layui.Main.ViewModels
 
         async void ExecuteTestCommand()
         {
-            if (Items == null) Items = new ObservableCollection<bool>();
-            Items.Clear();
-            for (int i = 0; i < 20; i++)
+            var items = new ObservableCollection<Data>();
+            for (int i = 0; i < 10; i++)
             {
-                Items.Add(true);
+                items.Add(new Data() { Title = "看山不是山，看水不是水，看山还是山，看水还是水" ,IsActive=true});
+            }
+            foreach (var item in items)
+            {
+                Items.Add(item);
             }
             await Task.Delay(3000);
-            Items.Clear();
-            for (int i = 0; i < 20; i++)
+            foreach (var item in items)
             {
-                Items.Add(false);
+                item.IsActive = false;
             }
         }
 
         protected override void Loaded()
         {
-             
+            if (Items == null) Items = new ObservableCollection<Data>();
         }
 
         protected override void Unloaded()
         {
-            
+
         }
     }
 }
