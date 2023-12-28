@@ -66,6 +66,8 @@ namespace Layui.Main
             containerRegistry.RegisterForNavigation<NoticeBarPage>(SystemResource.NoticeBarPage);
             containerRegistry.RegisterForNavigation<ProgressBarPage>(SystemResource.ProgressBarPage);
             containerRegistry.RegisterForNavigation<SkeletonPage>(SystemResource.SkeletonPage);
+            containerRegistry.RegisterForNavigation<FlowItemsControlPage>(SystemResource.FlowItemsControlPage);
+            containerRegistry.RegisterForNavigation<ImagePage>(SystemResource.ImagePage);
             var layDialog = Container.Resolve<ILayDialogService>();
             layDialog.RegisterDialog<Message>(nameof(Message));
         }
