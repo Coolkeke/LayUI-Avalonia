@@ -192,7 +192,8 @@
                                                 VerticalAlignment="Center"
                                                 FontSize="20"
                                                 Foreground="White"
-                                                Text="{Binding Title}" />
+                                                Text="{Binding Title}"
+                                                TextTrimming="{x:Static TextTrimming.CharacterEllipsis}" />
                                             <Border
                                                 Grid.Column="2"
                                                 Margin="5,0"

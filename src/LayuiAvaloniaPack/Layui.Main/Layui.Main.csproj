@@ -37,6 +37,9 @@
     <Compile Update="App.axaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
+    <Compile Update="Views\FlowItemsControlPage.axaml.cs">
+      <DependentUpon>FlowItemsControlPage.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\HomePage.axaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>%(Filename)</DependentUpon>

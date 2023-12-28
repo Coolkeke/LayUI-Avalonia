@@ -1,0 +1,41 @@
+<UserControl
+    x:Class="Layui.Main.Views.ImagePage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <lay:LayGroupBox Margin="10" Header="网络图片">
+        <UniformGrid>
+            <lay:LayImage
+                Margin="2"
+                Stretch="Fill"
+                UriSource="https://img95.699pic.com/photo/40117/4482.jpg_wh860.jpg" />
+            <lay:LayImage
+                Margin="2"
+                Stretch="Fill"
+                UriSource="https://img95.699pic.com/photo/40117/4482.jpg_wh860.jpg" />
+            <lay:LayImage
+                Margin="2"
+                Stretch="Fill"
+                UriSource="https://img95.699pic.com/photo/40117/4482.jpg_wh860.jpg" />
+            <lay:LayImage
+                Margin="2"
+                Stretch="Fill"
+                UriSource="https://img95.699pic.com/photo/40117/4482.jpg_wh860.jpg" />
+            <lay:LayImage
+                Margin="2"
+                Stretch="Fill"
+                UriSource="https://img95.699pic.com/photo/40117/4482.jpg_wh860.jpg" />
+            <lay:LayImage
+                Margin="2"
+                Stretch="Fill"
+                UriSource="https://img95.699pic.com/photo/40117/4482.jpg_wh860.jpg" />
+        </UniformGrid>
+    </lay:LayGroupBox>
+</UserControl>

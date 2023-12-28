@@ -132,6 +132,10 @@ namespace Layui.Core
         /// 骨架
         /// </summary>
         public static string SkeletonPage { get; } = nameof(SkeletonPage); 
+        /// <summary>
+        /// 流加载控件
+        /// </summary>
+        public static string FlowItemsControlPage { get; } = nameof(FlowItemsControlPage);  
     }
     
 }
