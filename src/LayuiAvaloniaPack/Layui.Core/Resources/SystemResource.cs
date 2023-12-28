@@ -135,7 +135,11 @@ namespace Layui.Core
         /// <summary>
         /// 流加载控件
         /// </summary>
-        public static string FlowItemsControlPage { get; } = nameof(FlowItemsControlPage);  
+        public static string FlowItemsControlPage { get; } = nameof(FlowItemsControlPage); 
+        /// <summary>
+        /// 波浪
+        /// </summary>
+        public static string RipplePage { get; } = nameof(RipplePage); 
     }
     
 }

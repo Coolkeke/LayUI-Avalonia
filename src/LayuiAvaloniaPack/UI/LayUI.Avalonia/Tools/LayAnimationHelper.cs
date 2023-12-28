@@ -256,10 +256,18 @@ namespace LayUI.Avalonia.Tools
             {
                 if (animation == null) return;
                 if (element == null) return;
-                var time = animation.IterationCount.Value;
-                animation.RunAsync(element).ContinueWith(o => {
+                animation.RunAsync(element);
+                var time = new DispatcherTimer(DispatcherPriority.Background);
+                time.Interval = animation.Duration;
+                EventHandler handler = null;
+                handler= (o, e) =>
+                {
+                    time.Stop();
+                    time.Tick -= handler;
                     callBack?.Invoke();
-                });
+                };
+                time.Tick += handler;
+                time.Start();
             }
             catch (Exception ex)
             {

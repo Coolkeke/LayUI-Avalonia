@@ -58,6 +58,7 @@ namespace Layui.Main.ViewModels
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.NotificationPage, Title = "Notification" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.NoticeBarPage, Title = "NoticeBar" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.LoadingPage, Title = "Loading" },
+                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.RipplePage, Title = "Ripple" },
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.TabControlPage, Title = "TabControl" },
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.StepBarPage, Title = "StepBar" },
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.CarouselPage, Title = "Carousel" },

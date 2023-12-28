@@ -1,0 +1,25 @@
+<UserControl
+    x:Class="Layui.Main.Views.RipplePage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:res="using:Layui.Core"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <StackPanel
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Orientation="Horizontal">
+        <lay:LayRipple Margin="20,5" Type="Auto">
+            <lay:LayButton Content="闪烁" Type="Default" />
+        </lay:LayRipple>
+        <lay:LayRipple Margin="20,5" Type="Click">
+            <lay:LayButton Content="点击" Type="Default" />
+        </lay:LayRipple>
+    </StackPanel>
+</UserControl>

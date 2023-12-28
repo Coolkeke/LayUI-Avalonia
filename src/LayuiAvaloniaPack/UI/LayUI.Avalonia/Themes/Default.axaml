@@ -31,4 +31,5 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/NoticeBarStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/SkeletonStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/FlowItemsControlStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/RippleStyle.axaml" />
 </Styles>
