@@ -35,6 +35,7 @@
                 </lay:LayTextBox.InnerLeftContent>
             </lay:LayTextBox>
             <lay:LayTextBox
+                x:Name="test"
                 Height="40"
                 Margin="5"
                 Watermark="这是文本框">
@@ -51,6 +52,12 @@
                 Margin="5"
                 PasswordChar="*"
                 Watermark="这是密码框" />
+            <lay:LayButton
+                Margin="5"
+                Click="LayButton_Click"
+                Content="点我"
+                Focusable="False"
+                Type="Normal" />
         </StackPanel>
     </ScrollViewer>
 </UserControl>

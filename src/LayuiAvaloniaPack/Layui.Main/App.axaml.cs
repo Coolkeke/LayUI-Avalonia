@@ -10,6 +10,7 @@ using Layui.Main.Views;
 using LayUI.Avalonia;
 using LayUI.Avalonia.Global;
 using LayUI.Avalonia.Interfaces;
+using LayUI.Avalonia.Tools;
 using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Regions;
@@ -32,6 +33,7 @@ namespace Layui.Main
                 view = Container.Resolve<MainPage>();
             }
             Container.Resolve<ILayClipboard>().InitializeClipboard(view as Visual);
+            LayKeyboardHelper.InitializeInputElement(view as Visual);
             return view;
         }
         protected override void OnInitialized()
