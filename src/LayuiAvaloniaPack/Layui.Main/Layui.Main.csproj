@@ -79,4 +79,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\LegendPage.axaml" />
+  </ItemGroup>
+
 </Project>

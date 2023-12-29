@@ -1,0 +1,44 @@
+<UserControl
+    x:Class="Layui.Main.Views.LegendPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <StackPanel>
+        <lay:LayLegend
+            Margin="0,20"
+            HorizontalOffset="100"
+            LineColor="{DynamicResource Red}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="5,0" Text="我是标题" />
+            </StackPanel>
+        </lay:LayLegend>
+        <lay:LayLegend
+            Margin="0,20"
+            LineColor="{DynamicResource Cyan}"
+            Type="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="5,0" Text="我是标题" />
+            </StackPanel>
+        </lay:LayLegend>
+        <lay:LayLegend
+            Margin="0,20"
+            HorizontalOffset="100"
+            LineColor="{DynamicResource Gradient}"
+            Type="Right">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="5,0" Text="我是标题" />
+            </StackPanel>
+        </lay:LayLegend>
+        <lay:LayLegend
+            Margin="0,20"
+            HorizontalOffset="100"
+            LineColor="{DynamicResource Gradient}" />
+    </StackPanel>
+</UserControl>
