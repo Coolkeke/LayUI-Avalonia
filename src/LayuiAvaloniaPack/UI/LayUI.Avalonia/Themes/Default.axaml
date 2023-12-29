@@ -32,4 +32,6 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/SkeletonStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/FlowItemsControlStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/RippleStyle.axaml" />
+	<StyleInclude Source="avares://LayUI.Avalonia/Style/Default/PopupBoxStyle.axaml" />
+	<StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ToolTipStyle.axaml" />
 </Styles>

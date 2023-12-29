@@ -1,0 +1,56 @@
+<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Design.PreviewWith>
+        <StackPanel Width="200" Height="300">
+            <lay:LayPopupBox HorizontalAlignment="Center" VerticalAlignment="Top">
+                <lay:LayPopupBox.Header>
+                    <lay:LayButton Content="点我" />
+                </lay:LayPopupBox.Header>
+                <lay:LayButton Width="100">
+                    <TextBlock Text="点我" />
+                </lay:LayButton>
+            </lay:LayPopupBox>
+        </StackPanel>
+    </Design.PreviewWith>
+    <Style Selector="lay|LayPopupBox">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <ContentPresenter
+                            x:Name="PART_HeaderPresenter"
+                            Content="{TemplateBinding Header}"
+                            ContentTemplate="{TemplateBinding HeaderTemplate}" />
+                        <Popup
+                            x:Name="PART_Popup"
+                            MinWidth="{Binding #PART_HeaderPresenter.Bounds.Width}"
+                            ClipToBounds="False"
+                            IsLightDismissEnabled="True"
+                            IsOpen="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsDropDownOpen}"
+                            PlacementTarget="{Binding #PART_HeaderPresenter}"
+                            UseLayoutRounding="True"
+                            WindowManagerAddShadowHint="False">
+                            <Border
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                ClipToBounds="{TemplateBinding ClipToBounds}"
+                                CornerRadius="{TemplateBinding CornerRadius}">
+                                <ContentPresenter
+                                    x:Name="PART_ContentPresenter"
+                                    Padding="{TemplateBinding Padding}"
+                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}" />
+                            </Border>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</Styles>

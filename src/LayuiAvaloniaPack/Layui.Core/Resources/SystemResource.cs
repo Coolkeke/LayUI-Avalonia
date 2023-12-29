@@ -140,6 +140,14 @@ namespace Layui.Core
         /// 波浪
         /// </summary>
         public static string RipplePage { get; } = nameof(RipplePage); 
+        /// <summary>
+        /// 提示信息
+        /// </summary>
+        public static string ToolTipPage { get; } = nameof(ToolTipPage);
+        /// <summary>
+        /// 弹出框
+        /// </summary>
+        public static string PopupBoxPage { get; } = nameof(PopupBoxPage);
     }
     
 }

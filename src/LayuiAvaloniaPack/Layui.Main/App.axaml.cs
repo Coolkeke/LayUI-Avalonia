@@ -70,6 +70,8 @@ namespace Layui.Main
             containerRegistry.RegisterForNavigation<ImagePage>(SystemResource.ImagePage);
             containerRegistry.RegisterForNavigation<RipplePage>(SystemResource.RipplePage);
             containerRegistry.RegisterForNavigation<LegendPage>(SystemResource.LegendPage);
+            containerRegistry.RegisterForNavigation<ToolTipPage>(SystemResource.ToolTipPage);
+            containerRegistry.RegisterForNavigation<PopupBoxPage>(SystemResource.PopupBoxPage);
             var layDialog = Container.Resolve<ILayDialogService>();
             layDialog.RegisterDialog<Message>(nameof(Message));
         }

@@ -1,0 +1,103 @@
+<UserControl
+    x:Class="Layui.Main.Views.PopupBoxPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+    xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
+    xmlns:ic="using:Avalonia.Xaml.Interactions.Custom"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:res="using:Layui.Core"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <lay:LayPopupBox
+        Width="200"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        IsAutoClose="False">
+        <lay:LayPopupBox.Header>
+            <lay:LayButton Content="点我" />
+        </lay:LayPopupBox.Header>
+        <lay:LayGroupBox
+            Height="300"
+            Margin="5"
+            Background="White"
+            Header="滚动加载数据">
+            <lay:LayFlowItemsControl Margin="5,0" ItemsSource="{Binding Items}">
+                <i:Interaction.Behaviors>
+                    <ia:EventTriggerBehavior EventName="Append">
+                        <ia:InvokeCommandAction Command="{Binding AppendCommand}" />
+                    </ia:EventTriggerBehavior>
+                </i:Interaction.Behaviors>
+                <lay:LayFlowItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <lay:LaySkeleton
+                                Width="100"
+                                Margin="0,5,10,5"
+                                IsActive="{Binding IsActive, Mode=OneWay}"
+                                Type="Image">
+                                <Image Source="/Assets/avalonia-logo.ico" />
+                            </lay:LaySkeleton>
+                            <UniformGrid
+                                Grid.Column="1"
+                                Columns="1"
+                                Rows="3">
+                                <lay:LaySkeleton
+                                    Margin="0,5,250,5"
+                                    VerticalAlignment="Center"
+                                    IsActive="{Binding IsActive, Mode=OneWay}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                            Margin="10,0"
+                                            VerticalAlignment="Center"
+                                            FontFamily="{DynamicResource Icon}"
+                                            Foreground="{DynamicResource Gradient}"
+                                            Text="&#xec26;" />
+                                        <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
+                                    </StackPanel>
+                                </lay:LaySkeleton>
+                                <lay:LaySkeleton
+                                    Margin="0,5,100,5"
+                                    VerticalAlignment="Center"
+                                    IsActive="{Binding IsActive, Mode=OneWay}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                            Margin="10,0"
+                                            VerticalAlignment="Center"
+                                            FontFamily="{DynamicResource Icon}"
+                                            Foreground="{DynamicResource Gradient}"
+                                            Text="&#xec26;" />
+                                        <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
+                                    </StackPanel>
+                                </lay:LaySkeleton>
+                                <lay:LaySkeleton
+                                    Margin="0,5"
+                                    VerticalAlignment="Center"
+                                    IsActive="{Binding IsActive, Mode=OneWay}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                            Margin="10,0"
+                                            VerticalAlignment="Center"
+                                            FontFamily="{DynamicResource Icon}"
+                                            Foreground="{DynamicResource Gradient}"
+                                            Text="&#xec26;" />
+                                        <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
+                                    </StackPanel>
+                                </lay:LaySkeleton>
+                            </UniformGrid>
+                        </Grid>
+                    </DataTemplate>
+                </lay:LayFlowItemsControl.ItemTemplate>
+            </lay:LayFlowItemsControl>
+        </lay:LayGroupBox>
+    </lay:LayPopupBox>
+</UserControl>
