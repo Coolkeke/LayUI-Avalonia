@@ -33,14 +33,14 @@ namespace LayUI.Avalonia.Tools
         /// </summary>
         /// <param name="key"></param>
         public static void SetKey(Key key) {
-            SetKeyDown(key);
-            SetKeyUp(key);
+            SetKeyDown(key, KeyModifiers.Control);
+            SetKeyUp(key, KeyModifiers.Control);
         }
         /// <summary>
         /// 按键按下（只能进行功能键使用）
         /// </summary>
         /// <param name="key"></param>
-        public static void SetKeyDown(Key key)
+        public static void SetKeyDown(Key key, KeyModifiers keyModifiers)
         {
             if (TopLevel == null) return;
             var input = TopLevel?.FocusManager?.GetFocusedElement();
@@ -49,7 +49,7 @@ namespace LayUI.Avalonia.Tools
             {
                 RoutedEvent = InputElement.KeyDownEvent,
                 Key = key,
-                KeyModifiers = KeyModifiers.Control,
+                KeyModifiers = keyModifiers,
                 Source = input,
             });
         }
@@ -57,7 +57,7 @@ namespace LayUI.Avalonia.Tools
         /// 按键抬起（只能进行功能键使用）
         /// </summary>
         /// <param name="key"></param>
-        public static void SetKeyUp(Key key)
+        public static void SetKeyUp(Key key, KeyModifiers keyModifiers)
         {
             if (TopLevel == null) return;
             var input = TopLevel?.FocusManager?.GetFocusedElement();
@@ -66,7 +66,7 @@ namespace LayUI.Avalonia.Tools
             {
                 RoutedEvent = InputElement.KeyUpEvent,
                 Key = key,
-                KeyModifiers = KeyModifiers.None,
+                KeyModifiers = keyModifiers,
                 Source = input,
             });
         }
