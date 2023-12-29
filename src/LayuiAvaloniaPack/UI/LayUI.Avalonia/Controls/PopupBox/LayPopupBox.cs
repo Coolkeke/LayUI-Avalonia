@@ -13,7 +13,7 @@ using System.Windows.Input;
 namespace LayUI.Avalonia.Controls
 {
     [TemplatePart(Name = nameof(PART_Popup), Type = typeof(Popup))]
-    public class LayPopupBox:HeaderedContentControl
+    public class LayPopupBox:HeaderedContentControl, ILayControl
     {
 
         private Popup PART_Popup;

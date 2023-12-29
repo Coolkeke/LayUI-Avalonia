@@ -1,5 +1,4 @@
 ﻿using Avalonia.Controls;
-using Avalonia.Controls.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +8,9 @@ using System.Threading.Tasks;
 namespace LayUI.Avalonia.Controls
 {
     /// <summary>
-    /// 提示信息
+    /// 日期控件
     /// </summary>
-    public class LayToolTip: TemplatedControl, ILayControl
+    public class LayDatePicker: DatePicker
     {
-
     }
 }
