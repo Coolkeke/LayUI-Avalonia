@@ -3,14 +3,11 @@ using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Interfaces
 {
+    /// <summary>
+    /// 剪切板
+    /// </summary>
     public interface ILayClipboard
-    {
-        /// <summary>
-        /// 初始化剪切板
-        /// </summary>
-        /// <param name="visual"></param>
-        void InitializeClipboard(Visual? visual);
-        /// <summary>
+    { 
         /// 复制
         /// </summary>
         /// <param name="data"></param>

@@ -11,12 +11,15 @@ using LayUI.Avalonia.Interfaces;
 
 namespace LayUI.Avalonia.Tools
 {
-    public class LayFocusManager 
+
+    /// <summary>
+    /// 聚焦管理器
+    /// </summary>
+    public class LayFocusManager: ILayFocusManager
     {
-        private IFocusManager? FocusManager;
-        public void InitializeFocusManager(Visual? visual)
-        {
-            if (visual != null) FocusManager = TopLevel.GetTopLevel(visual)?.FocusManager;
-        }
+        /// <summary>
+        /// 聚焦管理器
+        /// </summary>
+        public IFocusManager? FocusManager { get { return LayKeyboardHelper.TopLevel?.FocusManager; } } 
     }
 }

@@ -31,9 +31,8 @@ namespace Layui.Main
             else
             {
                 view = Container.Resolve<MainPage>();
-            }
-            Container.Resolve<ILayClipboard>().InitializeClipboard(view as Visual);
-            LayKeyboardHelper.InitializeInputElement(view as Visual);
+            } 
+            LayKeyboardHelper.InitializeKeyboard(view as Visual);
             return view;
         }
         protected override void OnInitialized()

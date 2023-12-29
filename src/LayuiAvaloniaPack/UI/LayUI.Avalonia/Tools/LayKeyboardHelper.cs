@@ -6,8 +6,8 @@ namespace LayUI.Avalonia.Tools
 {
     public class LayKeyboardHelper
     {
-        private static TopLevel? TopLevel;
-        public static void InitializeInputElement(Visual? visual)
+        internal static TopLevel? TopLevel;
+        public static void InitializeKeyboard(Visual? visual)
         {
             if (visual != null) TopLevel = TopLevel.GetTopLevel(visual);
         }
@@ -32,6 +32,14 @@ namespace LayUI.Avalonia.Tools
         /// 设置按键点击Key
         /// </summary>
         /// <param name="key"></param>
+        public static void SetKey(Key key) {
+            SetKeyDown(key);
+            SetKeyUp(key);
+        }
+        /// <summary>
+        /// 按键按下（只能进行功能键使用）
+        /// </summary>
+        /// <param name="key"></param>
         public static void SetKeyDown(Key key)
         {
             if (TopLevel == null) return;
@@ -41,10 +49,14 @@ namespace LayUI.Avalonia.Tools
             {
                 RoutedEvent = InputElement.KeyDownEvent,
                 Key = key,
-                KeyModifiers = KeyModifiers.Shift,
+                KeyModifiers = KeyModifiers.Control,
                 Source = input,
             });
         }
+        /// <summary>
+        /// 按键抬起（只能进行功能键使用）
+        /// </summary>
+        /// <param name="key"></param>
         public static void SetKeyUp(Key key)
         {
             if (TopLevel == null) return;
@@ -54,7 +66,7 @@ namespace LayUI.Avalonia.Tools
             {
                 RoutedEvent = InputElement.KeyUpEvent,
                 Key = key,
-                KeyModifiers = KeyModifiers.Shift,
+                KeyModifiers = KeyModifiers.None,
                 Source = input,
             });
         }
