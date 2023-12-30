@@ -15,7 +15,7 @@ namespace LayUI.Avalonia.Tools
         /// 设置文本
         /// </summary>
         /// <param name="value"></param>
-        public static void SetText(string value)
+        public static void SetText(string? value)
         {
             if (value == null) return; 
             if (TopLevel == null) return;
@@ -35,6 +35,16 @@ namespace LayUI.Avalonia.Tools
         public static void SetKey(Key key) {
             SetKeyDown(key, KeyModifiers.Control);
             SetKeyUp(key, KeyModifiers.Control);
+        }
+        /// <summary>
+        /// 键盘指令
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="keyModifier"></param>
+        public static void SetKey(Key key, KeyModifiers keyModifier)
+        {
+            SetKeyDown(key, keyModifier);
+            SetKeyUp(key, keyModifier);
         }
         /// <summary>
         /// 按键按下（只能进行功能键使用）

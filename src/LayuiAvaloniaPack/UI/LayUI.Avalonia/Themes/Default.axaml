@@ -38,4 +38,5 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DateRangePickerStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DateTimePickerStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DateTimeRangePickerStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/KeyboardStyle.axaml" />
 </Styles>

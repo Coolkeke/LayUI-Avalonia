@@ -51,7 +51,6 @@ namespace Layui.Main.ViewModels
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.FormPage, Title = "Form" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ImagePage, Title ="Image" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ProgressBarPage, Title ="ProgressBar" },
-                //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.KeyboardPage, Title = "Keyboard" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.DialogPage, Title = "Dialog" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.CardPage, Title = "Card" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.MessagePage, Title = "Message" },
@@ -75,6 +74,7 @@ namespace Layui.Main.ViewModels
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.DrawerPage, Title = "Drawer" }, 
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.MenuPage, Title = "Menu" },
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ListPage, Title = "List" },
+                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.KeyboardPage, Title = "Keyboard" },
             };
             return menus;
         }
