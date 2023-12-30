@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Controls
@@ -17,7 +18,7 @@ namespace LayUI.Avalonia.Controls
     /// 键盘
     /// </summary>
     [TemplatePart(Name = nameof(PART_KeysRoot), Type = typeof(Grid))]
-    public class LayKeyboard: TemplatedControl, ILayControl
+    public class LayKeyboard : TemplatedControl, ILayControl
     {
         private Grid? PART_KeysRoot;
 
@@ -93,7 +94,7 @@ namespace LayUI.Avalonia.Controls
         {
             base.OnLoaded(e);
             if (PART_KeysRoot != null)
-            { 
+            {
                 AddOrRemoveKeyButtonEnevt(true);
             }
         }
@@ -166,17 +167,19 @@ namespace LayUI.Avalonia.Controls
                         IsAltExtend = false;
                         IsCtrlExtend = !IsCtrlExtend;
                     }
-                    else if (key == Key.Back|| key == Key.Delete|| key == Key.Enter|| key == Key.Tab|| key == Key.LWin||key== Key.Escape)
-                    { 
+                    else if (key == Key.Back || key == Key.Delete || key == Key.Enter || key == Key.Tab || key == Key.LWin || key == Key.Escape)
+                    {
                         LayKeyboardHelper.SetKey(key, KeyModifiers.None);
-                    } 
+                    }
                     else
                     {
                         if (button.Tag != null)
                         {
                             var value = button.Tag.ToString().Split(',');
-                            LayKeyboardHelper.SetText(!IsShiftExtend ? value.LastOrDefault() : value.FirstOrDefault());
-                        
+                            var isLetter = Regex.IsMatch(button.Tag.ToString(), "[a-zA-Z]");
+                           if(!isLetter) LayKeyboardHelper.SetText(!IsShiftExtend ? value.LastOrDefault() : value.FirstOrDefault());
+                           else LayKeyboardHelper.SetText(!IsCapsLock ? value.LastOrDefault() : value.FirstOrDefault());
+
                         }
                         LayKeyboardHelper.SetKey(key, KeyModifiers.None);
                         if (IsShiftExtend)
@@ -184,24 +187,24 @@ namespace LayUI.Avalonia.Controls
                             LayKeyboardHelper.SetKey(key, KeyModifiers.Shift);
                             IsShiftExtend = false;
                             IsAltExtend = false;
-                            IsAltExtend = false; 
+                            IsAltExtend = false;
                         }
                         if (IsAltExtend)
                         {
                             LayKeyboardHelper.SetKey(key, KeyModifiers.Alt);
                             IsShiftExtend = false;
                             IsAltExtend = false;
-                            IsCtrlExtend = false; 
+                            IsCtrlExtend = false;
                         }
                         if (IsCtrlExtend)
                         {
                             LayKeyboardHelper.SetKey(key, KeyModifiers.Control);
                             IsShiftExtend = false;
                             IsAltExtend = false;
-                            IsCtrlExtend = false; 
+                            IsCtrlExtend = false;
                         }
 
-                    } 
+                    }
                 }
             }
         }
