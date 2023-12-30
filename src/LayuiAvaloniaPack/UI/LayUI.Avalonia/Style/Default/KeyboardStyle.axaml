@@ -425,7 +425,8 @@
                                     Grid.Column="3"
                                     Grid.ColumnSpan="2"
                                     CommandParameter="{Binding Source={x:Static Key.Q}}"
-                                    Focusable="{TemplateBinding Focusable}">
+                                    Focusable="{TemplateBinding Focusable}"
+                                    Tag="Q,q">
                                     <Grid Margin="10,4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -437,7 +438,8 @@
                                     Grid.Column="5"
                                     Grid.ColumnSpan="2"
                                     CommandParameter="{Binding Source={x:Static Key.W}}"
-                                    Focusable="{TemplateBinding Focusable}">
+                                    Focusable="{TemplateBinding Focusable}"
+                                    Tag="W,w">
                                     <Grid Margin="10,4">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" />
                                     </Grid>
@@ -446,7 +448,8 @@
                                     Grid.Column="7"
                                     Grid.ColumnSpan="2"
                                     CommandParameter="{Binding Source={x:Static Key.E}}"
-                                    Focusable="{TemplateBinding Focusable}">
+                                    Focusable="{TemplateBinding Focusable}"
+                                    Tag="E,e">
                                     <Grid Margin="10,4">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" />
                                     </Grid>
@@ -1057,7 +1060,9 @@
                                     Grid.Column="23"
                                     Grid.ColumnSpan="2"
                                     CommandParameter="{Binding Source={x:Static Key.RightAlt}}"
-                                    Focusable="{TemplateBinding Focusable}">
+                                    Focusable="{TemplateBinding Focusable}"
+                                    IsChecked="{TemplateBinding IsAltExtend,
+                                                                Mode=OneWay}">
                                     <Grid Margin="10,4">
 
                                         <TextBlock

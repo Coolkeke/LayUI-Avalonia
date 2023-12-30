@@ -176,6 +176,7 @@ namespace LayUI.Avalonia.Controls
                         {
                             var value = button.Tag.ToString().Split(',');
                             LayKeyboardHelper.SetText(!IsShiftExtend ? value.LastOrDefault() : value.FirstOrDefault());
+                        
                         }
                         LayKeyboardHelper.SetKey(key, KeyModifiers.None);
                         if (IsShiftExtend)
