@@ -148,6 +148,10 @@ namespace Layui.Core
         /// 弹出框
         /// </summary>
         public static string PopupBoxPage { get; } = nameof(PopupBoxPage);
+        /// <summary>
+        /// 导航折叠板
+        /// </summary>
+        public static string NavExpanderPage { get; } = nameof(NavExpanderPage);
     }
     
 }
