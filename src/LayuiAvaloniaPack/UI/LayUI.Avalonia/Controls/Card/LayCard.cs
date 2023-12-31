@@ -25,7 +25,7 @@ namespace LayUI.Avalonia.Controls
         /// </summary>
         private void UpdateBoxShadow()
         {
-            if (ShadowColor is SolidColorBrush brush)
+            if (ShadowColor is ISolidColorBrush brush)
             {
                 BoxShadow = new BoxShadows(new BoxShadow()
                 {

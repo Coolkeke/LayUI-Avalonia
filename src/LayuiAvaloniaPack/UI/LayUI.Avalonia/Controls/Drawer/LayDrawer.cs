@@ -4,6 +4,7 @@ using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.LogicalTree;
+using Avalonia.Media;
 using LayUI.Avalonia.Enums;
 
 namespace LayUI.Avalonia.Controls
@@ -35,6 +36,20 @@ namespace LayUI.Avalonia.Controls
             {
                 RaiseEvent(new RoutedEventArgs(OpenedEvent));
             }
+        } 
+        /// <summary>
+        /// Defines the <see cref="ShadowColor"/> property.
+        /// </summary>
+        public static readonly StyledProperty<IBrush> ShadowColorProperty =
+            AvaloniaProperty.Register<LayDrawer, IBrush>(nameof(ShadowColor));
+
+        /// <summary>
+        /// 阴影颜色
+        /// </summary>
+        public IBrush ShadowColor
+        {
+            get { return GetValue(ShadowColorProperty); }
+            set { SetValue(ShadowColorProperty, value); }
         }
         /// <summary>
         /// 抽屉开关事件

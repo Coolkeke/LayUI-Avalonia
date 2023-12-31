@@ -8,7 +8,8 @@
                 <lay:LayCard
                     Width="50"
                     Height="50"
-                    Margin="5" />
+                    Margin="5"
+                    ShadowColor="Red" />
                 <lay:LayCard
                     Width="50"
                     Height="50"

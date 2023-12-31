@@ -23,6 +23,7 @@
     <Style Selector="lay|LayDrawer">
         <Setter Property="IsHitTestVisible" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsOpen}" />
         <Setter Property="Background" Value="Transparent" />
+        <Setter Property="ShadowColor" Value="{DynamicResource Black}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -49,9 +50,9 @@
                             <lay:LayCard
                                 Name="PART_Card"
                                 Background="Transparent"
-                                Blur="150"
+                                Blur="100"
                                 CornerRadius="{TemplateBinding CornerRadius}"
-                                ShadowColor="Black">
+                                ShadowColor="{TemplateBinding ShadowColor}">
                                 <lay:LayCard.Transitions>
                                     <Transitions>
                                         <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2" />
