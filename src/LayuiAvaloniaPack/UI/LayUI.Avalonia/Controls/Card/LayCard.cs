@@ -15,25 +15,28 @@ namespace LayUI.Avalonia.Controls
     {
         static LayCard()
         {
-            ShadowColorProperty.Changed.AddClassHandler<LayCard>((s,e)=>s.UpdateBoxShadow());
+            ShadowColorProperty.Changed.AddClassHandler<LayCard>((s, e) => s.UpdateBoxShadow());
             BlurProperty.Changed.AddClassHandler<LayCard>((s, e) => s.UpdateBoxShadow());
             OffsetXProperty.Changed.AddClassHandler<LayCard>((s, e) => s.UpdateBoxShadow());
-            OffsetYProperty.Changed.AddClassHandler<LayCard>((s, e) => s.UpdateBoxShadow()); 
-        } 
+            OffsetYProperty.Changed.AddClassHandler<LayCard>((s, e) => s.UpdateBoxShadow());
+        }
         /// <summary>
         /// 修改阴影效果
         /// </summary>
         private void UpdateBoxShadow()
         {
-            BoxShadow = new BoxShadows(new BoxShadow()
+            if (ShadowColor is SolidColorBrush brush)
             {
-                Color = this.ShadowColor.Color,
-                Blur = Blur,
-                OffsetY = OffsetY,
-                OffsetX = OffsetX,
-                Spread = Spread,
-                IsInset = IsInset
-            });
+                BoxShadow = new BoxShadows(new BoxShadow()
+                {
+                    Color = brush.Color,
+                    Blur = Blur,
+                    OffsetY = OffsetY,
+                    OffsetX = OffsetX,
+                    Spread = Spread,
+                    IsInset = IsInset
+                });
+            } 
         }
         /// <summary>
         /// Defines the <see cref="BoxShadow"/> property.
@@ -68,13 +71,13 @@ namespace LayUI.Avalonia.Controls
         /// <summary>
         /// Defines the <see cref="ShadowColor"/> property.
         /// </summary>
-        public static readonly StyledProperty<SolidColorBrush> ShadowColorProperty =
-            AvaloniaProperty.Register<LayCard, SolidColorBrush>(nameof(ShadowColor), new SolidColorBrush(Color.Parse("#d2d2d2")) );
+        public static readonly StyledProperty<IBrush> ShadowColorProperty =
+            AvaloniaProperty.Register<LayCard, IBrush>(nameof(ShadowColor));
 
         /// <summary>
         /// 阴影颜色
         /// </summary>
-        public SolidColorBrush ShadowColor
+        public IBrush ShadowColor
         {
             get { return GetValue(ShadowColorProperty); }
             set { SetValue(ShadowColorProperty, value); }

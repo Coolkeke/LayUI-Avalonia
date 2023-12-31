@@ -14,7 +14,8 @@
                     <Button
                         Height="100"
                         HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch" />
+                        VerticalAlignment="Stretch"
+                        CornerRadius="0" />
                 </lay:LayDrawer>
             </Grid>
         </Border>
@@ -37,6 +38,7 @@
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
                                 Background="Black"
+                                CornerRadius="{TemplateBinding CornerRadius}"
                                 Cursor="Arrow">
                                 <lay:LayButton.Template>
                                     <ControlTemplate>
@@ -48,8 +50,8 @@
                                 Name="PART_Card"
                                 Background="Transparent"
                                 Blur="150"
-                                CornerRadius="0"
-                                ShadowColor="{DynamicResource LightBlack}">
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                ShadowColor="Black">
                                 <lay:LayCard.Transitions>
                                     <Transitions>
                                         <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2" />

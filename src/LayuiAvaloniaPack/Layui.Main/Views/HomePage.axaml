@@ -218,10 +218,7 @@
                 </Grid>
             </Grid>
         </lay:LayLoading>
-        <lay:LayDrawer
-            Grid.RowSpan="2"
-            IsOpen="{Binding #More.IsChecked, Mode=TwoWay}"
-            ZIndex="10">
+        <lay:LayDrawer Grid.RowSpan="2" IsOpen="{Binding #More.IsChecked, Mode=TwoWay}">
             <StackPanel Width="300" Background="White">
                 <Border BorderBrush="{DynamicResource Gray}" BorderThickness="0,0,0,1">
                     <TextBlock
