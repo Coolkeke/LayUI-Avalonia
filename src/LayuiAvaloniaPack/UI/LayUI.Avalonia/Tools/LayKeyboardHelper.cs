@@ -80,5 +80,12 @@ namespace LayUI.Avalonia.Tools
                 Source = input,
             });
         }
+        public static void SetHotKey(Key key, KeyModifiers keyModifiers)
+        {
+            if (TopLevel == null) return;
+            var input = TopLevel?.FocusManager?.GetFocusedElement();
+            if (input == null) return;
+            HotKeyManager.SetHotKey(input as AvaloniaObject, new KeyGesture(key, keyModifiers));
+        }
     }
 }

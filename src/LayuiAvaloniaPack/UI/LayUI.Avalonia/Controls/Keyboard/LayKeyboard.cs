@@ -177,33 +177,39 @@ namespace LayUI.Avalonia.Controls
                         {
                             var value = button.Tag.ToString().Split(',');
                             var isLetter = Regex.IsMatch(button.Tag.ToString(), "[a-zA-Z]");
-                           if(!isLetter) LayKeyboardHelper.SetText(!IsShiftExtend ? value.LastOrDefault() : value.FirstOrDefault());
-                           else LayKeyboardHelper.SetText(!IsCapsLock ? value.LastOrDefault() : value.FirstOrDefault());
-
+                           if(!isLetter) LayKeyboardHelper.SetText(!IsShiftExtend ? (value.Count() == 3 ? "," : value.LastOrDefault()) :  value.FirstOrDefault());
+                           else LayKeyboardHelper.SetText(!IsCapsLock ? value.LastOrDefault() : value.FirstOrDefault()); 
+                        }
+                        if (IsShiftExtend)
+                        { 
+                            LayKeyboardHelper.SetHotKey(key, KeyModifiers.Shift); 
+                            IsShiftExtend = false;
+                            IsAltExtend = false;
+                            IsCtrlExtend = false;
+                            return;
+                        }
+                        else if (IsAltExtend)
+                        { 
+                            LayKeyboardHelper.SetHotKey(key, KeyModifiers.Alt);
+                            IsShiftExtend = false;
+                            IsAltExtend = false;
+                            IsCtrlExtend = false;
+                            return;
+                        }
+                        else if (IsCtrlExtend)
+                        {
+                            LayKeyboardHelper.SetHotKey(key, KeyModifiers.Control); 
+                            IsShiftExtend = false;
+                            IsAltExtend = false;
+                            IsCtrlExtend = false;
+                            return;
+                        }
+                        if (key== Key.Space)
+                        {
+                            LayKeyboardHelper.SetText(" ");
+                            return;
                         }
                         LayKeyboardHelper.SetKey(key, KeyModifiers.None);
-                        if (IsShiftExtend)
-                        {
-                            LayKeyboardHelper.SetKey(key, KeyModifiers.Shift);
-                            IsShiftExtend = false;
-                            IsAltExtend = false;
-                            IsAltExtend = false;
-                        }
-                        if (IsAltExtend)
-                        {
-                            LayKeyboardHelper.SetKey(key, KeyModifiers.Alt);
-                            IsShiftExtend = false;
-                            IsAltExtend = false;
-                            IsCtrlExtend = false;
-                        }
-                        if (IsCtrlExtend)
-                        {
-                            LayKeyboardHelper.SetKey(key, KeyModifiers.Control);
-                            IsShiftExtend = false;
-                            IsAltExtend = false;
-                            IsCtrlExtend = false;
-                        }
-
                     }
                 }
             }
