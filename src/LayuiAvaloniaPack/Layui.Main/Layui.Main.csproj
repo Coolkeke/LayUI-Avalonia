@@ -83,4 +83,8 @@
     <UpToDateCheckInput Remove="Views\LegendPage.axaml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\DrawerPage.axaml" />
+  </ItemGroup>
+
 </Project>
