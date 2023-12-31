@@ -151,7 +151,11 @@ namespace Layui.Core
         /// <summary>
         /// 导航折叠板
         /// </summary>
-        public static string NavExpanderPage { get; } = nameof(NavExpanderPage);
+        public static string NavExpanderPage { get; } = nameof(NavExpanderPage); 
+        /// <summary>
+        /// 列表
+        /// </summary>
+        public static string ListBoxPage { get; } = nameof(ListBoxPage); 
     }
     
 }
