@@ -12,7 +12,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LayUI.Avalonia.Tools
+namespace LayUI.Avalonia
 {
     /// <summary>
     /// 图片帮助类

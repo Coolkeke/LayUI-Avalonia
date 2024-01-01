@@ -26,6 +26,7 @@
                         Name="PART_BorderBody"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}"
                         CornerRadius="{TemplateBinding CornerRadius}">
                         <Grid Margin="{TemplateBinding BorderThickness}">
                             <ContentPresenter
@@ -476,11 +477,14 @@
             <Setter.Value>
                 <ControlTemplate>
                     <Viewbox Width="{TemplateBinding Tag}" Height="{TemplateBinding Tag}">
-                        <Grid Width="150" Height="150">
+                        <Grid
+                            Width="150"
+                            Height="150"
+                            ClipToBounds="{TemplateBinding ClipToBounds}">
                             <Grid
                                 Width="150"
                                 Height="150"
-                                ClipToBounds="True">
+                                ClipToBounds="{TemplateBinding ClipToBounds}">
                                 <Grid
                                     Name="PART_GridRotate"
                                     Width="100"
@@ -488,7 +492,8 @@
                                     <Border
                                         Name="PART_BorderRotate"
                                         Background="{TemplateBinding Background}"
-                                        CornerRadius="5">
+                                        ClipToBounds="{TemplateBinding ClipToBounds}"
+                                        CornerRadius="{TemplateBinding CornerRadius}">
                                         <Border.Styles>
                                             <Style Selector="Border#PART_BorderRotate">
                                                 <Setter Property="RenderTransform" Value="rotate(45deg)" />

@@ -13,10 +13,13 @@
         </Border>
     </Design.PreviewWith>
     <Style Selector="lay|LayTimeline">
+        <Setter Property="CornerRadius" Value="{DynamicResource LayCornerRadiusSmall}" />
+        <Setter Property="LineColor" Value="{DynamicResource Gray}" />
         <Setter Property="Foreground" Value="{DynamicResource LightBlack}" />
         <Setter Property="IconHeight" Value="10" />
         <Setter Property="IconWidth" Value="10" />
         <Setter Property="IconCornerRadius" Value="5" />
+        <Setter Property="Padding" Value="2" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource LightBlack}" />
         <Setter Property="BorderThickness" Value="1" />

@@ -1,7 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Input;
-using Avalonia.Input.TextInput;
-using LayUI.Avalonia.Tools;
+using LayUI.Avalonia;
 
 namespace Layui.Main.Views
 {

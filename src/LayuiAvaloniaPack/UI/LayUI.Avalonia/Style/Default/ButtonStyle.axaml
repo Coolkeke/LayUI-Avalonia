@@ -113,7 +113,10 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Border Name="PART_BorderBody" CornerRadius="{TemplateBinding CornerRadius}">
+                    <Border
+                        Name="PART_BorderBody"
+                        ClipToBounds="{TemplateBinding ClipToBounds}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
                         <Grid>
                             <Border
                                 Name="PART_Border"

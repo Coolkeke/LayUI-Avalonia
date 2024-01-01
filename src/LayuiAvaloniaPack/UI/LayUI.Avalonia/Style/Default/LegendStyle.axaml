@@ -36,7 +36,7 @@
                             Width="{TemplateBinding HorizontalOffset}"
                             Height="{TemplateBinding LineThickness}"
                             Background="{TemplateBinding LineColor}"
-                            ClipToBounds="True"
+                            ClipToBounds="{TemplateBinding ClipToBounds}"
                             CornerRadius="{TemplateBinding CornerRadius}" />
                         <ContentPresenter
                             Name="PART_ContentPresenter"
@@ -50,7 +50,7 @@
                             Grid.Column="2"
                             Height="{TemplateBinding LineThickness}"
                             Background="{TemplateBinding LineColor}"
-                            ClipToBounds="True"
+                            ClipToBounds="{TemplateBinding ClipToBounds}"
                             CornerRadius="{TemplateBinding CornerRadius}" />
                     </Grid>
                 </ControlTemplate>

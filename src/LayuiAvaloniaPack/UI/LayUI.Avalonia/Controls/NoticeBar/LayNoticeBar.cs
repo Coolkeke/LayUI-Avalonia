@@ -3,11 +3,9 @@ using Avalonia.Controls.Presenters;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Animation;
-using Avalonia;
-using Avalonia.Styling;
+using Avalonia; 
 using Avalonia.Media;
-using Avalonia.Interactivity;
-using LayUI.Avalonia.Tools;
+using Avalonia.Interactivity; 
 
 namespace LayUI.Avalonia.Controls
 {

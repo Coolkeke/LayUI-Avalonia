@@ -32,6 +32,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}"
                         CornerRadius="{TemplateBinding CornerRadius}"
                         Focusable="{TemplateBinding Focusable}">
                         <Grid x:Name="PART_KeysRoot" Focusable="{TemplateBinding Focusable}">

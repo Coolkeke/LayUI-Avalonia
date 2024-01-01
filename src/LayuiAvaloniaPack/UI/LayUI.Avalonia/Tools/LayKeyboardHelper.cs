@@ -2,7 +2,7 @@
 using Avalonia.Input;
 using Avalonia; 
 
-namespace LayUI.Avalonia.Tools
+namespace LayUI.Avalonia
 {
     public class LayKeyboardHelper
     {

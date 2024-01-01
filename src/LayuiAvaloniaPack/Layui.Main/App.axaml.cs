@@ -1,21 +1,15 @@
-using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Controls.Primitives;
-using Avalonia.Logging;
-using Avalonia.Markup.Xaml;
+using Avalonia; 
+using Avalonia.Controls.ApplicationLifetimes; 
+using Avalonia.Logging; 
 using Layui.Core;
 using Layui.Main.ViewModels;
 using Layui.Main.Views;
 using LayUI.Avalonia;
 using LayUI.Avalonia.Global;
-using LayUI.Avalonia.Interfaces;
-using LayUI.Avalonia.Tools;
+using LayUI.Avalonia.Interfaces; 
 using Prism.DryIoc;
 using Prism.Ioc;
-using Prism.Regions;
-using Prism.Regions.Behaviors;
-using System.Collections.Specialized;
+using Prism.Regions; 
 
 namespace Layui.Main
 {

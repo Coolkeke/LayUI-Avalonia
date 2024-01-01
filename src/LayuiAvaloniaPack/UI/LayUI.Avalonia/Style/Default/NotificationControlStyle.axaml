@@ -29,6 +29,7 @@
                         Name="PART_BorderBody"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}"
                         CornerRadius="{TemplateBinding CornerRadius}">
                         <Grid ColumnDefinitions="auto,*,auto">
                             <Path

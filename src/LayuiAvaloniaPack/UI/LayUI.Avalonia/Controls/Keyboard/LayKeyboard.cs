@@ -3,14 +3,8 @@ using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
-using Avalonia.Interactivity;
-using LayUI.Avalonia.Tools;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using Avalonia.Interactivity; 
+using System.Text.RegularExpressions; 
 
 namespace LayUI.Avalonia.Controls
 {

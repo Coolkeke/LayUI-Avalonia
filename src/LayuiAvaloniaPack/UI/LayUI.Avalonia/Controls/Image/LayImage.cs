@@ -1,16 +1,5 @@
-﻿using Avalonia;
-using Avalonia.Automation.Peers;
-using Avalonia.Automation;
-using Avalonia.Controls;
-using Avalonia.Controls.Automation.Peers;
-using Avalonia.Media;
-using Avalonia.Metadata;
-using LayUI.Avalonia.Tools;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Avalonia; 
+using Avalonia.Controls; 
 using Avalonia.Threading;
 
 namespace LayUI.Avalonia.Controls

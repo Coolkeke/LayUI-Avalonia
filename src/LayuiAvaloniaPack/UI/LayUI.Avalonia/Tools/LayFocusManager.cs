@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Avalonia.Input;
 using LayUI.Avalonia.Interfaces;
 
-namespace LayUI.Avalonia.Tools
+namespace LayUI.Avalonia
 {
 
     /// <summary>

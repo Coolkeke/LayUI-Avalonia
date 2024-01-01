@@ -15,7 +15,7 @@ using Avalonia.Logging;
 using Avalonia.Media;
 using Avalonia.Styling;
 
-namespace LayUI.Avalonia.Tools
+namespace LayUI.Avalonia
 {
     /// <summary>
     /// 动画创建帮助类

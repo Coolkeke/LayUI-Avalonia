@@ -10,15 +10,57 @@
     d:DesignWidth="800"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
-    <lay:LayTimeline>
-        <lay:LayTimelineItem Content="内容" Header="头部信息" />
-        <lay:LayTimelineItem Content="内容" Header="头部信息" />
-        <lay:LayTimelineItem Content="内容" Header="头部信息" />
-        <lay:LayTimelineItem Content="内容" Header="头部信息" />
-        <lay:LayTimelineItem Content="内容" Header="头部信息" />
-        <lay:LayTimelineItem Content="内容" Header="头部信息" />
-        <lay:LayTimelineItem Content="内容" Header="头部信息" />
-        <lay:LayTimelineItem Content="内容" Header="头部信息" />
-        <lay:LayTimelineItem Content="内容" Header="头部信息" />
-    </lay:LayTimeline>
+    <UniformGrid Rows="1">
+        <lay:LayTimeline Margin="5">
+            <lay:LayTimelineItem Content="内容" Header="头部信息" />
+            <lay:LayTimelineItem Content="内容" Header="头部信息" />
+            <lay:LayTimelineItem Content="内容" Header="头部信息" />
+            <lay:LayTimelineItem Content="内容" Header="头部信息" />
+            <lay:LayTimelineItem Content="内容" Header="头部信息" />
+            <lay:LayTimelineItem Content="内容" Header="头部信息" />
+            <lay:LayTimelineItem Content="内容" Header="头部信息" />
+            <lay:LayTimelineItem Content="内容" Header="头部信息" />
+            <lay:LayTimelineItem Content="内容" Header="头部信息" />
+        </lay:LayTimeline>
+        <lay:LayTimeline
+            Margin="5"
+            IconCornerRadius="0"
+            IconHeight="NaN"
+            IconWidth="NaN"
+            ItemsSource="{Binding Items}">
+            <lay:LayTimeline.Styles>
+                <Style Selector="lay|LayTimelineItem">
+                    <Setter Property="Background" Value="Transparent" />
+                </Style>
+            </lay:LayTimeline.Styles>
+            <lay:LayTimeline.IconTemplate>
+                <DataTemplate>
+                    <TextBlock
+                        Background="White"
+                        FontFamily="{DynamicResource Icon}"
+                        FontSize="20"
+                        Foreground="{DynamicResource Gradient}"
+                        Text="{Binding Icon}" />
+                </DataTemplate>
+            </lay:LayTimeline.IconTemplate>
+            <lay:LayTimeline.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock
+                        Margin="0,10"
+                        VerticalAlignment="Center"
+                        Text="{Binding Header}" />
+                </DataTemplate>
+            </lay:LayTimeline.HeaderTemplate>
+            <lay:LayTimeline.ItemTemplate>
+                <DataTemplate>
+                    <lay:LayCard
+                        MinHeight="150"
+                        Margin="0,5,10,5"
+                        Blur="20">
+                        <TextBlock Margin="10" Text="{Binding Content}" />
+                    </lay:LayCard>
+                </DataTemplate>
+            </lay:LayTimeline.ItemTemplate>
+        </lay:LayTimeline>
+    </UniformGrid>
 </UserControl>

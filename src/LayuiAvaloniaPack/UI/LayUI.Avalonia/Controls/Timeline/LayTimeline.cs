@@ -1,12 +1,10 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Presenters;
-using System;
-using System.Collections.Generic;
+using Avalonia.Controls.Primitives;
+using Avalonia.Controls.Templates;
+using Avalonia.Media;
 using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Controls
 {
@@ -67,15 +65,59 @@ namespace LayUI.Avalonia.Controls
             set { SetValue(IconHeightProperty, value); }
         }
 
+        /// <summary>
+        /// Defines the <see cref="LineColor"/> property.
+        /// </summary>
+        public static readonly StyledProperty<IBrush> LineColorProperty =
+            AvaloniaProperty.Register<LayTimeline, IBrush>(nameof(LineColor));
+
+        /// <summary>
+        /// 线的颜色
+        /// </summary>
+        public IBrush LineColor
+        {
+            get { return GetValue(LineColorProperty); }
+            set { SetValue(LineColorProperty, value); }
+        }
         private void ItemsViewOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             RefreshTimelineItems();
         }
-        
+
         protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
         {
             base.OnPropertyChanged(change);
             RefreshTimelineItems();
+        }
+
+        /// <summary>
+        /// Defines the <see cref="HeaderTemplate"/> property.
+        /// </summary>
+        public static readonly StyledProperty<IDataTemplate?> HeaderTemplateProperty =
+            AvaloniaProperty.Register<LayTimeline, IDataTemplate?>(nameof(HeaderTemplate));
+
+        /// <summary>
+        /// 头部模板
+        /// </summary>
+        public IDataTemplate? HeaderTemplate
+        {
+            get { return GetValue(HeaderTemplateProperty); }
+            set { SetValue(HeaderTemplateProperty, value); }
+        }
+
+        /// <summary>
+        /// Defines the <see cref="IconTemplate"/> property.
+        /// </summary>
+        public static readonly StyledProperty<IDataTemplate?> IconTemplateProperty =
+            AvaloniaProperty.Register<LayTimeline, IDataTemplate?>(nameof(IconTemplate));
+
+        /// <summary>
+        /// 图标模板
+        /// </summary>
+        public IDataTemplate? IconTemplate
+        {
+            get { return GetValue(IconTemplateProperty); }
+            set { SetValue(IconTemplateProperty, value); }
         }
         /// <summary>
         /// 判断当前Item项中状态
@@ -86,16 +128,10 @@ namespace LayUI.Avalonia.Controls
             {
                 if (this.LogicalChildren[i] is LayTimelineItem t)
                 {
-                    t.IconCornerRadius = IconCornerRadius;
-                    t.IconHeight = IconHeight;
-                    t.IconWidth = IconWidth;
                     t.SetIndex(i == 0, i == this.LogicalChildren.Count - 1, i == 0 ? false : i == this.LogicalChildren.Count - 1 ? false : true);
                 }
                 else if (this.LogicalChildren[i] is ContentPresenter { Child: LayTimelineItem t2 })
                 {
-                    t2.IconCornerRadius = IconCornerRadius;
-                    t2.IconHeight = IconHeight;
-                    t2.IconWidth = IconWidth;
                     t2.SetIndex(i == 0, i == this.LogicalChildren.Count - 1, i == 0 ? false : i == this.LogicalChildren.Count - 1 ? false : true);
                 }
             }
@@ -107,6 +143,34 @@ namespace LayUI.Avalonia.Controls
         protected override Control CreateContainerForItemOverride(object? item, int index, object? recycleKey)
         {
             return new LayTimelineItem();
+        }
+        protected override void ClearContainerForItemOverride(Control container)
+        {
+            if (container is not LayTimelineItem hcc) return;
+            hcc.ClearValue(ContentControl.ContentProperty);
+            hcc.ClearValue(HeaderedContentControl.HeaderProperty);
+            hcc.ClearValue(HeaderedContentControl.HeaderTemplateProperty);
+            hcc.ClearValue(LayTimelineItem.IconTemplateProperty);
+        }
+        protected override void PrepareContainerForItemOverride(Control container, object? item, int index)
+        {
+            if (container == item) return;
+            if (container is not LayTimelineItem) return; 
+            if (ItemTemplate is not null)
+            {
+                LayUIHelper.SetIfUnset(container, LayTimelineItem.ContentProperty, item);
+                LayUIHelper.SetIfUnset(container, LayTimelineItem.ContentTemplateProperty, ItemTemplate);
+            }
+            if (HeaderTemplate is not null)
+            {
+                LayUIHelper.SetIfUnset(container, LayTimelineItem.HeaderProperty, item);
+                LayUIHelper.SetIfUnset(container, LayTimelineItem.HeaderTemplateProperty, HeaderTemplate);
+            }
+            if (IconTemplate is not null)
+            {
+                LayUIHelper.SetIfUnset(container, LayTimelineItem.IconProperty, item);
+                LayUIHelper.SetIfUnset(container, LayTimelineItem.IconTemplateProperty, IconTemplate);
+            }
         }
     }
 }
