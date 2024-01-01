@@ -156,6 +156,10 @@ namespace Layui.Core
         /// 列表
         /// </summary>
         public static string ListBoxPage { get; } = nameof(ListBoxPage); 
+        /// <summary>
+        /// 时间线
+        /// </summary>
+        public static string TimelinePage { get; } = nameof(TimelinePage); 
     }
     
 }

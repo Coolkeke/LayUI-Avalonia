@@ -77,6 +77,7 @@ namespace Layui.Main
             containerRegistry.RegisterForNavigation<DrawerPage>(SystemResource.DrawerPage); 
             containerRegistry.RegisterForNavigation<NavExpanderPage>(SystemResource.NavExpanderPage);
             containerRegistry.RegisterForNavigation<ListBoxPage>(SystemResource.ListBoxPage);
+            containerRegistry.RegisterForNavigation<TimelinePage>(SystemResource.TimelinePage);
             var layDialog = Container.Resolve<ILayDialogService>();
             layDialog.RegisterDialog<Message>(nameof(Message));
         }
