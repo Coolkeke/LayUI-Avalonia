@@ -15,6 +15,9 @@ using LayUI.Avalonia.Enums;
 using Avalonia.Collections;
 using Avalonia.Controls.Metadata;
 using Avalonia.LogicalTree;
+using Avalonia.Input;
+using Avalonia.Interactivity;
+using System.Net.NetworkInformation;
 
 namespace LayUI.Avalonia.Controls
 {
@@ -29,17 +32,13 @@ namespace LayUI.Avalonia.Controls
         /// </summary>
         private Grid? PART_ItemsGrid;
         public LayCarousel()
-        {
+        {  
             SubscribeToItemsSource(_items);
-        }
-        static LayCarousel()
-        {
             ItemTemplateProperty.Changed.AddClassHandler<LayCarousel>((o, e) => o.OnItemTemplateChanged(e));
             SelectedIndexProperty.Changed.AddClassHandler<LayCarousel>((o, e) => o.OnSelectedIndexChanged(e));
             SelectedItemProperty.Changed.AddClassHandler<LayCarousel>((o, e) => o.OnSelectedItemChanged(e));
             ItemsSourceProperty.Changed.AddClassHandler<LayCarousel>((o, e) => o.OnItemsSourceChanged(e));
-        }
-
+        } 
         public int SelectedIndex
         {
             get { return GetValue(SelectedIndexProperty); }
