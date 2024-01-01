@@ -1,0 +1,30 @@
+<UserControl
+    x:Class="Layui.Main.Views.CarouselPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <lay:LayCarousel
+        Margin="5"
+        ItemsSource="{Binding Items}"
+        SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
+        Type="Hover">
+        <lay:LayCarousel.ItemTemplate>
+            <DataTemplate>
+                <Grid Background="{DynamicResource Green}">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Foreground="White"
+                        Text="{Binding Title}" />
+                </Grid>
+            </DataTemplate>
+        </lay:LayCarousel.ItemTemplate>
+    </lay:LayCarousel>
+</UserControl>

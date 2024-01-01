@@ -62,7 +62,7 @@ namespace Layui.Main.ViewModels
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.PopupBoxPage, Title = "PopupBox" },
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.TabControlPage, Title = "TabControl" },
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.StepBarPage, Title = "StepBar" },
-                //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.CarouselPage, Title = "Carousel" },
+                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.CarouselPage, Title = "Carousel" },
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ExpanderPage, Title = "Expander" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.NavExpanderPage, Title = "NavExpander" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.GroupBoxPage, Title = "GroupBox" },

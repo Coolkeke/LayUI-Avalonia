@@ -44,4 +44,6 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ListBoxItemStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TimelineStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TimelineItemStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CarouselStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CarouselItemStyle.axaml" />
 </Styles>
