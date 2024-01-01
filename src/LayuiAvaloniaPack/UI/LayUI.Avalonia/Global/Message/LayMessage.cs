@@ -63,7 +63,7 @@ namespace LayUI.Avalonia.Global
             "Token", null);
         public void Show(string message, string token)
         {
-            Show(message, token, TimeSpan.FromMilliseconds(2000));
+            Show(message, token, TimeSpan.FromMilliseconds(3000));
         }
         public void Show(string message, string token, TimeSpan time)
         {
@@ -72,7 +72,7 @@ namespace LayUI.Avalonia.Global
 
         public void Show(string message, string token, MessageType type)
         {
-            Show(message, token, TimeSpan.FromMilliseconds(2000), type);
+            Show(message, token, TimeSpan.FromMilliseconds(3000), type);
         }
 
         public void Show(string message, string token, TimeSpan time, MessageType type)

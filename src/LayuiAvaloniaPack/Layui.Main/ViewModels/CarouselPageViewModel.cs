@@ -1,4 +1,6 @@
 ﻿using Layui.Core;
+using LayUI.Avalonia.Enums;
+using LayUI.Avalonia.Interfaces;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -11,8 +13,10 @@ namespace Layui.Main.ViewModels
 {
     public class CarouselPageViewModel : ViewModelBase
     {
+        private ILayMessage message;
         public CarouselPageViewModel(IContainerExtension container) : base(container)
         {
+            message = container.Resolve<ILayMessage>();
         }
         private ObservableCollection<object> _Items = new ObservableCollection<object> {
             new { Title="轮播一",Message="" },
@@ -31,14 +35,15 @@ namespace Layui.Main.ViewModels
             get { return _SelectedIndex; }
             set { SetProperty(ref _SelectedIndex, value); }
         }
-        protected override void Loaded()
+        protected override async void Loaded()
         {
-            
+            await Task.Delay(1000);
+            message.Show("我支持手势触摸滑动", "RootMessage", MessageType.Shake);
         }
 
         protected override void Unloaded()
         {
-            
+
         }
     }
 }

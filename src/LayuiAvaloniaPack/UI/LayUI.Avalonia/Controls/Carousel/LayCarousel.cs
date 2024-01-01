@@ -31,14 +31,18 @@ namespace LayUI.Avalonia.Controls
         /// 存储轮播图信息
         /// </summary>
         private Grid? PART_ItemsGrid;
+        /// <summary>
+        /// 手势位置
+        /// </summary>
+        private Point point;
         public LayCarousel()
-        {  
+        {
             SubscribeToItemsSource(_items);
             ItemTemplateProperty.Changed.AddClassHandler<LayCarousel>((o, e) => o.OnItemTemplateChanged(e));
             SelectedIndexProperty.Changed.AddClassHandler<LayCarousel>((o, e) => o.OnSelectedIndexChanged(e));
             SelectedItemProperty.Changed.AddClassHandler<LayCarousel>((o, e) => o.OnSelectedItemChanged(e));
             ItemsSourceProperty.Changed.AddClassHandler<LayCarousel>((o, e) => o.OnItemsSourceChanged(e));
-        } 
+        }
         public int SelectedIndex
         {
             get { return GetValue(SelectedIndexProperty); }
@@ -122,6 +126,21 @@ namespace LayUI.Avalonia.Controls
         /// </summary>
         public static readonly DirectProperty<LayCarousel, object> SelectedItemProperty =
             AvaloniaProperty.RegisterDirect<LayCarousel, object>(nameof(SelectedItem), o => o.SelectedItem, (o, v) => o.SelectedItem = v);
+
+        /// <summary>
+        /// Defines the <see cref="TouchSlidingInterval"/> property.
+        /// </summary>
+        public static readonly StyledProperty<int> TouchSlidingIntervalProperty =
+            AvaloniaProperty.Register<Control, int>(nameof(TouchSlidingInterval), 100);
+
+        /// <summary>
+        /// 触摸滑动间隔
+        /// </summary>
+        public int TouchSlidingInterval
+        {
+            get { return GetValue(TouchSlidingIntervalProperty); }
+            set { SetValue(TouchSlidingIntervalProperty, value); }
+        }
 
         public AvaloniaObject GetContainerForItemOverride()
         {
@@ -273,7 +292,7 @@ namespace LayUI.Avalonia.Controls
                 if (IsItemItsOwnContainerOverride(item))
                 {
                     var layCarouselItem = item as LayCarouselItem;
-                    if(layCarouselItem!=null) LogicalChildren.Remove(layCarouselItem);
+                    if (layCarouselItem != null) LogicalChildren.Remove(layCarouselItem);
                 }
                 else
                 {
@@ -286,7 +305,7 @@ namespace LayUI.Avalonia.Controls
                     }
                 }
             }
-        } 
+        }
         /// <summary>
         /// 刷新视图
         /// </summary>
@@ -367,7 +386,30 @@ namespace LayUI.Avalonia.Controls
             {
                 UpdateItemTemplate();
                 RefreshView();
+                PART_ItemsGrid.PointerPressed -= PART_ItemsGrid_PointerPressed;
+                PART_ItemsGrid.PointerReleased -= PART_ItemsGrid_PointerReleased;
+                PART_ItemsGrid.PointerPressed += PART_ItemsGrid_PointerPressed;
+                PART_ItemsGrid.PointerReleased += PART_ItemsGrid_PointerReleased;
             }
+        } 
+        /// <summary>
+        /// 按下
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PART_ItemsGrid_PointerPressed(object? sender, PointerPressedEventArgs e) => point = e.GetPosition(this);
+        /// <summary>
+        /// 抬起
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PART_ItemsGrid_PointerReleased(object? sender, PointerReleasedEventArgs e)
+        {
+            var posit = e.GetPosition(this);
+            if (point.X - posit.X > TouchSlidingInterval) Next();
+            if (point.X - posit.X < -TouchSlidingInterval) Previous(); 
         }
-    } 
+
+
+    }
 }
