@@ -483,9 +483,11 @@ namespace LayUI.Avalonia.Controls
         }
         public void Next()
         {
+            StopTimer();
             if (SelectedIndex >= ItemCount - 1) SelectedIndex = 0;
             else SelectedIndex++;
             SetItemIsSelected();
+            StartTimer();
         }
         /// <summary>
         /// 刷新子项选中状态
@@ -513,9 +515,11 @@ namespace LayUI.Avalonia.Controls
         }
         public void Previous()
         {
+            StopTimer();
             if (SelectedIndex <= 0) SelectedIndex = ItemCount - 1;
             else SelectedIndex--;
             SetItemIsSelected();
+            StartTimer();
         }
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
@@ -545,9 +549,9 @@ namespace LayUI.Avalonia.Controls
         /// <param name="e"></param>
         private void PART_ItemsGrid_PointerReleased(object? sender, PointerReleasedEventArgs e)
         {
-            var posit = e.GetPosition(this);
+            var posit = e.GetPosition(this); 
             if (point.X - posit.X > TouchSlidingInterval) Next();
-            if (point.X - posit.X < -TouchSlidingInterval) Previous();
+            if (point.X - posit.X < -TouchSlidingInterval) Previous(); 
         }
 
         protected virtual void Dispose(bool disposing)
