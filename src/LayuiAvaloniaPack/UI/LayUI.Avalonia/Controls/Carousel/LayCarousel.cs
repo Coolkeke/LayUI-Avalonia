@@ -19,6 +19,11 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using System.Net.NetworkInformation;
 using Avalonia.Threading;
+using System.Windows.Input;
+using LayUI.Avalonia.Mvvm;
+using LayUI.Avalonia.Models;
+using System.Collections.ObjectModel;
+using System.Reflection;
 
 namespace LayUI.Avalonia.Controls
 {
@@ -44,11 +49,13 @@ namespace LayUI.Avalonia.Controls
         {
             CreateTimer();
             SubscribeToItemsSource(_items);
+            ItemCountProperty.Changed.AddClassHandler<LayCarousel>((o, e) => o.ItemCountChanged());
             ItemTemplateProperty.Changed.AddClassHandler<LayCarousel>((o, e) => o.OnItemTemplateChanged(e));
             SelectedIndexProperty.Changed.AddClassHandler<LayCarousel>((o, e) => o.OnSelectedIndexChanged(e));
             SelectedItemProperty.Changed.AddClassHandler<LayCarousel>((o, e) => o.OnSelectedItemChanged(e));
             ItemsSourceProperty.Changed.AddClassHandler<LayCarousel>((o, e) => o.OnItemsSourceChanged(e));
             IsAutoSwitchProperty.Changed.AddClassHandler<LayCarousel>((o, e) => o.OnIsAutoSwitchChanged(e));
+            SelectedCommand = new LayCommand<int>(Selected);
         }
 
         private void OnIsAutoSwitchChanged(AvaloniaPropertyChangedEventArgs e)
@@ -103,7 +110,17 @@ namespace LayUI.Avalonia.Controls
         /// 定义<see cref="int"/>属性
         /// </summary>
         public static readonly DirectProperty<LayCarousel, int> ItemCountProperty =
-       AvaloniaProperty.RegisterDirect<LayCarousel, int>(nameof(ItemCount), o => o.ItemCount, (o, v) => o.ItemCount = v);
+       AvaloniaProperty.RegisterDirect<LayCarousel, int>(nameof(ItemCount), o => o.ItemCount);
+
+        private void ItemCountChanged()
+        {
+            if (Items == null) Items = new ObservableCollection<CarouselItemData>();
+            Items.Clear();
+            for (int i = 0; i < ItemCount; i++)
+            {
+                Items.Add(new CarouselItemData() { Index = i, IsSelected = false });
+            }
+        }
 
         /// <summary>
         /// Defines the <see cref="Type"/> property.
@@ -151,6 +168,20 @@ namespace LayUI.Avalonia.Controls
             AvaloniaProperty.Register<LayCarousel, int>(nameof(TouchSlidingInterval), 100);
 
         /// <summary>
+        /// Defines the <see cref="SelectedCommand"/> property.
+        /// </summary>
+        internal static readonly StyledProperty<ICommand> SelectedCommandProperty =
+            AvaloniaProperty.Register<LayCarousel, ICommand>(nameof(SelectedCommand));
+
+        /// <summary>
+        /// Comment
+        /// </summary>
+        internal ICommand SelectedCommand
+        {
+            get { return GetValue(SelectedCommandProperty); }
+            set { SetValue(SelectedCommandProperty, value); }
+        }
+        /// <summary>
         /// 触摸滑动间隔
         /// </summary>
         public int TouchSlidingInterval
@@ -177,7 +208,7 @@ namespace LayUI.Avalonia.Controls
         /// Defines the <see cref="SwitchInterval"/> property.
         /// </summary>
         public static readonly StyledProperty<double> SwitchIntervalProperty =
-            AvaloniaProperty.Register<LayCarousel, double>(nameof(SwitchInterval),3);
+            AvaloniaProperty.Register<LayCarousel, double>(nameof(SwitchInterval), 3);
         /// <summary>
         /// 切换间隔时间
         /// <para>间隔单位（秒）</para>
@@ -208,6 +239,23 @@ namespace LayUI.Avalonia.Controls
                 if (notifyCollectionChanged != null) notifyCollectionChanged.CollectionChanged += (o, n) => OnItemsSourceChanged(n);
             }
         }
+
+
+        /// <summary>
+        /// Defines the <see cref="Items"/> property.
+        /// </summary>
+        internal static readonly StyledProperty<ObservableCollection<CarouselItemData>> ItemsProperty =
+            AvaloniaProperty.Register<Control, ObservableCollection<CarouselItemData>>(nameof(Items), null);
+
+        /// <summary>
+        /// 按钮集合
+        /// </summary>
+        internal ObservableCollection<CarouselItemData> Items
+        {
+            get { return GetValue(ItemsProperty); }
+            set { SetValue(ItemsProperty, value); }
+        }
+
 
         /// <summary>
         /// 监听数据源变化
@@ -273,7 +321,7 @@ namespace LayUI.Avalonia.Controls
         /// 选中项
         /// </summary>
         /// <param name="index">选中当前索引</param>
-        public void Selected(int index) => SelectedIndex = index;
+        public void Selected(int index)=> SelectedIndex = index;
         /// <summary>
         /// 获取索引抓取子项
         /// </summary>
@@ -449,17 +497,19 @@ namespace LayUI.Avalonia.Controls
             {
                 if (SelectedIndex == i)
                 {
-                    var item = PART_ItemsGrid.Children[i] as LayCarouselItem;
+                    var item = PART_ItemsGrid.Children[i] as LayCarouselItem; 
                     item.IsSelected = true;
+                    Items[i].IsSelected = item.IsSelected;
                     item.ZIndex = 1;
                 }
                 else
                 {
                     var item = PART_ItemsGrid.Children[i] as LayCarouselItem;
                     item.IsSelected = false;
+                    Items[i].IsSelected = item.IsSelected;
                     item.ZIndex = 0;
                 }
-            }
+            } 
         }
         public void Previous()
         {
@@ -517,7 +567,7 @@ namespace LayUI.Avalonia.Controls
         }
 
         // // TODO: 仅当“Dispose(bool disposing)”拥有用于释放未托管资源的代码时才替代终结器
-         ~LayCarousel()
+        ~LayCarousel()
         {
             // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
             Dispose(disposing: false);

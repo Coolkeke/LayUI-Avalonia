@@ -5,16 +5,27 @@
     xmlns:layCv="clr-namespace:LayUI.Avalonia.Converters;assembly=LayUI.Avalonia">
     <Design.PreviewWith>
         <Border Padding="20">
-            <StackPanel>
-                <lay:LayCarousel
-                    Width="500"
-                    Height="200"
-                    Margin="10"
-                    Type="Hover">
-                    <lay:LayCarouselItem Content="123123" />
-                    <lay:LayCarouselItem Content="adasdasd" />
-                </lay:LayCarousel>
-            </StackPanel>
+            <ScrollViewer Height="200">
+                <StackPanel>
+                    <lay:LayCarousel
+                        Width="500"
+                        Height="200"
+                        Margin="10"
+                        Type="Hover">
+                        <lay:LayCarouselItem Content="123123" />
+                        <lay:LayCarouselItem Content="adasdasd" />
+                    </lay:LayCarousel>
+                    <lay:LayCarousel
+                        Width="500"
+                        Height="200"
+                        Margin="10"
+                        IsAutoSwitch="True"
+                        Type="Hover">
+                        <lay:LayCarouselItem Content="123123" />
+                        <lay:LayCarouselItem Content="adasdasd" />
+                    </lay:LayCarousel>
+                </StackPanel>
+            </ScrollViewer>
         </Border>
     </Design.PreviewWith>
     <Style Selector="lay|LayCarousel">
@@ -42,7 +53,8 @@
                                 Background="Black"
                                 Command="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Previous}"
                                 Content="上一页"
-                                Cursor="Hand">
+                                Cursor="Hand"
+                                Focusable="false">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Grid>
@@ -71,7 +83,8 @@
                                 Background="Black"
                                 Command="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Next}"
                                 Content="下一页"
-                                Cursor="Hand">
+                                Cursor="Hand"
+                                Focusable="false">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Grid>
@@ -92,72 +105,58 @@
                             </Button>
                             <Grid
                                 Grid.ColumnSpan="3"
-                                Height="20"
                                 Margin="10"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Bottom"
                                 IsVisible="{TemplateBinding IsIndicatorVisible}">
                                 <Border
                                     Padding="5"
-                                    Background="Black"
+                                    Background="{DynamicResource Black}"
                                     CornerRadius="10"
                                     Opacity="0.2" />
-                                <ListBox
+                                <ItemsControl
                                     Background="Transparent"
                                     BorderThickness="0"
-                                    Focusable="false"
-                                    ItemsSource="{TemplateBinding ItemCount,
-                                                                  Converter={x:Static layCv:ItemsCountToListConverter.Instance}}"
-                                    SelectedIndex="{TemplateBinding SelectedIndex,
-                                                                    Mode=TwoWay}">
-                                    <ListBox.ItemsPanel>
+                                    ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Items}">
+                                    <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <StackPanel Margin="5" Orientation="Horizontal" />
                                         </ItemsPanelTemplate>
-                                    </ListBox.ItemsPanel>
-                                    <ListBox.Styles>
-                                        <Style Selector="ListBoxItem">
-                                            <Setter Property="Template">
-                                                <Setter.Value>
-                                                    <ControlTemplate>
-                                                        <Grid Cursor="Hand">
-                                                            <Ellipse
-                                                                Name="PART_Ellipse"
-                                                                Width="10"
-                                                                Height="10"
-                                                                Margin="2,0"
-                                                                Cursor="Hand"
-                                                                Fill="White" />
-                                                            <ContentPresenter
-                                                                Width="10"
-                                                                Height="10"
-                                                                Content="{TemplateBinding Content}"
-                                                                ContentTemplate="{TemplateBinding ContentTemplate}"
-                                                                Cursor="Hand"
-                                                                Opacity="0" />
-                                                        </Grid>
-                                                    </ControlTemplate>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Style>
-                                        <Style Selector="ListBoxItem[IsSelected=false]/template/ Ellipse#PART_Ellipse">
-                                            <Setter Property="Opacity" Value="0.6" />
-                                        </Style>
-                                        <Style Selector="ListBoxItem[IsSelected=true]/template/ Ellipse#PART_Ellipse">
-                                            <Setter Property="Opacity" Value="1" />
-                                        </Style>
-                                    </ListBox.Styles>
-                                    <ListBox.ItemTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <Button
+                                            <RadioButton
                                                 HorizontalAlignment="Stretch"
                                                 VerticalAlignment="Stretch"
-                                                Command="{Binding RelativeSource={RelativeSource AncestorType=lay:LayCarousel}, Path=Selected}"
-                                                CommandParameter="{Binding .}"
-                                                Cursor="Hand" />
+                                                Command="{Binding RelativeSource={RelativeSource AncestorType=lay:LayCarousel}, Path=SelectedCommand}"
+                                                CommandParameter="{Binding Index}"
+                                                Cursor="Hand"
+                                                IsChecked="{Binding IsSelected, Mode=TwoWay}">
+                                                <RadioButton.Styles>
+                                                    <Style Selector="RadioButton">
+                                                        <Setter Property="Background">
+                                                            <Setter.Value>
+                                                                <SolidColorBrush Opacity="0.8" Color="{StaticResource GrayEffect}" />
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Style>
+                                                    <Style Selector="RadioButton:checked">
+                                                        <Setter Property="Background" Value="{DynamicResource LighGray}" />
+                                                    </Style>
+                                                </RadioButton.Styles>
+                                                <RadioButton.Template>
+                                                    <ControlTemplate>
+                                                        <Ellipse
+                                                            Width="10"
+                                                            Height="10"
+                                                            Margin="2,0"
+                                                            Fill="{TemplateBinding Background}" />
+                                                    </ControlTemplate>
+                                                </RadioButton.Template>
+                                            </RadioButton>
                                         </DataTemplate>
-                                    </ListBox.ItemTemplate>
-                                </ListBox>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
                             </Grid>
                         </Grid>
                     </Border>
