@@ -30,7 +30,10 @@
                         ClipToBounds="{TemplateBinding ClipToBounds}"
                         CornerRadius="{TemplateBinding CornerRadius}">
                         <Grid ColumnDefinitions="auto,*,auto">
-                            <Grid x:Name="PART_ItemsGrid" Grid.ColumnSpan="3" />
+                            <Grid
+                                x:Name="PART_ItemsGrid"
+                                Grid.ColumnSpan="3"
+                                Focusable="false" />
                             <Button
                                 Name="PART_Previous"
                                 Width="36"
@@ -102,9 +105,11 @@
                                 <ListBox
                                     Background="Transparent"
                                     BorderThickness="0"
+                                    Focusable="false"
                                     ItemsSource="{TemplateBinding ItemCount,
                                                                   Converter={x:Static layCv:ItemsCountToListConverter.Instance}}"
-                                    SelectedIndex="{Binding RelativeSource={RelativeSource AncestorType=lay:LayCarousel}, Path=SelectedIndex, Mode=TwoWay}">
+                                    SelectedIndex="{TemplateBinding SelectedIndex,
+                                                                    Mode=TwoWay}">
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <StackPanel Margin="5" Orientation="Horizontal" />

@@ -18,6 +18,7 @@ using Avalonia.LogicalTree;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using System.Net.NetworkInformation;
+using Avalonia.Threading;
 
 namespace LayUI.Avalonia.Controls
 {
@@ -25,8 +26,12 @@ namespace LayUI.Avalonia.Controls
     /// 轮播图
     /// </summary> 
     [TemplatePart(Name = nameof(PART_ItemsGrid), Type = typeof(Grid))]
-    public class LayCarousel : TemplatedControl, ICarousel
+    public class LayCarousel : TemplatedControl, ICarousel, ILayControl, IDisposable
     {
+        /// <summary>
+        /// 计时器
+        /// </summary>
+        private DispatcherTimer _timer;
         /// <summary>
         /// 存储轮播图信息
         /// </summary>
@@ -37,12 +42,22 @@ namespace LayUI.Avalonia.Controls
         private Point point;
         public LayCarousel()
         {
+            CreateTimer();
             SubscribeToItemsSource(_items);
             ItemTemplateProperty.Changed.AddClassHandler<LayCarousel>((o, e) => o.OnItemTemplateChanged(e));
             SelectedIndexProperty.Changed.AddClassHandler<LayCarousel>((o, e) => o.OnSelectedIndexChanged(e));
             SelectedItemProperty.Changed.AddClassHandler<LayCarousel>((o, e) => o.OnSelectedItemChanged(e));
             ItemsSourceProperty.Changed.AddClassHandler<LayCarousel>((o, e) => o.OnItemsSourceChanged(e));
+            IsAutoSwitchProperty.Changed.AddClassHandler<LayCarousel>((o, e) => o.OnIsAutoSwitchChanged(e));
         }
+
+        private void OnIsAutoSwitchChanged(AvaloniaPropertyChangedEventArgs e)
+        {
+            if (!IsLoaded) return;
+            if (IsAutoSwitch) StartTimer();
+            else StopTimer();
+        }
+
         public int SelectedIndex
         {
             get { return GetValue(SelectedIndexProperty); }
@@ -116,6 +131,8 @@ namespace LayUI.Avalonia.Controls
         public static readonly StyledProperty<IDataTemplate> ItemTemplateProperty =
        AvaloniaProperty.Register<LayCarousel, IDataTemplate>(nameof(ItemTemplate));
         private object _selectedItem;
+        private bool disposedValue;
+
         public object SelectedItem
         {
             get { return _selectedItem; }
@@ -131,7 +148,7 @@ namespace LayUI.Avalonia.Controls
         /// Defines the <see cref="TouchSlidingInterval"/> property.
         /// </summary>
         public static readonly StyledProperty<int> TouchSlidingIntervalProperty =
-            AvaloniaProperty.Register<Control, int>(nameof(TouchSlidingInterval), 100);
+            AvaloniaProperty.Register<LayCarousel, int>(nameof(TouchSlidingInterval), 100);
 
         /// <summary>
         /// 触摸滑动间隔
@@ -140,6 +157,35 @@ namespace LayUI.Avalonia.Controls
         {
             get { return GetValue(TouchSlidingIntervalProperty); }
             set { SetValue(TouchSlidingIntervalProperty, value); }
+        }
+
+        /// <summary>
+        /// Defines the <see cref="IsAutoSwitch"/> property.
+        /// </summary>
+        public static readonly StyledProperty<bool> IsAutoSwitchProperty =
+            AvaloniaProperty.Register<LayCarousel, bool>(nameof(IsAutoSwitch));
+
+        /// <summary>
+        /// 自动轮播
+        /// </summary>
+        public bool IsAutoSwitch
+        {
+            get { return GetValue(IsAutoSwitchProperty); }
+            set { SetValue(IsAutoSwitchProperty, value); }
+        }
+        /// <summary>
+        /// Defines the <see cref="SwitchInterval"/> property.
+        /// </summary>
+        public static readonly StyledProperty<double> SwitchIntervalProperty =
+            AvaloniaProperty.Register<LayCarousel, double>(nameof(SwitchInterval),3);
+        /// <summary>
+        /// 切换间隔时间
+        /// <para>间隔单位（秒）</para>
+        /// </summary>
+        public double SwitchInterval
+        {
+            get { return GetValue(SwitchIntervalProperty); }
+            set { SetValue(SwitchIntervalProperty, value); }
         }
 
         public AvaloniaObject GetContainerForItemOverride()
@@ -320,6 +366,49 @@ namespace LayUI.Avalonia.Controls
             SetItemIsSelected();
         }
         /// <summary>
+        /// 创建计时器
+        /// </summary>
+        void CreateTimer()
+        {
+            if (_timer == null) _timer = new DispatcherTimer();
+            StopTimer();
+            _timer.Tick += _timer_Tick;
+        }
+        /// <summary>
+        /// 用于自动切换轮播
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        private void _timer_Tick(object? sender, EventArgs e) => Next();
+
+        /// <summary>
+        /// 移除计时器
+        /// </summary>
+        void RemoveTimer()
+        {
+            if (_timer == null) return;
+            StopTimer();
+            _timer = null;
+        }
+        /// <summary>
+        /// 停止
+        /// </summary>
+        void StopTimer()
+        {
+            if (_timer == null) return;
+            _timer.Stop();
+        }
+        /// <summary>
+        /// 启动
+        /// </summary>
+        void StartTimer()
+        {
+            if (_timer == null) return;
+            _timer.Interval = TimeSpan.FromSeconds(SwitchInterval);
+            _timer.Start();
+        }
+        /// <summary>
         /// 刷新数量
         /// </summary>
         private void UpdateItemCount()
@@ -390,8 +479,9 @@ namespace LayUI.Avalonia.Controls
                 PART_ItemsGrid.PointerReleased -= PART_ItemsGrid_PointerReleased;
                 PART_ItemsGrid.PointerPressed += PART_ItemsGrid_PointerPressed;
                 PART_ItemsGrid.PointerReleased += PART_ItemsGrid_PointerReleased;
+                if (IsAutoSwitch) StartTimer();
             }
-        } 
+        }
         /// <summary>
         /// 按下
         /// </summary>
@@ -407,9 +497,37 @@ namespace LayUI.Avalonia.Controls
         {
             var posit = e.GetPosition(this);
             if (point.X - posit.X > TouchSlidingInterval) Next();
-            if (point.X - posit.X < -TouchSlidingInterval) Previous(); 
+            if (point.X - posit.X < -TouchSlidingInterval) Previous();
         }
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: 释放托管状态(托管对象)
+                    RemoveTimer();
+                }
 
+                // TODO: 释放未托管的资源(未托管的对象)并重写终结器
+                // TODO: 将大型字段设置为 null
+                disposedValue = true;
+            }
+        }
+
+        // // TODO: 仅当“Dispose(bool disposing)”拥有用于释放未托管资源的代码时才替代终结器
+         ~LayCarousel()
+        {
+            // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
+            Dispose(disposing: false);
+        }
+
+        public void Dispose()
+        {
+            // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
     }
 }

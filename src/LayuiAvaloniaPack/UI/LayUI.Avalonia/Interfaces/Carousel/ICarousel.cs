@@ -34,6 +34,19 @@ namespace LayUI.Avalonia.Interfaces
         /// </summary>
         bool IsIndicatorVisible { get; set; }
         /// <summary>
+        /// 触摸滑动间隔
+        /// </summary>
+        int TouchSlidingInterval { get; set; }
+        /// <summary>
+        /// 自动切换
+        /// </summary>
+        bool IsAutoSwitch { get; set; }
+        /// <summary>
+        /// 切换间隔时间
+        /// <para>间隔单位（秒）</para>
+        /// </summary>
+        double SwitchInterval { get; set; }
+        /// <summary>
         /// 子集模板
         /// </summary>
         IDataTemplate ItemTemplate { get; set; }
