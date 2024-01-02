@@ -323,7 +323,13 @@ namespace LayUI.Avalonia.Controls
         /// 选中项
         /// </summary>
         /// <param name="index">选中当前索引</param>
-        public void Selected(int index) => SelectedIndex = index;
+        public void Selected(int index)
+        {
+            if (IsAutoSwitch) StopTimer();
+            SelectedIndex = index; 
+            if (IsAutoSwitch) StartTimer();
+        }
+
         /// <summary>
         /// 获取索引抓取子项
         /// </summary>
