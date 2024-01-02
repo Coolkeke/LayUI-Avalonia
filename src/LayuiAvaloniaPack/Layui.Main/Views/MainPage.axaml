@@ -30,7 +30,7 @@
                 Background="Transparent"
                 Content="{Binding Message}"
                 Type="Customize"
-                Uri="https://github.com/Layui-WPF-Team/Layui-WPF" />
+                Uri="https://github.com/Coolkeke/LayUI-Avalonia/tree/LayUI-Avalonia-11.0.0" />
             <lay:LayNoticeBar.InnerLeftContent>
                 <TextBlock
                     x:Name="Icon"
