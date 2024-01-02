@@ -24,6 +24,8 @@ using System.Collections.ObjectModel;
 using LayUI.Avalonia.Models;
 using System.Windows.Input;
 using Avalonia.Media.Transformation;
+using Avalonia.Animation;
+using Avalonia.Media;
 
 namespace LayUI.Avalonia.Controls
 {
@@ -363,12 +365,28 @@ namespace LayUI.Avalonia.Controls
                 if (IsItemItsOwnContainerOverride(item))
                 {
                     var layCarouselItem = item as Lay3DCarouselItem;
+                    layCarouselItem.Transitions = new Transitions
+                    {
+                        new TransformOperationsTransition
+                        {
+                            Property = RenderTransformProperty,
+                            Duration = TimeSpan.FromSeconds(0.3),
+                        }
+                    };
                     LogicalChildren.Add(layCarouselItem);
                 }
                 else
                 {
                     var layCarouselItem = GetContainerForItemOverride() as Lay3DCarouselItem;
                     layCarouselItem.Content = item;
+                    layCarouselItem.Transitions = new Transitions
+                    {
+                        new TransformOperationsTransition
+                        {
+                            Property = RenderTransformProperty,
+                            Duration = TimeSpan.FromSeconds(0.3),
+                        }
+                    };
                     LogicalChildren.Add(layCarouselItem);
                     UpdateItemTemplate();
                 }
@@ -409,44 +427,39 @@ namespace LayUI.Avalonia.Controls
             PART_ItemsGrid.Children.Clear();
             for (int i = 0; i < LogicalChildren.Count; i++)
             {
-                if (LogicalChildren[i] is Lay3DCarouselItem control)
-                { 
-                    PART_ItemsGrid.Children.Add(control);
-                }
+                if (LogicalChildren[i] is Lay3DCarouselItem control) PART_ItemsGrid.Children.Add(control);
             }
             SetItemIsSelected();
         }
         /// <summary>
         /// 设置位移
         /// </summary>
-        void SetItemTranslateX()
+        void SetItemTranslate()
         {
-            if(PART_ItemsGrid==null) return;
+            if (PART_ItemsGrid == null) return;
             if (PART_ItemsGrid.Children == null) return;
-            foreach (var item in PART_ItemsGrid.Children) 
-            { 
+            foreach (var item in PART_ItemsGrid.Children)
+            {
                 if (item is Lay3DCarouselItem control)
                 {
-                    var itemIndex = PART_ItemsGrid.Children.IndexOf(control);
-                    //位移距离间距
-                    var translateX = 100 * (itemIndex- SelectedIndex);
-                    if (SelectedIndex == itemIndex)
+                    var xOffsetStep = 100;//图片间的间隔
+                    var scaleStep = 0.8;//缩放间隔
+                    var count = PART_ItemsGrid.Children.Count();//图片数量
+                    var index = PART_ItemsGrid.Children.IndexOf(control); //图片索引值
+                    var sign = Math.Sign(index - SelectedIndex);
+                    var xOffset = xOffsetStep * (index - SelectedIndex);//位移距离间距 
+                    if (index != SelectedIndex)
                     {
-                        control.RenderTransform = TransformOperations.Parse($"translateX(0px)");
+                        xOffset = xOffset + 100 * sign;
                     }
-                    else if (SelectedIndex > itemIndex)
-                    {
-                        control.RenderTransform = TransformOperations.Parse($"translateX({translateX}px)");
-                    }
-                    else
-                    {
-                        control.RenderTransform = TransformOperations.Parse($"translateX({translateX}px)");
-                    }
+                    control.ZIndex = count - Math.Abs(SelectedIndex - index);//计算zindex
+                    var scale = Math.Pow(scaleStep, Math.Abs(SelectedIndex - index));//缩放倍率 
+                    control.RenderTransform = TransformOperations.Parse($"translateX({xOffset}px) scale({scale})");  
                 }
             }
 
         }
-        /// <summary>
+        /// <summary> 
         /// 创建计时器
         /// </summary>
         void CreateTimer()
@@ -535,16 +548,14 @@ namespace LayUI.Avalonia.Controls
                     var item = PART_ItemsGrid.Children[i] as Lay3DCarouselItem;
                     item.IsSelected = true;
                     Items[i].IsSelected = item.IsSelected;
-                    item.ZIndex = 1;
                 }
                 else
                 {
                     var item = PART_ItemsGrid.Children[i] as Lay3DCarouselItem;
                     item.IsSelected = false;
                     Items[i].IsSelected = item.IsSelected;
-                    item.ZIndex = 0;
                 }
-                SetItemTranslateX();
+                SetItemTranslate();
             }
         }
         public void Previous()
