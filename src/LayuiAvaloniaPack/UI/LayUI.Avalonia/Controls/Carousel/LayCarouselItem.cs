@@ -11,7 +11,7 @@ namespace LayUI.Avalonia.Controls
     /// <summary>
 	/// 轮播子项
 	/// </summary>
-    public class LayCarouselItem : ContentControl
+    public class LayCarouselItem : ContentControl, ILayControl
     {
         /// <summary>
         /// 选中

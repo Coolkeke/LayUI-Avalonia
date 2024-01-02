@@ -321,7 +321,7 @@ namespace LayUI.Avalonia.Controls
         /// 选中项
         /// </summary>
         /// <param name="index">选中当前索引</param>
-        public void Selected(int index)=> SelectedIndex = index;
+        public void Selected(int index) => SelectedIndex = index;
         /// <summary>
         /// 获取索引抓取子项
         /// </summary>
@@ -483,11 +483,11 @@ namespace LayUI.Avalonia.Controls
         }
         public void Next()
         {
-            StopTimer();
+            if (IsAutoSwitch) StopTimer();
             if (SelectedIndex >= ItemCount - 1) SelectedIndex = 0;
             else SelectedIndex++;
             SetItemIsSelected();
-            StartTimer();
+            if (IsAutoSwitch) StartTimer();
         }
         /// <summary>
         /// 刷新子项选中状态
@@ -499,7 +499,7 @@ namespace LayUI.Avalonia.Controls
             {
                 if (SelectedIndex == i)
                 {
-                    var item = PART_ItemsGrid.Children[i] as LayCarouselItem; 
+                    var item = PART_ItemsGrid.Children[i] as LayCarouselItem;
                     item.IsSelected = true;
                     Items[i].IsSelected = item.IsSelected;
                     item.ZIndex = 1;
@@ -511,7 +511,7 @@ namespace LayUI.Avalonia.Controls
                     Items[i].IsSelected = item.IsSelected;
                     item.ZIndex = 0;
                 }
-            } 
+            }
         }
         public void Previous()
         {
@@ -549,9 +549,9 @@ namespace LayUI.Avalonia.Controls
         /// <param name="e"></param>
         private void PART_ItemsGrid_PointerReleased(object? sender, PointerReleasedEventArgs e)
         {
-            var posit = e.GetPosition(this); 
+            var posit = e.GetPosition(this);
             if (point.X - posit.X > TouchSlidingInterval) Next();
-            if (point.X - posit.X < -TouchSlidingInterval) Previous(); 
+            if (point.X - posit.X < -TouchSlidingInterval) Previous();
         }
 
         protected virtual void Dispose(bool disposing)

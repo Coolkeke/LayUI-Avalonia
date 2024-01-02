@@ -19,6 +19,11 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using System.Net.NetworkInformation;
 using Avalonia.Threading;
+using LayUI.Avalonia.Mvvm;
+using System.Collections.ObjectModel;
+using LayUI.Avalonia.Models;
+using System.Windows.Input;
+using Avalonia.Media.Transformation;
 
 namespace LayUI.Avalonia.Controls
 {
@@ -44,11 +49,13 @@ namespace LayUI.Avalonia.Controls
         {
             CreateTimer();
             SubscribeToItemsSource(_items);
+            ItemCountProperty.Changed.AddClassHandler<Lay3DCarousel>((o, e) => o.ItemCountChanged());
             ItemTemplateProperty.Changed.AddClassHandler<Lay3DCarousel>((o, e) => o.OnItemTemplateChanged(e));
             SelectedIndexProperty.Changed.AddClassHandler<Lay3DCarousel>((o, e) => o.OnSelectedIndexChanged(e));
             SelectedItemProperty.Changed.AddClassHandler<Lay3DCarousel>((o, e) => o.OnSelectedItemChanged(e));
             ItemsSourceProperty.Changed.AddClassHandler<Lay3DCarousel>((o, e) => o.OnItemsSourceChanged(e));
             IsAutoSwitchProperty.Changed.AddClassHandler<Lay3DCarousel>((o, e) => o.OnIsAutoSwitchChanged(e));
+            SelectedCommand = new LayCommand<int>(Selected);
         }
 
         private void OnIsAutoSwitchChanged(AvaloniaPropertyChangedEventArgs e)
@@ -103,7 +110,17 @@ namespace LayUI.Avalonia.Controls
         /// 定义<see cref="int"/>属性
         /// </summary>
         public static readonly DirectProperty<Lay3DCarousel, int> ItemCountProperty =
-       AvaloniaProperty.RegisterDirect<Lay3DCarousel, int>(nameof(ItemCount), o => o.ItemCount, (o, v) => o.ItemCount = v);
+       AvaloniaProperty.RegisterDirect<Lay3DCarousel, int>(nameof(ItemCount), o => o.ItemCount);
+
+        private void ItemCountChanged()
+        {
+            if (Items == null) Items = new ObservableCollection<CarouselItemData>();
+            Items.Clear();
+            for (int i = 0; i < ItemCount; i++)
+            {
+                Items.Add(new CarouselItemData() { Index = i, IsSelected = false });
+            }
+        }
 
         /// <summary>
         /// Defines the <see cref="Type"/> property.
@@ -151,6 +168,20 @@ namespace LayUI.Avalonia.Controls
             AvaloniaProperty.Register<Lay3DCarousel, int>(nameof(TouchSlidingInterval), 100);
 
         /// <summary>
+        /// Defines the <see cref="SelectedCommand"/> property.
+        /// </summary>
+        internal static readonly StyledProperty<ICommand> SelectedCommandProperty =
+            AvaloniaProperty.Register<Lay3DCarousel, ICommand>(nameof(SelectedCommand));
+
+        /// <summary>
+        /// Comment
+        /// </summary>
+        internal ICommand SelectedCommand
+        {
+            get { return GetValue(SelectedCommandProperty); }
+            set { SetValue(SelectedCommandProperty, value); }
+        }
+        /// <summary>
         /// 触摸滑动间隔
         /// </summary>
         public int TouchSlidingInterval
@@ -177,8 +208,11 @@ namespace LayUI.Avalonia.Controls
         /// Defines the <see cref="SwitchInterval"/> property.
         /// </summary>
         public static readonly StyledProperty<double> SwitchIntervalProperty =
-            AvaloniaProperty.Register<Lay3DCarousel, double>(nameof(SwitchInterval));
-
+            AvaloniaProperty.Register<Lay3DCarousel, double>(nameof(SwitchInterval), 3);
+        /// <summary>
+        /// 切换间隔时间
+        /// <para>间隔单位（秒）</para>
+        /// </summary>
         public double SwitchInterval
         {
             get { return GetValue(SwitchIntervalProperty); }
@@ -187,11 +221,11 @@ namespace LayUI.Avalonia.Controls
 
         public AvaloniaObject GetContainerForItemOverride()
         {
-            return new LayCarouselItem();
+            return new Lay3DCarouselItem();
         }
         public bool IsItemItsOwnContainerOverride(object item)
         {
-            return item is LayCarouselItem;
+            return item is Lay3DCarouselItem;
         }
         /// <summary>
         /// 新增数据集通知效果
@@ -205,6 +239,23 @@ namespace LayUI.Avalonia.Controls
                 if (notifyCollectionChanged != null) notifyCollectionChanged.CollectionChanged += (o, n) => OnItemsSourceChanged(n);
             }
         }
+
+
+        /// <summary>
+        /// Defines the <see cref="Items"/> property.
+        /// </summary>
+        internal static readonly StyledProperty<ObservableCollection<CarouselItemData>> ItemsProperty =
+            AvaloniaProperty.Register<Control, ObservableCollection<CarouselItemData>>(nameof(Items), null);
+
+        /// <summary>
+        /// 按钮集合
+        /// </summary>
+        internal ObservableCollection<CarouselItemData> Items
+        {
+            get { return GetValue(ItemsProperty); }
+            set { SetValue(ItemsProperty, value); }
+        }
+
 
         /// <summary>
         /// 监听数据源变化
@@ -311,12 +362,12 @@ namespace LayUI.Avalonia.Controls
             {
                 if (IsItemItsOwnContainerOverride(item))
                 {
-                    var layCarouselItem = item as LayCarouselItem;
+                    var layCarouselItem = item as Lay3DCarouselItem;
                     LogicalChildren.Add(layCarouselItem);
                 }
                 else
                 {
-                    var layCarouselItem = GetContainerForItemOverride() as LayCarouselItem;
+                    var layCarouselItem = GetContainerForItemOverride() as Lay3DCarouselItem;
                     layCarouselItem.Content = item;
                     LogicalChildren.Add(layCarouselItem);
                     UpdateItemTemplate();
@@ -334,14 +385,14 @@ namespace LayUI.Avalonia.Controls
             {
                 if (IsItemItsOwnContainerOverride(item))
                 {
-                    var layCarouselItem = item as LayCarouselItem;
+                    var layCarouselItem = item as Lay3DCarouselItem;
                     if (layCarouselItem != null) LogicalChildren.Remove(layCarouselItem);
                 }
                 else
                 {
                     foreach (var info in LogicalChildren)
                     {
-                        if (info is LayCarouselItem carouselItem)
+                        if (info is Lay3DCarouselItem carouselItem)
                         {
                             if (carouselItem.DataContext == item) LogicalChildren.Remove(info);
                         }
@@ -349,6 +400,7 @@ namespace LayUI.Avalonia.Controls
                 }
             }
         }
+        int interval = 30;
         /// <summary>
         /// 刷新视图
         /// </summary>
@@ -358,7 +410,11 @@ namespace LayUI.Avalonia.Controls
             PART_ItemsGrid.Children.Clear();
             foreach (var item in LogicalChildren)
             {
-                if (item is Control control) PART_ItemsGrid.Children.Add(control);
+                if (item is Control control)
+                {
+                    control.RenderTransform = TransformOperations.Parse($"translateX({interval}px)");
+                    PART_ItemsGrid.Children.Add(control);
+                }
             }
             SetItemIsSelected();
         }
@@ -424,7 +480,7 @@ namespace LayUI.Avalonia.Controls
             if (LogicalChildren == null) return;
             foreach (var item in LogicalChildren)
             {
-                if (item is LayCarouselItem control)
+                if (item is Lay3DCarouselItem control)
                 {
                     control.ContentTemplate = ItemTemplate;
                 }
@@ -432,9 +488,11 @@ namespace LayUI.Avalonia.Controls
         }
         public void Next()
         {
+            StopTimer();
             if (SelectedIndex >= ItemCount - 1) SelectedIndex = 0;
             else SelectedIndex++;
             SetItemIsSelected();
+            StartTimer();
         }
         /// <summary>
         /// 刷新子项选中状态
@@ -446,23 +504,27 @@ namespace LayUI.Avalonia.Controls
             {
                 if (SelectedIndex == i)
                 {
-                    var item = PART_ItemsGrid.Children[i] as LayCarouselItem;
+                    var item = PART_ItemsGrid.Children[i] as Lay3DCarouselItem;
                     item.IsSelected = true;
+                    Items[i].IsSelected = item.IsSelected;
                     item.ZIndex = 1;
                 }
                 else
                 {
-                    var item = PART_ItemsGrid.Children[i] as LayCarouselItem;
+                    var item = PART_ItemsGrid.Children[i] as Lay3DCarouselItem;
                     item.IsSelected = false;
+                    Items[i].IsSelected = item.IsSelected;
                     item.ZIndex = 0;
                 }
             }
         }
         public void Previous()
         {
+            StopTimer();
             if (SelectedIndex <= 0) SelectedIndex = ItemCount - 1;
             else SelectedIndex--;
             SetItemIsSelected();
+            StartTimer();
         }
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {

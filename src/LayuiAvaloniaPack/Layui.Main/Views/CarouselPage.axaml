@@ -11,7 +11,7 @@
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
     <ScrollViewer HorizontalScrollBarVisibility="Disabled">
-        <ItemsControl>
+        <StackPanel>
             <lay:LayCarousel
                 Height="400"
                 Margin="5"
@@ -48,7 +48,25 @@
                     </DataTemplate>
                 </lay:LayCarousel.ItemTemplate>
             </lay:LayCarousel>
+            <lay:Lay3DCarousel
+                Height="400"
+                Margin="5"
+                IsAutoSwitch="True"
+                ItemsSource="{Binding Items}"
+                Type="Hover">
+                <lay:Lay3DCarousel.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Background="{DynamicResource Green}">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Foreground="White"
+                                Text="{Binding Title}" />
+                        </Grid>
+                    </DataTemplate>
+                </lay:Lay3DCarousel.ItemTemplate>
+            </lay:Lay3DCarousel>
 
-        </ItemsControl>
+        </StackPanel>
     </ScrollViewer>
 </UserControl>
