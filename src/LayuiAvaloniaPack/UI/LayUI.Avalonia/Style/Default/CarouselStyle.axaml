@@ -161,55 +161,85 @@
         </Setter>
     </Style>
     <Style Selector="lay|LayCarousel/template/Button#PART_Previous">
-        <Setter Property="IsVisible" Value="false" />
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <Transitions>
+                    <DoubleTransition
+                        Easing="CubicEaseInOut"
+                        Property="Opacity"
+                        Duration="0:0:0.3" />
+                    <TransformOperationsTransition
+                        Easing="CubicEaseInOut"
+                        Property="RenderTransform"
+                        Duration="0:0:0.3" />
+                </Transitions>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="IsHitTestVisible" Value="false" />
         <Setter Property="Opacity" Value="0" />
     </Style>
     <Style Selector="lay|LayCarousel/template/Button#PART_Next">
-        <Setter Property="IsVisible" Value="false" />
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <Transitions>
+                    <DoubleTransition
+                        Easing="CubicEaseInOut"
+                        Property="Opacity"
+                        Duration="0:0:0.3" />
+                    <TransformOperationsTransition
+                        Easing="CubicEaseInOut"
+                        Property="RenderTransform"
+                        Duration="0:0:0.3" />
+                </Transitions>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="IsHitTestVisible" Value="false" />
         <Setter Property="Opacity" Value="0" />
     </Style>
     <Style Selector="lay|LayCarousel[Type=Always]/template/Button#PART_Previous">
-        <Setter Property="IsVisible" Value="true" />
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <Transitions>
+                    <DoubleTransition
+                        Easing="CubicEaseInOut"
+                        Property="Opacity"
+                        Duration="0:0:0.3" />
+                    <TransformOperationsTransition
+                        Easing="CubicEaseInOut"
+                        Property="RenderTransform"
+                        Duration="0:0:0.3" />
+                </Transitions>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Opacity" Value="1" />
+        <Setter Property="IsHitTestVisible" Value="true" />
     </Style>
     <Style Selector="lay|LayCarousel[Type=Always]/template/Button#PART_Next">
-        <Setter Property="IsVisible" Value="true" />
+        <Setter Property="IsHitTestVisible" Value="true" />
         <Setter Property="Opacity" Value="1" />
     </Style>
     <Style Selector="lay|LayCarousel[Type=None]/template/Button#PART_Previous">
-        <Setter Property="IsVisible" Value="false" />
         <Setter Property="Opacity" Value="0" />
     </Style>
     <Style Selector="lay|LayCarousel[Type=None]/template/Button#PART_Next">
-        <Setter Property="IsVisible" Value="false" />
         <Setter Property="Opacity" Value="0" />
     </Style>
+    <Style Selector="lay|LayCarousel[Type=Hover]/template/Button#PART_Previous">
+        <Setter Property="Opacity" Value="0" />
+        <Setter Property="RenderTransform" Value="translateX(-10px)" />
+    </Style>
     <Style Selector="lay|LayCarousel[Type=Hover]:pointerover/template/Button#PART_Previous">
-        <Setter Property="Transitions">
-            <Setter.Value>
-                <Transitions>
-                    <DoubleTransition
-                        Easing="CubicEaseInOut"
-                        Property="Opacity"
-                        Duration="0:0:0.3" />
-                </Transitions>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="IsVisible" Value="true" />
+        <Setter Property="IsHitTestVisible" Value="true" />
+        <Setter Property="RenderTransform" Value="translateX(0px)" />
         <Setter Property="Opacity" Value="1" />
     </Style>
+    <Style Selector="lay|LayCarousel[Type=Hover]/template/Button#PART_Next">
+        <Setter Property="Opacity" Value="0" />
+        <Setter Property="RenderTransform" Value="translateX(10px)" />
+    </Style>
     <Style Selector="lay|LayCarousel[Type=Hover]:pointerover/template/Button#PART_Next">
-        <Setter Property="Transitions">
-            <Setter.Value>
-                <Transitions>
-                    <DoubleTransition
-                        Easing="CubicEaseInOut"
-                        Property="Opacity"
-                        Duration="0:0:0.3" />
-                </Transitions>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="IsVisible" Value="true" />
+        <Setter Property="IsHitTestVisible" Value="true" />
+        <Setter Property="RenderTransform" Value="translateX(0px)" />
         <Setter Property="Opacity" Value="1" />
     </Style>
     <Style Selector="lay|LayCarousel/template/Button#PART_Previous/template/ Border#PART_Border">
