@@ -400,7 +400,6 @@ namespace LayUI.Avalonia.Controls
                 }
             }
         }
-        int interval = 30;
         /// <summary>
         /// 刷新视图
         /// </summary>
@@ -408,15 +407,44 @@ namespace LayUI.Avalonia.Controls
         {
             if (PART_ItemsGrid == null) return;
             PART_ItemsGrid.Children.Clear();
-            foreach (var item in LogicalChildren)
+            for (int i = 0; i < LogicalChildren.Count; i++)
             {
-                if (item is Control control)
-                {
-                    control.RenderTransform = TransformOperations.Parse($"translateX({interval}px)");
+                if (LogicalChildren[i] is Lay3DCarouselItem control)
+                { 
                     PART_ItemsGrid.Children.Add(control);
                 }
             }
             SetItemIsSelected();
+        }
+        /// <summary>
+        /// 设置位移
+        /// </summary>
+        void SetItemTranslateX()
+        {
+            if(PART_ItemsGrid==null) return;
+            if (PART_ItemsGrid.Children == null) return;
+            foreach (var item in PART_ItemsGrid.Children) 
+            { 
+                if (item is Lay3DCarouselItem control)
+                {
+                    var itemIndex = PART_ItemsGrid.Children.IndexOf(control);
+                    //位移距离间距
+                    var translateX = 100 * (itemIndex- SelectedIndex);
+                    if (SelectedIndex == itemIndex)
+                    {
+                        control.RenderTransform = TransformOperations.Parse($"translateX(0px)");
+                    }
+                    else if (SelectedIndex > itemIndex)
+                    {
+                        control.RenderTransform = TransformOperations.Parse($"translateX({translateX}px)");
+                    }
+                    else
+                    {
+                        control.RenderTransform = TransformOperations.Parse($"translateX({translateX}px)");
+                    }
+                }
+            }
+
         }
         /// <summary>
         /// 创建计时器
@@ -488,11 +516,11 @@ namespace LayUI.Avalonia.Controls
         }
         public void Next()
         {
-            StopTimer();
+            if (IsAutoSwitch) StopTimer();
             if (SelectedIndex >= ItemCount - 1) SelectedIndex = 0;
             else SelectedIndex++;
             SetItemIsSelected();
-            StartTimer();
+            if (IsAutoSwitch) StartTimer();
         }
         /// <summary>
         /// 刷新子项选中状态
@@ -516,15 +544,16 @@ namespace LayUI.Avalonia.Controls
                     Items[i].IsSelected = item.IsSelected;
                     item.ZIndex = 0;
                 }
+                SetItemTranslateX();
             }
         }
         public void Previous()
         {
-            StopTimer();
+            if (IsAutoSwitch) StopTimer();
             if (SelectedIndex <= 0) SelectedIndex = ItemCount - 1;
             else SelectedIndex--;
             SetItemIsSelected();
-            StartTimer();
+            if (IsAutoSwitch) StartTimer();
         }
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {

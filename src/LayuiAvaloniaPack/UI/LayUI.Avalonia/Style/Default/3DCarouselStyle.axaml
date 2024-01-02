@@ -4,7 +4,7 @@
     xmlns:lay="clr-namespace:LayUI.Avalonia.Controls;assembly=LayUI.Avalonia"
     xmlns:layCv="clr-namespace:LayUI.Avalonia.Converters;assembly=LayUI.Avalonia">
     <Design.PreviewWith>
-        <Border Padding="20">
+        <Border Width="1000" Padding="20">
             <lay:Lay3DCarousel
                 Width="500"
                 Height="200"
@@ -27,6 +27,7 @@
     <Style Selector="lay|Lay3DCarousel">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="CornerRadius" Value="{DynamicResource LayCornerRadiusSmall}" />
+        <Setter Property="ClipToBounds" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>

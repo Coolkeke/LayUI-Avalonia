@@ -515,11 +515,11 @@ namespace LayUI.Avalonia.Controls
         }
         public void Previous()
         {
-            StopTimer();
+            if (IsAutoSwitch) StopTimer();
             if (SelectedIndex <= 0) SelectedIndex = ItemCount - 1;
             else SelectedIndex--;
             SetItemIsSelected();
-            StartTimer();
+            if (IsAutoSwitch) StartTimer();
         }
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
