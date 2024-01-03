@@ -27,7 +27,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="CornerRadius" Value="{DynamicResource LayCornerRadiusSmall}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Padding" Value="4" />
+        <Setter Property="Padding" Value="5 2" />
         <Setter Property="PlaceholderForeground" Value="Gray" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
         <Setter Property="Template">

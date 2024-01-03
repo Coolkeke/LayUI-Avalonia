@@ -9,7 +9,7 @@
         <Setter Property="Height" Value="38" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Padding" Value="10 0" />
+        <Setter Property="Padding" Value="5 2" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border
