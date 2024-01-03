@@ -50,6 +50,7 @@ namespace Layui.Main.ViewModels
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.TextBoxPage, Title = "TextBox" },
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.FormPage, Title = "Form" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ImagePage, Title ="Image" },
+                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ComboBoxPage, Title ="ComboBox" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ProgressBarPage, Title ="ProgressBar" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.DialogPage, Title = "Dialog" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.CardPage, Title = "Card" },

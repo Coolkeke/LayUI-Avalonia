@@ -160,6 +160,10 @@ namespace Layui.Core
         /// 时间线
         /// </summary>
         public static string TimelinePage { get; } = nameof(TimelinePage); 
+        /// <summary>
+        /// 下拉框
+        /// </summary>
+        public static string ComboBoxPage { get; } = nameof(ComboBoxPage); 
     }
     
 }

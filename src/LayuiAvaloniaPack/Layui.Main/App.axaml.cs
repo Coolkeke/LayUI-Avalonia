@@ -73,6 +73,7 @@ namespace Layui.Main
             containerRegistry.RegisterForNavigation<ListBoxPage>(SystemResource.ListBoxPage);
             containerRegistry.RegisterForNavigation<TimelinePage>(SystemResource.TimelinePage);
             containerRegistry.RegisterForNavigation<CarouselPage>(SystemResource.CarouselPage);
+            containerRegistry.RegisterForNavigation<ComboBoxPage>(SystemResource.ComboBoxPage);
             var layDialog = Container.Resolve<ILayDialogService>();
             layDialog.RegisterDialog<Message>(nameof(Message));
         }

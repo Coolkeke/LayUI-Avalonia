@@ -48,4 +48,6 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/3DCarouselItemStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CarouselStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CarouselItemStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ComboBoxStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ComboBoxItemStyle.axaml" />
 </Styles>
