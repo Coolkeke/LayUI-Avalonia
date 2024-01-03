@@ -11,6 +11,7 @@
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
     <StackPanel>
+        <lay:LayLegend Content="基础用法" FontSize="{DynamicResource LayFontSizeLarge}" />
         <lay:LayComboBox Height="30" Margin="10">
             <lay:LayComboBoxItem Content="123" />
             <lay:LayComboBoxItem Content="123" />
@@ -19,13 +20,14 @@
             <lay:LayComboBoxItem Content="123" />
             <lay:LayComboBoxItem Content="123" />
         </lay:LayComboBox>
+        <lay:LayLegend Content="有禁用选项" FontSize="{DynamicResource LayFontSizeLarge}" />
         <lay:LayComboBox Height="30" Margin="10">
-            <lay:LayComboBoxItem Content="123" />
-            <lay:LayComboBoxItem Content="123" />
-            <lay:LayComboBoxItem Content="123" />
-            <lay:LayComboBoxItem Content="123" />
-            <lay:LayComboBoxItem Content="123" />
-            <lay:LayComboBoxItem Content="123" />
+            <lay:LayComboBoxItem Content="1" />
+            <lay:LayComboBoxItem Content="2" />
+            <lay:LayComboBoxItem Content="3" />
+            <lay:LayComboBoxItem Content="123" IsEnabled="False" />
+            <lay:LayComboBoxItem Content="13" />
+            <lay:LayComboBoxItem Content="23" />
         </lay:LayComboBox>
     </StackPanel>
 </UserControl>

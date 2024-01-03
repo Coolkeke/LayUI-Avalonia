@@ -13,6 +13,7 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <Border
+                    x:Name="PART_Border"
                     Padding="{TemplateBinding Padding}"
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
@@ -36,5 +37,8 @@
     <Style Selector="lay|LayComboBoxItem:selected,lay|LayComboBoxItem:selected:focus,lay|LayComboBoxItem:selected:pointerover,lay|LayComboBoxItem:selected:focus:pointerover">
         <Setter Property="Background" Value="{DynamicResource CyanGreen}" />
         <Setter Property="Foreground" Value="White" />
+    </Style>
+    <Style Selector="lay|LayComboBoxItem:disabled /template/ Border#PART_Border">
+        <Setter Property="Opacity" Value="0.6" />
     </Style>
 </Styles>
