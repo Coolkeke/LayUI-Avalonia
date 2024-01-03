@@ -52,6 +52,16 @@
                 Margin="5"
                 PasswordChar="*"
                 Watermark="这是密码框" />
+            <lay:LayMaskedTextBox Margin="5" Mask="(+09) 000 000 0000" />
+            <lay:LayMaskedTextBox Margin="5" Mask="GB 000 000 000">
+                <lay:LayMaskedTextBox.InnerRightContent>
+                    <TextBlock
+                        Margin="5,0"
+                        VerticalAlignment="Center"
+                        FontFamily="{DynamicResource Icon}"
+                        Text="&#xedaf;" />
+                </lay:LayMaskedTextBox.InnerRightContent>
+            </lay:LayMaskedTextBox>
             <lay:LayButton
                 Margin="5"
                 Click="LayButton_Click"

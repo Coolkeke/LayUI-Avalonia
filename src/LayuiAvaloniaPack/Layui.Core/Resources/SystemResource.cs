@@ -11,6 +11,10 @@ namespace Layui.Core
     /// </summary>
     public static class SystemResource
     {
+        /// <summary>
+        /// 颜色
+        /// </summary>
+        public static string ColorPage { get; } = nameof(ColorPage);
 
         /// <summary>
         /// ManWindow导航容器名称
@@ -163,7 +167,11 @@ namespace Layui.Core
         /// <summary>
         /// 下拉框
         /// </summary>
-        public static string ComboBoxPage { get; } = nameof(ComboBoxPage); 
+        public static string ComboBoxPage { get; } = nameof(ComboBoxPage);
+        /// <summary>
+        /// 计数器
+        /// </summary>
+        public static string NumericUpDownPage { get;}=nameof(NumericUpDownPage);
     }
     
 }

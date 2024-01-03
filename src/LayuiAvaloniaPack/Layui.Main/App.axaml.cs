@@ -74,6 +74,8 @@ namespace Layui.Main
             containerRegistry.RegisterForNavigation<TimelinePage>(SystemResource.TimelinePage);
             containerRegistry.RegisterForNavigation<CarouselPage>(SystemResource.CarouselPage);
             containerRegistry.RegisterForNavigation<ComboBoxPage>(SystemResource.ComboBoxPage);
+            containerRegistry.RegisterForNavigation<ColorPage>(SystemResource.ColorPage);
+            containerRegistry.RegisterForNavigation<NumericUpDownPage>(SystemResource.NumericUpDownPage);
             var layDialog = Container.Resolve<ILayDialogService>();
             layDialog.RegisterDialog<Message>(nameof(Message));
         }

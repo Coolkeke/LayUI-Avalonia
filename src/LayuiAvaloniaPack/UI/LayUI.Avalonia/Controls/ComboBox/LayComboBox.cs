@@ -5,7 +5,7 @@ namespace LayUI.Avalonia.Controls
     /// <summary>
     /// 下拉框
     /// </summary>
-    public class LayComboBox: ComboBox
+    public class LayComboBox: ComboBox, ILayControl
     {
         protected override bool NeedsContainerOverride(object? item, int index, out object? recycleKey)
         {

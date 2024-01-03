@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Controls
 {
-    public class LayListBoxItem : ListBoxItem
+    public class LayListBoxItem : ListBoxItem, ILayControl
     {
 
         /// <summary>

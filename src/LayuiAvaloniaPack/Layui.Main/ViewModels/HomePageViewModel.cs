@@ -44,10 +44,12 @@ namespace Layui.Main.ViewModels
             ObservableCollection<MenuInfo> menus = new ObservableCollection<MenuInfo>
             {
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.IconPage, Title = "Icon" ,IsShow=true},
+                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ColorPage, Title ="Color"},
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ButtonPage, Title ="Button"},
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.RadioButtonPage, Title = "RadioButton" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.CheckBoxPage, Title = "CheckBox" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.TextBoxPage, Title = "TextBox" },
+                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.NumericUpDownPage, Title = "NumericUpDown" },
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.FormPage, Title = "Form" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ImagePage, Title ="Image" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ComboBoxPage, Title ="ComboBox" },

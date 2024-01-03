@@ -10,7 +10,7 @@ namespace LayUI.Avalonia.Controls
     /// <summary>
     /// 下拉框子项
     /// </summary>
-    public class LayComboBoxItem : ComboBoxItem
+    public class LayComboBoxItem : ComboBoxItem, ILayControl
     {
 
     }

@@ -16,6 +16,7 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/LoadingStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CardStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TextBoxStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/MaskedTextBoxStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DialogHostStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/MessageControlStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/MessageHostStyle.axaml" />
@@ -50,4 +51,5 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CarouselItemStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ComboBoxStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ComboBoxItemStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/NumericUpDownStyle.axaml" />
 </Styles>

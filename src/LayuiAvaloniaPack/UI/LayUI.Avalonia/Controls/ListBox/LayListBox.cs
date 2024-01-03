@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Controls
 {
-    public class LayListBox : ListBox
+    public class LayListBox : ListBox, ILayControl
     {
         protected override bool NeedsContainerOverride(object? item, int index, out object? recycleKey)
         {
