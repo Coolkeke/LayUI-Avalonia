@@ -1,10 +1,38 @@
-﻿<Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
     <Design.PreviewWith>
-        <Border Padding="20">
-            <!-- Add Controls for Previewer Here -->
-        </Border>
+        <StackPanel Orientation="Horizontal">
+            <lay:LayRipple Margin="5" Type="Auto">
+                <lay:LayButton />
+            </lay:LayRipple>
+            <lay:LayRipple Margin="5" Type="Click">
+                <lay:LayButton />
+            </lay:LayRipple>
+        </StackPanel>
     </Design.PreviewWith>
-
-    <!-- Add Styles Here -->
+    <Style Selector="lay|LayRipple">
+        <Setter Property="Background" Value="{DynamicResource Green}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource LayCornerRadiusSmall}" />
+        <Setter Property="ClipToBounds" Value="false" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid Background="Transparent" ClipToBounds="False">
+                        <Border
+                            x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            ClipToBounds="{TemplateBinding ClipToBounds}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            RenderTransformOrigin="50%,50%" />
+                        <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--  Add Styles Here  -->
 </Styles>

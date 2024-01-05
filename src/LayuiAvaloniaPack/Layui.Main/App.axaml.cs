@@ -1,20 +1,15 @@
-using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Controls.Primitives;
-using Avalonia.Logging;
-using Avalonia.Markup.Xaml;
+using Avalonia; 
+using Avalonia.Controls.ApplicationLifetimes; 
+using Avalonia.Logging; 
 using Layui.Core;
 using Layui.Main.ViewModels;
 using Layui.Main.Views;
 using LayUI.Avalonia;
 using LayUI.Avalonia.Global;
-using LayUI.Avalonia.Interfaces;
+using LayUI.Avalonia.Interfaces; 
 using Prism.DryIoc;
 using Prism.Ioc;
-using Prism.Regions;
-using Prism.Regions.Behaviors;
-using System.Collections.Specialized;
+using Prism.Regions; 
 
 namespace Layui.Main
 {
@@ -30,8 +25,8 @@ namespace Layui.Main
             else
             {
                 view = Container.Resolve<MainPage>();
-            }
-            Container.Resolve<ILayClipboard>().InitializeClipboard(view as Visual);
+            } 
+            LayKeyboardHelper.InitializeKeyboard(view as Visual);
             return view;
         }
         protected override void OnInitialized()
@@ -68,6 +63,19 @@ namespace Layui.Main
             containerRegistry.RegisterForNavigation<SkeletonPage>(SystemResource.SkeletonPage);
             containerRegistry.RegisterForNavigation<FlowItemsControlPage>(SystemResource.FlowItemsControlPage);
             containerRegistry.RegisterForNavigation<ImagePage>(SystemResource.ImagePage);
+            containerRegistry.RegisterForNavigation<RipplePage>(SystemResource.RipplePage);
+            containerRegistry.RegisterForNavigation<LegendPage>(SystemResource.LegendPage);
+            containerRegistry.RegisterForNavigation<ToolTipPage>(SystemResource.ToolTipPage);
+            containerRegistry.RegisterForNavigation<PopupBoxPage>(SystemResource.PopupBoxPage);
+            containerRegistry.RegisterForNavigation<KeyboardPage>(SystemResource.KeyboardPage);
+            containerRegistry.RegisterForNavigation<DrawerPage>(SystemResource.DrawerPage); 
+            containerRegistry.RegisterForNavigation<NavExpanderPage>(SystemResource.NavExpanderPage);
+            containerRegistry.RegisterForNavigation<ListBoxPage>(SystemResource.ListBoxPage);
+            containerRegistry.RegisterForNavigation<TimelinePage>(SystemResource.TimelinePage);
+            containerRegistry.RegisterForNavigation<CarouselPage>(SystemResource.CarouselPage);
+            containerRegistry.RegisterForNavigation<ComboBoxPage>(SystemResource.ComboBoxPage);
+            containerRegistry.RegisterForNavigation<ColorPage>(SystemResource.ColorPage);
+            containerRegistry.RegisterForNavigation<NumericUpDownPage>(SystemResource.NumericUpDownPage);
             var layDialog = Container.Resolve<ILayDialogService>();
             layDialog.RegisterDialog<Message>(nameof(Message));
         }

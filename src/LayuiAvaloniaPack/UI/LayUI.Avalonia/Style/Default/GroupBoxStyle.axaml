@@ -26,6 +26,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}"
                         CornerRadius="{TemplateBinding CornerRadius}">
                         <Grid RowDefinitions="auto,auto,*">
                             <ContentPresenter

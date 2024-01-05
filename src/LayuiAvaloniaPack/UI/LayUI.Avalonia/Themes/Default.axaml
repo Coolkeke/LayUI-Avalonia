@@ -16,6 +16,7 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/LoadingStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CardStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TextBoxStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/MaskedTextBoxStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DialogHostStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/MessageControlStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/MessageHostStyle.axaml" />
@@ -31,4 +32,24 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/NoticeBarStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/SkeletonStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/FlowItemsControlStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/RippleStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/PopupBoxStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ToolTipStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DatePickerStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DateRangePickerStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DateTimePickerStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DateTimeRangePickerStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/KeyboardStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DrawerStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ListBoxStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ListBoxItemStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TimelineStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TimelineItemStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/3DCarouselStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/3DCarouselItemStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CarouselStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/CarouselItemStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ComboBoxStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ComboBoxItemStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/NumericUpDownStyle.axaml" />
 </Styles>

@@ -11,7 +11,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Border Name="PART_BorderBody">
+                    <Border Name="PART_BorderBody" ClipToBounds="{TemplateBinding ClipToBounds}">
                         <Grid>
                             <ContentPresenter
                                 HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"

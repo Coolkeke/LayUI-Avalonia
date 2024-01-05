@@ -1,0 +1,75 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls;assembly=LayUI.Avalonia">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <lay:LayTimeline Width="100">
+                <lay:LayTimelineItem Content="内容" Header="头部信息" />
+                <lay:LayTimelineItem Content="内容" Header="头部信息" />
+                <lay:LayTimelineItem Content="内容" Header="头部信息" />
+                <lay:LayTimelineItem Content="内容" Header="头部信息" />
+            </lay:LayTimeline>
+        </Border>
+    </Design.PreviewWith>
+    <Style Selector="lay|LayTimelineItem">
+        <Setter Property="Background" Value="{DynamicResource Gray}" />
+        <Setter Property="ClipToBounds" Value="false" />
+        <Setter Property="Padding" Value="5 0" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid
+                    ClipToBounds="{TemplateBinding ClipToBounds}"
+                    ColumnDefinitions="auto,*"
+                    RowDefinitions="auto,*">
+                    <Grid
+                        x:Name="PART_LineGrid"
+                        Grid.RowSpan="2"
+                        Width="1"
+                        Background="{Binding RelativeSource={RelativeSource AncestorType=lay:LayTimeline}, Path=LineColor}" />
+                    <Grid x:Name="PART_IconGrid" RowDefinitions="*,auto,*">
+                        <Grid
+                            x:Name="PART_EllipseLineGrid"
+                            Grid.RowSpan="3"
+                            Width="1"
+                            Background="{Binding RelativeSource={RelativeSource AncestorType=lay:LayTimeline}, Path=LineColor}" />
+                        <ContentPresenter
+                            Grid.Row="1"
+                            Width="{Binding RelativeSource={RelativeSource AncestorType=lay:LayTimeline}, Path=IconWidth}"
+                            Height="{Binding RelativeSource={RelativeSource AncestorType=lay:LayTimeline}, Path=IconHeight}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Content="{TemplateBinding Icon}"
+                            ContentTemplate="{TemplateBinding IconTemplate}"
+                            CornerRadius="{Binding RelativeSource={RelativeSource AncestorType=lay:LayTimeline}, Path=IconCornerRadius}" />
+                    </Grid>
+                    <ContentPresenter
+                        Grid.Column="1"
+                        Padding="{TemplateBinding Padding}"
+                        Content="{TemplateBinding Header}"
+                        ContentTemplate="{TemplateBinding HeaderTemplate}" />
+                    <ContentPresenter
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Padding="{TemplateBinding Padding}"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayTimelineItem:first/template/Grid#PART_EllipseLineGrid">
+        <Setter Property="Grid.Row" Value="1" />
+    </Style>
+    <Style Selector="lay|LayTimelineItem:first/template/Grid#PART_LineGrid">
+        <Setter Property="Grid.Row" Value="2" />
+    </Style>
+    <Style Selector="lay|LayTimelineItem:last/template/Grid#PART_EllipseLineGrid">
+        <Setter Property="Grid.RowSpan" Value="2" />
+    </Style>
+    <Style Selector="lay|LayTimelineItem:last/template/Grid#PART_LineGrid">
+        <Setter Property="IsVisible" Value="false" />
+    </Style>
+    <!--  Add Styles Here  -->
+</Styles>

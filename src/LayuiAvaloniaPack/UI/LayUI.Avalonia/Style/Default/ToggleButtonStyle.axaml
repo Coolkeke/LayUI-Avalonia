@@ -8,7 +8,9 @@
         </Border>
     </Design.PreviewWith>
     <Style Selector="lay|LaySpecialToggleButton">
+        <Setter Property="CornerRadius" Value="{DynamicResource LayCornerRadiusSmall}" />
         <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="{DynamicResource LightBlack}" />
         <Setter Property="BorderBrush" Value="{DynamicResource LightBlack}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -21,7 +23,9 @@
                         Name="PART_Border"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
                         <ContentPresenter
                             Name="PART_ContentPresenter"
                             Padding="{TemplateBinding Padding}"

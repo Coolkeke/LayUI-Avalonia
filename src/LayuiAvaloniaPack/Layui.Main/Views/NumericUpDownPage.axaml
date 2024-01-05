@@ -1,0 +1,35 @@
+<UserControl
+    x:Class="Layui.Main.Views.NumericUpDownPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <StackPanel>
+        <lay:LayLegend Content="基础样式" FontSize="{DynamicResource LayFontSizeLarge}" />
+        <lay:LayNumericUpDown
+            Margin="2"
+            Maximum="10"
+            Value="0.5" />
+        <lay:LayLegend Content="按钮布局" FontSize="{DynamicResource LayFontSizeLarge}" />
+        <lay:LayNumericUpDown
+            Margin="2"
+            ButtonSpinnerLocation="Left"
+            Minimum="10" />
+        <lay:LayLegend Content="完全属性展示" FontSize="{DynamicResource LayFontSizeLarge}" />
+        <lay:LayNumericUpDown
+            Margin="2"
+            AllowSpin="true"
+            ButtonSpinnerLocation="Left"
+            FormatString="0.00"
+            Increment="0.05"
+            IsReadOnly="True"
+            Maximum="20"
+            Minimum="10"
+            ShowButtonSpinner="False"
+            Value="10" />
+    </StackPanel>
+</UserControl>

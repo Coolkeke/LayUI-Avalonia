@@ -35,7 +35,7 @@
         <Setter Property="Background" Value="{DynamicResource SilverGray}" />
         <Setter Property="Foreground" Value="{DynamicResource Green}" />
         <Setter Property="ProgressTextForeground" Value="White" />
-		<Setter Property="CornerRadius" Value="{DynamicResource LayCornerRadiusSmall}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource LayCornerRadiusSmall}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="lay:LayProgressBar">
@@ -44,7 +44,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        ClipToBounds="True"
+                        ClipToBounds="{TemplateBinding ClipToBounds}"
                         CornerRadius="{TemplateBinding CornerRadius}">
                         <Panel>
                             <Panel x:Name="DeterminateRoot" Opacity="1">

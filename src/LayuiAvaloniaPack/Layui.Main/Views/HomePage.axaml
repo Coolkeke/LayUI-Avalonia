@@ -13,208 +13,228 @@
     d:DesignWidth="800"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
-    <lay:LayLoading IsActive="{Binding IsActive}">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Grid
-                Height="60"
-                Background="#23262E"
-                ZIndex="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-                <Border
-                    Width="200"
-                    Background="#393D49"
-                    BoxShadow="1 0 1 0 #000">
-                    <TextBlock
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        FontSize="30"
-                        Foreground="{DynamicResource Gradient}"
-                        Text="LayUI" />
-                </Border>
-                <StackPanel
-                    Grid.Column="1"
-                    Margin="5,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center">
-                    <lay:LayButton
-                        MinHeight="35"
-                        Background="{DynamicResource Gradient}"
-                        Type="Customize"
-                        Uri="https://github.com/Coolkeke/LayUI-Avalonia">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="GitHub" />
-                            <Ellipse
-                                Width="6"
-                                Height="6"
-                                Margin="2,0"
-                                Fill="{DynamicResource Red}" />
-                        </StackPanel>
-                    </lay:LayButton>
-                </StackPanel>
-                <StackPanel
-                    Grid.Column="2"
-                    Margin="10,0"
-                    VerticalAlignment="Center"
-                    Orientation="Horizontal">
-                    <ToggleSwitch
-                        Foreground="White"
-                        IsChecked="{Binding IsEn}"
-                        OffContent="中"
-                        OnContent="英" />
-                    <ToggleButton
-                        Name="More"
+    <Grid>
+        <lay:LayLoading IsActive="{Binding IsActive}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid
+                    Height="60"
+                    Background="#23262E"
+                    ZIndex="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <Border
+                        Width="200"
+                        Background="#393D49"
+                        BoxShadow="1 0 1 0 #000">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="30"
+                            Foreground="{DynamicResource Gradient}"
+                            Text="LayUI" />
+                    </Border>
+                    <StackPanel
+                        Grid.Column="1"
+                        Margin="5,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center">
+                        <lay:LayButton
+                            MinHeight="35"
+                            Background="{DynamicResource Gradient}"
+                            Type="Customize"
+                            Uri="https://github.com/Coolkeke/LayUI-Avalonia">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="GitHub" />
+                                <Ellipse
+                                    Width="6"
+                                    Height="6"
+                                    Margin="2,0"
+                                    Fill="{DynamicResource Red}" />
+                            </StackPanel>
+                        </lay:LayButton>
+                    </StackPanel>
+                    <StackPanel
+                        Grid.Column="2"
                         Margin="10,0"
                         VerticalAlignment="Center"
-                        Cursor="Hand"
-                        Foreground="White">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock VerticalAlignment="Center" Text="公告" />
-                            <Border
-                                Width="6"
-                                Height="6"
-                                Margin="5,0"
-                                Background="Red"
-                                CornerRadius="3" />
-                        </StackPanel>
-                        <ToggleButton.Template>
-                            <ControlTemplate>
-                                <Grid Background="{TemplateBinding Background}">
-                                    <ContentPresenter
-                                        VerticalAlignment="Center"
-                                        Content="{TemplateBinding Content}"
-                                        ContentTemplate="{TemplateBinding ContentTemplate}" />
-                                </Grid>
-                            </ControlTemplate>
-                        </ToggleButton.Template>
-                    </ToggleButton>
-                </StackPanel>
-            </Grid>
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Border Width="200" Background="{DynamicResource LighCyan}">
-                    <lay:LayNavExpander IsExpanded="True">
-                        <lay:LayNavExpander.Header>
+                        Orientation="Horizontal">
+                        <ToggleSwitch
+                            Foreground="White"
+                            IsChecked="{Binding IsEn}"
+                            OffContent="中"
+                            OnContent="英" />
+                        <ToggleButton
+                            Name="More"
+                            Margin="10,0"
+                            VerticalAlignment="Center"
+                            Cursor="Hand"
+                            Foreground="White">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    Margin="0,0,5,0"
-                                    VerticalAlignment="Center"
-                                    FontFamily="{DynamicResource Icon}"
-                                    FontSize="16"
-                                    Text="&#xece2;" />
-                                <TextBlock VerticalAlignment="Center" Text="基础功能" />
+                                <TextBlock VerticalAlignment="Center" Text="公告" />
+                                <Border
+                                    Width="6"
+                                    Height="6"
+                                    Margin="5,0"
+                                    Background="Red"
+                                    CornerRadius="3" />
                             </StackPanel>
-                        </lay:LayNavExpander.Header>
-                        <ListBox
-                            Background="Transparent"
-                            BorderThickness="0"
-                            ItemsSource="{Binding Menus}"
-                            SelectedItem="{Binding MenuInfo}">
-                            <ListBox.Styles>
-                                <Style Selector="ListBoxItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
-                                    <Setter Property="Background" Value="Transparent" />
-                                    <Setter Property="Cursor" Value="Hand" />
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate>
-                                                <Grid Background="{TemplateBinding Background}">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="auto" />
-                                                        <ColumnDefinition />
-                                                    </Grid.ColumnDefinitions>
-                                                    <Border Name="PART_Line" Width="4" />
-                                                    <ContentPresenter
-                                                        Grid.Column="1"
-                                                        Content="{TemplateBinding Content}"
-                                                        ContentTemplate="{TemplateBinding ContentTemplate}" />
+                            <ToggleButton.Template>
+                                <ControlTemplate>
+                                    <Grid Background="{TemplateBinding Background}">
+                                        <ContentPresenter
+                                            VerticalAlignment="Center"
+                                            Content="{TemplateBinding Content}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                    </Grid>
+                                </ControlTemplate>
+                            </ToggleButton.Template>
+                        </ToggleButton>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Border Width="200" Background="{DynamicResource LighCyan}">
+                        <lay:LayNavExpander IsExpanded="True">
+                            <lay:LayNavExpander.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                        Margin="0,0,5,0"
+                                        VerticalAlignment="Center"
+                                        FontFamily="{DynamicResource Icon}"
+                                        FontSize="16"
+                                        Text="&#xece2;" />
+                                    <TextBlock VerticalAlignment="Center" Text="基础功能" />
+                                </StackPanel>
+                            </lay:LayNavExpander.Header>
+                            <ListBox
+                                Background="Transparent"
+                                BorderThickness="0"
+                                ItemsSource="{Binding Menus}"
+                                SelectedItem="{Binding MenuInfo}">
+                                <ListBox.Styles>
+                                    <Style Selector="ListBoxItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="Cursor" Value="Hand" />
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate>
+                                                    <Grid Background="{TemplateBinding Background}">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto" />
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Border Name="PART_Line" Width="4" />
+                                                        <ContentPresenter
+                                                            Grid.Column="1"
+                                                            Content="{TemplateBinding Content}"
+                                                            ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                    <Style Selector="ListBoxItem[IsSelected=true]">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                                        <Setter Property="Background" Value="{DynamicResource Green}" />
+                                    </Style>
+                                    <Style Selector="ListBoxItem:pointerover /template/ Border#PART_Line">
+                                        <Setter Property="Background" Value="{DynamicResource Green}" />
+                                    </Style>
+                                </ListBox.Styles>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <RadioButton
+                                            HorizontalAlignment="Stretch"
+                                            VerticalContentAlignment="Stretch"
+                                            IsChecked="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsSelected, Mode=TwoWay}">
+                                            <i:Interaction.Behaviors>
+                                                <ia:EventTriggerBehavior EventName="Checked">
+                                                    <ia:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.GoPageCommand}" CommandParameter="{Binding}" />
+                                                </ia:EventTriggerBehavior>
+                                            </i:Interaction.Behaviors>
+                                            <RadioButton.Template>
+                                                <ControlTemplate>
+                                                    <Grid Background="Transparent">
+                                                        <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </RadioButton.Template>
+                                            <Grid Margin="20,0,0,0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto" />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition Width="auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid Height="40" Margin="0,0,5,0">
+                                                    <TextBlock
+                                                        VerticalAlignment="Center"
+                                                        FontFamily="{DynamicResource Icon}"
+                                                        FontSize="16"
+                                                        Foreground="White"
+                                                        Text="{Binding FontIcon}" />
                                                 </Grid>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                                <Style Selector="ListBoxItem[IsSelected=true]">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
-                                    <Setter Property="Background" Value="{DynamicResource Green}" />
-                                </Style>
-                                <Style Selector="ListBoxItem:pointerover /template/ Border#PART_Line">
-                                    <Setter Property="Background" Value="{DynamicResource Green}" />
-                                </Style>
-                            </ListBox.Styles>
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <RadioButton
-                                        HorizontalAlignment="Stretch"
-                                        VerticalContentAlignment="Stretch"
-                                        IsChecked="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsSelected, Mode=TwoWay}">
-                                        <i:Interaction.Behaviors>
-                                            <ia:EventTriggerBehavior EventName="Checked">
-                                                <ia:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.GoPageCommand}" CommandParameter="{Binding}" />
-                                            </ia:EventTriggerBehavior>
-                                        </i:Interaction.Behaviors>
-                                        <RadioButton.Template>
-                                            <ControlTemplate>
-                                                <Grid Background="Transparent">
-                                                    <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
-                                                </Grid>
-                                            </ControlTemplate>
-                                        </RadioButton.Template>
-                                        <Grid Margin="20,0,0,0">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="auto" />
-                                                <ColumnDefinition />
-                                                <ColumnDefinition Width="auto" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid Height="40" Margin="0,0,5,0">
                                                 <TextBlock
+                                                    Name="test"
+                                                    Grid.Column="1"
+                                                    Margin="5,10"
                                                     VerticalAlignment="Center"
-                                                    FontFamily="{DynamicResource Icon}"
-                                                    FontSize="16"
+                                                    FontSize="20"
                                                     Foreground="White"
-                                                    Text="{Binding FontIcon}" />
+                                                    Text="{Binding Title}"
+                                                    TextTrimming="{x:Static TextTrimming.CharacterEllipsis}" />
+                                                <Border
+                                                    Grid.Column="2"
+                                                    Margin="5,0"
+                                                    Padding="5,0"
+                                                    VerticalAlignment="Center"
+                                                    Background="{DynamicResource Gradient}"
+                                                    CornerRadius="5"
+                                                    IsVisible="{Binding IsShow}">
+                                                    <TextBlock Foreground="White" Text="new" />
+                                                </Border>
                                             </Grid>
-                                            <TextBlock
-                                                Name="test"
-                                                Grid.Column="1"
-                                                Margin="5,10"
-                                                VerticalAlignment="Center"
-                                                FontSize="20"
-                                                Foreground="White"
-                                                Text="{Binding Title}"
-                                                TextTrimming="{x:Static TextTrimming.CharacterEllipsis}" />
-                                            <Border
-                                                Grid.Column="2"
-                                                Margin="5,0"
-                                                Padding="5,0"
-                                                VerticalAlignment="Center"
-                                                Background="{DynamicResource Gradient}"
-                                                CornerRadius="5"
-                                                IsVisible="{Binding IsShow}">
-                                                <TextBlock Foreground="White" Text="new" />
-                                            </Border>
-                                        </Grid>
-                                    </RadioButton>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </lay:LayNavExpander>
-                </Border>
-                <lay:LayLoading Grid.Column="1" IsActive="{Binding #pageContent.Content.DataContext.IsActive}">
-                    <ContentControl x:Name="pageContent" prism:RegionManager.RegionName="{Binding Source={x:Static res:SystemResource.Nav_HomeContent}}" />
-                </lay:LayLoading>
+                                        </RadioButton>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </lay:LayNavExpander>
+                    </Border>
+                    <lay:LayLoading Grid.Column="1" IsActive="{Binding #pageContent.Content.DataContext.IsActive}">
+                        <ContentControl x:Name="pageContent" prism:RegionManager.RegionName="{Binding Source={x:Static res:SystemResource.Nav_HomeContent}}" />
+                    </lay:LayLoading>
+                </Grid>
             </Grid>
-        </Grid>
-    </lay:LayLoading>
+        </lay:LayLoading>
+        <lay:LayDrawer Grid.RowSpan="2" IsOpen="{Binding #More.IsChecked, Mode=TwoWay}">
+            <StackPanel Width="300" Background="White">
+                <Border BorderBrush="{DynamicResource Gray}" BorderThickness="0,0,0,1">
+                    <TextBlock
+                        Margin="10,15"
+                        VerticalAlignment="Center"
+                        Text="公告" />
+                </Border>
+                <TextBlock
+                    Margin="10,5"
+                    VerticalAlignment="Center"
+                    Text="你知道吗?" />
+                <TextBlock
+                    Margin="10,5"
+                    Text="LayUI-Avalonia开发的初衷就是为了WPF的学习者迁移到跨平台框架Avalonia开发来学习而开发分享的一个UI组件库,在这套UI组件库中你将利用现有的开源代码进行开发与Web版本的Layui类似风格的桌面客户端！"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+        </lay:LayDrawer>
+    </Grid>
 </UserControl>

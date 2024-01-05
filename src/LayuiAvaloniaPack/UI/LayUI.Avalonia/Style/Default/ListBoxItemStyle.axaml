@@ -1,0 +1,65 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls;assembly=LayUI.Avalonia">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <lay:LayListBox>
+                <lay:LayListBoxItem IsEnabled="False">Disabled</lay:LayListBoxItem>
+                <lay:LayListBoxItem Padding="20">
+                    Test
+                </lay:LayListBoxItem>
+                <lay:LayListBoxItem>Test</lay:LayListBoxItem>
+                <lay:LayListBoxItem>Test</lay:LayListBoxItem>
+                <lay:LayListBoxItem>Test</lay:LayListBoxItem>
+                <lay:LayListBoxItem>Test</lay:LayListBoxItem>
+            </lay:LayListBox>
+        </Border>
+    </Design.PreviewWith>
+    <Style Selector="lay|LayListBoxItem">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="5 2" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    ClipToBounds="{TemplateBinding ClipToBounds}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <Border.Transitions>
+                        <Transitions>
+                            <BrushTransition Property="Background" Duration="0:0:0.2" />
+                        </Transitions>
+                    </Border.Transitions>
+                    <ContentPresenter
+                        x:Name="PART_ContentPresenter"
+                        Padding="{TemplateBinding Padding}"
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        FontSize="{TemplateBinding FontSize}"
+                        FontWeight="{TemplateBinding FontWeight}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <!--  PointerOver State  -->
+    <Style Selector="lay|LayListBoxItem:pointerover">
+        <Setter Property="Background" Value="{DynamicResource SilverGray}" />
+    </Style>
+    <!--  focus State  -->
+    <Style Selector="lay|LayListBoxItem:focus">
+        <Setter Property="Background" Value="{DynamicResource CyanGreen}" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+    <Style Selector="lay|LayListBoxItem:selected:not(:focus)">
+        <Setter Property="Background" Value="{DynamicResource CyanGreen}" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+    <Style Selector="lay|LayListBoxItem:disabled">
+        <Setter Property="Background" Value="{DynamicResource SilverGray}" />
+        <Setter Property="Foreground" Value="{DynamicResource LighGray}" />
+    </Style>
+</Styles>

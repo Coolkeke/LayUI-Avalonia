@@ -1,0 +1,59 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls;assembly=LayUI.Avalonia">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <lay:LayTimeline Width="100">
+                <lay:LayTimelineItem Content="内容" Header="头部信息" />
+                <lay:LayTimelineItem Content="内容" Header="头部信息" />
+                <lay:LayTimelineItem Content="内容" Header="头部信息" />
+                <lay:LayTimelineItem Content="内容" Header="头部信息" />
+            </lay:LayTimeline>
+        </Border>
+    </Design.PreviewWith>
+    <Style Selector="lay|LayTimeline">
+        <Setter Property="CornerRadius" Value="{DynamicResource LayCornerRadiusSmall}" />
+        <Setter Property="LineColor" Value="{DynamicResource Gray}" />
+        <Setter Property="Foreground" Value="{DynamicResource LightBlack}" />
+        <Setter Property="IconHeight" Value="10" />
+        <Setter Property="IconWidth" Value="10" />
+        <Setter Property="IconCornerRadius" Value="5" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource LightBlack}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
+        <Setter Property="ScrollViewer.IsScrollInertiaEnabled" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    x:Name="PART_Border"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    ClipToBounds="{TemplateBinding ClipToBounds}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <ScrollViewer
+                        x:Name="PART_ScrollViewer"
+                        AllowAutoHide="{TemplateBinding (ScrollViewer.AllowAutoHide)}"
+                        BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}"
+                        HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+                        HorizontalSnapPointsType="{TemplateBinding (ScrollViewer.HorizontalSnapPointsType)}"
+                        IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}"
+                        IsScrollChainingEnabled="{TemplateBinding (ScrollViewer.IsScrollChainingEnabled)}"
+                        IsScrollInertiaEnabled="{TemplateBinding (ScrollViewer.IsScrollInertiaEnabled)}"
+                        VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}"
+                        VerticalSnapPointsType="{TemplateBinding (ScrollViewer.VerticalSnapPointsType)}">
+                        <ItemsPresenter
+                            x:Name="PART_ItemsPresenter"
+                            Margin="{TemplateBinding Padding}"
+                            ItemsPanel="{TemplateBinding ItemsPanel}" />
+                    </ScrollViewer>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

@@ -1,0 +1,144 @@
+<UserControl
+    x:Class="Layui.Main.Views.ColorPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <ScrollViewer>
+        <StackPanel>
+            <lay:LayLegend Content="颜色" FontSize="{DynamicResource LayFontSizeLarge}" />
+            <Border
+                Margin="5,10"
+                Padding="10,0"
+                BorderBrush="{DynamicResource CyanGreen}"
+                BorderThickness="5,0,0,0">
+                <TextBlock Text="Layui 试图在清新与深沉之间寻求某种柔和，以不过分刺激大脑皮层的神经介质，反馈出经久耐看的微妙视图。您可以在我们精心调配的如下色系中合理搭配，减少不必要的违和感，从而使您的 Web 页面看上去尽可能融洽。" TextWrapping="WrapWithOverflow" />
+            </Border>
+            <lay:LayLegend Content="基色调" FontSize="{DynamicResource LayFontSizeLarge}" />
+            <UniformGrid Rows="1">
+                <Border
+                    Height="100"
+                    Margin="2"
+                    Padding="20,0"
+                    Background="{DynamicResource LightGreen}"
+                    CornerRadius="{DynamicResource LayCornerRadiusSmall}">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Foreground="White"
+                        Text="蓝绿色" />
+                </Border>
+                <Border
+                    Height="100"
+                    Margin="2"
+                    Padding="20,0"
+                    Background="{DynamicResource CyanGreen}"
+                    CornerRadius="{DynamicResource LayCornerRadiusSmall}">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Foreground="White"
+                        Text="清新绿" />
+                </Border>
+                <Border
+                    Height="100"
+                    Margin="2"
+                    Padding="20,0"
+                    Background="{DynamicResource Blue}"
+                    CornerRadius="{DynamicResource LayCornerRadiusSmall}">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Foreground="White"
+                        Text="经典蓝" />
+                </Border>
+            </UniformGrid>
+            <Border Margin="5,30" Padding="10,0">
+                <TextBlock Text="Layui 选取以象征清新与包容的「蓝绿色」作为主色调，它介于蓝与绿之间，亦可称之为「青色」，所谓青者，取之于蓝而深于绿，此间包罗万象，跨越时空。这也是我们对技术创作与人生哲学之间的一点思考。" TextWrapping="WrapWithOverflow" />
+            </Border>
+            <lay:LayLegend Content="辅色调" FontSize="{DynamicResource LayFontSizeLarge}" />
+            <UniformGrid Rows="1">
+                <Border
+                    Height="100"
+                    Margin="2"
+                    Padding="20,0"
+                    Background="{DynamicResource Red}"
+                    CornerRadius="{DynamicResource LayCornerRadiusSmall}">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Foreground="White"
+                        Text="错误 - Danger" />
+                </Border>
+                <Border
+                    Height="100"
+                    Margin="2"
+                    Padding="20,0"
+                    Background="{DynamicResource LightOrange}"
+                    CornerRadius="{DynamicResource LayCornerRadiusSmall}">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Foreground="White"
+                        Text="警示 - Warning" />
+                </Border>
+                <Border
+                    Height="100"
+                    Margin="2"
+                    Padding="20,0"
+                    Background="{DynamicResource LightBlue}"
+                    CornerRadius="{DynamicResource LayCornerRadiusSmall}">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Foreground="White"
+                        Text="引导 - Info" />
+                </Border>
+            </UniformGrid>
+            <Border Margin="5,30" Padding="10,0">
+                <TextBlock Text="页面中同样也少不了辅助色彩的点缀，以对不同含义的内容加以区分。Layui 从暖色系（红/橙）和冷色系（绿/蓝）中，各自调取了我们认为最具代表性的颜色值，它们通常在不同的场景中发挥着不同的作用。  中色调" TextWrapping="WrapWithOverflow" />
+            </Border>
+            <lay:LayLegend Content="中色调" FontSize="{DynamicResource LayFontSizeLarge}" />
+            <StackPanel>
+                <Border Padding="20" Background="{DynamicResource Deep}" />
+                <Border Padding="20" Background="{DynamicResource Black}" />
+                <Border Padding="20" Background="{DynamicResource LightBlack}" />
+                <Border Padding="20" Background="{DynamicResource Gray}" />
+                <Border Padding="20" Background="{DynamicResource SilverGray}" />
+                <Border Padding="20" Background="{DynamicResource LighGray}" />
+            </StackPanel>
+            <Border Margin="5,30" Padding="10,0">
+                <TextBlock Text="中性的颜色是页面中的重要组成部分，也被称之为无彩色系，一般用于文本、背景和边框等。它能对由彩色进行视觉冲淡，以达到和谐自然的效果。Layui 认为恰当的灰度调配代表着极简，这是一种神奇的色系，是视觉疲劳的栖息，低调而优雅，且永不过时。" TextWrapping="WrapWithOverflow" />
+            </Border>
+            <lay:LayLegend Content="其他配色" FontSize="{DynamicResource LayFontSizeLarge}" />
+            <StackPanel>
+                <Border Padding="20" Background="{DynamicResource Green}" />
+                <Border Padding="20" Background="{DynamicResource LightGreen}" />
+                <Border Padding="20" Background="{DynamicResource Blue}" />
+                <Border Padding="20" Background="{DynamicResource LightBlue}" />
+                <Border Padding="20" Background="{DynamicResource CyanGreen}" />
+                <Border Padding="20" Background="{DynamicResource Orange}" />
+                <Border Padding="20" Background="{DynamicResource LightOrange}" />
+                <Border Padding="20" Background="{DynamicResource Red}" />
+                <Border Padding="20" Background="{DynamicResource LightRed}" />
+                <Border Padding="20" Background="{DynamicResource Gradient}" />
+            </StackPanel>
+            <lay:LayLegend Content="七色调" FontSize="{DynamicResource LayFontSizeLarge}" />
+            <StackPanel Margin="2">
+                <Border Padding="20" Background="{DynamicResource Red}" />
+                <Border Padding="20" Background="{DynamicResource Orange}" />
+                <Border Padding="20" Background="{DynamicResource Green}" />
+                <Border Padding="20" Background="{DynamicResource Blue}" />
+                <Border Padding="20" Background="{DynamicResource Purple}" />
+                <Border Padding="20" Background="{DynamicResource Deep}" />
+                <Border Padding="20" Background="{DynamicResource LighGray}" />
+            </StackPanel>
+            <Border Margin="5,30" Padding="10,0">
+                <TextBlock Text="Layui 的色调基础，除了前面提到的主辅中色之外，还建立在以上罗列的七种颜色之上。你同样也可以遵循我们提供的色调方案去扩展你的页面元素，使得能与 Layui 的主题风格无缝融合。" TextWrapping="WrapWithOverflow" />
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

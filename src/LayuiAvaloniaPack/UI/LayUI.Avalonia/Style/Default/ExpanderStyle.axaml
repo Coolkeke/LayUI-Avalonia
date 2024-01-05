@@ -3,8 +3,45 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:lay="clr-namespace:LayUI.Avalonia.Controls;assembly=LayUI.Avalonia">
     <Design.PreviewWith>
-        <Border Width="200" Padding="20">
-            <lay:LayNavExpander Content="标题水平线" Header="123" />
+        <Border Padding="20">
+            <StackPanel
+                Width="350"
+                Height="600"
+                Orientation="Vertical"
+                Spacing="20">
+                <lay:LayExpander ExpandDirection="Up" Header="Expand Up">
+                    <StackPanel>
+                        <TextBlock>Expanded content</TextBlock>
+                    </StackPanel>
+                </lay:LayExpander>
+                <lay:LayExpander ExpandDirection="Down" Header="Expand Down">
+                    <StackPanel>
+                        <TextBlock>Expanded content</TextBlock>
+                    </StackPanel>
+                </lay:LayExpander>
+                <lay:LayExpander ExpandDirection="Left" Header="Expand Left">
+                    <StackPanel>
+                        <TextBlock>Expanded content</TextBlock>
+                    </StackPanel>
+                </lay:LayExpander>
+                <lay:LayExpander ExpandDirection="Right" Header="Expand Right">
+                    <StackPanel>
+                        <TextBlock>Expanded content</TextBlock>
+                    </StackPanel>
+                </lay:LayExpander>
+                <lay:LayExpander ExpandDirection="Up">
+                    <Expander.Header>
+                        <Grid ColumnDefinitions="*, Auto">
+                            <TextBlock Grid.Column="0" Text="Control" />
+                            <TextBlock Grid.Column="1" Text="Header" />
+                        </Grid>
+                    </Expander.Header>
+                    <StackPanel>
+                        <TextBlock>Expanded content</TextBlock>
+                    </StackPanel>
+                </lay:LayExpander>
+                <lay:LayNavExpander Content="标题水平线" Header="123" />
+            </StackPanel>
         </Border>
     </Design.PreviewWith>
     <Style Selector="lay|LayNavExpander">
@@ -19,6 +56,7 @@
                     <Border
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}"
                         CornerRadius="{TemplateBinding CornerRadius}">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -143,6 +181,135 @@
     </Style>
     <Style Selector="lay|LayNavExpander[Type=Left] /template/ Grid#PART_Grid">
         <Setter Property="Grid.Column" Value="0" />
+    </Style>
+    <Style Selector="lay|LayExpander">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Background" Value="{DynamicResource ExpanderContentBackground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ExpanderContentBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource ExpanderContentDownBorderThickness}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="CornerRadius" Value="{DynamicResource LayCornerRadiusSmall}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <DockPanel MinWidth="{TemplateBinding MinWidth}" MaxWidth="{TemplateBinding MaxWidth}">
+                    <lay:LaySpecialToggleButton
+                        x:Name="PART_ExpanderHeader"
+                        MinHeight="{TemplateBinding MinHeight}"
+                        Content="{TemplateBinding Header}"
+                        IsChecked="{TemplateBinding IsExpanded,
+                                                    Mode=TwoWay}"
+                        IsEnabled="{TemplateBinding IsEnabled}">
+                        <lay:LaySpecialToggleButton.Template>
+                            <ControlTemplate>
+                                <Grid Background="Transparent">
+                                    <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                </Grid>
+                            </ControlTemplate>
+                        </lay:LaySpecialToggleButton.Template>
+                        <Border
+                            x:Name="PART_ToggleButtonBackground"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                            <Grid x:Name="PART_ToggleButtonGrid" ColumnDefinitions="*,Auto">
+                                <ContentPresenter
+                                    x:Name="PART_HeaderContentPresenter"
+                                    Margin="{TemplateBinding Padding}"
+                                    Content="{TemplateBinding Header}"
+                                    ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                    Foreground="{TemplateBinding Foreground}" />
+                                <Border x:Name="PART_ExpandCollapseChevronBorder" Grid.Column="1">
+                                    <Path
+                                        x:Name="PART_ExpandCollapseChevron"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        RenderTransformOrigin="50%,50%"
+                                        Stretch="None"
+                                        Stroke="{TemplateBinding Foreground}"
+                                        StrokeThickness="1">
+                                        <Path.RenderTransform>
+                                            <RotateTransform />
+                                        </Path.RenderTransform>
+                                    </Path>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </lay:LaySpecialToggleButton>
+                    <Border
+                        x:Name="PART_ExpanderContent"
+                        MinHeight="{TemplateBinding MinHeight}"
+                        Padding="{TemplateBinding Padding}"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        IsVisible="{TemplateBinding IsExpanded,
+                                                    Mode=TwoWay}">
+                        <ContentPresenter
+                            x:Name="PART_ContentPresenter"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Foreground="{TemplateBinding Foreground}" />
+                    </Border>
+                </DockPanel>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayExpander /template/ lay|LaySpecialToggleButton#PART_ExpanderHeader:pressed Path#PART_ExpandCollapseChevron">
+        <Setter Property="RenderTransform" Value="{x:Null}" />
+    </Style>
+    <Style Selector="lay|LayExpander:left /template/ lay|LaySpecialToggleButton#PART_ExpanderHeader, lay|LayExpander:right /template/ lay|LaySpecialToggleButton#PART_ExpanderHeader">
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+    </Style>
+    <Style Selector="lay|LayExpander:left /template/ lay|LaySpecialToggleButton#PART_ExpanderHeader">
+        <Setter Property="DockPanel.Dock" Value="Right" />
+    </Style>
+    <Style Selector="lay|LayExpander:left /template/ Path#PART_ExpandCollapseChevron">
+        <Setter Property="Data" Value="M 7 0 L 0 7 L 7 14" />
+    </Style>
+    <Style Selector="lay|LayExpander:up /template/ lay|LaySpecialToggleButton#PART_ExpanderHeader">
+        <Setter Property="DockPanel.Dock" Value="Bottom" />
+    </Style>
+    <Style Selector="lay|LayExpander:up /template/ Path#PART_ExpandCollapseChevron">
+        <Setter Property="Data" Value="M 0 7 L 7 0 L 14 7" />
+    </Style>
+    <Style Selector="lay|LayExpander:right /template/ lay|LaySpecialToggleButton#PART_ExpanderHeader">
+        <Setter Property="DockPanel.Dock" Value="Left" />
+    </Style>
+    <Style Selector="lay|LayExpander:right /template/ Path#PART_ExpandCollapseChevron">
+        <Setter Property="Data" Value="M 0 0 L 7 7 L 0 14" />
+    </Style>
+    <Style Selector="lay|LayExpander:down /template/ lay|LaySpecialToggleButton#PART_ExpanderHeader">
+        <Setter Property="DockPanel.Dock" Value="Top" />
+    </Style>
+    <Style Selector="lay|LayExpander:down /template/ Path#PART_ExpandCollapseChevron">
+        <Setter Property="Data" Value="M 0 0 L 7 7 L 14 0" />
+    </Style>
+    <Style Selector="lay|LayExpander:expanded /template/ Path#PART_ExpandCollapseChevron">
+        <Style.Animations>
+            <Animation FillMode="Both" Duration="0:0:0.0625">
+                <KeyFrame Cue="100%">
+                    <Setter Property="RotateTransform.Angle" Value="180" />
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
+    </Style>
+    <Style Selector="lay|LayExpander:not(:expanded) /template/ Path#PART_ExpandCollapseChevron">
+        <Style.Animations>
+            <Animation FillMode="Both" Duration="0:0:0.0625">
+                <KeyFrame Cue="0%">
+                    <Setter Property="RotateTransform.Angle" Value="180" />
+                </KeyFrame>
+                <KeyFrame Cue="100%">
+                    <Setter Property="RotateTransform.Angle" Value="0" />
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
     </Style>
     <!--  Add Resources Here  -->
 </Styles>

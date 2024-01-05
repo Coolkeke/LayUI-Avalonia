@@ -1,0 +1,258 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls;assembly=LayUI.Avalonia"
+    xmlns:layCv="clr-namespace:LayUI.Avalonia.Converters;assembly=LayUI.Avalonia">
+    <Design.PreviewWith>
+        <Border Width="1000" Padding="20">
+            <lay:Lay3DCarousel
+                Width="500"
+                Height="200"
+                Margin="10"
+                IsAutoSwitch="False"
+                Type="Hover">
+                <lay:Lay3DCarouselItem Background="Red" Content="1" />
+                <lay:Lay3DCarouselItem Background="AliceBlue" Content="2" />
+                <lay:Lay3DCarouselItem Background="AntiqueWhite" Content="3" />
+                <lay:Lay3DCarouselItem Background="Aqua" Content="4" />
+                <lay:Lay3DCarouselItem Background="Aquamarine" Content="5" />
+                <lay:Lay3DCarouselItem Background="Aqua" Content="6" />
+                <lay:Lay3DCarouselItem Background="Beige" Content="7" />
+                <lay:Lay3DCarouselItem Background="Bisque" Content="8" />
+                <lay:Lay3DCarouselItem Background="BlanchedAlmond" Content="9" />
+                <lay:Lay3DCarouselItem Background="Chartreuse" Content="10" />
+            </lay:Lay3DCarousel>
+        </Border>
+    </Design.PreviewWith>
+    <Style Selector="lay|Lay3DCarousel">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="CornerRadius" Value="{DynamicResource LayCornerRadiusSmall}" />
+        <Setter Property="ClipToBounds" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <Grid ColumnDefinitions="auto,*,auto">
+                            <Grid
+                                x:Name="PART_ItemsGrid"
+                                Grid.ColumnSpan="3"
+                                Focusable="false" />
+                            <Button
+                                Name="PART_Previous"
+                                Width="36"
+                                Height="36"
+                                Margin="10,0,0,0"
+                                Background="Black"
+                                Command="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Previous}"
+                                Content="上一页"
+                                Cursor="Hand"
+                                Focusable="false">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Grid>
+                                            <Border
+                                                Name="PART_Border"
+                                                Background="{TemplateBinding Background}"
+                                                ClipToBounds="True"
+                                                CornerRadius="18" />
+                                            <Path
+                                                Margin="12,8"
+                                                Data="M356.7 509.83L780.2 931.4c20 19.91 20 52.24 0 72.14-19.99 19.91-52.47 19.91-72.47 0L250.36 548.25c-10.57-10.53-15.67-24.6-14.9-38.42-0.64-13.82 4.33-27.89 14.9-38.42L707.6 16.12c20-19.9 52.48-19.9 72.47 0 20 19.91 20 52.24 0 72.14L356.7 509.83z m0 0"
+                                                Fill="White"
+                                                IsHitTestVisible="False"
+                                                Stretch="Fill" />
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button
+                                Name="PART_Next"
+                                Grid.Column="2"
+                                Width="36"
+                                Height="36"
+                                Margin="0,0,10,0"
+                                HorizontalAlignment="Right"
+                                Background="Black"
+                                Command="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Next}"
+                                Content="下一页"
+                                Cursor="Hand"
+                                Focusable="false">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Grid>
+                                            <Border
+                                                Name="PART_Border"
+                                                Background="{TemplateBinding Background}"
+                                                ClipToBounds="True"
+                                                CornerRadius="18" />
+                                            <Path
+                                                Margin="12,8"
+                                                Data="M773.12 548.864c-0.512 3.584-1.024 7.168-2.048 10.752-2.048 9.216-7.168 17.408-13.312 24.064l-3.072 3.072-404.992 389.632c-12.8 12.288-27.136 18.432-45.056 17.408-31.232-1.024-56.832-28.672-54.272-58.368 1.024-14.336 7.68-26.624 17.92-36.864l364.544-350.208c1.024-1.024 2.048-1.536 4.096-3.584-2.048-1.024-3.584-1.536-4.608-2.56C510.464 425.472 389.12 308.224 267.264 191.488c-9.728-9.728-16.896-20.992-18.432-34.304 0-0.512-0.512-0.512-0.512-1.024v-11.776c0-0.512 0.512-1.024 0.512-2.048 3.584-22.016 19.456-39.424 41.984-45.056l8.704-2.048h12.288c0 0.512 0.512 0.512 1.024 0.512 14.336 1.536 26.112 8.192 35.84 18.432 26.112 25.6 52.736 50.688 79.36 76.288 108.032 103.936 216.064 208.384 324.608 312.32 6.144 5.632 11.264 12.288 13.824 19.968 2.56 7.168 4.608 14.336 6.656 21.504v4.608z"
+                                                Fill="White"
+                                                IsHitTestVisible="False"
+                                                Stretch="Fill" />
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Grid
+                                Grid.ColumnSpan="3"
+                                Margin="10"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                IsVisible="{TemplateBinding IsIndicatorVisible}">
+                                <Border
+                                    Padding="5"
+                                    Background="{DynamicResource Black}"
+                                    CornerRadius="10"
+                                    Opacity="0.2" />
+                                <ItemsControl
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    ItemsSource="{TemplateBinding Items}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Margin="5" Orientation="Horizontal" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <RadioButton
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch"
+                                                Command="{Binding RelativeSource={RelativeSource AncestorType=lay:Lay3DCarousel}, Path=SelectedCommand}"
+                                                CommandParameter="{Binding Index}"
+                                                Cursor="Hand"
+                                                IsChecked="{Binding IsSelected, Mode=TwoWay}">
+                                                <RadioButton.Styles>
+                                                    <Style Selector="RadioButton">
+                                                        <Setter Property="Background">
+                                                            <Setter.Value>
+                                                                <SolidColorBrush Opacity="0.8" Color="{StaticResource GrayEffect}" />
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Style>
+                                                    <Style Selector="RadioButton:checked">
+                                                        <Setter Property="Background" Value="{DynamicResource LighGray}" />
+                                                    </Style>
+                                                </RadioButton.Styles>
+                                                <RadioButton.Template>
+                                                    <ControlTemplate>
+                                                        <Ellipse
+                                                            Width="10"
+                                                            Height="10"
+                                                            Margin="2,0"
+                                                            Fill="{TemplateBinding Background}" />
+                                                    </ControlTemplate>
+                                                </RadioButton.Template>
+                                            </RadioButton>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|Lay3DCarousel/template/Button#PART_Previous">
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <Transitions>
+                    <DoubleTransition
+                        Easing="CubicEaseInOut"
+                        Property="Opacity"
+                        Duration="0:0:0.3" />
+                    <TransformOperationsTransition
+                        Easing="CubicEaseInOut"
+                        Property="RenderTransform"
+                        Duration="0:0:0.3" />
+                </Transitions>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="IsHitTestVisible" Value="false" />
+        <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="lay|Lay3DCarousel/template/Button#PART_Next">
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <Transitions>
+                    <DoubleTransition
+                        Easing="CubicEaseInOut"
+                        Property="Opacity"
+                        Duration="0:0:0.3" />
+                    <TransformOperationsTransition
+                        Easing="CubicEaseInOut"
+                        Property="RenderTransform"
+                        Duration="0:0:0.3" />
+                </Transitions>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="IsHitTestVisible" Value="false" />
+        <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="lay|Lay3DCarousel[Type=Always]/template/Button#PART_Previous">
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <Transitions>
+                    <DoubleTransition
+                        Easing="CubicEaseInOut"
+                        Property="Opacity"
+                        Duration="0:0:0.3" />
+                    <TransformOperationsTransition
+                        Easing="CubicEaseInOut"
+                        Property="RenderTransform"
+                        Duration="0:0:0.3" />
+                </Transitions>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Opacity" Value="1" />
+        <Setter Property="IsHitTestVisible" Value="true" />
+    </Style>
+    <Style Selector="lay|Lay3DCarousel[Type=Always]/template/Button#PART_Next">
+        <Setter Property="IsHitTestVisible" Value="true" />
+        <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="lay|Lay3DCarousel[Type=None]/template/Button#PART_Previous">
+        <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="lay|Lay3DCarousel[Type=None]/template/Button#PART_Next">
+        <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="lay|Lay3DCarousel[Type=Hover]/template/Button#PART_Previous">
+        <Setter Property="Opacity" Value="0" />
+        <Setter Property="RenderTransform" Value="translateX(-10px)" />
+    </Style>
+    <Style Selector="lay|Lay3DCarousel[Type=Hover]:pointerover/template/Button#PART_Previous">
+        <Setter Property="IsHitTestVisible" Value="true" />
+        <Setter Property="RenderTransform" Value="translateX(0px)" />
+        <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="lay|Lay3DCarousel[Type=Hover]/template/Button#PART_Next">
+        <Setter Property="Opacity" Value="0" />
+        <Setter Property="RenderTransform" Value="translateX(10px)" />
+    </Style>
+    <Style Selector="lay|Lay3DCarousel[Type=Hover]:pointerover/template/Button#PART_Next">
+        <Setter Property="IsHitTestVisible" Value="true" />
+        <Setter Property="RenderTransform" Value="translateX(0px)" />
+        <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="lay|Lay3DCarousel/template/Button#PART_Previous/template/ Border#PART_Border">
+        <Setter Property="Opacity" Value="0.2" />
+    </Style>
+    <Style Selector="lay|Lay3DCarousel/template/Button#PART_Next/template/ Border#PART_Border">
+        <Setter Property="Opacity" Value="0.2" />
+    </Style>
+    <Style Selector="lay|Lay3DCarousel/template/Button#PART_Previous/template/ Border#PART_Border:pointerover">
+        <Setter Property="Opacity" Value="0.5" />
+    </Style>
+    <Style Selector="lay|Lay3DCarousel/template/Button#PART_Next/template/ Border#PART_Border:pointerover">
+        <Setter Property="Opacity" Value="0.5" />
+    </Style>
+</Styles>

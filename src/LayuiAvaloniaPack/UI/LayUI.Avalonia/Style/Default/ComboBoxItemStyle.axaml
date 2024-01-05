@@ -1,0 +1,44 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Design.PreviewWith>
+        <lay:LayComboBoxItem />
+    </Design.PreviewWith>
+    <Style Selector="lay|LayComboBoxItem">
+        <Setter Property="Height" Value="38" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="5 2" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    x:Name="PART_Border"
+                    Padding="{TemplateBinding Padding}"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    ClipToBounds="{TemplateBinding ClipToBounds}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <ContentPresenter
+                        x:Name="PART_ContentPresenter"
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="lay|LayComboBoxItem:pointerover">
+        <Setter Property="Background" Value="{DynamicResource SilverGray}" />
+    </Style>
+    <Style Selector="lay|LayComboBoxItem:selected,lay|LayComboBoxItem:selected:focus,lay|LayComboBoxItem:selected:pointerover,lay|LayComboBoxItem:selected:focus:pointerover">
+        <Setter Property="Background" Value="{DynamicResource CyanGreen}" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+    <Style Selector="lay|LayComboBoxItem:disabled /template/ Border#PART_Border">
+        <Setter Property="Opacity" Value="0.6" />
+    </Style>
+</Styles>

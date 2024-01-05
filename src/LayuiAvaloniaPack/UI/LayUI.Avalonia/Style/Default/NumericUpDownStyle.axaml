@@ -1,0 +1,155 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <StackPanel>
+                <lay:LayNumericUpDown Width="300" Margin="2" />
+                <lay:LayNumericUpDown
+                    Width="300"
+                    Margin="2"
+                    ButtonSpinnerLocation="Left" />
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    <Style Selector="lay|LayNumericUpDown">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="MinHeight" Value="40" />
+        <Setter Property="SelectionForegroundBrush" Value="White" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource Blue}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource LayCornerRadiusSmall}" />
+        <Setter Property="Padding" Value="5 2" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="ClipToBounds" Value="true" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <Border
+                            Background="{x:Null}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            ClipToBounds="{TemplateBinding ClipToBounds}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            ZIndex="1" />
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="0"
+                            ClipToBounds="{TemplateBinding ClipToBounds}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                            <ButtonSpinner
+                                x:Name="PART_Spinner"
+                                HorizontalContentAlignment="Stretch"
+                                VerticalContentAlignment="Stretch"
+                                AllowSpin="{TemplateBinding AllowSpin}"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                ButtonSpinnerLocation="{TemplateBinding ButtonSpinnerLocation}"
+                                ClipToBounds="{TemplateBinding ClipToBounds}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                ShowButtonSpinner="{TemplateBinding ShowButtonSpinner}">
+                                <ButtonSpinner.Resources>
+                                    <ControlTemplate x:Key="NumericUpDownTextBox" TargetType="TextBox">
+                                        <Border
+                                            Name="PART_Border"
+                                            MinWidth="{TemplateBinding MinWidth}"
+                                            MinHeight="{TemplateBinding MinHeight}"
+                                            Padding="{TemplateBinding Padding}"
+                                            Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            ClipToBounds="{TemplateBinding ClipToBounds}"
+                                            CornerRadius="{TemplateBinding CornerRadius}">
+                                            <Grid ColumnDefinitions="Auto,*,Auto">
+                                                <ContentPresenter
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="1"
+                                                    Content="{TemplateBinding InnerLeftContent}"
+                                                    UseLayoutRounding="True" />
+                                                <TextBlock
+                                                    Name="PART_PlaceholderText"
+                                                    Grid.Column="1"
+                                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                    FontFamily="{TemplateBinding FontFamily}"
+                                                    FontSize="{TemplateBinding FontSize}"
+                                                    FontStyle="{TemplateBinding FontStyle}"
+                                                    FontWeight="{TemplateBinding FontWeight}"
+                                                    Foreground="{TemplateBinding Foreground}"
+                                                    Text="{TemplateBinding Watermark}"
+                                                    TextTrimming="WordEllipsis"
+                                                    UseLayoutRounding="True" />
+                                                <ScrollViewer
+                                                    Name="PART_ScrollViewer"
+                                                    Grid.Column="1"
+                                                    AllowAutoHide="{TemplateBinding (ScrollViewer.AllowAutoHide)}"
+                                                    HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+                                                    VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}">
+                                                    <TextPresenter
+                                                        Name="PART_TextPresenter"
+                                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                        CaretBrush="{TemplateBinding CaretBrush}"
+                                                        CaretIndex="{TemplateBinding CaretIndex}"
+                                                        InputMethod.IsInputMethodEnabled="{TemplateBinding InputMethod.IsInputMethodEnabled}"
+                                                        PasswordChar="{TemplateBinding PasswordChar}"
+                                                        RevealPassword="{TemplateBinding RevealPassword}"
+                                                        SelectionBrush="{TemplateBinding SelectionBrush}"
+                                                        SelectionEnd="{TemplateBinding SelectionEnd}"
+                                                        SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                                        SelectionStart="{TemplateBinding SelectionStart}"
+                                                        Text="{TemplateBinding Text,
+                                                                               Mode=TwoWay}"
+                                                        TextAlignment="{TemplateBinding TextAlignment}"
+                                                        TextBlock.FontFamily="{TemplateBinding FontFamily}"
+                                                        TextBlock.FontSize="{TemplateBinding FontSize}"
+                                                        TextBlock.FontStyle="{TemplateBinding FontStyle}"
+                                                        TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                                                        TextBlock.Foreground="{TemplateBinding Foreground}"
+                                                        TextWrapping="{TemplateBinding TextWrapping}"
+                                                        UseLayoutRounding="True" />
+                                                </ScrollViewer>
+                                                <ContentPresenter
+                                                    Grid.Column="2"
+                                                    Grid.ColumnSpan="1"
+                                                    Content="{TemplateBinding InnerRightContent}"
+                                                    UseLayoutRounding="True" />
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </ButtonSpinner.Resources>
+                                <TextBox
+                                    Name="PART_TextBox"
+                                    MinWidth="20"
+                                    Padding="{TemplateBinding Padding}"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    AcceptsReturn="False"
+                                    Background="{TemplateBinding Background}"
+                                    BorderThickness="0"
+                                    DataValidationErrors.Errors="{TemplateBinding (DataValidationErrors.Errors)}"
+                                    IsReadOnly="{TemplateBinding IsReadOnly}"
+                                    SelectionBrush="{TemplateBinding SelectionBrush}"
+                                    SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                    Template="{DynamicResource NumericUpDownTextBox}"
+                                    Text="{TemplateBinding Text}"
+                                    TextAlignment="{TemplateBinding TextAlignment}"
+                                    TextWrapping="NoWrap"
+                                    Watermark="{TemplateBinding Watermark}" />
+                            </ButtonSpinner>
+
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--  Add Styles Here  -->
+</Styles>

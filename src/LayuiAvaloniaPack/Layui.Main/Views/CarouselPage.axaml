@@ -1,0 +1,97 @@
+<UserControl
+    x:Class="Layui.Main.Views.CarouselPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+        <StackPanel>
+            <lay:Lay3DCarousel
+                Height="300"
+                IsAutoSwitch="True"
+                SwitchInterval="2"
+                Type="Hover">
+                <lay:Lay3DCarouselItem>
+                    <lay:LayImage Source="/Assets/avalonia-logo.ico" />
+                </lay:Lay3DCarouselItem>
+                <lay:Lay3DCarouselItem>
+                    <lay:LayImage Source="/Assets/avalonia-logo.ico" />
+                </lay:Lay3DCarouselItem>
+                <lay:Lay3DCarouselItem>
+                    <lay:LayImage Source="/Assets/avalonia-logo.ico" />
+                </lay:Lay3DCarouselItem>
+                <lay:Lay3DCarouselItem>
+                    <lay:LayImage Source="/Assets/avalonia-logo.ico" />
+                </lay:Lay3DCarouselItem>
+                <lay:Lay3DCarouselItem>
+                    <lay:LayImage Source="/Assets/avalonia-logo.ico" />
+                </lay:Lay3DCarouselItem>
+                <lay:Lay3DCarouselItem>
+                    <lay:LayImage Source="/Assets/avalonia-logo.ico" />
+                </lay:Lay3DCarouselItem>
+                <lay:Lay3DCarouselItem>
+                    <lay:LayImage Source="/Assets/avalonia-logo.ico" />
+                </lay:Lay3DCarouselItem>
+                <lay:Lay3DCarouselItem>
+                    <lay:LayImage Source="/Assets/avalonia-logo.ico" />
+                </lay:Lay3DCarouselItem>
+            </lay:Lay3DCarousel>
+            <lay:Lay3DCarousel
+                Height="300"
+                ItemsSource="{Binding Items}"
+                Type="Hover">
+                <lay:Lay3DCarousel.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <lay:LayImage Source="/Assets/avalonia-logo.ico" />
+                        </Grid>
+                    </DataTemplate>
+                </lay:Lay3DCarousel.ItemTemplate>
+            </lay:Lay3DCarousel>
+            <lay:LayCarousel
+                Height="400"
+                Margin="5"
+                IsAutoSwitch="True"
+                ItemsSource="{Binding Items}"
+                SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
+                SwitchInterval="2"
+                Type="Hover">
+                <lay:LayCarousel.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Background="{DynamicResource Green}">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Foreground="White"
+                                Text="{Binding Title}" />
+                        </Grid>
+                    </DataTemplate>
+                </lay:LayCarousel.ItemTemplate>
+            </lay:LayCarousel>
+            <lay:LayCarousel
+                Height="400"
+                Margin="5"
+                IsAutoSwitch="True"
+                ItemsSource="{Binding Items}"
+                Type="Hover">
+                <lay:LayCarousel.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Background="{DynamicResource Green}">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Foreground="White"
+                                Text="{Binding Title}" />
+                        </Grid>
+                    </DataTemplate>
+                </lay:LayCarousel.ItemTemplate>
+            </lay:LayCarousel>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -6,6 +6,7 @@ using Avalonia.Controls.Templates;
 using Avalonia.LogicalTree;
 using Avalonia.Media;
 using Avalonia.Metadata;
+using LayUI.Avalonia.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,7 +18,7 @@ namespace LayUI.Avalonia.Controls
     /// </summary>
     public class LayLegend : TemplatedControl, ILayControl
     {
-        static LayLegend()
+        public LayLegend()
         {
             ContentProperty.Changed.AddClassHandler<LayLegend>((x, e) => x.ContentChanged(e));
         } 
@@ -83,6 +84,22 @@ namespace LayUI.Avalonia.Controls
         /// </summary>
         public static readonly StyledProperty<double> HorizontalOffsetProperty =
             AvaloniaProperty.Register<LayLegend, double>(nameof(HorizontalOffset), 10.0);
+
+
+        /// <summary>
+        /// Defines the <see cref="Type"/> property.
+        /// </summary>
+        public static readonly StyledProperty<LegendType> TypeProperty =
+            AvaloniaProperty.Register<Control, LegendType>(nameof(Type));
+
+        /// <summary>
+        /// 类型
+        /// </summary>
+        public LegendType Type
+        {
+            get { return GetValue(TypeProperty); }
+            set { SetValue(TypeProperty, value); }
+        }
 
         /// <summary>
         /// 水平位移距离

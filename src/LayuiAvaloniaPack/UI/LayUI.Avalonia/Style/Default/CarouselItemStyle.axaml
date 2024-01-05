@@ -1,0 +1,54 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <lay:LayCarouselItem Width="200" Height="100" />
+        </Border>
+    </Design.PreviewWith>
+
+    <Style Selector="lay|LayCarouselItem">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Focusable" Value="false" />
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <Transitions>
+                    <DoubleTransition
+                        Easing="CubicEaseInOut"
+                        Property="Opacity"
+                        Duration="0:0:0.3" />
+                </Transitions>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <ContentPresenter
+                            Name="PART_ContentPresenter"
+                            Padding="{TemplateBinding Padding}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayCarouselItem[IsSelected=false]">
+        <Setter Property="Opacity" Value="0" />
+        <Setter Property="IsHitTestVisible" Value="true" />
+    </Style>
+    <Style Selector="lay|LayCarouselItem[IsSelected=true]">
+        <Setter Property="Opacity" Value="1" />
+        <Setter Property="IsHitTestVisible" Value="false" />
+    </Style>
+</Styles>

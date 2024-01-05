@@ -11,6 +11,10 @@ namespace Layui.Core
     /// </summary>
     public static class SystemResource
     {
+        /// <summary>
+        /// 颜色
+        /// </summary>
+        public static string ColorPage { get; } = nameof(ColorPage);
 
         /// <summary>
         /// ManWindow导航容器名称
@@ -135,7 +139,39 @@ namespace Layui.Core
         /// <summary>
         /// 流加载控件
         /// </summary>
-        public static string FlowItemsControlPage { get; } = nameof(FlowItemsControlPage);  
+        public static string FlowItemsControlPage { get; } = nameof(FlowItemsControlPage); 
+        /// <summary>
+        /// 波浪
+        /// </summary>
+        public static string RipplePage { get; } = nameof(RipplePage); 
+        /// <summary>
+        /// 提示信息
+        /// </summary>
+        public static string ToolTipPage { get; } = nameof(ToolTipPage);
+        /// <summary>
+        /// 弹出框
+        /// </summary>
+        public static string PopupBoxPage { get; } = nameof(PopupBoxPage);
+        /// <summary>
+        /// 导航折叠板
+        /// </summary>
+        public static string NavExpanderPage { get; } = nameof(NavExpanderPage); 
+        /// <summary>
+        /// 列表
+        /// </summary>
+        public static string ListBoxPage { get; } = nameof(ListBoxPage); 
+        /// <summary>
+        /// 时间线
+        /// </summary>
+        public static string TimelinePage { get; } = nameof(TimelinePage); 
+        /// <summary>
+        /// 下拉框
+        /// </summary>
+        public static string ComboBoxPage { get; } = nameof(ComboBoxPage);
+        /// <summary>
+        /// 计数器
+        /// </summary>
+        public static string NumericUpDownPage { get;}=nameof(NumericUpDownPage);
     }
     
 }

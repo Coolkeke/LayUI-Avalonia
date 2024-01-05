@@ -1,0 +1,137 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Design.PreviewWith>
+        <Grid Width="200" Height="300">
+            <lay:LayComboBox
+                Height="30"
+                Margin="10"
+                VerticalAlignment="Top">
+                <lay:LayComboBoxItem Content="123" />
+                <lay:LayComboBoxItem Content="123" />
+                <lay:LayComboBoxItem Content="123" />
+                <lay:LayComboBoxItem Content="123" />
+                <lay:LayComboBoxItem Content="123" />
+                <lay:LayComboBoxItem Content="123" />
+            </lay:LayComboBox>
+        </Grid>
+    </Design.PreviewWith>
+    <Style Selector="lay|LayComboBox">
+        <Setter Property="MinHeight" Value="40" />
+        <Setter Property="Foreground" Value="{DynamicResource LightBlack}" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="PlaceholderText" Value="请选择" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="CornerRadius" Value="{DynamicResource LayCornerRadiusSmall}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="5 2" />
+        <Setter Property="PlaceholderForeground" Value="Gray" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid x:Name="PART_Grid" Margin="-2,0">
+                    <Border
+                        x:Name="PART_Border"
+                        Margin="2,0"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <TextBlock
+                                Name="PlaceholderTextBlock"
+                                Grid.Column="0"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Foreground="{TemplateBinding PlaceholderForeground}"
+                                IsVisible="{TemplateBinding SelectionBoxItem,
+                                                            Converter={x:Static ObjectConverters.IsNull}}"
+                                Text="{TemplateBinding PlaceholderText}" />
+                            <ContentControl
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding SelectionBoxItem}"
+                                ContentTemplate="{TemplateBinding ItemTemplate}" />
+                            <lay:LaySpecialToggleButton
+                                x:Name="toggle"
+                                Grid.Column="1"
+                                Margin="5,0"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                ClickMode="Press"
+                                Focusable="False"
+                                IsChecked="{TemplateBinding IsDropDownOpen,
+                                                            Mode=TwoWay}">
+                                <lay:LaySpecialToggleButton.Template>
+                                    <ControlTemplate>
+                                        <Grid Background="Transparent">
+                                            <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                        </Grid>
+                                    </ControlTemplate>
+                                </lay:LaySpecialToggleButton.Template>
+                                <TextBlock
+                                    x:Name="PART_Icon"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontFamily="{DynamicResource Icon}"
+                                    FontSize="20"
+                                    Foreground="{Binding #PART_Border.BorderBrush}"
+                                    RenderTransformOrigin="50%,50%"
+                                    Text="&#xefb1;" />
+                            </lay:LaySpecialToggleButton>
+                            <Popup
+                                x:Name="PART_Popup"
+                                MinWidth="{Binding #PART_Grid.Bounds.Width}"
+                                MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                IsLightDismissEnabled="True"
+                                IsOpen="{TemplateBinding IsDropDownOpen,
+                                                         Mode=TwoWay}"
+                                PlacementTarget="{Binding #PART_Grid}">
+                                <lay:LayCard
+                                    Margin="2"
+                                    Padding="0,4"
+                                    Background="White"
+                                    Blur="2"
+                                    BorderThickness="0"
+                                    CornerRadius="{TemplateBinding CornerRadius}">
+                                    <ScrollViewer
+                                        HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                        IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}"
+                                        VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                                        <ItemsPresenter Name="PART_ItemsPresenter" ItemsPanel="{TemplateBinding ItemsPanel}" />
+                                    </ScrollViewer>
+                                </lay:LayCard>
+                            </Popup>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayComboBox /template/ TextBlock#PART_Icon">
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2" />
+                </Transitions>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayComboBox[IsDropDownOpen=false] /template/ TextBlock#PART_Icon">
+        <Setter Property="RenderTransform" Value="rotate(0deg)" />
+    </Style>
+    <Style Selector="lay|LayComboBox[IsDropDownOpen=True] /template/ TextBlock#PART_Icon">
+        <Setter Property="RenderTransform" Value="rotate(180deg)" />
+    </Style>
+    <Style Selector="lay|LayComboBox[IsDropDownOpen=True] /template/ Border#PART_Border,lay|LayComboBox[IsDropDownOpen=True]:pointerover /template/ Border#PART_Border">
+        <Setter Property="BorderBrush" Value="{DynamicResource LightBlack}" />
+    </Style>
+    <Style Selector="lay|LayComboBox:disabled /template/ Border#PART_Border">
+        <Setter Property="Opacity" Value="0.6" />
+    </Style>
+</Styles>

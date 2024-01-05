@@ -39,15 +39,11 @@ namespace LayUI.Avalonia.Controls
         public static readonly RoutedEvent<RoutedEventArgs> UncheckedEvent =
             RoutedEvent.Register<LaySpecialToggleButton, RoutedEventArgs>(nameof(Unchecked), RoutingStrategies.Bubble);
 
-        private bool _isChecked = false;
-
-        static LaySpecialToggleButton()
-        {
-            IsCheckedProperty.Changed.AddClassHandler<LaySpecialToggleButton>((x, e) => x.OnIsCheckedChanged(e));
-        }
+        private bool _isChecked = false; 
 
         public LaySpecialToggleButton()
         {
+            IsCheckedProperty.Changed.AddClassHandler<LaySpecialToggleButton>((x, e) => x.OnIsCheckedChanged(e));
             UpdatePseudoClasses(IsChecked);
         }
 

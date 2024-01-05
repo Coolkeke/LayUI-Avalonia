@@ -182,7 +182,7 @@ namespace LayUI.Avalonia.Controls
         /// Defines the <see cref="HeaderBackground"/> property.
         /// </summary>
         public static readonly StyledProperty<IBrush> HeaderBackgroundProperty =
-            AvaloniaProperty.Register<Control, IBrush>(nameof(HeaderBackground)); 
+            AvaloniaProperty.Register<LayNavExpander, IBrush>(nameof(HeaderBackground)); 
         public IBrush HeaderBackground
         {
             get { return GetValue(HeaderBackgroundProperty); }
@@ -193,7 +193,7 @@ namespace LayUI.Avalonia.Controls
         /// Defines the <see cref="HeaderPadding"/> property.
         /// </summary>
         public static readonly StyledProperty<Thickness> HeaderPaddingProperty =
-            AvaloniaProperty.Register<Control, Thickness>(nameof(HeaderPadding), new Thickness(0));
+            AvaloniaProperty.Register<LayNavExpander, Thickness>(nameof(HeaderPadding), new Thickness(0));
 
         /// <summary>
         /// 头部内容内边距
@@ -207,7 +207,7 @@ namespace LayUI.Avalonia.Controls
         /// Defines the <see cref="HeaderHorizontalAlignment"/> property.
         /// </summary>
         public static readonly StyledProperty<HorizontalAlignment> HeaderHorizontalAlignmentProperty =
-            AvaloniaProperty.Register<Control, HorizontalAlignment>(nameof(HeaderHorizontalAlignment), HorizontalAlignment.Left);
+            AvaloniaProperty.Register<LayNavExpander, HorizontalAlignment>(nameof(HeaderHorizontalAlignment), HorizontalAlignment.Left);
 
         /// <summary>
         /// 头部内容水平位置
@@ -222,7 +222,7 @@ namespace LayUI.Avalonia.Controls
         /// Defines the <see cref="HeaderVerticalAlignment"/> property.
         /// </summary>
         public static readonly StyledProperty<VerticalAlignment> HeaderVerticalAlignmentProperty =
-            AvaloniaProperty.Register<Control, VerticalAlignment>(nameof(HeaderVerticalAlignment), VerticalAlignment.Center);
+            AvaloniaProperty.Register<LayNavExpander, VerticalAlignment>(nameof(HeaderVerticalAlignment), VerticalAlignment.Center);
 
         /// <summary>
         /// 头部内容垂直位置
