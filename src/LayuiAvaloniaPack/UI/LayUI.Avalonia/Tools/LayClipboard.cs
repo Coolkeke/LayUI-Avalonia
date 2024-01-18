@@ -9,7 +9,7 @@ namespace LayUI.Avalonia
     { 
         public void Copy(object data)
         {
-            LayKeyboardHelper.TopLevel?.Clipboard?.SetTextAsync(data.ToString());
+            LayKeyboardHelper.TopLevel?.Clipboard?.SetTextAsync(data?.ToString());
         }
 
         public async Task<string> GetTextAsync()
