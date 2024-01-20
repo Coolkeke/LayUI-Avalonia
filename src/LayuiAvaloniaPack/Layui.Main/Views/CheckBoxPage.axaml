@@ -7,7 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:res="using:Layui.Core"
-    d:DesignHeight="450"
     d:DesignWidth="800"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
@@ -103,6 +102,51 @@
                     </lay:LayCheckBox>
                 </StackPanel>
             </Border>
+        </StackPanel>
+        <StackPanel Margin="10">
+            <lay:LayLegend Content="标签风格" FontSize="{DynamicResource LayFontSizeBase}" />
+            <StackPanel Orientation="Horizontal">
+                <lay:LayCheckBox
+                    Margin="5,0"
+                    IsChecked="true"
+                    Type="Primary">
+                    <TextBlock Margin="5,0" Text="男" />
+                </lay:LayCheckBox>
+                <lay:LayCheckBox Margin="5,0" Type="Primary">
+                    <TextBlock Margin="5,0" Text="女" />
+                </lay:LayCheckBox>
+                <lay:LayCheckBox
+                    Margin="5,0"
+                    IsChecked="{x:Null}"
+                    Type="Primary">
+                    <TextBlock Margin="5,0" Text="女" />
+                </lay:LayCheckBox>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="10">
+            <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource LayFontSizeBase}" />
+            <StackPanel Orientation="Horizontal">
+                <lay:LayCheckBox
+                    Margin="5,0"
+                    IsChecked="true"
+                    IsEnabled="False"
+                    Type="Primary">
+                    <TextBlock Margin="5,0" Text="男" />
+                </lay:LayCheckBox>
+                <lay:LayCheckBox
+                    Margin="5,0"
+                    IsEnabled="False"
+                    Type="Primary">
+                    <TextBlock Margin="5,0" Text="女" />
+                </lay:LayCheckBox>
+                <lay:LayCheckBox
+                    Margin="5,0"
+                    IsChecked="{x:Null}"
+                    IsEnabled="False"
+                    Type="Primary">
+                    <TextBlock Margin="5,0" Text="女" />
+                </lay:LayCheckBox>
+            </StackPanel>
         </StackPanel>
     </StackPanel>
 </UserControl>

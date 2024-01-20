@@ -24,6 +24,6 @@ namespace LayUI.Avalonia.Enums
         /// <summary>
         /// 按钮组
         /// </summary>
-        Group,
+        Group, 
     }
 }

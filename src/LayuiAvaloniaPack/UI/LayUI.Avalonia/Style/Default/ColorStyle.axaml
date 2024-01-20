@@ -73,7 +73,7 @@
                 <Border Padding="20" Background="{DynamicResource Green}" />
                 <Border Padding="20" Background="{DynamicResource Blue}" />
                 <Border Padding="20" Background="{DynamicResource Purple}" />
-                <Border Padding="20" Background="{DynamicResource Deep}" />   
+                <Border Padding="20" Background="{DynamicResource Deep}" />
             </StackPanel>
         </StackPanel>
     </Design.PreviewWith>
