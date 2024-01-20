@@ -65,11 +65,15 @@
                         Margin="10,0"
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
-                        <ToggleSwitch
+                        <lay:LaySwitchButton
+                            CheckedContent="中"
+                            CornerRadius="10"
                             Foreground="White"
                             IsChecked="{Binding IsEn}"
-                            OffContent="中"
-                            OnContent="英" />
+                            IsContentVisible="True"
+                            SwitchHeight="20"
+                            SwitchWidth="40"
+                            UncheckedContent="英" />
                         <ToggleButton
                             Name="More"
                             Margin="10,0"

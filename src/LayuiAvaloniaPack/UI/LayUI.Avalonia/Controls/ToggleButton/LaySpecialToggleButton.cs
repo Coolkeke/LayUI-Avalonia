@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Data;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,34 @@ namespace LayUI.Avalonia.Controls
     [PseudoClasses(":checked", ":unchecked")]
     public class LaySpecialToggleButton : Button, ILayControl
     {
+        /// <summary>
+        /// Defines the <see cref="UncheckedContent"/> property.
+        /// </summary>
+        public static readonly StyledProperty<object> UncheckedContentProperty =
+            AvaloniaProperty.Register<LaySpecialToggleButton, object>(nameof(UncheckedContent));
+
+        /// <summary>
+        /// UncheckedContent
+        /// </summary>
+        public object UncheckedContent
+        {
+            get { return GetValue(UncheckedContentProperty); }
+            set { SetValue(UncheckedContentProperty, value); }
+        }
+        /// <summary>
+        /// Defines the <see cref="CheckedContent"/> property.
+        /// </summary>
+        public static readonly StyledProperty<object> CheckedContentProperty =
+            AvaloniaProperty.Register<LaySpecialToggleButton, object>(nameof(CheckedContent));
+
+        /// <summary>
+        /// CheckedContent
+        /// </summary>
+        public object CheckedContent
+        {
+            get { return GetValue(CheckedContentProperty); }
+            set { SetValue(CheckedContentProperty, value); }
+        }
         /// <summary>
         /// Defines the <see cref="IsChecked"/> property.
         /// </summary>

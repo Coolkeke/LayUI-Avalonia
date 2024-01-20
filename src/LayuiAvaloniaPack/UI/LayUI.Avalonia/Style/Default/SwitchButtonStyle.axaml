@@ -1,0 +1,108 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <lay:LaySwitchButton CheckedContent="ON" UncheckedContent="OFF" />
+        </Border>
+    </Design.PreviewWith>
+    <Style Selector="lay|LaySwitchButton">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="5 0" />
+        <Setter Property="SwitchWidth" Value="55" />
+        <Setter Property="SwitchHeight" Value="30" />
+        <Setter Property="CornerRadius" Value="{DynamicResource LayCornerRadiusSmall}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type lay:LaySwitchButton}">
+                    <Grid Background="Transparent" ColumnDefinitions="auto,*">
+                        <Grid Width="{TemplateBinding SwitchWidth}" Height="{TemplateBinding SwitchHeight}">
+                            <Border
+                                x:Name="PART_Border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}" />
+                            <Grid x:Name="PART_Grid" Margin="4">
+                                <Border
+                                    x:Name="PART_Icon"
+                                    Width="{Binding $self.Bounds.Height}"
+                                    HorizontalAlignment="Left"
+                                    Background="{TemplateBinding BorderBrush}"
+                                    CornerRadius="{TemplateBinding CornerRadius}" />
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Column="1" IsVisible="{TemplateBinding IsContentVisible}">
+                            <ContentPresenter
+                                x:Name="PART_CheckedContent"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding CheckedContent}"
+                                IsVisible="False" />
+                            <ContentPresenter
+                                x:Name="PART_UncheckedContent"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding UncheckedContent}"
+                                IsVisible="False" />
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LaySwitchButton:unchecked /template/ Border#PART_Icon">
+        <Style.Animations>
+            <Animation Duration="0:0:0.2">
+                <KeyFrame Cue="0%">
+                    <Setter Property="Width" Value="20" />
+                </KeyFrame>
+                <KeyFrame Cue="50%">
+                    <Setter Property="Width" Value="10" />
+                </KeyFrame>
+                <KeyFrame Cue="100%">
+                    <Setter Property="Width" Value="20" />
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
+    </Style>
+    <Style Selector="lay|LaySwitchButton:checked /template/ Border#PART_Icon">
+        <Style.Animations>
+            <Animation Duration="0:0:0.2">
+                <KeyFrame Cue="0%">
+                    <Setter Property="Width" Value="20" />
+                </KeyFrame>
+                <KeyFrame Cue="50%">
+                    <Setter Property="Width" Value="10" />
+                </KeyFrame>
+                <KeyFrame Cue="100%">
+                    <Setter Property="Width" Value="20" />
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
+    </Style>
+    <Style Selector="lay|LaySwitchButton:unchecked">
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+    </Style>
+    <Style Selector="lay|LaySwitchButton:unchecked /template/ ContentPresenter#PART_UncheckedContent">
+        <Setter Property="IsVisible" Value="true" />
+    </Style>
+    <Style Selector="lay|LaySwitchButton:checked">
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
+    </Style>
+    <Style Selector="lay|LaySwitchButton:checked /template/ ContentPresenter#PART_CheckedContent">
+        <Setter Property="IsVisible" Value="true" />
+    </Style>
+    <Style Selector="lay|LaySwitchButton:checked /template/ Border#PART_Icon">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+    <Style Selector="lay|LaySwitchButton[IsEnabled=false]">
+        <Setter Property="Opacity" Value="0.5" />
+    </Style>
+    <!--  Add Styles Here  -->
+</Styles>
