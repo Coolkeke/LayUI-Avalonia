@@ -15,18 +15,18 @@
                     <lay:LayCheckBox
                         Content="Null"
                         IsChecked="{x:Null}"
-                        Type="Primary" />
+                        Type="Tag" />
                     <lay:LayCheckBox
                         Margin="5,0"
                         Content="选中"
                         IsChecked="true"
-                        Type="Primary" />
-                    <lay:LayCheckBox Content="未选中" Type="Primary" />
+                        Type="Tag" />
+                    <lay:LayCheckBox Content="未选中" Type="Tag" />
                     <lay:LayCheckBox
                         Margin="5,0"
                         Content="禁用"
                         IsEnabled="False"
-                        Type="Primary" />
+                        Type="Tag" />
                 </StackPanel>
             </StackPanel>
         </Border>
@@ -112,7 +112,7 @@
     <!--  默认效果，顺序不能颠倒 end  -->
 
     <!--  原始效果，顺序不能颠倒 start  -->
-    <Style Selector="lay|LayCheckBox[Type=Primary]">
+    <Style Selector="lay|LayCheckBox[Type=Tag]">
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="TextBlock.Foreground" Value="White" />
@@ -161,44 +161,44 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style Selector="lay|LayCheckBox[Type=Primary]:unchecked /template/ Border#PART_Border">
+    <Style Selector="lay|LayCheckBox[Type=Tag]:unchecked /template/ Border#PART_Border">
         <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
         <Setter Property="Background" Value="{DynamicResource Gray}" />
     </Style>
-    <Style Selector="lay|LayCheckBox[Type=Primary]:unchecked:pointerover /template/ Path#PART_Icon">
+    <Style Selector="lay|LayCheckBox[Type=Tag]:unchecked:pointerover /template/ Path#PART_Icon">
         <Setter Property="Fill" Value="{DynamicResource Gray}" />
     </Style>
-    <Style Selector="lay|LayCheckBox[Type=Primary]:unchecked /template/ Path#PART_Icon">
+    <Style Selector="lay|LayCheckBox[Type=Tag]:unchecked /template/ Path#PART_Icon">
         <Setter Property="Data" Value="M389.888 838.656a91.136 91.136 0 0 1-64.512-25.6L65.536 552.192a30.72 30.72 0 0 1 43.52-43.52L368.64 768a29.952 29.952 0 0 0 42.24 0l502.784-502.272a30.72 30.72 0 1 1 43.52 43.52L454.4 812.032a91.136 91.136 0 0 1-64.512 26.624z" />
     </Style>
-    <Style Selector="lay|LayCheckBox[Type=Primary]:checked /template/ ContentPresenter#PART_ContentPresenter">
+    <Style Selector="lay|LayCheckBox[Type=Tag]:checked /template/ ContentPresenter#PART_ContentPresenter">
         <Setter Property="TextBlock.Foreground" Value="White" />
     </Style>
-    <Style Selector="lay|LayCheckBox[Type=Primary]:checked /template/ Border#PART_Border">
+    <Style Selector="lay|LayCheckBox[Type=Tag]:checked /template/ Border#PART_Border">
         <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
         <Setter Property="Background" Value="{DynamicResource CyanGreen}" />
     </Style>
-    <Style Selector="lay|LayCheckBox[Type=Primary]:checked /template/ Path#PART_Icon">
+    <Style Selector="lay|LayCheckBox[Type=Tag]:checked /template/ Path#PART_Icon">
         <Setter Property="Data" Value="M389.888 838.656a91.136 91.136 0 0 1-64.512-25.6L65.536 552.192a30.72 30.72 0 0 1 43.52-43.52L368.64 768a29.952 29.952 0 0 0 42.24 0l502.784-502.272a30.72 30.72 0 1 1 43.52 43.52L454.4 812.032a91.136 91.136 0 0 1-64.512 26.624z" />
         <Setter Property="Fill" Value="{DynamicResource CyanGreen}" />
     </Style>
-    <Style Selector="lay|LayCheckBox[Type=Primary]:indeterminate /template/ Border#PART_Border">
+    <Style Selector="lay|LayCheckBox[Type=Tag]:indeterminate /template/ Border#PART_Border">
         <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
         <Setter Property="Background" Value="{DynamicResource CyanGreen}" />
     </Style>
-    <Style Selector="lay|LayCheckBox[Type=Primary]:indeterminate /template/ Path#PART_Icon">
+    <Style Selector="lay|LayCheckBox[Type=Tag]:indeterminate /template/ Path#PART_Icon">
         <Setter Property="Data" Value="M63.6 489.6h896.7v44.8H63.6z" />
         <Setter Property="Height" Value="1" />
         <Setter Property="Fill" Value="{DynamicResource CyanGreen}" />
     </Style>
-    <Style Selector="lay|LayCheckBox[Type=Primary]:disabled /template/ Border#PART_Border">
+    <Style Selector="lay|LayCheckBox[Type=Tag]:disabled /template/ Border#PART_Border">
         <Setter Property="BorderBrush" Value="{DynamicResource SilverGray}" />
         <Setter Property="Background" Value="{DynamicResource SilverGray}" />
     </Style>
-    <Style Selector="lay|LayCheckBox[Type=Primary]:disabled /template/ ContentPresenter#PART_ContentPresenter">
+    <Style Selector="lay|LayCheckBox[Type=Tag]:disabled /template/ ContentPresenter#PART_ContentPresenter">
         <Setter Property="TextBlock.Foreground" Value="{DynamicResource Gray}" />
     </Style>
-    <Style Selector="lay|LayCheckBox[Type=Primary]:disabled /template/ Path#PART_Icon">
+    <Style Selector="lay|LayCheckBox[Type=Tag]:disabled /template/ Path#PART_Icon">
         <Setter Property="Fill" Value="Transparent" />
     </Style>
     <!--  原始效果，顺序不能颠倒 ent  -->

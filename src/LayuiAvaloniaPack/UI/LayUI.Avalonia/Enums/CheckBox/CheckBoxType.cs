@@ -12,7 +12,7 @@ namespace LayUI.Avalonia.Enums
         /// <summary>
         /// 原始
         /// </summary>
-        Primary,
+        Tag,
         /// <summary>
         /// 默认
         /// </summary>

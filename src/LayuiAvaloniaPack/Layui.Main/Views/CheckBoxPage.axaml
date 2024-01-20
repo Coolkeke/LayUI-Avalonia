@@ -109,16 +109,16 @@
                 <lay:LayCheckBox
                     Margin="5,0"
                     IsChecked="true"
-                    Type="Primary">
+                    Type="Tag">
                     <TextBlock Margin="5,0" Text="男" />
                 </lay:LayCheckBox>
-                <lay:LayCheckBox Margin="5,0" Type="Primary">
+                <lay:LayCheckBox Margin="5,0" Type="Tag">
                     <TextBlock Margin="5,0" Text="女" />
                 </lay:LayCheckBox>
                 <lay:LayCheckBox
                     Margin="5,0"
                     IsChecked="{x:Null}"
-                    Type="Primary">
+                    Type="Tag">
                     <TextBlock Margin="5,0" Text="女" />
                 </lay:LayCheckBox>
             </StackPanel>
@@ -130,20 +130,20 @@
                     Margin="5,0"
                     IsChecked="true"
                     IsEnabled="False"
-                    Type="Primary">
+                    Type="Tag">
                     <TextBlock Margin="5,0" Text="男" />
                 </lay:LayCheckBox>
                 <lay:LayCheckBox
                     Margin="5,0"
                     IsEnabled="False"
-                    Type="Primary">
+                    Type="Tag">
                     <TextBlock Margin="5,0" Text="女" />
                 </lay:LayCheckBox>
                 <lay:LayCheckBox
                     Margin="5,0"
                     IsChecked="{x:Null}"
                     IsEnabled="False"
-                    Type="Primary">
+                    Type="Tag">
                     <TextBlock Margin="5,0" Text="女" />
                 </lay:LayCheckBox>
             </StackPanel>
