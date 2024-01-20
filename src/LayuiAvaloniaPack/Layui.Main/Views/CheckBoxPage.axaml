@@ -10,144 +10,179 @@
     d:DesignWidth="800"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
-
-    <StackPanel>
-        <lay:LayLegend Content="CheckBox" FontSize="{DynamicResource LayFontSizeLarge}" />
-        <StackPanel Margin="10">
-            <lay:LayLegend Content="基础用法" FontSize="{DynamicResource LayFontSizeBase}" />
-            <StackPanel Margin="0,5" Orientation="Horizontal">
-                <lay:LayCheckBox
-                    Content="男"
-                    IsChecked="true"
-                    Size="30" />
-                <lay:LayCheckBox Content="女" Size="30" />
+    <ScrollViewer>
+        <StackPanel>
+            <lay:LayLegend Content="CheckBox" FontSize="{DynamicResource LayFontSizeLarge}" />
+            <StackPanel Margin="10">
+                <lay:LayLegend Content="基础用法" FontSize="{DynamicResource LayFontSizeBase}" />
+                <StackPanel Margin="0,5" Orientation="Horizontal">
+                    <lay:LayCheckBox
+                        Content="男"
+                        IsChecked="true"
+                        Size="30" />
+                    <lay:LayCheckBox Content="女" Size="30" />
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
-        <StackPanel Margin="10">
-            <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource LayFontSizeBase}" />
-            <StackPanel Margin="0,5" Orientation="Horizontal">
-                <lay:LayCheckBox
-                    Content="男"
-                    IsChecked="true"
-                    IsEnabled="False"
-                    Size="30" />
-                <lay:LayCheckBox
-                    Content="女"
-                    IsEnabled="False"
-                    Size="30" />
+            <StackPanel Margin="10">
+                <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource LayFontSizeBase}" />
+                <StackPanel Margin="0,5" Orientation="Horizontal">
+                    <lay:LayCheckBox
+                        Content="男"
+                        IsChecked="true"
+                        IsEnabled="False"
+                        Size="30" />
+                    <lay:LayCheckBox
+                        Content="女"
+                        IsEnabled="False"
+                        Size="30" />
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
-        <StackPanel Margin="10">
-            <lay:LayLegend Content="带有边框" FontSize="{DynamicResource LayFontSizeBase}" />
-            <StackPanel Margin="0,5" Orientation="Horizontal">
-                <lay:LayCheckBox Margin="5,0" IsChecked="true">
-                    <TextBlock Margin="5,0" Text="男" />
-                </lay:LayCheckBox>
-                <lay:LayCheckBox Margin="5,0">
-                    <TextBlock Margin="5,0" Text="女" />
-                </lay:LayCheckBox>
-            </StackPanel>
-        </StackPanel>
-        <StackPanel Margin="10">
-            <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource LayFontSizeBase}" />
-            <StackPanel Margin="0,5" Orientation="Horizontal">
-                <lay:LayCheckBox
-                    Margin="5,0"
-                    IsChecked="true"
-                    IsEnabled="False">
-                    <TextBlock Margin="5,0" Text="男" />
-                </lay:LayCheckBox>
-                <lay:LayCheckBox
-                    Margin="5,0"
-                    IsChecked="false"
-                    IsEnabled="False">
-                    <TextBlock Margin="5,0" Text="女" />
-                </lay:LayCheckBox>
-            </StackPanel>
-        </StackPanel>
-        <StackPanel Margin="10">
-            <lay:LayLegend Content="按钮组" FontSize="{DynamicResource LayFontSizeBase}" />
-            <Border
-                Margin="0,5"
-                HorizontalAlignment="Left"
-                BorderBrush="{DynamicResource CyanGreen}"
-                BorderThickness="1"
-                ClipToBounds="True"
-                CornerRadius="4">
-                <StackPanel Orientation="Horizontal">
-                    <lay:LayCheckBox IsChecked="true" Type="Group">
+            <StackPanel Margin="10">
+                <lay:LayLegend Content="带有边框" FontSize="{DynamicResource LayFontSizeBase}" />
+                <StackPanel Margin="0,5" Orientation="Horizontal">
+                    <lay:LayCheckBox Margin="5,0" IsChecked="true">
                         <TextBlock Margin="5,0" Text="男" />
                     </lay:LayCheckBox>
-                    <lay:LayCheckBox Type="Group">
+                    <lay:LayCheckBox Margin="5,0">
                         <TextBlock Margin="5,0" Text="女" />
                     </lay:LayCheckBox>
                 </StackPanel>
-            </Border>
-        </StackPanel>
-        <StackPanel Margin="10">
-            <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource LayFontSizeBase}" />
-            <Border
-                Margin="0,5"
-                HorizontalAlignment="Left"
-                BorderBrush="{DynamicResource SilverGray}"
-                BorderThickness="1"
-                ClipToBounds="True"
-                CornerRadius="4"
-                IsEnabled="False">
-                <StackPanel Orientation="Horizontal">
-                    <lay:LayCheckBox IsChecked="true" Type="Group">
+            </StackPanel>
+            <StackPanel Margin="10">
+                <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource LayFontSizeBase}" />
+                <StackPanel Margin="0,5" Orientation="Horizontal">
+                    <lay:LayCheckBox
+                        Margin="5,0"
+                        IsChecked="true"
+                        IsEnabled="False">
                         <TextBlock Margin="5,0" Text="男" />
                     </lay:LayCheckBox>
-                    <lay:LayCheckBox Type="Group">
+                    <lay:LayCheckBox
+                        Margin="5,0"
+                        IsChecked="false"
+                        IsEnabled="False">
                         <TextBlock Margin="5,0" Text="女" />
                     </lay:LayCheckBox>
                 </StackPanel>
-            </Border>
-        </StackPanel>
-        <StackPanel Margin="10">
-            <lay:LayLegend Content="标签风格" FontSize="{DynamicResource LayFontSizeBase}" />
-            <StackPanel Orientation="Horizontal">
-                <lay:LayCheckBox
-                    Margin="5,0"
-                    IsChecked="true"
-                    Type="Tag">
-                    <TextBlock Margin="5,0" Text="男" />
-                </lay:LayCheckBox>
-                <lay:LayCheckBox Margin="5,0" Type="Tag">
-                    <TextBlock Margin="5,0" Text="女" />
-                </lay:LayCheckBox>
-                <lay:LayCheckBox
-                    Margin="5,0"
-                    IsChecked="{x:Null}"
-                    Type="Tag">
-                    <TextBlock Margin="5,0" Text="女" />
-                </lay:LayCheckBox>
+            </StackPanel>
+            <StackPanel Margin="10">
+                <lay:LayLegend Content="按钮组" FontSize="{DynamicResource LayFontSizeBase}" />
+                <Border
+                    Margin="0,5"
+                    HorizontalAlignment="Left"
+                    BorderBrush="{DynamicResource CyanGreen}"
+                    BorderThickness="1"
+                    ClipToBounds="True"
+                    CornerRadius="4">
+                    <StackPanel Orientation="Horizontal">
+                        <lay:LayCheckBox IsChecked="true" Type="Group">
+                            <TextBlock Margin="5,0" Text="男" />
+                        </lay:LayCheckBox>
+                        <lay:LayCheckBox Type="Group">
+                            <TextBlock Margin="5,0" Text="女" />
+                        </lay:LayCheckBox>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            <StackPanel Margin="10">
+                <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource LayFontSizeBase}" />
+                <Border
+                    Margin="0,5"
+                    HorizontalAlignment="Left"
+                    BorderBrush="{DynamicResource SilverGray}"
+                    BorderThickness="1"
+                    ClipToBounds="True"
+                    CornerRadius="4"
+                    IsEnabled="False">
+                    <StackPanel Orientation="Horizontal">
+                        <lay:LayCheckBox IsChecked="true" Type="Group">
+                            <TextBlock Margin="5,0" Text="男" />
+                        </lay:LayCheckBox>
+                        <lay:LayCheckBox Type="Group">
+                            <TextBlock Margin="5,0" Text="女" />
+                        </lay:LayCheckBox>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            <StackPanel Margin="10">
+                <lay:LayLegend Content="标签风格" FontSize="{DynamicResource LayFontSizeBase}" />
+                <StackPanel Orientation="Horizontal">
+                    <lay:LayCheckBox
+                        Margin="5,0"
+                        IsChecked="true"
+                        Type="Tag">
+                        <TextBlock Margin="5,0" Text="男" />
+                    </lay:LayCheckBox>
+                    <lay:LayCheckBox Margin="5,0" Type="Tag">
+                        <TextBlock Margin="5,0" Text="女" />
+                    </lay:LayCheckBox>
+                    <lay:LayCheckBox
+                        Margin="5,0"
+                        IsChecked="{x:Null}"
+                        Type="Tag">
+                        <TextBlock Margin="5,0" Text="女" />
+                    </lay:LayCheckBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="10">
+                <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource LayFontSizeBase}" />
+                <StackPanel Orientation="Horizontal">
+                    <lay:LayCheckBox
+                        Margin="5,0"
+                        IsChecked="true"
+                        IsEnabled="False"
+                        Type="Tag">
+                        <TextBlock Margin="5,0" Text="男" />
+                    </lay:LayCheckBox>
+                    <lay:LayCheckBox
+                        Margin="5,0"
+                        IsEnabled="False"
+                        Type="Tag">
+                        <TextBlock Margin="5,0" Text="女" />
+                    </lay:LayCheckBox>
+                    <lay:LayCheckBox
+                        Margin="5,0"
+                        IsChecked="{x:Null}"
+                        IsEnabled="False"
+                        Type="Tag">
+                        <TextBlock Margin="5,0" Text="女" />
+                    </lay:LayCheckBox>
+                </StackPanel>
+                <StackPanel Margin="0,5" Orientation="Horizontal">
+                    <lay:LayCheckBox
+                        Content="Null"
+                        IsChecked="{x:Null}"
+                        Type="Group" />
+                    <lay:LayCheckBox
+                        Margin="5,0"
+                        Content="选中"
+                        IsChecked="true"
+                        Type="Group" />
+                    <lay:LayCheckBox Content="未选中" Type="Group" />
+                    <lay:LayCheckBox
+                        Margin="5,0"
+                        Content="禁用"
+                        IsEnabled="False"
+                        Type="Group" />
+                </StackPanel>
+                <StackPanel Margin="0,5" Orientation="Horizontal">
+                    <lay:LayCheckBox
+                        Content="Null"
+                        IsChecked="{x:Null}"
+                        Type="Button" />
+                    <lay:LayCheckBox
+                        Margin="5,0"
+                        Content="选中"
+                        IsChecked="true"
+                        Type="Button" />
+                    <lay:LayCheckBox Content="未选中" Type="Button" />
+                    <lay:LayCheckBox
+                        Margin="5,0"
+                        Content="禁用"
+                        IsEnabled="False"
+                        Type="Button" />
+                </StackPanel>
             </StackPanel>
         </StackPanel>
-        <StackPanel Margin="10">
-            <lay:LayLegend Content="禁用状态" FontSize="{DynamicResource LayFontSizeBase}" />
-            <StackPanel Orientation="Horizontal">
-                <lay:LayCheckBox
-                    Margin="5,0"
-                    IsChecked="true"
-                    IsEnabled="False"
-                    Type="Tag">
-                    <TextBlock Margin="5,0" Text="男" />
-                </lay:LayCheckBox>
-                <lay:LayCheckBox
-                    Margin="5,0"
-                    IsEnabled="False"
-                    Type="Tag">
-                    <TextBlock Margin="5,0" Text="女" />
-                </lay:LayCheckBox>
-                <lay:LayCheckBox
-                    Margin="5,0"
-                    IsChecked="{x:Null}"
-                    IsEnabled="False"
-                    Type="Tag">
-                    <TextBlock Margin="5,0" Text="女" />
-                </lay:LayCheckBox>
-            </StackPanel>
-        </StackPanel>
-    </StackPanel>
+    </ScrollViewer>
 </UserControl>

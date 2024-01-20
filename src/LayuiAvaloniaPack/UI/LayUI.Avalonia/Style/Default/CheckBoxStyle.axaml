@@ -342,10 +342,20 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
     </Style>
-    <Style Selector="lay|LayCheckBox[Type=Group]:indeterminate /template/ Border#PART_Border">
+    <Style Selector="lay|LayCheckBox[Type=Button]:indeterminate /template/ Border#PART_Border">
         <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="TextBlock.Foreground" Value="{DynamicResource CyanGreen}" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Button]:indeterminate /template/ Border#PART_Border_Icon">
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Button]:indeterminate /template/ Path#PART_Icon">
+        <Setter Property="Data" Value="M63.6 489.6h896.7v44.8H63.6z" />
+        <Setter Property="Height" Value="1" />
+        <Setter Property="Fill" Value="{DynamicResource CyanGreen}" />
     </Style>
     <Style Selector="lay|LayCheckBox[Type=Button]:unchecked /template/ Border#PART_Border">
         <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
