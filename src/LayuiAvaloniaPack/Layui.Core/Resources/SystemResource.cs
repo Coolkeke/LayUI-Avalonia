@@ -171,7 +171,11 @@ namespace Layui.Core
         /// <summary>
         /// 计数器
         /// </summary>
-        public static string NumericUpDownPage { get;}=nameof(NumericUpDownPage);
+        public static string NumericUpDownPage { get;}=nameof(NumericUpDownPage); 
+        /// <summary>
+        /// 开关
+        /// </summary>
+        public static string SwitchButtonPage { get; } = nameof(SwitchButtonPage); 
     }
     
 }

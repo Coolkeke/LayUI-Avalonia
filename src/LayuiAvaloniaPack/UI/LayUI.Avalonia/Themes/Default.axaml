@@ -52,4 +52,5 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ComboBoxStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/ComboBoxItemStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/NumericUpDownStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/SwitchButtonStyle.axaml" />
 </Styles>

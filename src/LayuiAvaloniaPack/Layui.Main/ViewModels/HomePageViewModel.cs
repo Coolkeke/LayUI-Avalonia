@@ -48,6 +48,7 @@ namespace Layui.Main.ViewModels
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ButtonPage, Title ="Button"},
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.RadioButtonPage, Title = "RadioButton" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.CheckBoxPage, Title = "CheckBox" },
+                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.SwitchButtonPage, Title = "Switch" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.TextBoxPage, Title = "TextBox" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.NumericUpDownPage, Title = "NumericUpDown" },
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.FormPage, Title = "Form" },
