@@ -291,7 +291,7 @@
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="TextBlock.Foreground" Value="White" />
-        <Setter Property="Padding" Value="16 8" />
+        <Setter Property="Padding" Value="8" />
         <Setter Property="CornerRadius" Value="2" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
@@ -310,15 +310,17 @@
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
                                 <Border
+                                    x:Name="PART_Border_Icon"
                                     Width="{TemplateBinding Size}"
                                     Height="{TemplateBinding Size}"
                                     MinWidth="16"
                                     MinHeight="16"
+                                    Margin="5,0"
                                     Background="White"
                                     CornerRadius="{TemplateBinding CornerRadius}">
                                     <Path
                                         x:Name="PART_Icon"
-                                        Margin="4"
+                                        Margin="4,6"
                                         Stretch="Fill" />
                                 </Border>
                                 <ContentPresenter
@@ -336,9 +338,44 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style Selector="lay|LayCheckBox[Type=Button]:checked /template/ Border#PART_Border">
+    <Style Selector="lay|LayCheckBox[Type=Button]:indeterminate:pointerover /template/ Border#PART_Border,lay|LayCheckBox[Type=Button]:indeterminate:pointerover /template/ Border#PART_Border_Icon">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Group]:indeterminate /template/ Border#PART_Border">
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource CyanGreen}" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Button]:unchecked /template/ Border#PART_Border">
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource Gray}" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Button]:unchecked /template/ Border#PART_Border_Icon">
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Button]:unchecked:pointerover /template/ Border#PART_Border,lay|LayCheckBox[Type=Button]:unchecked:pointerover /template/ Border#PART_Border_Icon">
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Button]:checked /template/ Border#PART_Border_Icon">
         <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
         <Setter Property="Background" Value="{DynamicResource CyanGreen}" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Button]:checked /template/ Border#PART_Border">
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource CyanGreen}" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Button]:checked /template/ Path#PART_Icon">
+        <Setter Property="Data" Value="M389.888 838.656a91.136 91.136 0 0 1-64.512-25.6L65.536 552.192a30.72 30.72 0 0 1 43.52-43.52L368.64 768a29.952 29.952 0 0 0 42.24 0l502.784-502.272a30.72 30.72 0 1 1 43.52 43.52L454.4 812.032a91.136 91.136 0 0 1-64.512 26.624z" />
+        <Setter Property="Fill" Value="White" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Button]:disabled /template/ Border#PART_Border,lay|LayCheckBox[Type=Button]:disabled /template/ Border#PART_Border_Icon">
+        <Setter Property="Opacity" Value="0.5" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
     </Style>
     <!--  按钮效果，顺序不能颠倒 ent  -->
 </Styles>
