@@ -28,6 +28,40 @@
                         IsEnabled="False"
                         Type="Tag" />
                 </StackPanel>
+                <StackPanel Margin="0,5" Orientation="Horizontal">
+                    <lay:LayCheckBox
+                        Content="Null"
+                        IsChecked="{x:Null}"
+                        Type="Group" />
+                    <lay:LayCheckBox
+                        Margin="5,0"
+                        Content="选中"
+                        IsChecked="true"
+                        Type="Group" />
+                    <lay:LayCheckBox Content="未选中" Type="Group" />
+                    <lay:LayCheckBox
+                        Margin="5,0"
+                        Content="禁用"
+                        IsEnabled="False"
+                        Type="Group" />
+                </StackPanel>
+                <StackPanel Margin="0,5" Orientation="Horizontal">
+                    <lay:LayCheckBox
+                        Content="Null"
+                        IsChecked="{x:Null}"
+                        Type="Button" />
+                    <lay:LayCheckBox
+                        Margin="5,0"
+                        Content="选中"
+                        IsChecked="true"
+                        Type="Button" />
+                    <lay:LayCheckBox Content="未选中" Type="Button" />
+                    <lay:LayCheckBox
+                        Margin="5,0"
+                        Content="禁用"
+                        IsEnabled="False"
+                        Type="Button" />
+                </StackPanel>
             </StackPanel>
         </Border>
     </Design.PreviewWith>
@@ -111,14 +145,15 @@
     </Style>
     <!--  默认效果，顺序不能颠倒 end  -->
 
-    <!--  原始效果，顺序不能颠倒 start  -->
+    <!--  标签效果，顺序不能颠倒 start  -->
     <Style Selector="lay|LayCheckBox[Type=Tag]">
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="TextBlock.Foreground" Value="White" />
-        <Setter Property="Padding" Value="5 0" />
+        <Setter Property="Padding" Value="16 0" />
         <Setter Property="CornerRadius" Value="2" />
         <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Size" Value="30" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -144,7 +179,7 @@
                                     CornerRadius="{TemplateBinding CornerRadius}">
                                     <Path
                                         x:Name="PART_Icon"
-                                        Margin="2,5"
+                                        Margin="4,8"
                                         Stretch="Fill" />
                                 </Border>
                                 <ContentPresenter
@@ -201,5 +236,109 @@
     <Style Selector="lay|LayCheckBox[Type=Tag]:disabled /template/ Path#PART_Icon">
         <Setter Property="Fill" Value="Transparent" />
     </Style>
-    <!--  原始效果，顺序不能颠倒 ent  -->
+    <!--  标签效果，顺序不能颠倒 ent  -->
+    <!--  组效果，顺序不能颠倒 start  -->
+    <Style Selector="lay|LayCheckBox[Type=Group]">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="TextBlock.Foreground" Value="White" />
+        <Setter Property="Padding" Value="16 5" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid Background="Transparent">
+                        <Border
+                            x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                            <ContentPresenter
+                                x:Name="PART_ContentPresenter"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Group]:checked /template/ Border#PART_Border">
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
+        <Setter Property="Background" Value="{DynamicResource CyanGreen}" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Group]:indeterminate /template/ Border#PART_Border">
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource CyanGreen}" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Group]:unchecked /template/ Border#PART_Border">
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource Gray}" />
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Group]:disabled /template/ Border#PART_Border">
+        <Setter Property="Opacity" Value="0.5" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+    </Style>
+    <!--  组效果，顺序不能颠倒 ent  -->
+    <!--  按钮效果，顺序不能颠倒 start  -->
+    <Style Selector="lay|LayCheckBox[Type=Button]">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="TextBlock.Foreground" Value="White" />
+        <Setter Property="Padding" Value="16 8" />
+        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid Background="Transparent">
+                        <Border
+                            x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                            <Grid Name="PART_Grid">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Border
+                                    Width="{TemplateBinding Size}"
+                                    Height="{TemplateBinding Size}"
+                                    MinWidth="16"
+                                    MinHeight="16"
+                                    Background="White"
+                                    CornerRadius="{TemplateBinding CornerRadius}">
+                                    <Path
+                                        x:Name="PART_Icon"
+                                        Margin="4"
+                                        Stretch="Fill" />
+                                </Border>
+                                <ContentPresenter
+                                    x:Name="PART_ContentPresenter"
+                                    Grid.Column="1"
+                                    Padding="{TemplateBinding Padding}"
+                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayCheckBox[Type=Button]:checked /template/ Border#PART_Border">
+        <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
+        <Setter Property="Background" Value="{DynamicResource CyanGreen}" />
+    </Style>
+    <!--  按钮效果，顺序不能颠倒 ent  -->
 </Styles>

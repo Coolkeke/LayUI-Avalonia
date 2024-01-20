@@ -75,10 +75,10 @@
                 ClipToBounds="True"
                 CornerRadius="4">
                 <StackPanel Orientation="Horizontal">
-                    <lay:LayCheckBox IsChecked="true">
+                    <lay:LayCheckBox IsChecked="true" Type="Group">
                         <TextBlock Margin="5,0" Text="男" />
                     </lay:LayCheckBox>
-                    <lay:LayCheckBox>
+                    <lay:LayCheckBox Type="Group">
                         <TextBlock Margin="5,0" Text="女" />
                     </lay:LayCheckBox>
                 </StackPanel>
@@ -89,15 +89,16 @@
             <Border
                 Margin="0,5"
                 HorizontalAlignment="Left"
-                BorderBrush="{DynamicResource CyanGreen}"
+                BorderBrush="{DynamicResource SilverGray}"
                 BorderThickness="1"
                 ClipToBounds="True"
-                CornerRadius="4">
+                CornerRadius="4"
+                IsEnabled="False">
                 <StackPanel Orientation="Horizontal">
-                    <lay:LayCheckBox IsChecked="true">
+                    <lay:LayCheckBox IsChecked="true" Type="Group">
                         <TextBlock Margin="5,0" Text="男" />
                     </lay:LayCheckBox>
-                    <lay:LayCheckBox>
+                    <lay:LayCheckBox Type="Group">
                         <TextBlock Margin="5,0" Text="女" />
                     </lay:LayCheckBox>
                 </StackPanel>
