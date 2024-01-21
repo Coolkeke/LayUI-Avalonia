@@ -13,9 +13,9 @@ namespace LayUI.Avalonia.Enums
         /// </summary>
         Default,
         /// <summary>
-        /// 卡片
+        /// 简约
         /// </summary>
-        Card,
+        Brief,
 
     }
 }

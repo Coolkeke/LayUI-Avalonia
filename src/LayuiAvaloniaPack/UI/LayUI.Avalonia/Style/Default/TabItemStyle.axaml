@@ -8,7 +8,7 @@
             Height="800"
             Padding="20">
             <UniformGrid Columns="2" Rows="2">
-                <lay:LayTabControl Margin="10">
+                <lay:LayTabControl Margin="15" Type="Brief">
                     <lay:LayTabItem>
                         <lay:LayTabItem.Header>
                             <StackPanel Orientation="Horizontal">
@@ -40,7 +40,10 @@
                         <Grid Background="{DynamicResource Orange}" />
                     </lay:LayTabItem>
                 </lay:LayTabControl>
-                <lay:LayTabControl Margin="10" TabStripPlacement="Bottom">
+                <lay:LayTabControl
+                    Margin="15"
+                    TabStripPlacement="Bottom"
+                    Type="Brief">
                     <lay:LayTabItem>
                         <lay:LayTabItem.Header>
                             <StackPanel Orientation="Horizontal">
@@ -72,7 +75,10 @@
                         <Grid Background="{DynamicResource Orange}" />
                     </lay:LayTabItem>
                 </lay:LayTabControl>
-                <lay:LayTabControl Margin="10" TabStripPlacement="Left">
+                <lay:LayTabControl
+                    Margin="15"
+                    TabStripPlacement="Left"
+                    Type="Brief">
                     <lay:LayTabItem>
                         <lay:LayTabItem.Header>
                             <StackPanel Orientation="Horizontal">
@@ -104,7 +110,10 @@
                         <Grid Background="{DynamicResource Orange}" />
                     </lay:LayTabItem>
                 </lay:LayTabControl>
-                <lay:LayTabControl Margin="10" TabStripPlacement="Right">
+                <lay:LayTabControl
+                    Margin="15"
+                    TabStripPlacement="Right"
+                    Type="Brief">
                     <lay:LayTabItem>
                         <lay:LayTabItem.Header>
                             <StackPanel Orientation="Horizontal">
@@ -140,9 +149,43 @@
         </Border>
     </Design.PreviewWith>
     <Style Selector="lay|LayTabItem">
+        <Setter Property="Type" Value="{Binding RelativeSource={RelativeSource AncestorType=lay:LayTabControl}, Path=Type, Mode=OneWay}" />
+    </Style>
+    <Style Selector="lay|LayTabItem[Type=Default]">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="Padding" Value="15 10" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <Border
+                        x:Name="PART_Border"
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="Transparent"
+                        BorderThickness="1"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <ContentPresenter
+                            x:Name="PART_ContentPresenter"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            BorderThickness="0"
+                            Content="{TemplateBinding Header}"
+                            ContentTemplate="{TemplateBinding HeaderTemplate}" />
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayTabItem[Type=Default]:selected/template/ Border#PART_Border">
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+    </Style>
+    <Style Selector="lay|LayTabItem[Type=Brief]">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Padding" Value="15 10" />
+        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Grid>
@@ -165,15 +208,24 @@
             </ControlTemplate>
         </Setter>
     </Style>
-    <Style Selector="lay|LayTabItem:selected">
+    <Style Selector="lay|LayTabItem[Type=Brief]:selected">
         <Setter Property="BorderBrush" Value="{DynamicResource CyanGreen}" />
         <Setter Property="Foreground" Value="{DynamicResource CyanGreen}" />
     </Style>
-    <Style Selector="lay|LayTabItem[TabStripPlacement=Right]">
+    <Style Selector="lay|LayTabItem[Type=Brief][TabStripPlacement=Right]">
         <Setter Property="HorizontalContentAlignment" Value="Right" />
     </Style>
-    <Style Selector="lay|LayTabItem[TabStripPlacement=Bottom] /template/ Border#PART_Border">
+    <Style Selector="lay|LayTabItem[Type=Brief][TabStripPlacement=Bottom] /template/ Border#PART_Border">
         <Setter Property="BorderThickness" Value="0,2,0,0" />
+    </Style>
+    <Style Selector="lay|LayTabItem[Type=Brief][TabStripPlacement=Right],lay|LayTabItem[Type=Brief][TabStripPlacement=Left]">
+        <Setter Property="Padding" Value="10 15" />
+    </Style>
+    <Style Selector="lay|LayTabItem[Type=Brief][TabStripPlacement=Right] /template/ Border#PART_Border">
+        <Setter Property="BorderThickness" Value="2,0,0,0" />
+    </Style>
+    <Style Selector="lay|LayTabItem[Type=Brief][TabStripPlacement=Left] /template/ Border#PART_Border">
+        <Setter Property="BorderThickness" Value="0,0,2,0" />
     </Style>
     <Style Selector="lay|LayTabItem[IsEnabled=false]">
         <Setter Property="Opacity" Value="0.6" />

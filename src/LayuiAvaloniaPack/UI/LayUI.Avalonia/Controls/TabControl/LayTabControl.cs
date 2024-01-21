@@ -28,7 +28,7 @@ namespace LayUI.Avalonia.Controls
         }
         protected override Control CreateContainerForItemOverride(object? item, int index, object? recycleKey)
         {
-            var tabItem = new LayTabItem() { Type = Type };
+            var tabItem = new LayTabItem();
             tabItem.SetValue(TabItem.TabStripPlacementProperty, TabStripPlacement);
             return tabItem;
         }
