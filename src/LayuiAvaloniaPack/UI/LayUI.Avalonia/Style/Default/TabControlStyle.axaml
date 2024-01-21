@@ -1,0 +1,77 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <lay:LayTabControl Width="300" Height="200">
+                <lay:LayTabItem>
+                    <lay:LayTabItem.Header>
+                        <TextBlock FontFamily="{DynamicResource Icon}" Text="&#xe9e0;" />
+                    </lay:LayTabItem.Header>
+                    <Grid Background="{DynamicResource LightBlue}" />
+                </lay:LayTabItem>
+                <lay:LayTabItem>
+                    <lay:LayTabItem.Header>
+                        <TextBlock FontFamily="{DynamicResource Icon}" Text="&#xe9df;" />
+                    </lay:LayTabItem.Header>
+                    <Grid Background="{DynamicResource Orange}" />
+                </lay:LayTabItem>
+            </lay:LayTabControl>
+        </Border>
+    </Design.PreviewWith>
+
+    <!--  Add Styles Here  -->
+    <Style Selector="lay|LayTabControl">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="ClipToBounds" Value="true" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type lay:LayTabControl}">
+                    <Border
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <DockPanel>
+                            <Grid Name="PART_Grid" DockPanel.Dock="{TemplateBinding TabStripPlacement}">
+                                <Border
+                                    Name="PART_Border"
+                                    Padding="{TemplateBinding Padding}"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{DynamicResource Gray}"
+                                    BorderThickness="0,0,0,2"
+                                    CornerRadius="0" />
+                                <ItemsPresenter Name="PART_ItemsPresenter" ItemsPanel="{TemplateBinding ItemsPanel}" />
+                            </Grid>
+                            <ContentPresenter
+                                x:Name="PART_SelectedContentHost"
+                                Margin="0"
+                                Padding="0"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                BorderThickness="0"
+                                Content="{TemplateBinding SelectedContent}"
+                                ContentTemplate="{TemplateBinding SelectedContentTemplate}" />
+                        </DockPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Left] /template/ ItemsPresenter#PART_Grid > WrapPanel">
+        <Setter Property="Orientation" Value="Vertical" />
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Right] /template/ ItemsPresenter#PART_Grid > WrapPanel">
+        <Setter Property="Orientation" Value="Vertical" />
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Bottom] /template/ Border#PART_Border">
+        <Setter Property="BorderThickness" Value="0,2,0,0" />
+    </Style>
+    <Style Selector="lay|LayTabControl[IsEnabled=false]">
+        <Setter Property="Opacity" Value="0.6" />
+    </Style>
+</Styles>

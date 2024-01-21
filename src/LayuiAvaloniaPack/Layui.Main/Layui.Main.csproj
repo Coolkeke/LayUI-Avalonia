@@ -59,6 +59,9 @@
     <Compile Update="Views\NoticeBarPage.axaml.cs">
       <DependentUpon>NoticeBarPage.axaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\TabControlPage.axaml.cs">
+      <DependentUpon>TabControlPage.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\TextBoxPage.axaml.cs">
       <DependentUpon>TextBoxPage.axaml</DependentUpon>
     </Compile>
