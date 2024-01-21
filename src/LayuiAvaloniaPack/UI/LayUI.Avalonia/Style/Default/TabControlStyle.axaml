@@ -1,0 +1,199 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Design.PreviewWith>
+        <Border
+            Width="1080"
+            Height="800"
+            Padding="20">
+            <UniformGrid Columns="2" Rows="2">
+                <lay:LayTabControl Margin="10">
+                    <lay:LayTabItem>
+                        <lay:LayTabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontFamily="{DynamicResource Icon}"
+                                    Text="&#xe9e0;" />
+                                <TextBlock
+                                    Margin="5,0"
+                                    VerticalAlignment="Center"
+                                    Text="标签一" />
+                            </StackPanel>
+                        </lay:LayTabItem.Header>
+                        <Grid Background="{DynamicResource LightBlue}" />
+                    </lay:LayTabItem>
+                    <lay:LayTabItem>
+                        <lay:LayTabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontFamily="{DynamicResource Icon}"
+                                    Text="&#xe9df;" />
+                                <TextBlock
+                                    Margin="5,0"
+                                    VerticalAlignment="Center"
+                                    Text="标签二" />
+                            </StackPanel>
+                        </lay:LayTabItem.Header>
+                        <Grid Background="{DynamicResource Orange}" />
+                    </lay:LayTabItem>
+                </lay:LayTabControl>
+                <lay:LayTabControl Margin="10" TabStripPlacement="Bottom">
+                    <lay:LayTabItem>
+                        <lay:LayTabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontFamily="{DynamicResource Icon}"
+                                    Text="&#xe9e0;" />
+                                <TextBlock
+                                    Margin="5,0"
+                                    VerticalAlignment="Center"
+                                    Text="标签一" />
+                            </StackPanel>
+                        </lay:LayTabItem.Header>
+                        <Grid Background="{DynamicResource LightBlue}" />
+                    </lay:LayTabItem>
+                    <lay:LayTabItem>
+                        <lay:LayTabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontFamily="{DynamicResource Icon}"
+                                    Text="&#xe9df;" />
+                                <TextBlock
+                                    Margin="5,0"
+                                    VerticalAlignment="Center"
+                                    Text="标签二" />
+                            </StackPanel>
+                        </lay:LayTabItem.Header>
+                        <Grid Background="{DynamicResource Orange}" />
+                    </lay:LayTabItem>
+                </lay:LayTabControl>
+                <lay:LayTabControl Margin="10" TabStripPlacement="Left">
+                    <lay:LayTabItem>
+                        <lay:LayTabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontFamily="{DynamicResource Icon}"
+                                    Text="&#xe9e0;" />
+                                <TextBlock
+                                    Margin="5,0"
+                                    VerticalAlignment="Center"
+                                    Text="标签一" />
+                            </StackPanel>
+                        </lay:LayTabItem.Header>
+                        <Grid Background="{DynamicResource LightBlue}" />
+                    </lay:LayTabItem>
+                    <lay:LayTabItem>
+                        <lay:LayTabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontFamily="{DynamicResource Icon}"
+                                    Text="&#xe9df;" />
+                                <TextBlock
+                                    Margin="5,0"
+                                    VerticalAlignment="Center"
+                                    Text="标签二" />
+                            </StackPanel>
+                        </lay:LayTabItem.Header>
+                        <Grid Background="{DynamicResource Orange}" />
+                    </lay:LayTabItem>
+                </lay:LayTabControl>
+                <lay:LayTabControl Margin="10" TabStripPlacement="Right">
+                    <lay:LayTabItem>
+                        <lay:LayTabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontFamily="{DynamicResource Icon}"
+                                    Text="&#xe9e0;" />
+                                <TextBlock
+                                    Margin="5,0"
+                                    VerticalAlignment="Center"
+                                    Text="标签一" />
+                            </StackPanel>
+                        </lay:LayTabItem.Header>
+                        <Grid Background="{DynamicResource LightBlue}" />
+                    </lay:LayTabItem>
+                    <lay:LayTabItem>
+                        <lay:LayTabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontFamily="{DynamicResource Icon}"
+                                    Text="&#xe9df;" />
+                                <TextBlock
+                                    Margin="5,0"
+                                    VerticalAlignment="Center"
+                                    Text="标签二" />
+                            </StackPanel>
+                        </lay:LayTabItem.Header>
+                        <Grid Background="{DynamicResource Orange}" />
+                    </lay:LayTabItem>
+                </lay:LayTabControl>
+            </UniformGrid>
+        </Border>
+    </Design.PreviewWith>
+    <!--  Add Styles Here  -->
+    <Style Selector="lay|LayTabControl">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="ClipToBounds" Value="true" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type lay:LayTabControl}">
+                    <Border
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <DockPanel>
+                            <Grid Name="PART_Grid" DockPanel.Dock="{TemplateBinding TabStripPlacement}">
+                                <Border
+                                    Name="PART_Border"
+                                    Padding="{TemplateBinding Padding}"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{DynamicResource Gray}"
+                                    CornerRadius="0" />
+                                <ItemsPresenter Name="PART_ItemsPresenter" ItemsPanel="{TemplateBinding ItemsPanel}" />
+                            </Grid>
+                            <ContentPresenter
+                                x:Name="PART_SelectedContentHost"
+                                Margin="0"
+                                Padding="0"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                BorderThickness="0"
+                                Content="{TemplateBinding SelectedContent}"
+                                ContentTemplate="{TemplateBinding SelectedContentTemplate}" />
+                        </DockPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel,lay|LayTabControl[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
+        <Setter Property="Orientation" Value="Vertical" />
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Top] /template/ Border#PART_Border">
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Bottom] /template/ Border#PART_Border">
+        <Setter Property="BorderThickness" Value="0,1,0,0" />
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Right] /template/ Border#PART_Border">
+        <Setter Property="BorderThickness" Value="1,0,0,0" />
+    </Style>
+    <Style Selector="lay|LayTabControl[TabStripPlacement=Left] /template/ Border#PART_Border">
+        <Setter Property="BorderThickness" Value="0,0,1,0" />
+    </Style>
+    <Style Selector="lay|LayTabControl[IsEnabled=false]">
+        <Setter Property="Opacity" Value="0.6" />
+    </Style>
+</Styles>
