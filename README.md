@@ -64,6 +64,8 @@ WPF、Avalonia前端外包联系 QQ : 1357703886 微信：ywk912zj
 ![image](https://github.com/Coolkeke/LayUI-Avalonia/assets/37786276/9e74d39f-ddb0-416d-8e4c-83f74dbbb6c2)
 ![image](https://github.com/Coolkeke/LayUI-Avalonia/assets/37786276/337f1fed-e311-47f2-b226-b17ebb7be9fd)
 ![image](https://github.com/Coolkeke/LayUI-Avalonia/assets/37786276/88ab72f9-a3a2-443e-ad93-52bbad2cf6c7)
+![image](https://github.com/Coolkeke/LayUI-Avalonia/assets/37786276/96dd7503-39e8-4635-b303-e43d002bf3b4)
+![image](https://github.com/Coolkeke/LayUI-Avalonia/assets/37786276/4b883aaf-9387-4cf5-b933-d52c0fe339fd)
 
 
 
