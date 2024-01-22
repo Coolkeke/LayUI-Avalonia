@@ -176,6 +176,10 @@ namespace Layui.Core
         /// 开关
         /// </summary>
         public static string SwitchButtonPage { get; } = nameof(SwitchButtonPage); 
+        /// <summary>
+        /// 滑块
+        /// </summary>
+        public static string SliderPage { get; } = nameof(SliderPage); 
     }
     
 }

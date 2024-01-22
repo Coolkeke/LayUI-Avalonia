@@ -77,7 +77,8 @@ namespace Layui.Main
             containerRegistry.RegisterForNavigation<ColorPage>(SystemResource.ColorPage);
             containerRegistry.RegisterForNavigation<NumericUpDownPage>(SystemResource.NumericUpDownPage);
             containerRegistry.RegisterForNavigation<SwitchButtonPage>(SystemResource.SwitchButtonPage);
-            containerRegistry.RegisterForNavigation<TabControlPage>(SystemResource.TabControlPage);
+            containerRegistry.RegisterForNavigation<TabControlPage>(SystemResource.TabControlPage); 
+            containerRegistry.RegisterForNavigation<SliderPage>(SystemResource.SliderPage); 
             var layDialog = Container.Resolve<ILayDialogService>();
             layDialog.RegisterDialog<Message>(nameof(Message));
         }

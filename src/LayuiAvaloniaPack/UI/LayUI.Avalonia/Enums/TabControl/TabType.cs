@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Enums
 {
-    public enum TabControlType
+    public enum TabType
     {        
         /// <summary>
         //默认

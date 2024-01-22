@@ -35,15 +35,15 @@ namespace Layui.Main.ViewModels
             _GoPageCommand ?? (_GoPageCommand = new DelegateCommand<MenuInfo>(ExecuteGoPageCommand));
 
         void ExecuteGoPageCommand(MenuInfo info)
-        { 
+        {
             if (info != null) Region.RequestNavigate(SystemResource.Nav_HomeContent, info.PageKey);
-        } 
+        }
         private ObservableCollection<MenuInfo> CreateMenus()
         {
             string Unicode = $"{(char)int.Parse("ebf1", System.Globalization.NumberStyles.HexNumber)}";
             ObservableCollection<MenuInfo> menus = new ObservableCollection<MenuInfo>
             {
-                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.IconPage, Title = "Icon" ,IsShow=true},
+                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.IconPage, Title = "Icon" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ColorPage, Title ="Color"},
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ButtonPage, Title ="Button"},
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.RadioButtonPage, Title = "RadioButton" },
@@ -61,7 +61,7 @@ namespace Layui.Main.ViewModels
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.NotificationPage, Title = "Notification" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.NoticeBarPage, Title = "NoticeBar" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.LoadingPage, Title = "Loading" },
-                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.RipplePage, Title = "Ripple" ,IsShow=true},
+                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.RipplePage, Title = "Ripple" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ToolTipPage, Title = "ToolTip" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.PopupBoxPage, Title = "PopupBox" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.TabControlPage, Title = "TabControl" ,IsShow=true},
@@ -75,12 +75,13 @@ namespace Layui.Main.ViewModels
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.LegendPage, Title = "Legend" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ListBoxPage, Title = "ListBox" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.BadgePage, Title = "Badge" },
-                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.SkeletonPage, Title = "Skeleton" ,IsShow=true},
+                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.SkeletonPage, Title = "Skeleton" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.FlowItemsControlPage, Title = "FlowItemsControl" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.DrawerPage, Title = "Drawer" }, 
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.MenuPage, Title = "Menu" },
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ListPage, Title = "List" },
-                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.TimelinePage, Title = "Timeline" ,IsShow=true},
+                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.SliderPage, Title = "Slider" ,IsShow=true},
+                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.TimelinePage, Title = "Timeline" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.KeyboardPage, Title = "Keyboard" ,IsShow=true},
             };
             return menus;
@@ -89,9 +90,9 @@ namespace Layui.Main.ViewModels
         protected override async void Loaded()
         {
             await Task.Delay(100);
-            Menus = CreateMenus(); 
+            Menus = CreateMenus();
             MenuInfo = Menus[0];
-            GoPageCommand.Execute(MenuInfo);  
+            GoPageCommand.Execute(MenuInfo);
         }
 
         protected override void Unloaded()

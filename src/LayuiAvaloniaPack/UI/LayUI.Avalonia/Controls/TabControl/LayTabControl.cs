@@ -15,13 +15,13 @@ namespace LayUI.Avalonia.Controls
         /// <summary>
         /// Defines the <see cref="Type"/> property.
         /// </summary>
-        public static readonly StyledProperty<TabControlType> TypeProperty =
-            AvaloniaProperty.Register<LayTabControl, TabControlType>(nameof(Type));
+        public static readonly StyledProperty<TabType> TypeProperty =
+            AvaloniaProperty.Register<LayTabControl, TabType>(nameof(Type));
 
         /// <summary>
         /// 类型
         /// </summary>
-        public TabControlType Type
+        public TabType Type
         {
             get { return GetValue(TypeProperty); }
             set { SetValue(TypeProperty, value); }

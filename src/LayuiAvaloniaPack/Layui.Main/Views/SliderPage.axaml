@@ -1,0 +1,55 @@
+<UserControl
+    x:Class="Layui.Main.Views.SliderPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <ScrollViewer>
+        <StackPanel>
+            <lay:LayLegend Content="基本滑块" FontSize="{DynamicResource LayFontSizeLarge}" />
+            <lay:LaySlider
+                Margin="0,30"
+                Maximum="100"
+                Minimum="0"
+                Value="50" />
+            <lay:LaySlider
+                Margin="0,30"
+                Maximum="100"
+                Minimum="0"
+                TipsPosition="Top"
+                Value="50" />
+            <lay:LaySlider
+                Margin="0,30"
+                Maximum="100"
+                Minimum="0"
+                TipsPosition="Bottom"
+                Value="50" />
+            <StackPanel
+                Height="300"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                <lay:LaySlider
+                    Margin="30,0"
+                    Orientation="Vertical"
+                    TipsPosition="Left" />
+                <lay:LaySlider
+                    Margin="30,0"
+                    Orientation="Vertical"
+                    TipsPosition="Right" />
+            </StackPanel>
+            <lay:LayLegend Content="定义初始值" FontSize="{DynamicResource LayFontSizeLarge}" />
+            <lay:LaySlider Margin="0,30" Value="50" />
+            <lay:LayLegend Content="设置最大最小值" FontSize="{DynamicResource LayFontSizeLarge}" />
+            <lay:LaySlider
+                Margin="0,30"
+                Maximum="1000"
+                Minimum="10" />
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
