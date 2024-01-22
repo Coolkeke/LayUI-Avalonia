@@ -1,0 +1,189 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls"
+    xmlns:layCv="clr-namespace:LayUI.Avalonia.Converters;assembly=LayUI.Avalonia">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <lay:LayDataGrid Width="300" Height="200">
+                <lay:LayDataGrid.Columns>
+                    <DataGridTextColumn Header="Test" />
+                    <DataGridTemplateColumn Header="Test" />
+                    <DataGridCheckBoxColumn Header="Test" />
+                </lay:LayDataGrid.Columns>
+            </lay:LayDataGrid>
+        </Border>
+    </Design.PreviewWith>
+    <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Simple.xaml" />
+    <Styles.Resources>
+        <ControlTheme x:Key="{x:Type DataGridColumnHeader}" TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Padding" Value="6" />
+            <Setter Property="MinHeight" Value="40" />
+            <Setter Property="SeparatorBrush" Value="{Binding RelativeSource={RelativeSource AncestorType=lay:LayDataGrid}, Path=BorderBrush}" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border
+                        x:Name="HeaderBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Grid
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                ColumnDefinitions="*,Auto">
+                                <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                <Path
+                                    Name="SortIcon"
+                                    Grid.Column="1"
+                                    Width="8"
+                                    Margin="4,0,0,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Data="F1 M -5.215,6.099L 5.215,6.099L 0,0L -5.215,6.099 Z "
+                                    Fill="{TemplateBinding Foreground}"
+                                    IsVisible="False"
+                                    Stretch="Uniform" />
+                            </Grid>
+                            <Rectangle
+                                Name="VerticalSeparator"
+                                Grid.Column="1"
+                                Width="1"
+                                VerticalAlignment="Stretch"
+                                Fill="{TemplateBinding SeparatorBrush}"
+                                IsVisible="{TemplateBinding AreSeparatorsVisible}" />
+
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+            <Style Selector="^:focus-visible /template/ Grid#FocusVisual">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+            <Style Selector="^:dragIndicator">
+                <Setter Property="Opacity" Value="0.5" />
+            </Style>
+            <Style Selector="^:sortascending /template/ Path#SortIcon">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+            <Style Selector="^:sortdescending /template/ Path#SortIcon">
+                <Setter Property="IsVisible" Value="True" />
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="1" ScaleY="-1" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ControlTheme>
+    </Styles.Resources>
+    <Style Selector="lay|LayDataGrid">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="HeadersVisibility" Value="Column" />
+        <Setter Property="ColumnHeaderBackground" Value="{DynamicResource LighGray}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{DynamicResource LayCornerRadiusSmall}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource SilverGray}" />
+        <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="SelectionMode" Value="Extended" />
+        <Setter Property="GridLinesVisibility" Value="All" />
+        <Setter Property="IsReadOnly" Value="True" />
+        <Setter Property="CanUserResizeColumns" Value="True" />
+        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource SilverGray}" />
+        <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource SilverGray}" />
+        <Setter Property="FocusAdorner" Value="{x:Null}" />
+        <Setter Property="DropLocationIndicatorTemplate">
+            <Template>
+                <Rectangle Width="2" Fill="{DynamicResource SilverGray}" />
+            </Template>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <Border
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="True"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        ZIndex="1" />
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="True"
+                        CornerRadius="{TemplateBinding CornerRadius}" />
+                    <Grid ClipToBounds="True">
+                        <Border
+                            x:Name="DataGridBorder"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            ClipToBounds="True"
+                            CornerRadius="{TemplateBinding CornerRadius}" />
+                        <Grid
+                            Margin="{TemplateBinding BorderThickness}"
+                            ColumnDefinitions="Auto,*,Auto"
+                            RowDefinitions="Auto,*,Auto,Auto">
+                            <Grid Grid.ColumnSpan="3" Background="{TemplateBinding ColumnHeaderBackground}" />
+                            <DataGridColumnHeader Name="PART_TopLeftCornerHeader" Width="22" />
+                            <DataGridColumnHeadersPresenter Name="PART_ColumnHeadersPresenter" Grid.Column="1" />
+                            <DataGridColumnHeader Name="PART_TopRightCornerHeader" Grid.Column="2" />
+                            <Rectangle
+                                Name="PART_ColumnHeadersAndRowsSeparator"
+                                Grid.ColumnSpan="3"
+                                Height="1"
+                                VerticalAlignment="Bottom"
+                                Fill="{TemplateBinding BorderBrush}"
+                                StrokeThickness="0" />
+                            <DataGridRowsPresenter
+                                Name="PART_RowsPresenter"
+                                Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                ScrollViewer.IsScrollInertiaEnabled="{TemplateBinding IsScrollInertiaEnabled}">
+                                <DataGridRowsPresenter.GestureRecognizers>
+                                    <ScrollGestureRecognizer
+                                        CanHorizontallyScroll="True"
+                                        CanVerticallyScroll="True"
+                                        IsScrollInertiaEnabled="{Binding (ScrollViewer.IsScrollInertiaEnabled), ElementName=PART_RowsPresenter}" />
+                                </DataGridRowsPresenter.GestureRecognizers>
+                            </DataGridRowsPresenter>
+                            <Rectangle
+                                Name="PART_BottomRightCorner"
+                                Grid.Row="2"
+                                Grid.Column="2"
+                                Fill="{DynamicResource ThemeControlMidHighBrush}" />
+                            <Rectangle
+                                Name="BottomLeftCorner"
+                                Grid.Row="2"
+                                Grid.ColumnSpan="2"
+                                Fill="{DynamicResource ThemeControlMidHighBrush}" />
+                            <ScrollBar
+                                Name="PART_VerticalScrollbar"
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                Width="{DynamicResource ScrollBarThickness}"
+                                Orientation="Vertical" />
+                            <Grid
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                ColumnDefinitions="Auto,*">
+                                <Rectangle Name="PART_FrozenColumnScrollBarSpacer" />
+                                <ScrollBar
+                                    Name="PART_HorizontalScrollbar"
+                                    Grid.Column="1"
+                                    Height="{DynamicResource ScrollBarThickness}"
+                                    Orientation="Horizontal" />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <Style Selector="DataGridRow:selected,DataGridRow:pointerover">
+        <Setter Property="Background" Value="{DynamicResource LighGray}" />
+    </Style>
+</Styles>

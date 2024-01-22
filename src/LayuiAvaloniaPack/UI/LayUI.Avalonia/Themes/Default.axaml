@@ -56,4 +56,7 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TabControlStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TabItemStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/SliderStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/RateItemsControlStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/RateItemStyle.axaml" />
+    <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DataGridStyle.axaml" />
 </Styles>

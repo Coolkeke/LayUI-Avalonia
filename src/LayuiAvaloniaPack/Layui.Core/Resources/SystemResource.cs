@@ -180,6 +180,10 @@ namespace Layui.Core
         /// 滑块
         /// </summary>
         public static string SliderPage { get; } = nameof(SliderPage); 
+        /// <summary>
+        /// 数据表格
+        /// </summary>
+        public static string DataGridPage { get; } = nameof(DataGridPage); 
     }
     
 }

@@ -76,6 +76,7 @@ namespace Layui.Main.ViewModels
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ListBoxPage, Title = "ListBox" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.BadgePage, Title = "Badge" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.SkeletonPage, Title = "Skeleton" },
+                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.DataGridPage, Title = "DataGrid" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.FlowItemsControlPage, Title = "FlowItemsControl" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.DrawerPage, Title = "Drawer" }, 
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.MenuPage, Title = "Menu" },
