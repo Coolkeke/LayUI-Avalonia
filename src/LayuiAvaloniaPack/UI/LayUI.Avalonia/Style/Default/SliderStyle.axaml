@@ -1,0 +1,226 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Design.PreviewWith>
+        <Border Width="300" Padding="20">
+            <StackPanel>
+                <lay:LayLegend Content="基本滑块" FontSize="{DynamicResource LayFontSizeLarge}" />
+                <lay:LaySlider
+                    Maximum="100"
+                    Minimum="0"
+                    TipsPosition="Top"
+                    Value="50" />
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    <Styles.Resources>
+        <!--  滑块横线透明触摸区  start  -->
+        <ControlTheme x:Key="SliderRepeatTrackTheme" TargetType="RepeatButton">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" />
+                </ControlTemplate>
+            </Setter>
+        </ControlTheme>
+        <!--  滑块横线透明触摸区  end  -->
+        <!--  横向  start  -->
+        <ControlTemplate x:Key="LaySliderHorizontal" TargetType="{x:Type lay:LaySlider}">
+            <Grid x:Name="PART_Grid" ClipToBounds="{TemplateBinding ClipToBounds}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" MinHeight="20" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Border
+                    x:Name="PART_TrackBackground"
+                    Grid.Row="1"
+                    Height="{TemplateBinding LineSize}"
+                    Margin="6,0"
+                    VerticalAlignment="Center"
+                    CornerRadius="{TemplateBinding CornerRadius}" />
+                <Track
+                    x:Name="PART_Track"
+                    Grid.Row="1"
+                    ClipToBounds="{TemplateBinding ClipToBounds}"
+                    IsDirectionReversed="{TemplateBinding IsDirectionReversed}"
+                    Maximum="{TemplateBinding Maximum}"
+                    Minimum="{TemplateBinding Minimum}"
+                    Orientation="Horizontal"
+                    Value="{TemplateBinding Value,
+                                            Mode=TwoWay}">
+                    <Track.DecreaseButton>
+                        <RepeatButton
+                            x:Name="PART_DecreaseButton"
+                            Height="{TemplateBinding LineSize}"
+                            Background="{TemplateBinding BorderBrush}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Theme="{DynamicResource SliderRepeatTrackTheme}" />
+                    </Track.DecreaseButton>
+                    <Track.IncreaseButton>
+                        <RepeatButton
+                            x:Name="PART_IncreaseButton"
+                            Height="{TemplateBinding LineSize}"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Theme="{DynamicResource SliderRepeatTrackTheme}" />
+                    </Track.IncreaseButton>
+                    <Thumb
+                        x:Name="PART_Thumb"
+                        Width="20"
+                        Height="20"
+                        Background="Black"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}"
+                        Foreground="{TemplateBinding Foreground}"
+                        Tag="{TemplateBinding Value}">
+                        <Thumb.Template>
+                            <ControlTemplate>
+                                <lay:LaySliderCanvas>
+                                    <Border
+                                        x:Name="PART_Border"
+                                        Padding="5"
+                                        VerticalAlignment="Center"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="4"
+                                        IsHitTestVisible="False"
+                                        Opacity="0">
+                                        <TextBlock Foreground="{TemplateBinding Foreground}" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag, Mode=OneWay}" />
+                                    </Border>
+                                    <Ellipse
+                                        x:Name="PART_Ellipse"
+                                        Width="{TemplateBinding Width}"
+                                        Height="{TemplateBinding Height}"
+                                        Fill="{TemplateBinding Foreground}"
+                                        Stroke="{TemplateBinding BorderBrush}"
+                                        StrokeThickness="2" />
+                                </lay:LaySliderCanvas>
+                            </ControlTemplate>
+                        </Thumb.Template>
+                    </Thumb>
+                </Track>
+            </Grid>
+        </ControlTemplate>
+        <!--  横向  end  -->
+        <!--  纵向  start  -->
+        <ControlTemplate x:Key="LaySliderVertical" TargetType="{x:Type lay:LaySlider}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" MinWidth="20" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Border
+                    Name="PART_TrackBackground"
+                    Grid.Column="1"
+                    Width="4"
+                    Margin="0,6"
+                    HorizontalAlignment="Center" />
+                <Track
+                    Name="PART_Track"
+                    Grid.Column="1"
+                    ClipToBounds="{TemplateBinding ClipToBounds}"
+                    IsDirectionReversed="{TemplateBinding IsDirectionReversed}"
+                    Maximum="{TemplateBinding Maximum}"
+                    Minimum="{TemplateBinding Minimum}"
+                    Orientation="Vertical"
+                    Value="{TemplateBinding Value,
+                                            Mode=TwoWay}">
+                    <Track.DecreaseButton>
+                        <RepeatButton
+                            Name="PART_DecreaseButton"
+                            Width="{TemplateBinding LineSize}"
+                            Background="{TemplateBinding BorderBrush}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Theme="{DynamicResource SliderRepeatTrackTheme}" />
+                    </Track.DecreaseButton>
+                    <Track.IncreaseButton>
+                        <RepeatButton
+                            Name="PART_IncreaseButton"
+                            Width="{TemplateBinding LineSize}"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Theme="{DynamicResource SliderRepeatTrackTheme}" />
+                    </Track.IncreaseButton>
+                    <Thumb
+                        Name="PART_Thumb"
+                        Width="20"
+                        Height="20"
+                        Background="Black"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}"
+                        Foreground="{TemplateBinding Foreground}"
+                        Tag="{TemplateBinding Value}">
+                        <Thumb.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <lay:LaySliderCanvas Orientation="Vertical">
+                                        <Border
+                                            x:Name="PART_Border"
+                                            Padding="5"
+                                            VerticalAlignment="Center"
+                                            Background="{TemplateBinding Background}"
+                                            CornerRadius="4"
+                                            IsHitTestVisible="False"
+                                            Opacity="0">
+                                            <TextBlock Foreground="{TemplateBinding Foreground}" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag, Mode=OneWay}" />
+                                        </Border>
+                                        <Ellipse
+                                            x:Name="PART_Ellipse"
+                                            Width="{TemplateBinding Width}"
+                                            Height="{TemplateBinding Height}"
+                                            Fill="{TemplateBinding Foreground}"
+                                            Stroke="{TemplateBinding BorderBrush}"
+                                            StrokeThickness="2" />
+                                    </lay:LaySliderCanvas>
+                                </Grid>
+                            </ControlTemplate>
+                        </Thumb.Template>
+                    </Thumb>
+                </Track>
+            </Grid>
+        </ControlTemplate>
+        <!--  纵向  end  -->
+    </Styles.Resources>
+    <Style Selector="lay|LaySlider">
+        <Setter Property="CornerRadius" Value="{DynamicResource LayCornerRadiusSmall}" />
+        <Setter Property="Background" Value="{DynamicResource Gray}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Green}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="ClipToBounds" Value="false" />
+        <Setter Property="Orientation" Value="Horizontal" />
+    </Style>
+    <Style Selector="lay|LaySlider[TipsPosition=No] /template/ Thumb#PART_Thumb:not(:pointerover) /template/Border#PART_Border">
+        <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="lay|LaySlider[TipsPosition=Top] /template/ Thumb#PART_Thumb:pointerover /template/Border#PART_Border,lay|LaySlider[TipsPosition=Bottom] /template/ Thumb#PART_Thumb:pointerover /template/Border#PART_Border,lay|LaySlider[TipsPosition=Left] /template/ Thumb#PART_Thumb:pointerover /template/Border#PART_Border,lay|LaySlider[TipsPosition=Right] /template/ Thumb#PART_Thumb:pointerover /template/Border#PART_Border">
+        <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="lay|LaySlider[TipsPosition=Top] /template/ Thumb#PART_Thumb /template/Border#PART_Border">
+        <Setter Property="Canvas.Bottom" Value="25" />
+    </Style>
+    <Style Selector="lay|LaySlider[TipsPosition=Bottom] /template/ Thumb#PART_Thumb /template/Border#PART_Border">
+        <Setter Property="Canvas.Top" Value="25" />
+    </Style>
+    <Style Selector="lay|LaySlider[Orientation=Horizontal]">
+        <Setter Property="Template" Value="{DynamicResource LaySliderHorizontal}" />
+    </Style>
+    <Style Selector="lay|LaySlider /template/ TickBar">
+        <Setter Property="Ticks" Value="{TemplateBinding Ticks}" />
+    </Style>
+    <Style Selector="lay|LaySlider[Orientation=Vertical]">
+        <Setter Property="Template" Value="{DynamicResource LaySliderVertical}" />
+    </Style>
+    <Style Selector="lay|LaySlider[TipsPosition=Right] /template/ Thumb#PART_Thumb /template/Border#PART_Border">
+        <Setter Property="Canvas.Left" Value="25" />
+    </Style>
+    <Style Selector="lay|LaySlider[TipsPosition=Left] /template/ Thumb#PART_Thumb /template/Border#PART_Border">
+        <Setter Property="Canvas.Right" Value="25" />
+    </Style>
+    <Style Selector="lay|LaySlider:disabled">
+        <Setter Property="Opacity" Value="0.6" />
+    </Style>
+    <!--  Add Styles Here  -->
+</Styles>

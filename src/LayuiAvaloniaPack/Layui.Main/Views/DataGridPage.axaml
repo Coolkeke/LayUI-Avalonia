@@ -1,0 +1,85 @@
+<UserControl
+    x:Class="Layui.Main.Views.DataGridPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:layCv="clr-namespace:LayUI.Avalonia.Converters;assembly=LayUI.Avalonia"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <lay:LayDataGrid Margin="10" ItemsSource="{Binding Items}">
+        <lay:LayDataGrid.Columns>
+            <DataGridTemplateColumn Header="序号">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock Margin="6,0" VerticalAlignment="Center">
+                            <TextBlock.Text>
+                                <MultiBinding Converter="{x:Static layCv:CollectionElementIndexConverter.Instance}" StringFormat="{}{0}">
+                                    <Binding />
+                                    <Binding Path="ItemsSource" RelativeSource="{RelativeSource AncestorType=lay:LayDataGrid}" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTemplateColumn Header="复选框">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <lay:LayCheckBox
+                            Margin="5,0"
+                            VerticalAlignment="Center"
+                            IsChecked="{Binding IsShow, Mode=TwoWay}" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTemplateColumn Header="选项">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <lay:LayComboBox Margin="5,0" VerticalAlignment="Center">
+                            <lay:LayComboBoxItem Content="男" />
+                            <lay:LayComboBoxItem Content="女" />
+                            <lay:LayComboBoxItem Content="未知" />
+                        </lay:LayComboBox>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTemplateColumn Header="开关">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <lay:LaySwitchButton Margin="5,0" VerticalAlignment="Center" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTemplateColumn Header="进度">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <lay:LayProgressBar
+                            Height="20"
+                            Margin="5,0"
+                            VerticalAlignment="Center"
+                            Value="20" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTextColumn Binding="{Binding Title}" Header="标题（默认）" />
+            <DataGridTemplateColumn
+                CanUserSort="true"
+                Header="标题（自定义）"
+                SortMemberPath="PriceChangePencent">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock
+                            Margin="5,0"
+                            VerticalAlignment="Center"
+                            Text="{Binding Title}" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+        </lay:LayDataGrid.Columns>
+    </lay:LayDataGrid>
+</UserControl>
