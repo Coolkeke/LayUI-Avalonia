@@ -9,14 +9,8 @@
                 <lay:LaySlider
                     Maximum="100"
                     Minimum="0"
-                    TipsPosition="Bottom"
+                    TipsPosition="Top"
                     Value="50" />
-                <lay:LayLegend Content="基本滑块" FontSize="{DynamicResource LayFontSizeLarge}" />
-                <Slider />
-                <lay:LayLegend Content="定义初始值" FontSize="{DynamicResource LayFontSizeLarge}" />
-                <Slider Value="50" />
-                <lay:LayLegend Content="设置最大最小值" FontSize="{DynamicResource LayFontSizeLarge}" />
-                <Slider Maximum="1000" Minimum="10" />
             </StackPanel>
         </Border>
     </Design.PreviewWith>
@@ -46,7 +40,6 @@
                     Height="{TemplateBinding LineSize}"
                     Margin="6,0"
                     VerticalAlignment="Center"
-                    Background="{TemplateBinding Background}"
                     CornerRadius="{TemplateBinding CornerRadius}" />
                 <Track
                     x:Name="PART_Track"
@@ -116,7 +109,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" MinWidth="26" />
+                    <ColumnDefinition Width="Auto" MinWidth="20" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Border
