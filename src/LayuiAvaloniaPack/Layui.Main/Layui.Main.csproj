@@ -95,4 +95,8 @@
     <UpToDateCheckInput Remove="Views\SwitchButtonPage.axaml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\TreeViewPage.axaml" />
+  </ItemGroup>
+
 </Project>
