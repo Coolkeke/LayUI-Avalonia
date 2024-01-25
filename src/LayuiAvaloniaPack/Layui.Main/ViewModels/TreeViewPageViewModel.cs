@@ -14,11 +14,40 @@ namespace Layui.Main.ViewModels
         private List<TreeViewData> _Items = new List<TreeViewData>() {
             new TreeViewData()
             {
-                IsChecked=true,
                 Title="Test",
                 Items=new List<TreeViewData>()
                 {
                     new TreeViewData()
+                    {
+                        Title="Test",
+                        Items=new List<TreeViewData>()
+                        {
+                            new TreeViewData()
+                            {
+                                Title="Test"
+                            }, new TreeViewData()
+                            {
+                                Title="Test"
+                            }, new TreeViewData()
+                            {
+                                Title="Test",
+                                Items=new List<TreeViewData>()
+                                {
+                                    new TreeViewData()
+                                    {
+                                        Title="Test"
+                                    }, new TreeViewData()
+                                    {
+                                        Title="Test"
+                                    }, new TreeViewData()
+                                    {
+                                        IsChecked=true,
+                                        Title="Test"
+                                    }
+                                }
+                            }
+                        }
+                    }, new TreeViewData()
                     {
                         Title="Test",
                         Items=new List<TreeViewData>()
@@ -37,13 +66,9 @@ namespace Layui.Main.ViewModels
                     }, new TreeViewData()
                     {
                         Title="Test"
-                    }, new TreeViewData()
-                    {
-                        Title="Test"
                     }
                 }
             },new TreeViewData(){
-                 IsChecked=null,
                 Title="Test"
             },new TreeViewData(){
                 Title="Test"

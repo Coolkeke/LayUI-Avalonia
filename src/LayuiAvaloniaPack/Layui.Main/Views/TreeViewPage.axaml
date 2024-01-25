@@ -10,46 +10,51 @@
     d:DesignWidth="800"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
-    <UniformGrid>
-        <lay:LayTreeView>
-            <lay:LayTreeViewItem Header="Level 1" IsExpanded="True">
-                <lay:LayTreeViewItem
-                    Header="Level 2.1"
-                    IsExpanded="True"
-                    IsSelected="True">
-                    <lay:LayTreeViewItem Header="Level 3.1" />
-                    <lay:LayTreeViewItem Header="Level 3.2" IsSelected="True">
-                        <lay:LayTreeViewItem Header="Level 4" />
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+        <StackPanel>
+            <lay:LayLegend Content="基础用法" FontSize="{DynamicResource LayFontSizeLarge}" />
+            <lay:LayTreeView Margin="0,5">
+                <lay:LayTreeViewItem Header="Level 1" IsExpanded="True">
+                    <lay:LayTreeViewItem
+                        Header="Level 2.1"
+                        IsExpanded="True"
+                        IsSelected="True">
+                        <lay:LayTreeViewItem Header="Level 3.1" />
+                        <lay:LayTreeViewItem Header="Level 3.2" IsSelected="True">
+                            <lay:LayTreeViewItem Header="Level 4" />
+                        </lay:LayTreeViewItem>
                     </lay:LayTreeViewItem>
+                    <lay:LayTreeViewItem Header="Level 2.2" IsEnabled="False" />
                 </lay:LayTreeViewItem>
-                <lay:LayTreeViewItem Header="Level 2.2" IsEnabled="False" />
-            </lay:LayTreeViewItem>
-        </lay:LayTreeView>
-        <lay:LayTreeView IsCheckBoxVisible="True">
-            <lay:LayTreeViewItem Header="Level 1" IsExpanded="True">
-                <lay:LayTreeViewItem
-                    Header="Level 2.1"
-                    IsExpanded="True"
-                    IsSelected="True">
-                    <lay:LayTreeViewItem Header="Level 3.1" />
-                    <lay:LayTreeViewItem Header="Level 3.2" IsSelected="True">
-                        <lay:LayTreeViewItem Header="Level 4" />
+            </lay:LayTreeView>
+            <lay:LayLegend Content="启用多选" FontSize="{DynamicResource LayFontSizeLarge}" />
+            <lay:LayTreeView Margin="0,5" IsCheckBoxVisible="True">
+                <lay:LayTreeViewItem Header="Level 1" IsExpanded="True">
+                    <lay:LayTreeViewItem Header="Level 2.1" IsExpanded="True">
+                        <lay:LayTreeViewItem Header="Level 3.1" />
+                        <lay:LayTreeViewItem Header="Level 3.2" IsExpanded="True">
+                            <lay:LayTreeViewItem Header="Level 4" IsChecked="true" />
+                        </lay:LayTreeViewItem>
                     </lay:LayTreeViewItem>
+                    <lay:LayTreeViewItem Header="Level 2.2" IsEnabled="False" />
                 </lay:LayTreeViewItem>
-                <lay:LayTreeViewItem Header="Level 2.2" IsEnabled="False" />
-            </lay:LayTreeViewItem>
-        </lay:LayTreeView>
-        <lay:LayTreeView IsCheckBoxVisible="True" ItemsSource="{Binding Items}">
-            <lay:LayTreeView.Styles>
-                <Style Selector="lay|LayTreeViewItem">
-                    <Setter Property="IsChecked" Value="{Binding IsChecked, Mode=TwoWay}" />
-                </Style>
-            </lay:LayTreeView.Styles>
-            <lay:LayTreeView.ItemTemplate>
-                <TreeDataTemplate ItemsSource="{Binding Items}">
-                    <TextBlock Text="{Binding Title}" />
-                </TreeDataTemplate>
-            </lay:LayTreeView.ItemTemplate>
-        </lay:LayTreeView>
-    </UniformGrid>
+            </lay:LayTreeView>
+            <lay:LayLegend Content="MVVM 递归多选" FontSize="{DynamicResource LayFontSizeLarge}" />
+            <lay:LayTreeView
+                Margin="0,5"
+                IsCheckBoxVisible="True"
+                ItemsSource="{Binding Items}">
+                <lay:LayTreeView.Styles>
+                    <Style Selector="lay|LayTreeViewItem">
+                        <Setter Property="IsChecked" Value="{Binding IsChecked, Mode=TwoWay}" />
+                    </Style>
+                </lay:LayTreeView.Styles>
+                <lay:LayTreeView.ItemTemplate>
+                    <TreeDataTemplate ItemsSource="{Binding Items}">
+                        <TextBlock Text="{Binding Title}" />
+                    </TreeDataTemplate>
+                </lay:LayTreeView.ItemTemplate>
+            </lay:LayTreeView>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>
