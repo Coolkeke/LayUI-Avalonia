@@ -80,6 +80,7 @@ namespace Layui.Main
             containerRegistry.RegisterForNavigation<TabControlPage>(SystemResource.TabControlPage); 
             containerRegistry.RegisterForNavigation<SliderPage>(SystemResource.SliderPage);
             containerRegistry.RegisterForNavigation<DataGridPage>(SystemResource.DataGridPage);
+            containerRegistry.RegisterForNavigation<TreeViewPage>(SystemResource.TreeViewPage);
             var layDialog = Container.Resolve<ILayDialogService>();
             layDialog.RegisterDialog<Message>(nameof(Message));
         }

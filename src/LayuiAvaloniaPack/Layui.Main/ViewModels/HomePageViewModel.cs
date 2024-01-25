@@ -71,7 +71,7 @@ namespace Layui.Main.ViewModels
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.NavExpanderPage, Title = "NavExpander" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.GroupBoxPage, Title = "GroupBox" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.LegendPage, Title = "Legend" },
-                //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.TreeViewPage, Title = "TreeView" },
+                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.TreeViewPage, Title = "TreeView" },
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.LegendPage, Title = "Legend" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ListBoxPage, Title = "ListBox" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.BadgePage, Title = "Badge" },

@@ -1,0 +1,134 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="using:Avalonia.Controls.Converters"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Design.PreviewWith>
+        <Border MinWidth="300" Padding="20">
+            <lay:LayTreeView IsCheckBoxVisible="True">
+                <lay:LayTreeViewItem Header="Level 1" IsExpanded="True">
+                    <lay:LayTreeViewItem
+                        Header="Level 2.1"
+                        IsExpanded="True"
+                        IsSelected="True">
+                        <lay:LayTreeViewItem Header="Level 3.1" />
+                        <lay:LayTreeViewItem
+                            Header="Level 3.2"
+                            IsExpanded="True"
+                            IsSelected="True">
+                            <lay:LayTreeViewItem Header="Level 4.1" />
+                            <lay:LayTreeViewItem Header="Level 4.2" />
+                            <lay:LayTreeViewItem Header="Level 4.3" />
+                        </lay:LayTreeViewItem>
+                    </lay:LayTreeViewItem>
+                    <lay:LayTreeViewItem Header="Level 2.2" IsEnabled="False" />
+                </lay:LayTreeViewItem>
+            </lay:LayTreeView>
+        </Border>
+    </Design.PreviewWith>
+    <Styles.Resources>
+        <!--  Indent 这逼玩意必须设置的跟当前复选框宽度一样 Start  -->
+        <converters:MarginMultiplierConverter
+            x:Key="TreeViewItemLeftMarginConverter"
+            Indent="20"
+            Left="True" />
+        <!--  Indent 这逼玩意必须设置的跟当前复选框宽度一样  End  -->
+    </Styles.Resources>
+    <Style Selector="lay|LayTreeViewItem /template/ lay|LaySpecialToggleButton#PART_ExpandCollapseChevron">
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Foreground" Value="{DynamicResource Gray}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="Transparent">
+                    <TextBlock
+                        x:Name="PART_Icon"
+                        FontFamily="{DynamicResource Icon}"
+                        FontSize="20"
+                        Foreground="{TemplateBinding Foreground}"
+                        RenderTransformOrigin="50%,50%"
+                        Text="&#xee2f;">
+                        <TextBlock.Transitions>
+                            <Transitions>
+                                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1" />
+                            </Transitions>
+                        </TextBlock.Transitions>
+                    </TextBlock>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayTreeViewItem">
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="IsChecked" Value="false" />
+        <Setter Property="IsCheckBoxVisible" Value="{Binding RelativeSource={RelativeSource AncestorType=lay:LayTreeView}, Path=IsCheckBoxVisible, Mode=OneWay}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <StackPanel Margin="0">
+                    <Border
+                        Name="PART_LayoutRoot"
+                        MinHeight="{TemplateBinding MinHeight}"
+                        Margin="0,2"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Focusable="True"
+                        TemplatedControl.IsTemplateFocusTarget="True">
+                        <Grid
+                            Name="PART_Header"
+                            Margin="{TemplateBinding Level,
+                                                     Mode=OneWay,
+                                                     Converter={StaticResource TreeViewItemLeftMarginConverter}}"
+                            ColumnDefinitions="Auto,Auto, *">
+                            <lay:LaySpecialToggleButton
+                                Name="PART_ExpandCollapseChevron"
+                                Margin="0"
+                                Focusable="False"
+                                IsChecked="{TemplateBinding IsExpanded,
+                                                            Mode=TwoWay}" />
+                            <lay:LayCheckBox
+                                Grid.Column="1"
+                                Margin="0"
+                                Padding="0"
+                                IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsChecked, Mode=TwoWay}"
+                                IsVisible="{TemplateBinding IsCheckBoxVisible}" />
+                            <ContentPresenter
+                                Name="PART_HeaderPresenter"
+                                Grid.Column="2"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                Background="Transparent"
+                                Content="{TemplateBinding Header}"
+                                ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                Focusable="False" />
+                        </Grid>
+                    </Border>
+                    <ItemsPresenter Name="PART_ItemsPresenter" ItemsPanel="{TemplateBinding ItemsPanel}" />
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayTreeViewItem /template/ lay|LaySpecialToggleButton#PART_ExpandCollapseChevron:checked /template/ TextBlock#PART_Icon">
+        <Setter Property="RenderTransform" Value="rotate(90deg)" />
+    </Style>
+    <Style Selector="lay|LayTreeViewItem[IsExpanded=false] /template/ ItemsPresenter#PART_ItemsPresenter">
+        <Setter Property="Height" Value="0" />
+        <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="lay|LayTreeViewItem:empty /template/ lay|LaySpecialToggleButton#PART_ExpandCollapseChevron">
+        <Setter Property="IsVisible" Value="false" />
+    </Style>
+    <Style Selector="lay|LayTreeViewItem /template/Grid#PART_Header:pointerover">
+        <Setter Property="Opacity" Value="0.7" />
+    </Style>
+    <Style Selector="lay|LayTreeViewItem[IsEnabled=false]">
+        <Setter Property="Opacity" Value="0.6" />
+    </Style>
+    <!--  Add Styles Here  -->
+</Styles>
