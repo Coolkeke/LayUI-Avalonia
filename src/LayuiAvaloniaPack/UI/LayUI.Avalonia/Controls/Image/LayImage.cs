@@ -1,5 +1,6 @@
-﻿using Avalonia; 
-using Avalonia.Controls; 
+﻿using Avalonia;
+using Avalonia.Controls;
+using Avalonia.LogicalTree;
 using Avalonia.Threading;
 
 namespace LayUI.Avalonia.Controls
@@ -16,9 +17,14 @@ namespace LayUI.Avalonia.Controls
         /// </summary>
         private void OnUriSourceChanged(AvaloniaPropertyChangedEventArgs e)
         {
-            if (e.NewValue != null) LayImageHelper.CreateImageAsync((string)e.NewValue).ContinueWith((o) => {
-                Dispatcher.UIThread.InvokeAsync(() => Source = o.Result); 
-            });
+            if (e.NewValue != null)
+            {
+                Source = null;
+                Dispatcher.UIThread.InvokeAsync(async () =>
+                {
+                    Source = await LayImageHelper.CreateImageAsync((string)e.NewValue);
+                }, DispatcherPriority.Background);
+            }
             else Source = null;
         }
         /// <summary>
@@ -33,6 +39,6 @@ namespace LayUI.Avalonia.Controls
         {
             get { return GetValue(UriSourceProperty); }
             set { SetValue(UriSourceProperty, value); }
-        }
+        } 
     }
 }

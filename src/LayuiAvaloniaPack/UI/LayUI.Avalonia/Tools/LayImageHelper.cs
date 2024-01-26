@@ -18,7 +18,16 @@ namespace LayUI.Avalonia
     /// 图片帮助类
     /// </summary>
     public class LayImageHelper
-    { 
+    {
+        private static HttpClient _client;
+        private static HttpClient client
+        {
+            get
+            {
+                if (_client == null) _client = new HttpClient();
+                return _client;
+            }
+        }
         /// <summary>
         /// 异步获取图片
         /// </summary>
@@ -36,15 +45,12 @@ namespace LayUI.Avalonia
             }
             else if (path.Trim().StartsWith("http://") || path.Trim().StartsWith("https://"))
             {
-                using (HttpClient client = new HttpClient())
-                {
-                    var bytes = await client.GetByteArrayAsync(new Uri(path));
-                    Stream stream = new MemoryStream(bytes);
-                    return new Bitmap(stream);
-                }
+                var bytes = await client.GetByteArrayAsync(new Uri(path));
+                using Stream stream = new MemoryStream(bytes);
+                return new Bitmap(stream);
             }
             else if (path.StartsWith("avares://")) return new Bitmap(AssetLoader.Open(new Uri(path)));
-            else return new Bitmap(string.Empty);
+            else return new Bitmap(path);
         }
     }
 }
