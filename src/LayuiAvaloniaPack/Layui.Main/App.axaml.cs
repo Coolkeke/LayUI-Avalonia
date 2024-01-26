@@ -81,6 +81,7 @@ namespace Layui.Main
             containerRegistry.RegisterForNavigation<SliderPage>(SystemResource.SliderPage);
             containerRegistry.RegisterForNavigation<DataGridPage>(SystemResource.DataGridPage);
             containerRegistry.RegisterForNavigation<TreeViewPage>(SystemResource.TreeViewPage);
+            containerRegistry.RegisterForNavigation<WaterfallFlowPanelPage>(SystemResource.WaterfallFlowPanelPage);
             var layDialog = Container.Resolve<ILayDialogService>();
             layDialog.RegisterDialog<Message>(nameof(Message));
         }
