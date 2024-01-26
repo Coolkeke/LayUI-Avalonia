@@ -57,7 +57,7 @@ namespace LayUI.Avalonia.Controls
         /// Defines the <see cref="IsOpen"/> property.
         /// </summary>
         internal static readonly StyledProperty<bool> IsOpenProperty =
-            AvaloniaProperty.Register<Control, bool>(nameof(IsOpen), true);
+            AvaloniaProperty.Register<LayNotificationControl, bool>(nameof(IsOpen));
 
         /// <summary>
         /// 是否开启
@@ -78,7 +78,7 @@ namespace LayUI.Avalonia.Controls
         /// Defines the <see cref="Title"/> property.
         /// </summary>
         public static readonly StyledProperty<string> TitleProperty =
-            AvaloniaProperty.Register<Control, string>(nameof(Title), string.Empty);
+            AvaloniaProperty.Register<LayNotificationControl, string>(nameof(Title), string.Empty);
 
         /// <summary>
         /// 标题
@@ -93,7 +93,7 @@ namespace LayUI.Avalonia.Controls
         /// Defines the <see cref="Content"/> property.
         /// </summary>
         public static readonly StyledProperty<object> ContentProperty =
-            AvaloniaProperty.Register<Control, object>(nameof(Content), null);
+            AvaloniaProperty.Register<LayNotificationControl, object>(nameof(Content), null);
 
         /// <summary>
         /// 内容
