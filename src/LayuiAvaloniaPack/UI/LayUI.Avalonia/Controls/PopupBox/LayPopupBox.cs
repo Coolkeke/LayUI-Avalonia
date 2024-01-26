@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
+using LayUI.Avalonia.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,6 +56,20 @@ namespace LayUI.Avalonia.Controls
             }
         }
 
+        /// <summary>
+        /// Defines the <see cref="Type"/> property.
+        /// </summary>
+        public static readonly StyledProperty<PositionType> TypeProperty =
+            AvaloniaProperty.Register<Control, PositionType>(nameof(Type), PositionType.Bottom);
+
+        /// <summary>
+        /// 类型
+        /// </summary>
+        public PositionType Type
+        {
+            get { return GetValue(TypeProperty); }
+            set { SetValue(TypeProperty, value); }
+        }
         private void PopupClosed(object? sender, EventArgs e) => IsDropDownOpen = false;
 
         protected override void OnPointerCaptureLost(PointerCaptureLostEventArgs e)
