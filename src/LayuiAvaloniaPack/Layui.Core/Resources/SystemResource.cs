@@ -184,6 +184,10 @@ namespace Layui.Core
         /// 数据表格
         /// </summary>
         public static string DataGridPage { get; } = nameof(DataGridPage); 
+        /// <summary>
+        /// 瀑布流容器
+        /// </summary>
+        public static string WaterfallFlowPanelPage { get; } = nameof(WaterfallFlowPanelPage); 
     }
     
 }
