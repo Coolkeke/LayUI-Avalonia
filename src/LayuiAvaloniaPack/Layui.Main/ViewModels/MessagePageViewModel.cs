@@ -24,8 +24,7 @@ namespace Layui.Main.ViewModels
             _MessageCommand ?? (_MessageCommand = new DelegateCommand(ExecuteMessageCommand));
         bool flag = false;
         void ExecuteMessageCommand()
-        {
-
+        { 
             num++;
             if (flag)
             {

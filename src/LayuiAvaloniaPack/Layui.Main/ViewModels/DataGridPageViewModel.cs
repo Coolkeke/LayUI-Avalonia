@@ -20,7 +20,7 @@ namespace Layui.Main.ViewModels
         public DataGridPageViewModel()
         {
             var items = new ObservableCollection<Data>() { new Data() { Title = "看山不是山，看水不是水，看山还是山，看水还是水" } };
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 100; i++)
             {
                 items.Add(new Data() { Title = "看山不是山，看水不是水，看山还是山，看水还是水" });
             }

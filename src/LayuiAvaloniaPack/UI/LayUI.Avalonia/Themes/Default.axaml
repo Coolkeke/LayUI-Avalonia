@@ -61,4 +61,5 @@
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/DataGridStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TreeViewStyle.axaml" />
     <StyleInclude Source="avares://LayUI.Avalonia/Style/Default/TreeViewItemStyle.axaml" />
+	<StyleInclude Source="avares://LayUI.Avalonia/Style/Default/PaginationStyle.axaml" />
 </Styles>

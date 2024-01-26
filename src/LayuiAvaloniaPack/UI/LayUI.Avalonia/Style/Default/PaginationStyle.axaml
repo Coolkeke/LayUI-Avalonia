@@ -1,0 +1,116 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Design.PreviewWith>
+        <Border Width="900" Padding="20">
+            <lay:LayPagination
+                PageSize="10"
+                Total="100"
+                PageIndex="1" />
+        </Border>
+    </Design.PreviewWith>
+    <Style Selector="lay|LayPagination">
+        <Setter Property="BorderBrush" Value="{DynamicResource Green}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <StackPanel Orientation="Horizontal">
+                            <Grid>
+                                <ContentPresenter />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    Foreground="Black"
+                                    Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Total}" />
+                            </Grid>
+                            <lay:LayButtonBase Name="PART_Previous" Content="上一页" />
+                            <StackPanel Name="PART_Items" Orientation="Horizontal" />
+                            <lay:LayButtonBase Name="PART_Nex" Content="下一页" />
+                            <ComboBox SelectedIndex="0">
+                                <ComboBoxItem Content="10" />
+                                <ComboBoxItem Content="20" />
+                                <ComboBoxItem Content="50" />
+                                <ComboBoxItem Content="100" />
+                            </ComboBox>
+                            <lay:LayButtonBase Name="PART_Refresh" Content="刷新" />
+                            <TextBox Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PageIndex, Mode=TwoWay}" />
+                            <lay:LayButtonBase Name="PART_GO" Content="确定" />
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayPagination /template/lay|LayButtonBase,TextBox,ComboBox">
+        <Setter Property="CornerRadius" Value="0" />
+    </Style>
+    <Style Selector="lay|LayPagination /template/lay|LayButtonBase">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="Padding" Value="15 0" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="Height" Value="NaN" />
+        <Setter Property="Width" Value="NaN" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}">
+                        <ContentPresenter
+                            Name="PART_ContentPresenter"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Background="Transparent"
+                            Content="{TemplateBinding Content}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayPagination /template/StackPanel#PART_Items lay|LayButtonBase">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="Padding" Value="15 0" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Height" Value="NaN" />
+        <Setter Property="Width" Value="NaN" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}">
+                        <ContentPresenter
+                            Name="PART_ContentPresenter"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Background="Transparent"
+                            Content="{TemplateBinding Content}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="lay|LayPagination /template/StackPanel#PART_Items lay|LayButtonBase[Tag=true]">
+        <Setter Property="Background" Value="{DynamicResource LightGreen}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource LightGreen}" />
+        <Setter Property="Foreground" Value="#fff" />
+    </Style>
+    <!--  Add Styles Here  -->
+</Styles>
