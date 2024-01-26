@@ -7,7 +7,7 @@ namespace LayUI.Avalonia.Controls
     /// <summary>
     /// 评分项
     /// </summary>
-    public class RateItem : Button
+    public class RateItem : Button, ILayControl
     { 
         /// <summary>
         /// Defines the <see cref="IsSelected"/> property.

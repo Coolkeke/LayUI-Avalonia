@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Controls
 {
-    public class LayTreeViewItem : TreeViewItem
+    public class LayTreeViewItem : TreeViewItem, ILayControl
     {
         public LayTreeViewItem()
         {

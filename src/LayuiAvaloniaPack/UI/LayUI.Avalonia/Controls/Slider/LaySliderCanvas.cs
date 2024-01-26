@@ -13,7 +13,7 @@ namespace LayUI.Avalonia.Controls
     /// <summary>
     /// 滑块专用画布
     /// </summary>
-    internal class LaySliderCanvas : Canvas
+    internal class LaySliderCanvas : Canvas, ILayControl
     {
         /// <summary>
         /// Defines the <see cref="Orientation"/> property.

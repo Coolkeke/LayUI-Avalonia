@@ -12,7 +12,7 @@ namespace LayUI.Avalonia.Controls
     /// 时间线子项
     /// <para>摘抄Ursa控件库中的Timeline逻辑，这里就不再重写了</para>
     /// </summary>
-    public class LayTimeline : ItemsControl
+    public class LayTimeline : ItemsControl, ILayControl
     {
         public LayTimeline()
         {

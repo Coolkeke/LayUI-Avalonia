@@ -14,7 +14,7 @@ namespace LayUI.Avalonia.Controls
     /// </summary>
 
     [TemplatePart(Name = nameof(PART_MaskButton), Type = typeof(Button))]
-    public class LayDrawer : ContentControl
+    public class LayDrawer : ContentControl, ILayControl
     {
         /// <summary>
         /// 按钮控制遮罩

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Controls
 {
-    public class WaterfallFlowPanel : Panel
+    public class WaterfallFlowPanel : Panel, ILayControl
     {
         /// <summary>
         /// Defines the <see cref="Column"/> property.

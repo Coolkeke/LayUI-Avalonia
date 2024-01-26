@@ -10,7 +10,7 @@ namespace LayUI.Avalonia.Controls
     /// <summary>
     /// 评分列表
     /// </summary>
-    public class RateItemsControl:ItemsControl
+    public class RateItemsControl:ItemsControl, ILayControl
     {
         protected override bool NeedsContainerOverride(object? item, int index, out object? recycleKey)
         {
