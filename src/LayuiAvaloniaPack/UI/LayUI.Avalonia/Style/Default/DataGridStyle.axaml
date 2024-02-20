@@ -141,7 +141,7 @@
                             <DataGridRowsPresenter
                                 Name="PART_RowsPresenter"
                                 Grid.Row="1"
-                                Grid.ColumnSpan="2"
+                                Grid.ColumnSpan="3"
                                 ScrollViewer.IsScrollInertiaEnabled="{TemplateBinding IsScrollInertiaEnabled}">
                                 <DataGridRowsPresenter.GestureRecognizers>
                                     <ScrollGestureRecognizer
@@ -164,24 +164,42 @@
                                 Name="PART_VerticalScrollbar"
                                 Grid.Row="1"
                                 Grid.Column="2"
-                                Width="{DynamicResource ScrollBarThickness}"
+                                Grid.ColumnSpan="2"
+                                Width="8"
+                                Opacity="0"
                                 Orientation="Vertical" />
                             <Grid
                                 Grid.Row="2"
                                 Grid.Column="1"
                                 ColumnDefinitions="Auto,*">
-                                <Rectangle Name="PART_FrozenColumnScrollBarSpacer" />
+                                <Rectangle Name="PART_FrozenColumnScrollBarSpacer" Fill="{DynamicResource LighGray}" />
                                 <ScrollBar
                                     Name="PART_HorizontalScrollbar"
                                     Grid.Column="1"
-                                    Height="{DynamicResource ScrollBarThickness}"
+                                    Height="8"
+                                    Opacity="0"
                                     Orientation="Horizontal" />
                             </Grid>
+                            <Panel
+                                x:Name="PART_ScrollBarsSeparator"
+                                Grid.Row="2"
+                                Grid.Column="2"
+                                Background="{DynamicResource LighGray}"
+                                Opacity="0">
+                                <Panel.Transitions>
+                                    <Transitions>
+                                        <DoubleTransition Property="Opacity" Duration="0:0:0.1" />
+                                    </Transitions>
+                                </Panel.Transitions>
+                            </Panel>
                         </Grid>
                     </Grid>
                 </Grid>
             </ControlTemplate>
         </Setter>
+    </Style>
+    <Style Selector="lay|LayDataGrid:pointerover /template/ ScrollBar#PART_VerticalScrollbar,lay|LayDataGrid:pointerover /template/ ScrollBar#PART_HorizontalScrollbar,lay|LayDataGrid:pointerover /template/ Panel#PART_ScrollBarsSeparator">
+        <Setter Property="Opacity" Value="1" />
     </Style>
     <Style Selector="DataGridRow:selected,DataGridRow:pointerover">
         <Setter Property="Background" Value="{DynamicResource LighGray}" />
