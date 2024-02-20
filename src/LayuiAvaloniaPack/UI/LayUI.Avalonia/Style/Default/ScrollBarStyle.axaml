@@ -17,17 +17,6 @@
                         AllowAutoHide="False"
                         IsEnabled="False"
                         Orientation="Horizontal" />
-                    <ScrollBar
-                        Width="100"
-                        VerticalAlignment="Center"
-                        AllowAutoHide="True"
-                        Orientation="Horizontal" />
-                    <ScrollBar
-                        Width="100"
-                        VerticalAlignment="Center"
-                        AllowAutoHide="True"
-                        IsEnabled="False"
-                        Orientation="Horizontal" />
                 </StackPanel>
                 <ScrollBar
                     Height="100"
@@ -38,17 +27,6 @@
                     Height="100"
                     HorizontalAlignment="Center"
                     AllowAutoHide="False"
-                    IsEnabled="False"
-                    Orientation="Vertical" />
-                <ScrollBar
-                    Height="100"
-                    HorizontalAlignment="Center"
-                    AllowAutoHide="True"
-                    Orientation="Vertical" />
-                <ScrollBar
-                    Height="100"
-                    HorizontalAlignment="Center"
-                    AllowAutoHide="True"
                     IsEnabled="False"
                     Orientation="Vertical" />
             </StackPanel>

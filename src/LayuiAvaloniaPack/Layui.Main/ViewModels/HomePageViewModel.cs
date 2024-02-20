@@ -80,7 +80,7 @@ namespace Layui.Main.ViewModels
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.TimelinePage, Title = "Timeline" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.KeyboardPage, Title = "Keyboard" ,IsShow=true},
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ExpanderPage, Title = "Expander" },
-                //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.StepBarPage, Title = "StepBar" },
+                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ScrollBarPage, Title = "ScrollBar" },
                 //new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.MenuPage, Title = "Menu" }, 
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.DatePage, Title = "Date" }, 
             };
