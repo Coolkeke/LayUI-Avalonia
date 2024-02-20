@@ -5,7 +5,7 @@ using Avalonia.Threading;
 
 namespace LayUI.Avalonia.Controls
 {
-    public class LayImage : Image
+    public class LayImage : Image, ILayControl
     {
 
         public LayImage()

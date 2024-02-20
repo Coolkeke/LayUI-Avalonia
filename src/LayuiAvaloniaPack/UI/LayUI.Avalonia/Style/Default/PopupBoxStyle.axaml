@@ -53,4 +53,16 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style Selector="lay|LayPopupBox[Type=Bottom] /template/Popup#PART_Popup">
+        <Setter Property="Placement" Value="Bottom" />
+    </Style>
+    <Style Selector="lay|LayPopupBox[Type=Top] /template/Popup#PART_Popup">
+        <Setter Property="Placement" Value="Top" />
+    </Style>
+    <Style Selector="lay|LayPopupBox[Type=Left] /template/Popup#PART_Popup">
+        <Setter Property="Placement" Value="Left" />
+    </Style>
+    <Style Selector="lay|LayPopupBox[Type=Right] /template/Popup#PART_Popup">
+        <Setter Property="Placement" Value="Right" />
+    </Style>
 </Styles>

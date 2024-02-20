@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Controls
 {
-    public class LayTreeView : TreeView
+    public class LayTreeView : TreeView, ILayControl
     {
         /// <summary>
         /// Defines the <see cref="IsCheckBoxVisible"/> property.

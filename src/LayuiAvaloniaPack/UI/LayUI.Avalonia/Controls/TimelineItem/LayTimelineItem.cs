@@ -16,7 +16,7 @@ namespace LayUI.Avalonia.Controls
     /// 时间线子项
     /// </summary>
     
-    public class LayTimelineItem : HeaderedContentControl
+    public class LayTimelineItem : HeaderedContentControl, ILayControl
     {
         private const string PC_First = ":first";
         private const string PC_Last = ":last"; 

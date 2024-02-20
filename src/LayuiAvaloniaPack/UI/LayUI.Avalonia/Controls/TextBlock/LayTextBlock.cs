@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Controls
 {
-    public class LayTextBlock : TextBlock
+    public class LayTextBlock : TextBlock, ILayControl
     {
         public LayTextBlock()
         {

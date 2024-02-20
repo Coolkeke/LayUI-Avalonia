@@ -1,0 +1,218 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <StackPanel Orientation="Horizontal" Spacing="20">
+                <StackPanel Spacing="20">
+                    <ScrollBar
+                        Width="100"
+                        VerticalAlignment="Center"
+                        AllowAutoHide="False"
+                        Orientation="Horizontal" />
+                    <ScrollBar
+                        Width="100"
+                        VerticalAlignment="Center"
+                        AllowAutoHide="False"
+                        IsEnabled="False"
+                        Orientation="Horizontal" />
+                </StackPanel>
+                <ScrollBar
+                    Height="100"
+                    HorizontalAlignment="Center"
+                    AllowAutoHide="False"
+                    Orientation="Vertical" />
+                <ScrollBar
+                    Height="100"
+                    HorizontalAlignment="Center"
+                    AllowAutoHide="False"
+                    IsEnabled="False"
+                    Orientation="Vertical" />
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    <Style Selector="RepeatButton.LayScrollBarRepeatButton">
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <ContentPresenter
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Background="Transparent"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        UseLayoutRounding="True" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="Thumb.LayScrollBarThumb">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border Background="{DynamicResource LightBlack}" CornerRadius="5" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="ScrollBar">
+        <Setter Property="AllowAutoHide" Value="false" />
+        <Setter Property="Background" Value="{DynamicResource LighGray}" />
+    </Style>
+    <Style Selector="ScrollBar:vertical">
+        <Setter Property="ClipToBounds" Value="true" />
+        <Setter Property="Width" Value="8" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid x:Name="Root" ClipToBounds="{TemplateBinding ClipToBounds}">
+                    <Border
+                        x:Name="VerticalRoot"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}">
+                        <Grid ClipToBounds="{TemplateBinding ClipToBounds}" RowDefinitions="Auto,*,Auto">
+                            <RepeatButton
+                                Name="PART_LineUpButton"
+                                Grid.Row="0"
+                                Height="{DynamicResource ScrollBarSize}"
+                                HorizontalAlignment="Center"
+                                Classes="LayScrollBarRepeatButton"
+                                Focusable="False">
+                                <TextBlock
+                                    FontFamily="{DynamicResource Icon}"
+                                    FontSize="11"
+                                    Foreground="{DynamicResource LightBlack}"
+                                    Text="&#xed73;" />
+                            </RepeatButton>
+
+                            <Track
+                                Grid.Row="1"
+                                DeferThumbDrag="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                                IsDirectionReversed="True"
+                                Maximum="{TemplateBinding Maximum}"
+                                Minimum="{TemplateBinding Minimum}"
+                                Orientation="{TemplateBinding Orientation}"
+                                ViewportSize="{TemplateBinding ViewportSize}"
+                                Value="{TemplateBinding Value,
+                                                        Mode=TwoWay}">
+                                <Track.DecreaseButton>
+                                    <RepeatButton
+                                        Name="PART_PageUpButton"
+                                        Focusable="False"
+                                        Theme="{StaticResource FluentScrollBarPageButton}" />
+                                </Track.DecreaseButton>
+                                <Track.IncreaseButton>
+                                    <RepeatButton
+                                        Name="PART_PageDownButton"
+                                        Focusable="False"
+                                        Theme="{StaticResource FluentScrollBarPageButton}" />
+                                </Track.IncreaseButton>
+                                <Thumb
+                                    Width="6"
+                                    MinHeight="{DynamicResource ScrollBarSize}"
+                                    Classes="LayScrollBarThumb"
+                                    RenderTransform="{DynamicResource VerticalSmallScrollThumbScaleTransform}"
+                                    RenderTransformOrigin="100%,50%" />
+                            </Track>
+
+                            <RepeatButton
+                                Name="PART_LineDownButton"
+                                Grid.Row="2"
+                                Height="{DynamicResource ScrollBarSize}"
+                                HorizontalAlignment="Center"
+                                Classes="LayScrollBarRepeatButton"
+                                Focusable="False">
+                                <TextBlock
+                                    FontFamily="{DynamicResource Icon}"
+                                    FontSize="11"
+                                    Foreground="{DynamicResource LightBlack}"
+                                    Text="&#xefb1;" />
+                            </RepeatButton>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <Style Selector="ScrollBar:horizontal">
+        <Setter Property="ClipToBounds" Value="true" />
+        <Setter Property="Height" Value="8" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid x:Name="Root" ClipToBounds="{TemplateBinding ClipToBounds}">
+                    <Border
+                        x:Name="HorizontalRoot"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}">
+                        <Grid ClipToBounds="{TemplateBinding ClipToBounds}" ColumnDefinitions="Auto,*,Auto">
+                            <RepeatButton
+                                Name="PART_LineUpButton"
+                                Grid.Column="0"
+                                Width="{DynamicResource ScrollBarSize}"
+                                VerticalAlignment="Center"
+                                Classes="LayScrollBarRepeatButton"
+                                Focusable="False">
+                                <TextBlock
+                                    FontFamily="{DynamicResource Icon}"
+                                    FontSize="11"
+                                    Foreground="{DynamicResource LightBlack}"
+                                    Text="&#xed05;" />
+                            </RepeatButton>
+
+                            <Track
+                                Grid.Column="1"
+                                DeferThumbDrag="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                                Maximum="{TemplateBinding Maximum}"
+                                Minimum="{TemplateBinding Minimum}"
+                                Orientation="{TemplateBinding Orientation}"
+                                ViewportSize="{TemplateBinding ViewportSize}"
+                                Value="{TemplateBinding Value,
+                                                        Mode=TwoWay}">
+                                <Track.DecreaseButton>
+                                    <RepeatButton
+                                        Name="PART_PageUpButton"
+                                        Classes="largeIncrease"
+                                        Focusable="False"
+                                        Theme="{StaticResource FluentScrollBarPageButton}" />
+                                </Track.DecreaseButton>
+                                <Track.IncreaseButton>
+                                    <RepeatButton
+                                        Name="PART_PageDownButton"
+                                        Classes="largeIncrease"
+                                        Focusable="False"
+                                        Theme="{StaticResource FluentScrollBarPageButton}" />
+                                </Track.IncreaseButton>
+                                <Thumb
+                                    Height="6"
+                                    MinWidth="{DynamicResource ScrollBarSize}"
+                                    VerticalAlignment="Stretch"
+                                    Classes="LayScrollBarThumb"
+                                    RenderTransform="{DynamicResource HorizontalSmallScrollThumbScaleTransform}"
+                                    RenderTransformOrigin="50%,100%" />
+                            </Track>
+
+                            <RepeatButton
+                                Name="PART_LineDownButton"
+                                Grid.Column="2"
+                                Width="{DynamicResource ScrollBarSize}"
+                                VerticalAlignment="Center"
+                                Classes="LayScrollBarRepeatButton"
+                                Focusable="False">
+                                <TextBlock
+                                    FontFamily="{DynamicResource Icon}"
+                                    FontSize="11"
+                                    Foreground="{DynamicResource LightBlack}"
+                                    Text="&#xee2f;" />
+                            </RepeatButton>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <!--  Add Styles Here  -->
+</Styles>

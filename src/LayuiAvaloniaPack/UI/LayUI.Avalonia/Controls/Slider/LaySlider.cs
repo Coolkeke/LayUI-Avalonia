@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Controls
 {
-    public class LaySlider: Slider
+    public class LaySlider: Slider, ILayControl
     {
 
         /// <summary>

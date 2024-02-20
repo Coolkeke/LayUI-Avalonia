@@ -95,6 +95,7 @@ namespace LayUI.Avalonia.Global
                     var messageHost = NotificationHosts[token];
                     var notificationControl = new LayNotificationControl(messageHost, time)
                     {
+                        IsOpen=true,
                         Title=title,
                         Content = content,
                         Type = type

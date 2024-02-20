@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Controls
 {
-    public class LayDataGrid: DataGrid
+    public class LayDataGrid: DataGrid, ILayControl
     {  
         
         /// <summary>

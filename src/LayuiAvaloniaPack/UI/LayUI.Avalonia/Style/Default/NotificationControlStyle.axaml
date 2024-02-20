@@ -7,7 +7,7 @@
     <Design.PreviewWith>
         <Border Padding="20">
             <StackPanel>
-                <lay:LayNotificationControl Width="150" IsOpen="True" />
+                <lay:LayNotificationControl Width="150" IsOpen="true" />
                 <lay:LayNotificationControl Width="150" Type="Success" />
                 <lay:LayNotificationControl Width="150" Type="Warning" />
                 <lay:LayNotificationControl Width="150" Type="Error" />
@@ -22,6 +22,7 @@
         <Setter Property="Margin" Value="10 5" />
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="Width" Value="300" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -30,7 +31,14 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         ClipToBounds="{TemplateBinding ClipToBounds}"
-                        CornerRadius="{TemplateBinding CornerRadius}">
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Opacity="0">
+                        <lay:LayCard.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity" Duration="0:0:0.2" />
+                                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2" />
+                            </Transitions>
+                        </lay:LayCard.Transitions>
                         <Grid ColumnDefinitions="auto,*,auto">
                             <Path
                                 Name="PART_Icon"
@@ -75,78 +83,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style Selector="lay|LayNotificationControl[HorizontalAlignment=Left],lay|LayNotificationControl[IsOpen=false]">
-        <Style.Resources>
-            <sys:Boolean x:Key="False">false</sys:Boolean>
-            <layCv:InverseDataConverter x:Key="InverseData" />
-        </Style.Resources>
-        <Style.Animations>
-            <Animation Duration="0:0:0.3">
-                <KeyFrame Cue="0%">
-                    <Setter Property="TranslateTransform.X" Value="0" />
-                    <Setter Property="Opacity" Value="1" />
-                </KeyFrame>
-                <KeyFrame Cue="100%">
-                    <Setter Property="Opacity" Value="0" />
-                    <Setter Property="TranslateTransform.X" Value="{Binding $self.MinWidth, Converter={StaticResource InverseData}, ConverterParameter={StaticResource False}}" />
-                </KeyFrame>
-            </Animation>
-        </Style.Animations>
-    </Style>
-    <Style Selector="lay|LayNotificationControl[HorizontalAlignment=Left],lay|LayNotificationControl[IsOpen=true]">
-        <Style.Resources>
-            <sys:Boolean x:Key="True">true</sys:Boolean>
-            <layCv:InverseDataConverter x:Key="InverseData" />
-        </Style.Resources>
-        <Style.Animations>
-            <Animation Duration="0:0:0.3">
-                <KeyFrame Cue="0%">
-                    <Setter Property="Opacity" Value="0" />
-                    <Setter Property="TranslateTransform.X" Value="{Binding $self.MinWidth, Converter={StaticResource InverseData}, ConverterParameter={StaticResource True}}" />
-                </KeyFrame>
-                <KeyFrame Cue="100%">
-                    <Setter Property="TranslateTransform.X" Value="0" />
-                    <Setter Property="Opacity" Value="1" />
-                </KeyFrame>
-            </Animation>
-        </Style.Animations>
-    </Style>
-    <Style Selector="lay|LayNotificationControl[HorizontalAlignment=Right],lay|LayNotificationControl[IsOpen=false]">
-        <Style.Resources>
-            <sys:Boolean x:Key="True">true</sys:Boolean>
-            <layCv:InverseDataConverter x:Key="InverseData" />
-        </Style.Resources>
-        <Style.Animations>
-            <Animation Duration="0:0:0.3">
-                <KeyFrame Cue="0%">
-                    <Setter Property="TranslateTransform.X" Value="0" />
-                    <Setter Property="Opacity" Value="1" />
-                </KeyFrame>
-                <KeyFrame Cue="100%">
-                    <Setter Property="Opacity" Value="0" />
-                    <Setter Property="TranslateTransform.X" Value="{Binding $self.MinWidth, Converter={StaticResource InverseData}, ConverterParameter={StaticResource True}}" />
-                </KeyFrame>
-            </Animation>
-        </Style.Animations>
-    </Style>
-    <Style Selector="lay|LayNotificationControl[HorizontalAlignment=Right],lay|LayNotificationControl[IsOpen=true]">
-        <Style.Resources>
-            <sys:Boolean x:Key="False">false</sys:Boolean>
-            <layCv:InverseDataConverter x:Key="InverseData" />
-        </Style.Resources>
-        <Style.Animations>
-            <Animation Duration="0:0:0.3">
-                <KeyFrame Cue="0%">
-                    <Setter Property="Opacity" Value="0" />
-                    <Setter Property="TranslateTransform.X" Value="{Binding $self.MinWidth, Converter={StaticResource InverseData}, ConverterParameter={StaticResource False}}" />
-                </KeyFrame>
-                <KeyFrame Cue="100%">
-                    <Setter Property="TranslateTransform.X" Value="0" />
-                    <Setter Property="Opacity" Value="1" />
-                </KeyFrame>
-            </Animation>
-        </Style.Animations>
-    </Style>
     <Style Selector="lay|LayNotificationControl[Type=Info] /template/ Path#PART_Icon">
         <Setter Property="Data" Value="M175.533,428.13901 L526.618,428.13901 526.618,468.108 175.533,468.108 z M175.533,313.358 L760.662,313.358 760.662,351.08499 175.533,351.08499 z M175.533,193.436 L760.662,193.436 760.662,234.05301 175.533,234.05301 z M117.022,41.586998 C84.758011,41.586998 39.159012,84.75 39.159019,117.02299 L39.159019,585.138 C39.159012,617.42102 84.757004,660.57397 117.022,660.57397 L316.795,660.57397 333.94002,677.71802 484.07002,833.70599 484.07002,660.57397 819.19002,660.57397 C851.45601,660.57397 895.11501,617.41998 895.11501,585.138 L895.11501,117.02299 C895.11501,84.75 851.45601,41.586998 819.19002,41.586998 z M117.022,0 L819.19002,0 C883.821,0 936.21303,52.392998 936.21199,117.02299 L936.21199,585.138 C936.21199,649.76801 883.821,702.16803 819.19002,702.16803 L526.618,702.16803 526.618,936.22101 292.55602,702.16699 117.022,702.16699 C52.392006,702.16699 7.6293945E-06,649.76703 0,585.13702 L0,117.022 C7.6293945E-06,52.392998 52.392006,0 117.022,0 z" />
         <Setter Property="Fill" Value="{DynamicResource Info}" />
@@ -162,5 +98,23 @@
     <Style Selector="lay|LayNotificationControl[Type=Warning] /template/ Path#PART_Icon">
         <Setter Property="Data" Value="M515.261789 221.944881c-145.760758 0-264.286222 113.734344-264.286222 253.581416 0 97.332792 57.645908 185.477318 148.440797 227.976248l0 109.61349c0 30.757514 19.196201 57.380872 46.985104 69.179592l0 23.565718c0 26.65201 22.429849 48.179302 50.189076 48.179302L535.039227 954.040648c27.761274 0 50.190099-21.527292 50.190099-48.179302l0-23.538089c27.761274-11.795651 46.986127-38.449707 46.986127-69.207222L632.215454 703.503569c90.211605-42.49893 148.411121-130.629129 148.411121-227.976248-1.048889-139.848095-119.604028-253.596765-265.364787-253.596765l0 0L515.261789 221.944881zM534.485619 918.1533l-38.448684 0c-6.932899 0-12.81691-5.622044-12.81691-12.291954l0-16.896832 64.083527 0 0 16.896832C547.303552 912.531256 541.419542 918.1533 534.485619 918.1533L534.485619 918.1533 534.485619 918.1533zM552.110021 853.080236l-73.66679 0c-22.982434 0-41.653679-17.886369-41.653679-39.963177l0-42.995233 157.500127 0 0 42.995233C593.7637 835.193867 575.064826 853.080236 552.110021 853.080236L552.110021 853.080236 552.110021 853.080236zM515.261789 591.823l-40.023552-70.186526 79.551824 0L515.261789 591.823 515.261789 591.823zM604.980159 675.333996l-11.216459 4.602831 0 54.29765-59.800991 0L533.962709 628.716258c3.203972-2.054799 5.330402-5.128811 7.456832-8.200776l54.470589-96.315626c4.806469-7.689123 4.28356-17.418718-0.523933-25.093515-5.330402-8.200776-14.971993-13.326517-25.632797-13.326517L460.267267 485.779825c-10.660804 0-20.274766 5.112438-25.63382 13.326517-4.777817 7.674796-5.330402 16.894785-0.524956 25.093515l54.994522 96.825232c2.155083 3.071965 4.282536 6.145977 7.486508 8.200776l0 105.008612-59.800991 0 0-54.29765-11.214413-4.602831C342.295412 641.021515 288.872688 562.111305 288.872688 475.540623c0-119.894647 102.008278-217.73807 226.942709-217.73807 124.933407 0 226.913033 97.858772 226.913033 217.73807C742.205521 562.111305 688.28854 640.497583 604.980159 675.333996L604.980159 675.333996 604.980159 675.333996zM64.580343 424.856267l99.125625 0 0 36.731576L64.580343 461.587843 64.580343 424.856267 64.580343 424.856267zM263.822153 249.777787l-70.083172-67.258847 27.060309-25.967418 70.112847 67.243497L263.822153 249.777787 263.822153 249.777787zM734.107075 223.795019l70.114894-67.243497 27.058262 25.967418-70.083172 67.258847L734.107075 223.795019 734.107075 223.795019zM860.294033 424.856267l99.123578 0 0 36.731576-99.123578 0L860.294033 424.856267 860.294033 424.856267zM492.862639 59.188031l38.274722 0 0 95.106078-38.274722 0L492.862639 59.188031 492.862639 59.188031zM492.862639 59.188031" />
         <Setter Property="Fill" Value="{DynamicResource Warning}" />
+    </Style>
+    <Style Selector="lay|LayNotificationControl[IsOpen=false] /template/ lay|LayCard#PART_BorderBody">
+        <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="lay|LayNotificationControl[IsOpen=true]  /template/ lay|LayCard#PART_BorderBody">
+        <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="lay|LayNotificationControl[HorizontalAlignment=Left][IsOpen=false] /template/ lay|LayCard#PART_BorderBody">
+        <Setter Property="RenderTransform" Value="translateX(-300px)" />
+    </Style>
+    <Style Selector="lay|LayNotificationControl[HorizontalAlignment=Left][IsOpen=true]  /template/ lay|LayCard#PART_BorderBody">
+        <Setter Property="RenderTransform" Value="translateX(0px)" />
+    </Style>
+    <Style Selector="lay|LayNotificationControl[HorizontalAlignment=Right][IsOpen=false] /template/ lay|LayCard#PART_BorderBody">
+        <Setter Property="RenderTransform" Value="translateX(300px)" />
+    </Style>
+    <Style Selector="lay|LayNotificationControl[HorizontalAlignment=Right][IsOpen=true] /template/ lay|LayCard#PART_BorderBody">
+        <Setter Property="RenderTransform" Value="translateX(0px)" />
     </Style>
 </Styles>

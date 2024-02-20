@@ -188,6 +188,14 @@ namespace Layui.Core
         /// 瀑布流容器
         /// </summary>
         public static string WaterfallFlowPanelPage { get; } = nameof(WaterfallFlowPanelPage); 
+        /// <summary>
+        /// 日期
+        /// </summary>
+        public static string DatePage { get; } = nameof(DatePage); 
+        /// <summary>
+        /// 滚动条
+        /// </summary>
+        public static string ScrollBarPage { get; } = nameof(ScrollBarPage); 
     }
     
 }

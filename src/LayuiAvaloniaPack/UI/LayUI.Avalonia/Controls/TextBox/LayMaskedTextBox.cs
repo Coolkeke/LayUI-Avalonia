@@ -15,7 +15,7 @@ namespace LayUI.Avalonia.Controls
     /// <summary>
     /// 遮掩框
     /// </summary>
-    public class LayMaskedTextBox: MaskedTextBox
+    public class LayMaskedTextBox: MaskedTextBox, ILayControl
     {
         /// <summary>
         /// 重置默认输入框样式指定LayTextBox为当前输入框样式

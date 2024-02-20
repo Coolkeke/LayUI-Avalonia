@@ -13,7 +13,7 @@ namespace LayUI.Avalonia.Controls
     /// <summary>
     /// 折叠板
     /// </summary>
-    public class LayExpander: Expander
+    public class LayExpander: Expander, ILayControl
     {
         /// <summary>
         /// Defines the <see cref="HeaderBackground"/> property.

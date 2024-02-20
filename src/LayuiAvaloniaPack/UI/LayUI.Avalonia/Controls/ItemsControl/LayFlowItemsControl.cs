@@ -13,7 +13,7 @@ using System.Diagnostics.Tracing;
 namespace LayUI.Avalonia.Controls
 {
     [TemplatePart(Name = nameof(PART_ScrollViewer), Type = typeof(ScrollViewer))]
-    public class LayFlowItemsControl : ItemsControl
+    public class LayFlowItemsControl : ItemsControl, ILayControl
     {
         private ScrollViewer PART_ScrollViewer;
         /// <summary>

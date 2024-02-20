@@ -8,5 +8,9 @@ namespace Layui.Main.Views
         {
             InitializeComponent();
         }
+
+        private void LayPagination_Completed(object? sender, LayUI.Avalonia.Controls.PaginationRoutedEventArgs e)
+        {
+        }
     }
 }
