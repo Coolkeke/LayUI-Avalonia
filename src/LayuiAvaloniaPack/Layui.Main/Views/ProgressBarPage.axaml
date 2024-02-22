@@ -38,5 +38,19 @@
             Margin="5"
             Classes="Steady"
             Value="50" />
+        <Grid>
+            <lay:LayCircularProgressBar
+                Name="Circular"
+                Maximum="360"
+                Value="270" />
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="{Binding #Circular.Percentage, Mode=OneWay, StringFormat={}{0:N2}%}" />
+        </Grid>
+        <lay:LayCircularProgressBar
+            Foreground="{DynamicResource Gradient}"
+            Maximum="360"
+            Value="{Binding #Circular.Value}" />
     </StackPanel>
 </UserControl>

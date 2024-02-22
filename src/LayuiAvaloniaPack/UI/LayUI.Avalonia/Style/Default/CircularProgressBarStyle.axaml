@@ -1,0 +1,62 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayUI.Avalonia.Controls"
+    xmlns:layCv="clr-namespace:LayUI.Avalonia.Converters;assembly=LayUI.Avalonia">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <Grid>
+                <lay:LayCircularProgressBar
+                    Name="Circular"
+                    Maximum="360"
+                    Value="93" />
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="{Binding #Circular.Percentage, Mode=OneWay, StringFormat={}{0:N2}}" />
+            </Grid>
+        </Border>
+    </Design.PreviewWith>
+    <Style Selector="lay|LayCircularProgressBar">
+        <Setter Property="Width" Value="100" />
+        <Setter Property="Height" Value="100" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="Foreground" Value="{DynamicResource LightGreen}" />
+        <Setter Property="BorderBrush" Value="#E7F3FF" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <Ellipse Fill="{TemplateBinding Background}" />
+                        <Arc
+                            Margin="{TemplateBinding Padding}"
+                            StartAngle="0"
+                            Stretch="None"
+                            Stroke="{TemplateBinding BorderBrush}"
+                            StrokeThickness="{TemplateBinding LineThickness}"
+                            SweepAngle="360" />
+                        <Arc
+                            x:Name="PART_Arc"
+                            Margin="{TemplateBinding Padding}"
+                            StartAngle="270"
+                            Stretch="None"
+                            Stroke="{TemplateBinding Foreground}"
+                            StrokeJoin="Round"
+                            StrokeLineCap="Round"
+                            StrokeThickness="{TemplateBinding LineThickness}">
+                            <Arc.Transitions>
+                                <Transitions>
+                                    <DoubleTransition
+                                        Easing="CircularEaseOut"
+                                        Property="SweepAngle"
+                                        Duration="0:0:0.8" />
+                                </Transitions>
+                            </Arc.Transitions>
+                        </Arc>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--  Add Styles Here  -->
+</Styles>
