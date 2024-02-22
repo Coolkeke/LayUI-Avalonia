@@ -43,6 +43,22 @@ namespace LayUI.Avalonia.Controls
             private set { SetValue(PercentageProperty, value); }
         }
 
+
+        /// <summary>
+        /// Defines the <see cref="IsReversal"/> property.
+        /// </summary>
+        public static readonly StyledProperty<bool> IsReversalProperty =
+            AvaloniaProperty.Register<LayCircularProgressBar, bool>(nameof(IsReversal));
+
+        /// <summary>
+        /// 反转
+        /// </summary>
+        public bool IsReversal
+        {
+            get { return GetValue(IsReversalProperty); }
+            set { SetValue(IsReversalProperty, value); }
+        }
+
         /// <summary>
         /// 线条厚度
         /// </summary>

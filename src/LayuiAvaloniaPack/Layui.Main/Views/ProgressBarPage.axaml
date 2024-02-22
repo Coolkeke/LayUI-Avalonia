@@ -52,5 +52,10 @@
             Foreground="{DynamicResource Gradient}"
             Maximum="360"
             Value="{Binding #Circular.Value}" />
+        <lay:LayCircularProgressBar
+            Foreground="{DynamicResource Gradient}"
+            IsReversal="True"
+            Maximum="360"
+            Value="{Binding #Circular.Value}" />
     </StackPanel>
 </UserControl>
