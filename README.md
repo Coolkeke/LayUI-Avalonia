@@ -29,7 +29,8 @@
 WPF、Avalonia前端外包联系 QQ : 1357703886 微信：ywk912zj
 
 ## 想为我买防脱发水？
-![1704476122969](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/3e169d64-1c3d-42d3-81b0-89895d664b15) ![IMG_20240106_013112](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/36a60904-207c-4120-b531-cb402f95f5bb)
+![1704476122969](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/3e169d64-1c3d-42d3-81b0-89895d664b15)![image](https://github.com/Coolkeke/LayUI-Avalonia/assets/37786276/c5196e34-94ab-4f81-888e-a04c09f23098)
+
 
 ## 你们还想干嘛？
 我想不到你们想干嘛了，想不了一点了>_<  干脆直接联系我吧~~~ 
