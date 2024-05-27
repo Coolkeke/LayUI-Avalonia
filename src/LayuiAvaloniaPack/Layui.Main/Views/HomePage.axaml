@@ -68,6 +68,7 @@
                         Orientation="Horizontal">
                         <lay:LaySwitchButton
                             CheckedContent="中"
+                            Command="{Binding LanguageCommand}"
                             CornerRadius="10"
                             Foreground="White"
                             IsChecked="{Binding IsEn}"

@@ -21,9 +21,7 @@ namespace Layui.Main.ViewModels
             get { return _IsEn; }
             set 
             { 
-                SetProperty(ref _IsEn, value);
-                if(value) LanguageExtension.LoadResourceKey("zh_CN");
-                else LanguageExtension.LoadResourceKey("en_US");
+                SetProperty(ref _IsEn, value); 
             }
         }
         public HomePageViewModel(IContainerExtension container) : base(container) { }
@@ -32,6 +30,15 @@ namespace Layui.Main.ViewModels
         {
             get { return _MenuInfo; }
             set { SetProperty(ref _MenuInfo, value); }
+        }
+        private DelegateCommand _LanguageCommand;
+        public DelegateCommand LanguageCommand =>
+            _LanguageCommand ?? (_LanguageCommand = new DelegateCommand(ExecuteLanguageCommand));
+
+         void ExecuteLanguageCommand()
+        {
+            if (IsEn) LanguageExtension.LoadResourceKey("zh_CN");
+            else LanguageExtension.LoadResourceKey("en_US");
         }
         private ObservableCollection<MenuInfo> _Menus;
         /// <summary>
@@ -55,7 +62,7 @@ namespace Layui.Main.ViewModels
             string Unicode = $"{(char)int.Parse("ebf1", System.Globalization.NumberStyles.HexNumber)}";
             ObservableCollection<MenuInfo> menus = new ObservableCollection<MenuInfo>
             {
-                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.IconPage, Title = "Icon" },
+                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.IconPage, Title = "ICON" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ColorPage, Title ="Color"},
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ButtonPage, Title ="Button"},
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.RadioButtonPage, Title = "RadioButton" },

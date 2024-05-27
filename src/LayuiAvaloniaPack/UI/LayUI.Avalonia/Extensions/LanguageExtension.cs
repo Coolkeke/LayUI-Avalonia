@@ -5,6 +5,7 @@ using Avalonia.Data.Converters;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Markup.Xaml.Styling;
+using Avalonia.Threading;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -134,9 +135,9 @@ namespace LayUI.Avalonia.Extensions
         {
             lock (Source)
             {
-                if (action == null) return;
-                AddApplicationResourcesLanguage();
-                action.Invoke();
+                if (action == null)
+                    AddApplicationResourcesLanguage();
+                action?.Invoke();
             }
         }
         public override object ProvideValue(IServiceProvider serviceProvider)
@@ -148,7 +149,13 @@ namespace LayUI.Avalonia.Extensions
             try
             {
                 Action? LanguageEvent = null;
-                LanguageEvent = () => targetObject.Bind(targetProperty, CreateBinding(Key));
+                LanguageEvent = async () =>
+                {
+                   await Dispatcher.UIThread.InvokeAsync(() =>
+                    {
+                        targetObject.Bind(targetProperty, CreateBinding(Key));
+                    });
+                };
                 EventHandler<RoutedEventArgs>? loaded = null;
                 EventHandler<RoutedEventArgs>? unLoaded = null;
                 loaded = (o, e) =>
@@ -174,7 +181,7 @@ namespace LayUI.Avalonia.Extensions
                     element.Loaded += loaded;
                     element.Unloaded += unLoaded;
                     EventHandler? elementDataContextChanged = null;
-                    elementDataContextChanged += (o, e) =>
+                    elementDataContextChanged +=  (o, e) =>
                     {
                         element.DataContextChanged -= elementDataContextChanged;
                         element.DataContextChanged += elementDataContextChanged;
