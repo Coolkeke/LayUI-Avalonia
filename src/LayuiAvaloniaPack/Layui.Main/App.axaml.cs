@@ -5,6 +5,7 @@ using Layui.Core;
 using Layui.Main.ViewModels;
 using Layui.Main.Views;
 using LayUI.Avalonia;
+using LayUI.Avalonia.Extensions;
 using LayUI.Avalonia.Global;
 using LayUI.Avalonia.Interfaces; 
 using Prism.DryIoc;
@@ -15,6 +16,11 @@ namespace Layui.Main
 {
     public partial class App : PrismApplication
     {
+        public override void Initialize()
+        { 
+            LanguageExtension.LoadResourceKey("zh_CN");
+            base.Initialize();
+        }
         protected override AvaloniaObject CreateShell()
         {
             AvaloniaObject view;
@@ -25,7 +31,7 @@ namespace Layui.Main
             else
             {
                 view = Container.Resolve<MainPage>();
-            } 
+            }
             LayKeyboardHelper.InitializeKeyboard(view as Visual);
             return view;
         }

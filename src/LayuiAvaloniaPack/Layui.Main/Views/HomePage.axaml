@@ -6,6 +6,7 @@
     xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
     xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
     xmlns:lay="using:LayUI.Avalonia.Controls"
+    xmlns:layExt="using:LayUI.Avalonia.Extensions"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:res="using:Layui.Core"
@@ -197,7 +198,7 @@
                                                     VerticalAlignment="Center"
                                                     FontSize="20"
                                                     Foreground="White"
-                                                    Text="{Binding Title}"
+                                                    Text="{layExt:Language {Binding Title}}"
                                                     TextTrimming="{x:Static TextTrimming.CharacterEllipsis}" />
                                                 <Border
                                                     Grid.Column="2"

@@ -7,6 +7,10 @@
     RequestedThemeVariant="Default">
     <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
 
+    <Application.Resources>
+        <ResourceInclude x:Key="zh_CN" Source="/Languages/zh_CN.axaml" />
+        <ResourceInclude x:Key="en_US" Source="/Languages/en_US.axaml" />
+    </Application.Resources>
     <Application.Styles>
         <FluentTheme />
         <StyleInclude Source="avares://LayUI.Avalonia/Themes/Default.axaml" />

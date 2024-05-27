@@ -1,6 +1,7 @@
 ﻿using ImTools;
 using Layui.Core;
 using Layui.Main.Models;
+using LayUI.Avalonia.Extensions;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -14,6 +15,17 @@ namespace Layui.Main.ViewModels
 {
     public class HomePageViewModel : ViewModelBase
     {
+        private bool _IsEn=true;
+        public bool IsEn
+        {
+            get { return _IsEn; }
+            set 
+            { 
+                SetProperty(ref _IsEn, value);
+                if(value) LanguageExtension.LoadResourceKey("zh_CN");
+                else LanguageExtension.LoadResourceKey("en_US");
+            }
+        }
         public HomePageViewModel(IContainerExtension container) : base(container) { }
         private MenuInfo _MenuInfo;
         public MenuInfo MenuInfo
