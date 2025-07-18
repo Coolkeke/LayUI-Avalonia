@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <AvaloniaXaml Remove="Languages\en_US.axaml" />
+    <AvaloniaXaml Remove="Languages\zh_CN.axaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Assets\avalonia-logo.ico" />
   </ItemGroup>
 
@@ -101,6 +106,15 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Views\ScrollBarPage.axaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="Languages\en_US.axaml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Languages\zh_CN.axaml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </AvaloniaResource>
   </ItemGroup>
 
 </Project>

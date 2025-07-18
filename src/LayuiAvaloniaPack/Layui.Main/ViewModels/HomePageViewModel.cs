@@ -1,6 +1,7 @@
 ﻿using ImTools;
 using Layui.Core;
 using Layui.Main.Models;
+using LayUI.Avalonia.Extensions;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -14,12 +15,30 @@ namespace Layui.Main.ViewModels
 {
     public class HomePageViewModel : ViewModelBase
     {
+        private bool _IsEn=true;
+        public bool IsEn
+        {
+            get { return _IsEn; }
+            set 
+            { 
+                SetProperty(ref _IsEn, value); 
+            }
+        }
         public HomePageViewModel(IContainerExtension container) : base(container) { }
         private MenuInfo _MenuInfo;
         public MenuInfo MenuInfo
         {
             get { return _MenuInfo; }
             set { SetProperty(ref _MenuInfo, value); }
+        }
+        private DelegateCommand _LanguageCommand;
+        public DelegateCommand LanguageCommand =>
+            _LanguageCommand ?? (_LanguageCommand = new DelegateCommand(ExecuteLanguageCommand));
+
+         void ExecuteLanguageCommand()
+        {
+            if (IsEn) LanguageExtension.LoadResourceKey("zh_CN");
+            else LanguageExtension.LoadResourceKey("en_US");
         }
         private ObservableCollection<MenuInfo> _Menus;
         /// <summary>
@@ -43,7 +62,7 @@ namespace Layui.Main.ViewModels
             string Unicode = $"{(char)int.Parse("ebf1", System.Globalization.NumberStyles.HexNumber)}";
             ObservableCollection<MenuInfo> menus = new ObservableCollection<MenuInfo>
             {
-                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.IconPage, Title = "Icon" },
+                new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.IconPage, Title = "ICON" },
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ColorPage, Title ="Color"},
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.ButtonPage, Title ="Button"},
                 new MenuInfo() { FontIcon = $"{Unicode}", PageKey = SystemResource.RadioButtonPage, Title = "RadioButton" },

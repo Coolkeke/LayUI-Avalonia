@@ -30,4 +30,15 @@
     <sys:String x:Key="Menu">菜单</sys:String>
     <sys:String x:Key="List">列表</sys:String>
     <sys:String x:Key="Loading">加载动画</sys:String>
+    <sys:String x:Key="Color">颜色</sys:String>
+    <sys:String x:Key="ICON">图标</sys:String>
+    <sys:String x:Key="RadioButton">单选按钮</sys:String>
+    <sys:String x:Key="CheckBox">复选框</sys:String>
+    <sys:String x:Key="Switch">开关</sys:String>
+    <sys:String x:Key="ComboBox">下拉框</sys:String>
+    <sys:String x:Key="NoticeBar">通知状态栏</sys:String>
+    <sys:String x:Key="Skeleton">骨架屏</sys:String>
+    <sys:String x:Key="DataGrid">数据表格</sys:String>
+    <sys:String x:Key="Slider">滑块</sys:String>
+    <sys:String x:Key="Timeline">轨迹</sys:String>
 </ResourceDictionary>

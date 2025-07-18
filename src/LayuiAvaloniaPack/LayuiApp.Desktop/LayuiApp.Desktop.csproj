@@ -7,20 +7,6 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
-  <ItemGroup>
-    <AvaloniaXaml Remove="Languages\ch-en.axaml" />
-    <AvaloniaXaml Remove="Languages\zh-cn.axaml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Languages\ch-en.axaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Languages\zh-cn.axaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
 
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.0.7" />

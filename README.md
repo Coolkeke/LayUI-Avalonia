@@ -24,9 +24,7 @@
 
 ## 教学视频
 [Bilibili](https://space.bilibili.com/48808444) 
-
-## 想找我外包？
-WPF、Avalonia前端外包联系 QQ : 1357703886 微信：ywk912zj
+ 
 
 ## 想为我买防脱发水？
 ![1704476122969](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/3e169d64-1c3d-42d3-81b0-89895d664b15)![image](https://github.com/Coolkeke/LayUI-Avalonia/assets/37786276/c5196e34-94ab-4f81-888e-a04c09f23098)
@@ -71,7 +69,8 @@ WPF、Avalonia前端外包联系 QQ : 1357703886 微信：ywk912zj
 ![image](https://github.com/Coolkeke/LayUI-Avalonia/assets/37786276/a695adbb-e1e1-4beb-bd05-6b78577f681b)
 ![image](https://github.com/Coolkeke/LayUI-Avalonia/assets/37786276/5de38c1e-dc40-4987-9ba5-a925059a188f)
 ![image](https://github.com/Coolkeke/LayUI-Avalonia/assets/37786276/45d1a038-52ff-40a9-b3e5-7fe8b33a0606)
-![1708592146969](https://github.com/Coolkeke/LayUI-Avalonia/assets/37786276/46cfe5dd-b197-4544-944e-92c72c7d0023)
+![1708594081238](https://github.com/Coolkeke/LayUI-Avalonia/assets/37786276/f8429f1c-3fb7-408e-b43d-a6e60bc3156d)
+
 
 
 
