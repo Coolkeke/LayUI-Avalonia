@@ -20,18 +20,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="11.0.7" />
-    <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.0.7" />
-    <PackageReference Include="Avalonia.Desktop" Version="11.0.7" />
-    <PackageReference Include="Avalonia.Diagnostics" Version="11.0.7" />
-    <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="11.0.7" />
-    <PackageReference Include="Avalonia.Skia" Version="11.0.7" />
-    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.7" />
-    <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.0.6" />
-    <PackageReference Include="log4net" Version="2.0.15" />
+    <PackageReference Include="Avalonia" Version="11.3.2" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.3.2" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.3.2" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="11.3.2" />
+    <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="11.3.2" />
+    <PackageReference Include="Avalonia.Skia" Version="11.3.2" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.2" />
+    <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.3.0.6" />
+    <PackageReference Include="log4net" Version="3.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Prism.Avalonia" Version="8.1.97.11000" />
-    <PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11000" />
+    <PackageReference Include="Prism.Avalonia" Version="9.0.537.11130" />
+    <PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.537.11130" />
   </ItemGroup>
 
   <ItemGroup>

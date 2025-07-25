@@ -9,8 +9,7 @@ using LayUI.Avalonia.Extensions;
 using LayUI.Avalonia.Global;
 using LayUI.Avalonia.Interfaces; 
 using Prism.DryIoc;
-using Prism.Ioc;
-using Prism.Regions; 
+using Prism.Ioc; 
 
 namespace Layui.Main
 {

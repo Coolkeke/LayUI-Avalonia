@@ -1,5 +1,4 @@
-﻿using log4net;
-using Splat;
+﻿using log4net; 
 using System;
 using System.Collections.Generic;
 using System.Linq;
