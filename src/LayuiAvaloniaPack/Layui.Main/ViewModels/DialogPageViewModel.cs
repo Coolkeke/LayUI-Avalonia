@@ -2,8 +2,7 @@
 using LayUI.Avalonia.Interfaces;
 using Prism.Commands;
 using Prism.Ioc;
-using Prism.Mvvm;
-using Prism.Services.Dialogs;
+using Prism.Mvvm; 
 using System;
 using System.Collections.Generic;
 using System.Linq;

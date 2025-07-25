@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace LayUI.Avalonia.Controls
 {
-    [TemplatePart("PART_Arc", typeof(Border))]
+    [TemplatePart("PART_Arc", typeof(Arc))]
     public class LayCircularProgressBar : RangeBase, ILayControl
     {
         private Arc? PART_Arc;

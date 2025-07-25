@@ -1,7 +1,6 @@
 ﻿using Layui.Core;
 using Prism.Ioc;
-using Prism.Mvvm;
-using Prism.Regions;
+using Prism.Mvvm; 
 using System.ComponentModel;
 
 namespace Layui.Main.ViewModels

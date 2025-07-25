@@ -4,9 +4,7 @@ using DryIoc;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Ioc;
-using Prism.Mvvm;
-using Prism.Regions;
-using Prism.Services.Dialogs;
+using Prism.Mvvm; 
 
 namespace Layui.Core
 {
@@ -55,7 +53,7 @@ namespace Layui.Core
         /// <summary>
         /// 接收被传递过来的参数
         /// </summary>
-        protected NavigationParameters Parameters { get; private set; }
+        protected INavigationParameters Parameters { get; private set; }
         /// <summary>
         /// 导航服务
         /// </summary>
